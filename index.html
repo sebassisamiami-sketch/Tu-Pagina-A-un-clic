@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tu Página a un Clic | Páginas web y apps móviles</title>
+  <meta name="description" content="Diseño y desarrollo páginas web y aplicaciones móviles que funcionan en celular, tablet y computador. Para negocios y emprendedores en Colombia.">
+  <meta name="theme-color" content="#2433D9">
+  <meta property="og:title" content="Tu Página a un Clic">
+  <meta property="og:description" content="Páginas web y aplicaciones móviles para tu negocio, en todos los dispositivos.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+
+  <header class="top">
+    <div class="wrap top__inner">
+      <a class="brand" href="#" aria-label="Tu Página a un Clic, inicio">
+        <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+          <rect x="1" y="1" width="30" height="30" rx="9" fill="currentColor"/>
+          <path d="M11 8 L11 23 L15 19.5 L18 26 L20.8 24.7 L17.9 18.3 L23 18 Z" fill="#FFB627" stroke="#161A3D" stroke-width="1.4" stroke-linejoin="round"/>
+        </svg>
+        <span>tu página<br>a un clic</span>
+      </a>
+      <nav class="nav" aria-label="Principal">
+        <a href="#servicios">Servicios</a>
+        <a href="#proceso">Cómo trabajo</a>
+        <a href="#preguntas">Preguntas</a>
+        <a class="btn btn--small btn--mango" href="#contacto">Cotizar mi proyecto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero">
+      <div class="wrap hero__grid">
+        <div class="hero__copy">
+          <h1>Tu página web y tu app, a un clic de tus clientes.</h1>
+          <p class="hero__lead">Diseño y desarrollo páginas web y aplicaciones móviles que se ven bien y funcionan en celular, tablet y computador. Para negocios y emprendedores en Colombia.</p>
+          <div class="hero__actions">
+            <a class="btn btn--mango" href="#contacto">Cotizar mi proyecto</a>
+            <a class="btn btn--ghost" href="#servicios">Ver servicios</a>
+          </div>
+        </div>
+
+        <div class="demo" aria-label="Demostración: la misma página adaptándose a cada dispositivo">
+          <div class="demo__switch" role="radiogroup" aria-label="Ver la página en">
+            <button type="button" role="radio" aria-checked="true" data-mode="phone">Celular</button>
+            <button type="button" role="radio" aria-checked="false" data-mode="tablet">Tablet</button>
+            <button type="button" role="radio" aria-checked="false" data-mode="desktop">Computador</button>
+          </div>
+
+          <div class="demo__stage">
+            <div class="device" data-mode="phone">
+              <div class="device__bar" aria-hidden="true"><i></i><i></i><i></i><span>cafemontana.co</span></div>
+              <div class="device__screen">
+                <div class="mini is-wire" aria-hidden="true">
+                  <div class="mini__nav">
+                    <b class="mini__logo">Café Montaña</b>
+                    <span class="mini__links"><em>Menú</em><em>Tienda</em><em>Contacto</em></span>
+                    <span class="mini__burger"><i></i><i></i><i></i></span>
+                  </div>
+                  <div class="mini__hero">
+                    <p class="mini__title">Café de origen, tostado esta semana</p>
+                    <p class="mini__text">Pide en línea y recoge en la tienda.</p>
+                    <span class="mini__cta">Hacer pedido</span>
+                  </div>
+                  <div class="mini__tiles">
+                    <span class="mini__tile t1"><em>Huila</em></span>
+                    <span class="mini__tile t2"><em>Nariño</em></span>
+                    <span class="mini__tile t3"><em>Tolima</em></span>
+                  </div>
+                  <div class="mini__foot"></div>
+                </div>
+              </div>
+            </div>
+
+            <svg class="cursor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 2 L5 19 L9.5 15 L12.8 22 L15.8 20.6 L12.6 13.7 L18.5 13.4 Z" fill="#FFB627" stroke="#161A3D" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <button type="button" class="demo__publish" aria-live="polite">Publicar página</button>
+          <p class="demo__note">Café Montaña es un negocio de ejemplo. Prueba los tres dispositivos.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="platforms" aria-label="Plataformas">
+      <div class="wrap platforms__inner">
+        <p>Funciona en</p>
+        <ul>
+          <li>Android</li>
+          <li>iPhone y iPad</li>
+          <li>Windows</li>
+          <li>Mac</li>
+          <li>Chrome, Safari, Edge y Firefox</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="servicios">
+      <div class="wrap">
+        <header class="section__head">
+          <h2>Lo que puedo construir para ti</h2>
+          <p>Desde una página sencilla para que te encuentren en Google hasta una aplicación con usuarios, pagos y panel de administración.</p>
+        </header>
+
+        <div class="services">
+          <article class="service">
+            <div class="service__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><rect x="4" y="8" width="40" height="28" rx="4"/><path d="M4 15h40"/><path d="M18 42h12M24 36v6"/></svg>
+            </div>
+            <div class="service__body">
+              <h3>Páginas web</h3>
+              <p>Tu negocio con presencia propia en internet, rápida y fácil de encontrar.</p>
+              <ul class="service__list">
+                <li>Landing para campañas y redes sociales</li>
+                <li>Sitio corporativo o de servicios</li>
+                <li>Tienda en línea con catálogo y pagos</li>
+                <li>Reservas y agendamiento de citas</li>
+              </ul>
+            </div>
+            <p class="service__tags">Celular, tablet y computador</p>
+          </article>
+
+          <article class="service">
+            <div class="service__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><rect x="13" y="3" width="22" height="42" rx="5"/><path d="M21 8h6"/><circle cx="24" cy="39" r="1.6"/></svg>
+            </div>
+            <div class="service__body">
+              <h3>Aplicaciones móviles</h3>
+              <p>Una app con el nombre de tu marca, instalada en el celular de tus clientes.</p>
+              <ul class="service__list">
+                <li>Apps para Android y iPhone desde un solo desarrollo</li>
+                <li>Notificaciones, inicio de sesión y pagos</li>
+                <li>Publicación en Google Play y App Store</li>
+                <li>Versión web de la misma app, si la necesitas</li>
+              </ul>
+            </div>
+            <p class="service__tags">Android e iOS</p>
+          </article>
+
+          <article class="service">
+            <div class="service__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><rect x="4" y="6" width="40" height="36" rx="4"/><path d="M4 16h40M16 16v26"/><path d="M22 24h16M22 31h12"/></svg>
+            </div>
+            <div class="service__body">
+              <h3>Sistemas a la medida</h3>
+              <p>Herramientas internas para organizar tu operación y dejar atrás las hojas de cálculo sueltas.</p>
+              <ul class="service__list">
+                <li>Paneles de administración e inventario</li>
+                <li>Bases de datos y reportes</li>
+                <li>Formularios y flujos de aprobación</li>
+                <li>Conexión con WhatsApp, pasarelas de pago y otros servicios</li>
+              </ul>
+            </div>
+            <p class="service__tags">Web, escritorio y móvil</p>
+          </article>
+        </div>
+
+        <div class="extras">
+          <h3>Incluido o disponible en cada proyecto</h3>
+          <ul>
+            <li><strong>Dominio y hosting.</strong> Te ayudo a elegir y configurar tu dirección .com o .co.</li>
+            <li><strong>Posicionamiento básico en Google.</strong> Títulos, descripciones y velocidad bien hechos desde el inicio.</li>
+            <li><strong>Contenido editable.</strong> Si quieres cambiar textos o fotos tú mismo, lo dejo preparado para eso.</li>
+            <li><strong>Mantenimiento.</strong> Actualizaciones, copias de seguridad y cambios cuando los necesites.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--deep" id="proceso">
+      <div class="wrap">
+        <header class="section__head">
+          <h2>Cómo trabajamos juntos</h2>
+          <p>Sabes en qué va tu proyecto en cada momento y hablas directamente con quien lo programa.</p>
+        </header>
+
+        <ol class="steps">
+          <li>
+            <h3>Conversamos</h3>
+            <p>Me cuentas qué hace tu negocio, a quién le vendes y qué necesitas. Sin costo y sin compromiso.</p>
+          </li>
+          <li>
+            <h3>Propuesta y precio</h3>
+            <p>Recibes por escrito qué se va a construir, en cuánto tiempo y cuánto cuesta. Sin letra pequeña.</p>
+          </li>
+          <li>
+            <h3>Diseño</h3>
+            <p>Ves cómo va a quedar antes de programar. Ajustamos hasta que te guste.</p>
+          </li>
+          <li>
+            <h3>Desarrollo</h3>
+            <p>Te comparto avances para que pruebes en tu propio celular y computador mientras se construye.</p>
+          </li>
+          <li>
+            <h3>Publicación y acompañamiento</h3>
+            <p>Lo ponemos en línea, te enseño a usarlo y sigo disponible para soporte y mejoras.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section about">
+      <div class="wrap about__grid">
+        <h2>Quién está detrás</h2>
+        <div class="about__text">
+          <p>Soy desarrollador de software. Me fijo tanto en que tu página o tu app se vea bien como en que funcione rápido y en que la información de tu negocio quede ordenada y segura.</p>
+          <p>Trabajo de forma remota con clientes de cualquier ciudad y me adapto a tu horario.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tint" id="preguntas">
+      <div class="wrap faq">
+        <h2>Preguntas frecuentes</h2>
+        <div class="faq__list">
+          <details>
+            <summary>¿Cuánto cuesta una página o una app?</summary>
+            <p>Depende de lo que necesites: no cuesta lo mismo una página de presentación que una tienda en línea o una app con usuarios. Después de la primera conversación te envío una cotización cerrada, para que sepas el valor exacto antes de empezar.</p>
+          </details>
+          <details>
+            <summary>¿Cuánto tiempo toma?</summary>
+            <p>Una página sencilla puede estar lista en pocas semanas; una aplicación toma más. En la propuesta te doy fechas concretas para cada etapa.</p>
+          </details>
+          <details>
+            <summary>¿Mi página se va a ver bien en el celular?</summary>
+            <p>Sí. Todo lo que construyo se adapta a celular, tablet y computador, y lo pruebo en los navegadores más usados antes de entregarlo.</p>
+          </details>
+          <details>
+            <summary>¿La app queda publicada en Google Play y App Store?</summary>
+            <p>Sí, me encargo del proceso de publicación. Cada tienda cobra su propia cuenta de desarrollador, que queda a tu nombre para que la app sea tuya.</p>
+          </details>
+          <details>
+            <summary>No tengo dominio ni hosting, ¿qué hago?</summary>
+            <p>No te preocupes, te ayudo a elegirlos y a configurarlos. Quedan registrados a tu nombre.</p>
+          </details>
+          <details>
+            <summary>¿Puedo hacer cambios después?</summary>
+            <p>Claro. Puedo dejarte un panel para editar textos e imágenes por tu cuenta, o encargarme yo de los cambios con un plan de mantenimiento.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contacto">
+      <div class="wrap contact__grid">
+        <div class="contact__copy">
+          <h2>Cuéntame tu idea</h2>
+          <p>Llena estos datos y se abrirá WhatsApp con tu mensaje listo para enviar. Te respondo con preguntas y una cotización.</p>
+          <p class="contact__alt">¿Prefieres correo? Escríbeme a <a class="js-email" href="#">tu correo</a>.</p>
+        </div>
+
+        <form class="form" novalidate>
+          <div class="field">
+            <label for="nombre">Tu nombre</label>
+            <input id="nombre" name="nombre" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="negocio">Nombre de tu negocio <span class="opt">(opcional)</span></label>
+            <input id="negocio" name="negocio" type="text" autocomplete="organization">
+          </div>
+          <fieldset class="field">
+            <legend>¿Qué necesitas?</legend>
+            <div class="chips">
+              <label><input type="radio" name="tipo" value="una página web" checked><span>Página web</span></label>
+              <label><input type="radio" name="tipo" value="una aplicación móvil"><span>App móvil</span></label>
+              <label><input type="radio" name="tipo" value="una página web y una app"><span>Las dos</span></label>
+              <label><input type="radio" name="tipo" value="un sistema a la medida"><span>Sistema a la medida</span></label>
+              <label><input type="radio" name="tipo" value="asesoría, todavía no lo tengo claro"><span>Aún no lo sé</span></label>
+            </div>
+          </fieldset>
+          <div class="field">
+            <label for="mensaje">Cuéntame un poco más</label>
+            <textarea id="mensaje" name="mensaje" rows="4" placeholder="Por ejemplo: tengo una barbería y quiero que mis clientes reserven citas desde el celular."></textarea>
+          </div>
+          <p class="form__error" role="alert" hidden></p>
+          <button class="btn btn--mango btn--block" type="submit">Enviar por WhatsApp</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot__inner">
+      <p>Tu Página a un Clic. Páginas web y aplicaciones móviles.</p>
+      <p>© <span class="js-year">2026</span></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

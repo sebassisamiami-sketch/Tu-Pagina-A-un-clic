@@ -1,0 +1,55 @@
+name: Publicar en GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Insertar datos de contacto
+        env:
+          WHATSAPP_NUMBER: ${{ secrets.WHATSAPP_NUMBER }}
+          CONTACT_EMAIL: ${{ secrets.CONTACT_EMAIL }}
+        run: |
+          set -euo pipefail
+          if [[ -n "$WHATSAPP_NUMBER" && ! "$WHATSAPP_NUMBER" =~ ^[0-9]{8,15}$ ]]; then
+            echo "::error::WHATSAPP_NUMBER debe tener solo dígitos, con indicativo de país y sin '+'."
+            exit 1
+          fi
+          if [[ -n "$CONTACT_EMAIL" && ! "$CONTACT_EMAIL" =~ ^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$ ]]; then
+            echo "::error::CONTACT_EMAIL no tiene un formato de correo válido."
+            exit 1
+          fi
+          mkdir -p _site
+          cp index.html styles.css script.js _site/
+          cp -r assets _site/
+          sed -i \
+            -e "s|__WHATSAPP_NUMBER__|${WHATSAPP_NUMBER}|g" \
+            -e "s|__CONTACT_EMAIL__|${CONTACT_EMAIL}|g" \
+            _site/script.js
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
