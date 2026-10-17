@@ -47,32 +47,4 @@ async function crearSolicitud({ nombre, negocio, tipo, mensaje }) {
   return rows[0];
 }
 
-async function listarSolicitudes({ filtro = "todas", limite = 200 } = {}) {
-  const where =
-    filtro === "pendientes" ? "WHERE atendida = FALSE" :
-    filtro === "atendidas" ? "WHERE atendida = TRUE" : "";
-  const { rows } = await pool.query(
-    `SELECT id, creada, nombre, negocio, tipo, mensaje, atendida
-     FROM solicitudes ${where}
-     ORDER BY creada DESC
-     LIMIT $1`,
-    [limite]
-  );
-  return rows;
-}
-
-async function contarSolicitudes() {
-  const { rows } = await pool.query(
-    `SELECT COUNT(*)::int AS total,
-            COUNT(*) FILTER (WHERE atendida = FALSE)::int AS pendientes
-     FROM solicitudes`
-  );
-  return rows[0];
-}
-
-async function marcarAtendida(id, atendida) {
-  const { rowCount } = await pool.query("UPDATE solicitudes SET atendida = $2 WHERE id = $1", [id, atendida]);
-  return rowCount > 0;
-}
-
-module.exports = { init, available, crearSolicitud, listarSolicitudes, contarSolicitudes, marcarAtendida };
+module.exports = { init, available, crearSolicitud };

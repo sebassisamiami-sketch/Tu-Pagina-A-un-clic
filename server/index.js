@@ -4,7 +4,6 @@ const express = require("express");
 const rateLimit = require("express-rate-limit");
 
 const db = require("./db");
-const admin = require("./admin");
 
 const PORT = process.env.PORT || 3000;
 const PUBLIC_DIR = path.join(__dirname, "..", "public");
@@ -97,9 +96,6 @@ app.use("/api", (err, req, res, next) => {
   console.error("Error en la API:", err.message);
   res.status(500).json({ ok: false, error: "Ocurrió un error inesperado." });
 });
-
-/* Panel privado */
-app.use("/admin", admin.router);
 
 /* Sitio */
 app.use(
