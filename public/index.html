@@ -281,7 +281,12 @@
             <label for="mensaje">Cuéntame un poco más</label>
             <textarea id="mensaje" name="mensaje" rows="4" placeholder="Por ejemplo: tengo una barbería y quiero que mis clientes reserven citas desde el celular."></textarea>
           </div>
+          <div class="hp" aria-hidden="true">
+            <label for="sitio">Deja este campo vacío</label>
+            <input id="sitio" name="sitio" type="text" tabindex="-1" autocomplete="off">
+          </div>
           <p class="form__error" role="alert" hidden></p>
+          <p class="form__ok" role="status" hidden></p>
           <button class="btn btn--mango btn--block" type="submit">Enviar por WhatsApp</button>
         </form>
       </div>

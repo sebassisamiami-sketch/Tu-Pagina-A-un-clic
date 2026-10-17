@@ -38,8 +38,7 @@ jobs:
             exit 1
           fi
           mkdir -p _site
-          cp index.html styles.css script.js _site/
-          cp -r assets _site/
+          cp -r public/. _site/
           sed -i \
             -e "s|__WHATSAPP_NUMBER__|${WHATSAPP_NUMBER}|g" \
             -e "s|__CONTACT_EMAIL__|${CONTACT_EMAIL}|g" \

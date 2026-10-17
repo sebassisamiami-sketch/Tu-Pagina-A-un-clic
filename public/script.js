@@ -140,17 +140,40 @@ const isSet = (value) => Boolean(value) && !value.startsWith("__");
     publish();
   }
 
-  /* Formulario: abre WhatsApp con el mensaje armado */
+  /* Formulario: guarda la solicitud y abre WhatsApp con el mensaje armado */
   const form = document.querySelector(".form");
   const errorBox = form.querySelector(".form__error");
+  const okBox = form.querySelector(".form__ok");
+  const submitBtn = form.querySelector("button[type=submit]");
+  const hasWhatsApp = isSet(CONFIG.WHATSAPP_NUMBER);
+  const LABEL_SUBMIT = hasWhatsApp ? "Enviar por WhatsApp" : "Enviar solicitud";
+  submitBtn.textContent = LABEL_SUBMIT;
 
   function showError(text, field) {
+    okBox.hidden = true;
     errorBox.textContent = text;
     errorBox.hidden = false;
     if (field) {
       field.setAttribute("aria-invalid", "true");
       field.focus();
     }
+  }
+
+  function showOk(text) {
+    errorBox.hidden = true;
+    okBox.textContent = text;
+    okBox.hidden = false;
+  }
+
+  function guardarSolicitud(datos) {
+    return fetch("/api/solicitudes", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(datos),
+      keepalive: true,
+    })
+      .then((r) => r.json().catch(() => ({})).then((body) => ({ ok: r.ok, error: body.error })))
+      .catch(() => ({ ok: false }));
   }
 
   form.addEventListener("input", (e) => {
@@ -163,27 +186,44 @@ const isSet = (value) => Boolean(value) && !value.startsWith("__");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     errorBox.hidden = true;
+    okBox.hidden = true;
 
-    const nombre = form.nombre.value.trim();
-    const negocio = form.negocio.value.trim();
-    const tipo = form.tipo.value;
-    const mensaje = form.mensaje.value.trim();
+    const datos = {
+      nombre: form.nombre.value.trim(),
+      negocio: form.negocio.value.trim(),
+      tipo: form.tipo.value,
+      mensaje: form.mensaje.value.trim(),
+      sitio: form.sitio.value,
+    };
 
-    if (!nombre) {
+    if (!datos.nombre) {
       showError("Escribe tu nombre para poder responderte.", form.nombre);
       return;
     }
-    if (!isSet(CONFIG.WHATSAPP_NUMBER)) {
-      showError("El contacto por WhatsApp no está disponible en este momento.");
+
+    const guardado = guardarSolicitud(datos);
+
+    if (hasWhatsApp) {
+      let texto = `Hola, soy ${datos.nombre}`;
+      if (datos.negocio) texto += ` de ${datos.negocio}`;
+      texto += `. Me interesa ${datos.tipo}.`;
+      if (datos.mensaje) texto += `\n\n${datos.mensaje}`;
+      window.open(`https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(texto)}`, "_blank", "noopener");
+      showOk("Se abrió WhatsApp con tu mensaje. Solo falta que lo envíes.");
       return;
     }
 
-    let texto = `Hola, soy ${nombre}`;
-    if (negocio) texto += ` de ${negocio}`;
-    texto += `. Me interesa ${tipo}.`;
-    if (mensaje) texto += `\n\n${mensaje}`;
-
-    const url = `https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(texto)}`;
-    window.open(url, "_blank", "noopener");
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Enviando solicitud…";
+    guardado.then((res) => {
+      submitBtn.disabled = false;
+      submitBtn.textContent = LABEL_SUBMIT;
+      if (res.ok) {
+        form.reset();
+        showOk("Solicitud enviada. Te contactaré pronto.");
+      } else {
+        showError(res.error || "No pudimos enviar tu solicitud. Intenta de nuevo en unos minutos.");
+      }
+    });
   });
 })();

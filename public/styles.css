@@ -764,6 +764,9 @@ a { color: inherit; }
 .chips input:focus-visible + span { outline: 3px solid var(--mango); outline-offset: 2px; }
 
 .form__error { color: #B12A22; font-weight: 500; font-size: .98rem; }
+.form__ok { color: #1D6B45; font-weight: 500; font-size: .98rem; }
+.hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.btn:disabled { opacity: .7; cursor: progress; }
 
 /* Pie */
 
