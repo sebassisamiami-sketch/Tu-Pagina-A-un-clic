@@ -783,6 +783,121 @@ a { color: inherit; }
   padding-block: 28px;
 }
 
+/* Guías */
+
+.wrap--text { max-width: 760px; }
+
+.article__head {
+  background: var(--azul);
+  color: var(--blanco);
+  padding-block: clamp(40px, 6vw, 72px) clamp(36px, 5vw, 56px);
+}
+.article__head h1 {
+  font-size: clamp(1.9rem, 4.4vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+.crumbs { margin-bottom: 18px; font-size: .95rem; color: #C9CEFF; }
+.crumbs a { color: var(--blanco); text-underline-offset: 4px; }
+.crumbs span { margin-inline: 6px; opacity: .6; }
+.article__meta, .article__intro { margin-top: 16px; color: #DDE1FF; }
+.article__intro { font-size: 1.2rem; max-width: 34em; }
+
+.article__body { padding-block: clamp(40px, 6vw, 72px) clamp(64px, 8vw, 96px); }
+.article__body > * + * { margin-top: 18px; }
+.article__body h2 { font-size: clamp(1.35rem, 2.6vw, 1.7rem); margin-top: 48px; }
+.article__body h3 { font-size: 1.15rem; font-weight: 700; margin-top: 30px; }
+.article__body p, .article__body li { line-height: 1.65; }
+.article__body ul, .article__body ol { padding-left: 1.3em; }
+.article__body li + li { margin-top: 8px; }
+.article__body strong { font-weight: 600; }
+.article__body .lead { font-size: 1.25rem; color: var(--tinta); }
+.article__body ul.checks { list-style: none; padding: 0; }
+.article__body ul.checks li { position: relative; padding-left: 32px; }
+.article__body ul.checks li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .3em;
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  background: var(--mango) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='%23161A3D' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 14px no-repeat;
+}
+
+.article-cta {
+  margin-top: 56px !important;
+  padding: clamp(24px, 4vw, 36px);
+  border-radius: 20px;
+  background: var(--azul-hondo);
+  color: var(--blanco);
+}
+.article-cta h2 { margin-top: 0 !important; color: var(--blanco); }
+.article-cta p { margin: 10px 0 22px; color: #C9CEFF; }
+
+.related { margin-top: 48px !important; padding-top: 28px; border-top: 2px solid var(--tinta); }
+.related h2 { margin-top: 0 !important; font-size: 1.2rem; }
+.related ul { list-style: none; padding: 0; margin-top: 14px; }
+.related a { color: var(--azul); font-weight: 600; text-underline-offset: 4px; }
+
+.guides-section { padding-block: clamp(40px, 6vw, 72px); }
+.guides {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.guide a {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  padding: 26px;
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  background: var(--blanco);
+  color: var(--tinta);
+  text-decoration: none;
+  transition: border-color .15s ease;
+}
+.guide a:hover { border-color: var(--azul); }
+.guide h2, .guide h3 { font-size: 1.25rem; font-weight: 700; }
+.guide p { color: var(--gris); flex: 1; }
+.guide__more { color: var(--azul); font-weight: 600; }
+
+.home-guides { padding-block: 0 clamp(64px, 9vw, 120px); }
+.home-guides .guides { margin-top: 28px; }
+.foot a { color: inherit; text-underline-offset: 4px; }
+
+/* Botón flotante de WhatsApp */
+
+.wa-fab {
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 56px;
+  padding: 0 20px 0 16px;
+  border-radius: 999px;
+  background: #1FA855;
+  color: #fff;
+  font: 600 1rem/1 var(--texto);
+  text-decoration: none;
+  box-shadow: 0 10px 24px -8px rgba(8, 40, 20, .55);
+  transition: transform .15s ease, background-color .15s ease;
+}
+.wa-fab:hover { background: #1A9049; transform: translateY(-2px); }
+.wa-fab svg { width: 28px; height: 28px; flex: none; }
+@media (max-width: 560px) {
+  .wa-fab { padding: 0; width: 56px; justify-content: center; }
+  .wa-fab span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {

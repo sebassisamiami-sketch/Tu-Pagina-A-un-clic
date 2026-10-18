@@ -26,8 +26,25 @@ const isSet = (value) => Boolean(value) && !value.startsWith("__");
     }
   }
 
+  /* Botón flotante de WhatsApp (en todas las páginas) */
+  if (isSet(CONFIG.WHATSAPP_NUMBER)) {
+    const saludo = document.body.dataset.waMensaje ||
+      "¡Hola! Vi tu página *Tu Página a un Clic* y quiero información sobre una página web o una app.";
+    const fab = document.createElement("a");
+    fab.className = "wa-fab";
+    fab.href = `https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(saludo)}`;
+    fab.target = "_blank";
+    fab.rel = "noopener";
+    fab.setAttribute("aria-label", "Escríbeme por WhatsApp");
+    fab.innerHTML =
+      '<svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16.04 3C9.4 3 4 8.36 4 14.97c0 2.12.56 4.18 1.62 6L4 29l8.25-2.15a12.1 12.1 0 0 0 3.79.61h.01C22.67 27.46 28 22.1 28 15.5 28 8.9 22.67 3 16.04 3Zm0 22.4h-.01a10 10 0 0 1-5.1-1.4l-.37-.21-4.9 1.27 1.3-4.75-.24-.39a9.84 9.84 0 0 1-1.52-5.25c0-5.47 4.47-9.92 9.96-9.92 5.48 0 9.95 4.88 9.95 10.35 0 5.48-4.47 10.3-9.07 10.3Zm5.46-7.42c-.3-.15-1.77-.87-2.04-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.96 1.17-.18.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47a8.97 8.97 0 0 1-1.66-2.06c-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.47 1.07 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.48.71.31 1.26.49 1.7.62.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35Z"/></svg>' +
+      '<span>Escríbeme</span>';
+    document.body.appendChild(fab);
+  }
+
   /* Demo: cambio de dispositivo */
   const device = document.querySelector(".device");
+  if (device) {
   const switchButtons = document.querySelectorAll(".demo__switch button");
 
   function setMode(button) {
@@ -125,7 +142,9 @@ const isSet = (value) => Boolean(value) && !value.startsWith("__");
     };
   }
 
-  if ("IntersectionObserver" in window) {
+  if (!stage) {
+    // Página sin demo
+  } else if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver(
       (entries) => {
         if (entries.some((e) => e.isIntersecting)) {
@@ -139,9 +158,11 @@ const isSet = (value) => Boolean(value) && !value.startsWith("__");
   } else {
     publish();
   }
+  }
 
   /* Formulario: guarda la solicitud y abre WhatsApp con el mensaje armado */
   const form = document.querySelector(".form");
+  if (!form) return;
   const errorBox = form.querySelector(".form__error");
   const okBox = form.querySelector(".form__ok");
   const submitBtn = form.querySelector("button[type=submit]");
