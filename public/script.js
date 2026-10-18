@@ -176,6 +176,28 @@ const isSet = (value) => Boolean(value) && !value.startsWith("__");
       .catch(() => ({ ok: false }));
   }
 
+  // Mensaje ordenado para WhatsApp (*texto* se ve en negrita).
+  const NECESIDADES = {
+    "una página web": "Una página web",
+    "una aplicación móvil": "Una aplicación móvil",
+    "una página web y una app": "Una página web y una app",
+    "un sistema a la medida": "Un sistema a la medida",
+    "asesoría, todavía no lo tengo claro": "Asesoría, todavía no tengo claro qué necesito",
+  };
+
+  function mensajeWhatsApp({ nombre, negocio, tipo, mensaje }) {
+    const lineas = [
+      "¡Hola! 👋 Vi tu página *Tu Página a un Clic* y me gustaría cotizar un proyecto.",
+      "",
+      `*Nombre:* ${nombre}`,
+    ];
+    if (negocio) lineas.push(`*Negocio:* ${negocio}`);
+    lineas.push(`*Necesito:* ${NECESIDADES[tipo] || tipo}`);
+    if (mensaje) lineas.push("", "*Detalles:*", mensaje);
+    lineas.push("", "¿Me cuentas cómo trabajas y qué opciones tengo? ¡Gracias!");
+    return lineas.join("\n");
+  }
+
   form.addEventListener("input", (e) => {
     if (e.target.getAttribute("aria-invalid") === "true" && e.target.value.trim()) {
       e.target.removeAttribute("aria-invalid");
@@ -204,11 +226,7 @@ const isSet = (value) => Boolean(value) && !value.startsWith("__");
     const guardado = guardarSolicitud(datos);
 
     if (hasWhatsApp) {
-      let texto = `Hola, soy ${datos.nombre}`;
-      if (datos.negocio) texto += ` de ${datos.negocio}`;
-      texto += `. Me interesa ${datos.tipo}.`;
-      if (datos.mensaje) texto += `\n\n${datos.mensaje}`;
-      window.open(`https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(texto)}`, "_blank", "noopener");
+      window.open(`https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(mensajeWhatsApp(datos))}`, "_blank", "noopener");
       showOk("Se abrió WhatsApp con tu mensaje. Solo falta que lo envíes.");
       return;
     }
