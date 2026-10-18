@@ -9,8 +9,6 @@ const CONFIG = {
 const isSet = (value) => Boolean(value) && !value.startsWith("__");
 
 (function () {
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
   /* Año del pie */
   const year = document.querySelector(".js-year");
   if (year) year.textContent = new Date().getFullYear();
@@ -93,7 +91,7 @@ const isSet = (value) => Boolean(value) && !value.startsWith("__");
   publishBtn.addEventListener("click", () => {
     if (published) {
       reset();
-      setTimeout(publish, reduceMotion ? 0 : 650);
+      setTimeout(publish, 650);
     } else {
       publish();
     }
@@ -105,7 +103,8 @@ const isSet = (value) => Boolean(value) && !value.startsWith("__");
 
   function playIntro() {
     if (published) return;
-    if (reduceMotion || !cursor.animate) {
+    // La demostración se anima siempre, aunque el equipo tenga reducidas las animaciones.
+    if (!cursor.animate) {
       publish();
       return;
     }
