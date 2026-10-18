@@ -187,7 +187,7 @@ const isSet = (value) => Boolean(value) && !value.startsWith("__");
 
   function mensajeWhatsApp({ nombre, negocio, tipo, mensaje }) {
     const lineas = [
-      "¡Hola! 👋 Vi tu página *Tu Página a un Clic* y me gustaría cotizar un proyecto.",
+      "¡Hola! Vi tu página *Tu Página a un Clic* y me gustaría cotizar un proyecto.",
       "",
       `*Nombre:* ${nombre}`,
     ];
