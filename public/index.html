@@ -265,6 +265,16 @@
           <p>Elige el tipo de página, tus colores, el estilo y la letra. Es gratis y no tienes que registrarte. Cuando te guste, me la envías y la cotizamos. Ten en cuenta que es solo una muestra para darte ideas: tu página final se diseña desde cero para tu negocio, con tus fotos, tus textos y más secciones, funciones y mejoras hechas a tu medida.</p>
         </header>
 
+        <div class="b-launch">
+          <div class="b-launch__phones" aria-hidden="true">
+            <span class="b-launch__ph b-launch__ph--1"><i></i><b></b><u></u><u></u></span>
+            <span class="b-launch__ph b-launch__ph--2"><i></i><b></b><u></u><u></u></span>
+            <span class="b-launch__ph b-launch__ph--3"><i></i><b></b><u></u><u></u></span>
+          </div>
+          <p>Se abre en pantalla completa para que elijas cómodo desde tu celular o tablet.</p>
+          <a class="btn btn--mango b-launch__btn" href="simulador/">Abrir el simulador</a>
+        </div>
+
         <div class="builder__grid">
           <div class="builder__panel">
             <div class="field b-name">
@@ -366,9 +376,12 @@
 
           <div class="builder__preview">
             <p class="b-sample">Muestra de ejemplo · tu página final será a tu medida</p>
-            <div class="b-devices" role="radiogroup" aria-label="Ver en">
-              <button type="button" role="radio" aria-checked="true" data-dev="cel">Celular</button>
-              <button type="button" role="radio" aria-checked="false" data-dev="pc">Computador</button>
+            <div class="b-tools">
+              <div class="b-devices" role="radiogroup" aria-label="Ver en">
+                <button type="button" role="radio" aria-checked="true" data-dev="cel">Celular</button>
+                <button type="button" role="radio" aria-checked="false" data-dev="pc">Computador</button>
+              </div>
+              <button type="button" class="b-zoom" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg><span>Ver en grande</span></button>
             </div>
             <div class="b-stage">
               <div class="b-frame" data-dev="cel">

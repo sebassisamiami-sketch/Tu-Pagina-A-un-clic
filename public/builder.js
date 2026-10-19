@@ -255,6 +255,17 @@
     };
   }
 
+  const rgb = (hex) => {
+    const n = parseInt(hex.slice(1), 16);
+    return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+  };
+  // Mezcla dos colores: "pct" es cuánto del primero queda.
+  function mezclar(a, b, pct) {
+    const [x, y] = [rgb(a), rgb(b)];
+    return "#" + x.map((v, i) => Math.round(v * pct + y[i] * (1 - pct)).toString(16).padStart(2, "0")).join("");
+  }
+  const transparente = (hex, alfa) => `rgba(${rgb(hex).join(", ")}, ${alfa})`;
+
   // Texto claro u oscuro según qué tan claro es el color elegido.
   function tintaSobre(hex) {
     const n = parseInt(hex.slice(1), 16);
@@ -275,8 +286,29 @@
     const ex = new Set(e.extras);
 
     sitio.className = `b-site s-${e.estilo} f-${e.letra}`;
-    sitio.style.setProperty("--p", e.color);
-    sitio.style.setProperty("--p-ink", tintaSobre(e.color));
+    const tinta = tintaSobre(e.color);
+    const fondoSuave = { natural: "#F6F1E7", retro: "#FFF4E0", oscuro: "#101218", futurista: "#07080D", minimalista: null }[e.estilo];
+    const pctSuave = { llamativo: 0.2, natural: 0.12, retro: 0.18, oscuro: 0.22, futurista: 0.16 }[e.estilo] || 0.13;
+    const vars = {
+      "--p": e.color,
+      "--p-ink": tinta,
+      "--soft": e.estilo === "minimalista" ? "#FFFFFF" : mezclar(e.color, fondoSuave || "#FFFFFF", pctSuave),
+      "--p-lt": mezclar(e.color, "#FFFFFF", 0.58),
+      "--p-dk": mezclar(e.color, "#000000", 0.75),
+      "--g1": mezclar(e.color, "#FFD9A0", 0.35),
+      "--g2": mezclar(e.color, "#0B1020", 0.55),
+      "--g3": mezclar(e.color, "#FFFFFF", 0.3),
+      "--g4": mezclar(e.color, "#3B2416", 0.7),
+      "--map": e.estilo === "oscuro" || e.estilo === "futurista" ? "#1D222B" : mezclar(e.color, "#E7EBE4", 0.08),
+      "--nat22": mezclar(e.color, "#F6F1E7", 0.22),
+      "--nat8": mezclar(e.color, "#F6F1E7", 0.08),
+      "--p-a25": transparente(e.color, 0.25),
+      "--p-a40": transparente(e.color, 0.4),
+      "--p-a45": transparente(e.color, 0.45),
+      "--p-a70": transparente(e.color, 0.7),
+      "--ink-a16": transparente(tinta, 0.16),
+    };
+    for (const [k, v] of Object.entries(vars)) sitio.style.setProperty(k, v);
 
     const dominio = (e.nombre ? e.nombre.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]/g, "") : t.dominio) || t.dominio;
     $(".b-url").textContent = `${dominio}.com`;
@@ -328,20 +360,26 @@
 
   /* ---------- Escala del marco (el computador se ve completo en cualquier pantalla) ---------- */
 
+  // Modo pantalla completa: la página /simulador/ en celular y tablet.
+  const modoApp = () => raiz.classList.contains("builder--app") && window.matchMedia("(max-width: 1024px)").matches;
+  let ultimo = "";
+
   function ajustarEscala() {
-    const top = document.querySelector(".top");
-    if (top) raiz.style.setProperty("--top-h", top.offsetHeight + "px");
     const pc = marco.dataset.dev === "pc";
-    const ancho = escenario.clientWidth;
     const base = pc ? 1000 : 320;
     const alto = pc ? 620 : 600;
+    const ancho = escenario.clientWidth;
+    if (!ancho) return;
     let escala = Math.min(1, ancho / base);
-    // En pantallas angostas la vista previa queda fija arriba: que no ocupe más de 45% del alto.
-    if (window.innerWidth <= 900) escala = Math.min(escala, (window.innerHeight * 0.45) / alto);
+    // En pantalla completa el espacio lo define el diseño, no el contenido: se ajusta al alto disponible.
+    if (modoApp()) escala = Math.min(escala, escenario.clientHeight / alto);
+    const clave = `${base}|${escala.toFixed(4)}|${modoApp()}`;
+    if (clave === ultimo) return;
+    ultimo = clave;
     marco.style.width = base + "px";
     marco.style.height = alto + "px";
     marco.style.transform = `translateX(-50%) scale(${escala})`;
-    escenario.style.height = Math.round(alto * escala) + "px";
+    escenario.style.height = modoApp() ? "" : Math.round(alto * escala) + "px";
   }
 
   /* ---------- Pasos ---------- */
@@ -394,6 +432,22 @@
     })
   );
 
+  /* ---------- Ver en grande (pantalla completa en celular y tablet) ---------- */
+
+  const zoom = $(".b-zoom");
+  const vista = $(".builder__preview");
+  function verEnGrande(abrir) {
+    vista.classList.toggle("is-full", abrir);
+    zoom.setAttribute("aria-expanded", String(abrir));
+    zoom.querySelector("span").textContent = abrir ? "Cerrar" : "Ver en grande";
+    ultimo = "";
+    requestAnimationFrame(ajustarEscala);
+  }
+  if (zoom) zoom.addEventListener("click", () => verEnGrande(!vista.classList.contains("is-full")));
+  document.addEventListener("keydown", (ev) => {
+    if (ev.key === "Escape" && vista.classList.contains("is-full")) verEnGrande(false);
+  });
+
   /* ---------- Cambios ---------- */
 
   raiz.addEventListener("change", (ev) => {
@@ -412,7 +466,6 @@
     const e = estado();
     const t = TIPOS[e.tipo];
     const form = document.querySelector(".form");
-    if (!form) return;
     const resumen = [
       "Armé mi página en el simulador:",
       `- Tipo: ${t.etiqueta}`,
@@ -424,6 +477,18 @@
       .filter(Boolean)
       .join("\n");
 
+    if (!form) {
+      // Página del simulador: el formulario está en el inicio. El enlace del botón lleva allá.
+      try {
+        sessionStorage.setItem("tpc_simulador", JSON.stringify({ negocio: e.nombre, mensaje: resumen }));
+      } catch (_) {}
+      return;
+    }
+    llenarFormulario(form, { negocio: e.nombre, mensaje: resumen });
+  });
+
+  function llenarFormulario(form, { negocio, mensaje: resumen }) {
+    const e = { nombre: negocio };
     const mensaje = form.mensaje;
     const previo = mensaje.value.split("Armé mi página en el simulador:")[0].trim();
     mensaje.value = previo ? `${previo}\n\n${resumen}` : resumen;
@@ -431,7 +496,7 @@
     const radio = form.querySelector('input[name="tipo"][value="una página web"]');
     if (radio) radio.checked = true;
     setTimeout(() => (form.nombre.value ? mensaje : form.nombre).focus({ preventScroll: true }), 600);
-  });
+  }
 
   /* ---------- Letras extra: se cargan solo cuando hacen falta ---------- */
 
@@ -458,8 +523,28 @@
     cargarLetras();
   }
 
-  if (window.ResizeObserver) new ResizeObserver(ajustarEscala).observe(escenario);
-  window.addEventListener("resize", ajustarEscala);
+  // Si la persona viene de la página del simulador, su elección llega al formulario del inicio.
+  const formInicio = document.querySelector(".form");
+  if (formInicio) {
+    try {
+      const guardado = JSON.parse(sessionStorage.getItem("tpc_simulador") || "null");
+      if (guardado) {
+        sessionStorage.removeItem("tpc_simulador");
+        llenarFormulario(formInicio, guardado);
+      }
+    } catch (_) {}
+  }
+
+  // En pantalla completa, al tocar "otro color" se abre directamente el selector de color.
+  $('input[name="b-color"][value="custom"]').addEventListener("click", () => {
+    if (modoApp() && colorLibre.showPicker) {
+      try { colorLibre.showPicker(); } catch (_) { colorLibre.click(); }
+    }
+  });
+
+  if (window.ResizeObserver) new ResizeObserver(() => ajustarEscala()).observe(escenario);
+  else window.addEventListener("resize", ajustarEscala);
+  window.addEventListener("orientationchange", () => setTimeout(ajustarEscala, 300));
   render();
   ajustarEscala();
 })();
