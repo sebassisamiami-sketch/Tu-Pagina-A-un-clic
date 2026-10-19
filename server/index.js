@@ -1,4 +1,5 @@
 const path = require("path");
+const crypto = require("crypto");
 const fs = require("fs");
 const express = require("express");
 const rateLimit = require("express-rate-limit");
@@ -86,6 +87,67 @@ app.post("/api/solicitudes", limiteSolicitudes, express.json({ limit: "10kb" }),
     res.status(500).json({ ok: false, error: "No pudimos guardar tu solicitud en este momento." });
   }
 });
+
+/* Visitas: contador para el panel. Sin IP ni datos personales guardados. */
+const BOTS = /bot|crawl|spider|slurp|preview|lighthouse|headless|monitor|uptime|facebookexternalhit|whatsapp\//i;
+const RUTA = /^\/[A-Za-z0-9\-_/]{0,120}$/;
+
+function huellaVisitante(req) {
+  // Cambia cada día: permite contar visitantes únicos del día sin poder seguir a nadie.
+  const dia = new Date(Date.now() - 5 * 3600 * 1000).toISOString().slice(0, 10);
+  return crypto
+    .createHash("sha256")
+    .update(`visita\u0000${process.env.DATABASE_URL || ""}\u0000${dia}\u0000${req.ip}\u0000${req.get("user-agent") || ""}`)
+    .digest("base64url")
+    .slice(0, 22);
+}
+
+function dispositivoDe(ua) {
+  if (/iPad|Tablet|PlayBook|Silk|(Android(?!.*Mobile))/i.test(ua)) return "tablet";
+  if (/Mobi|iPhone|iPod|Android/i.test(ua)) return "celular";
+  return "computador";
+}
+
+function origenDe(ref, ua, host) {
+  if (/Instagram/i.test(ua)) return "instagram.com";
+  if (/FBAN|FBAV|FB_IAB/i.test(ua)) return "facebook.com";
+  if (/TikTok|musical_ly|BytedanceWebview/i.test(ua)) return "tiktok.com";
+  try {
+    const h = new URL(ref).hostname.replace(/^(www|m|l|lm)\./, "");
+    if (!h || h === host.replace(/^www\./, "")) return null;
+    return h.slice(0, 80);
+  } catch (_) {
+    return null;
+  }
+}
+
+function leerVisita(req) {
+  const ua = req.get("user-agent") || "";
+  if (!ua || BOTS.test(ua)) return null;
+  const body = req.body || {};
+  const ruta = typeof body.ruta === "string" && RUTA.test(body.ruta) ? body.ruta : "/";
+  return { ua, ruta, visitante: huellaVisitante(req) };
+}
+
+const limiteVisitas = rateLimit({ windowMs: 60 * 1000, limit: 30, standardHeaders: false, legacyHeaders: false, message: { ok: false } });
+
+app.post("/api/visita", limiteVisitas, express.json({ limit: "2kb" }), (req, res) => {
+  res.status(204).end();
+  const v = leerVisita(req);
+  if (!v || !db.available()) return;
+  const ref = typeof req.body?.ref === "string" ? req.body.ref.slice(0, 300) : "";
+  db.registrarVisita({ ...v, dispositivo: dispositivoDe(v.ua), origen: origenDe(ref, v.ua, req.hostname || "") })
+    .catch((err) => console.error("No se pudo registrar la visita:", err.message));
+});
+
+app.post("/api/presencia", limiteVisitas, express.json({ limit: "2kb" }), (req, res) => {
+  res.status(204).end();
+  const v = leerVisita(req);
+  if (!v || !db.available()) return;
+  db.marcarPresencia(v).catch(() => {});
+});
+
+if (db.available()) setInterval(() => db.limpiarPresencia().catch(() => {}), 6 * 3600 * 1000).unref();
 
 app.use("/api", (req, res) => res.status(404).json({ ok: false, error: "Ruta no encontrada." }));
 

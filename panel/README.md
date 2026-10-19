@@ -5,6 +5,7 @@ Aplicación privada para llevar el control de las solicitudes y los clientes.
 - **Solicitudes**: las que llegan por la página aparecen solas. Las de WhatsApp, correo, llamadas o referidos se registran a mano.
 - **Seguimiento**: estado (nueva, contactada, cotizada, ganada, perdida), valor cotizado, fecha del próximo seguimiento y notas internas.
 - **Clientes**: ficha de cada cliente con sus solicitudes. Se pueden crear a partir de una solicitud con un clic.
+- **Visitas en vivo**: personas en la página en este momento, visitas y personas distintas de hoy, últimos 7 días, de dónde llegan y desde qué dispositivo. Se actualiza sola cada 5 segundos.
 - **Inicio**: resumen por estado, valor en cotización y ganado, seguimientos vencidos o de la semana.
 - **Excel**: descarga de solicitudes (con filtros) y de clientes en `.xlsx`.
 

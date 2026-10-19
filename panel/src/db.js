@@ -79,6 +79,22 @@ async function migrar() {
     CREATE INDEX IF NOT EXISTS solicitudes_estado_idx  ON solicitudes (estado);
     CREATE INDEX IF NOT EXISTS solicitudes_cliente_idx ON solicitudes (cliente_id);
     CREATE INDEX IF NOT EXISTS clientes_nombre_idx     ON clientes (lower(nombre));
+
+    -- Visitas de la página pública (las registra el servicio de la página).
+    CREATE TABLE IF NOT EXISTS visitas (
+      id          BIGSERIAL PRIMARY KEY,
+      creada      TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      visitante   TEXT NOT NULL,
+      ruta        TEXT NOT NULL,
+      dispositivo TEXT,
+      origen      TEXT
+    );
+    CREATE INDEX IF NOT EXISTS visitas_creada_idx ON visitas (creada DESC);
+    CREATE TABLE IF NOT EXISTS presencia (
+      visitante TEXT PRIMARY KEY,
+      ruta      TEXT,
+      visto     TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
   `);
 
   // Solicitudes que ya se habían marcado como atendidas en la versión anterior.
@@ -118,6 +134,52 @@ async function resumen() {
   const estados = Object.fromEntries(Object.keys(ESTADOS).map((k) => [k, 0]));
   porEstado.rows.forEach((r) => (estados[r.estado] = r.n));
   return { estados, seguimientos: seguimientos.rows, recientes: recientes.rows, totales: totales.rows[0] };
+}
+
+/* ---------- Visitas ---------- */
+
+const INICIO_HOY = `(date_trunc('day', NOW() AT TIME ZONE 'America/Bogota') AT TIME ZONE 'America/Bogota')`;
+
+async function visitas() {
+  const [totales, origenes, dispositivos, ultimas, dias] = await Promise.all([
+    pool.query(
+      `SELECT
+         (SELECT COUNT(*)::int FROM presencia WHERE visto > NOW() - INTERVAL '75 seconds') AS en_linea,
+         (SELECT COUNT(*)::int FROM visitas WHERE creada >= ${INICIO_HOY}) AS hoy,
+         (SELECT COUNT(DISTINCT visitante)::int FROM visitas WHERE creada >= ${INICIO_HOY}) AS unicos_hoy,
+         (SELECT COUNT(*)::int FROM visitas WHERE creada >= ${INICIO_HOY} - INTERVAL '6 days') AS semana,
+         (SELECT COUNT(*)::int FROM visitas) AS total`
+    ),
+    pool.query(
+      `SELECT COALESCE(origen, 'directo') AS origen, COUNT(*)::int AS n
+       FROM visitas WHERE creada >= ${INICIO_HOY} - INTERVAL '6 days'
+       GROUP BY 1 ORDER BY n DESC LIMIT 6`
+    ),
+    pool.query(
+      `SELECT COALESCE(dispositivo, 'computador') AS dispositivo, COUNT(*)::int AS n
+       FROM visitas WHERE creada >= ${INICIO_HOY} - INTERVAL '6 days'
+       GROUP BY 1 ORDER BY n DESC`
+    ),
+    pool.query(
+      `SELECT id, creada, ruta, dispositivo, origen FROM visitas ORDER BY id DESC LIMIT 8`
+    ),
+    pool.query(
+      `SELECT to_char(d, 'YYYY-MM-DD') AS dia, COALESCE(v.n, 0)::int AS n
+       FROM generate_series((NOW() AT TIME ZONE 'America/Bogota')::date - 13, (NOW() AT TIME ZONE 'America/Bogota')::date, '1 day') AS d
+       LEFT JOIN (
+         SELECT (creada AT TIME ZONE 'America/Bogota')::date AS dia, COUNT(*) AS n
+         FROM visitas WHERE creada >= ${INICIO_HOY} - INTERVAL '13 days' GROUP BY 1
+       ) v ON v.dia = d::date
+       ORDER BY d`
+    ),
+  ]);
+  return {
+    ...totales.rows[0],
+    origenes: origenes.rows,
+    dispositivos: dispositivos.rows,
+    ultimas: ultimas.rows,
+    dias: dias.rows,
+  };
 }
 
 /* ---------- Solicitudes ---------- */
@@ -300,7 +362,7 @@ async function ping() {
 
 module.exports = {
   ORIGENES, ESTADOS, TIPOS,
-  migrar, ping, resumen,
+  migrar, ping, resumen, visitas,
   listarSolicitudes, obtenerSolicitud, crearSolicitud, actualizarSolicitud, cambiarEstado, eliminarSolicitud,
   listarClientes, opcionesClientes, obtenerCliente, crearCliente, actualizarCliente, eliminarCliente,
   clienteDesdeSolicitud,

@@ -138,9 +138,98 @@ function entrar({ error, volver, desactivado }) {
   );
 }
 
+/* ---------- Visitas ---------- */
+
+const ORIGEN_VISITA = [
+  [/instagram/, "Instagram"], [/facebook|fb\.me/, "Facebook"], [/google\./, "Google"], [/bing\.|duckduckgo|yahoo/, "Otros buscadores"],
+  [/tiktok/, "TikTok"], [/whatsapp|wa\.me/, "WhatsApp"], [/youtube|youtu\.be/, "YouTube"], [/t\.co$|twitter|x\.com/, "X (Twitter)"],
+  [/linkedin|lnkd/, "LinkedIn"], [/github\.io/, "Copia en GitHub"],
+];
+const origenVisita = (o) => {
+  if (!o || o === "directo") return "Directo o enlace guardado";
+  const m = ORIGEN_VISITA.find(([re]) => re.test(o));
+  return m ? m[1] : o;
+};
+const DISPOSITIVOS = { celular: "Celular", tablet: "Tablet", computador: "Computador" };
+const RUTAS = {
+  "/": "Inicio",
+  "/guias/": "Guías",
+  "/guias/cuanto-cuesta-una-pagina-web/": "Guía: ¿Cuánto cuesta una página web?",
+  "/guias/pagina-web-o-aplicacion-movil/": "Guía: ¿Página web o app?",
+  "/guias/que-preparar-antes-de-pedir-tu-pagina-web/": "Guía: Qué preparar antes de pedir tu página",
+};
+const rutaVisita = (r) => RUTAS[r] || RUTAS[r + "/"] || r;
+const fmtNum = new Intl.NumberFormat("es-CO");
+const fmtDia = new Intl.DateTimeFormat("es-CO", { timeZone: "UTC", weekday: "short", day: "numeric" });
+
+function haceCuanto(d) {
+  const seg = Math.max(0, Math.round((Date.now() - new Date(d).getTime()) / 1000));
+  if (seg < 60) return "hace un momento";
+  const min = Math.round(seg / 60);
+  if (min < 60) return `hace ${min} min`;
+  const h = Math.round(min / 60);
+  if (h < 24) return `hace ${h} h`;
+  return fechaCorta(d);
+}
+
+function lista(filas, etiqueta, total) {
+  if (!filas.length) return `<p class="empty">Todavía no hay datos.</p>`;
+  return `<ul class="bars">${filas
+    .map((f) => {
+      const pct = total ? Math.round((f.n / total) * 100) : 0;
+      return `<li><span>${esc(etiqueta(f))}</span><b>${fmtNum.format(f.n)}</b><i style="width:${pct}%"></i></li>`;
+    })
+    .join("")}</ul>`;
+}
+
+function visitasContenido(v) {
+  const max = Math.max(1, ...v.dias.map((d) => d.n));
+  const semana = v.origenes.reduce((a, f) => a + f.n, 0);
+  const barras = v.dias
+    .map((d, i) => {
+      const h = Math.round((d.n / max) * 100);
+      const hoy = i === v.dias.length - 1;
+      return `<li${hoy ? ' class="is-today"' : ""} title="${esc(fmtDia.format(new Date(d.dia)))}: ${d.n} visitas"><i style="height:${Math.max(h, d.n ? 4 : 1)}%"></i><span>${hoy ? "Hoy" : Number(d.dia.slice(8))}</span></li>`;
+    })
+    .join("");
+  const ultimas = v.ultimas.length
+    ? `<ul class="feed">${v.ultimas
+        .map(
+          (u) => `<li><strong>${esc(rutaVisita(u.ruta))}</strong><span>${esc(DISPOSITIVOS[u.dispositivo] || "Computador")} · ${esc(origenVisita(u.origen))}</span><time>${esc(haceCuanto(u.creada))}</time></li>`
+        )
+        .join("")}</ul>`
+    : `<p class="empty">Aún no hay visitas registradas. Abre tu página para ver la primera.</p>`;
+
+  return `
+      <div class="visits__kpis">
+        <div class="live-now"><span><i class="dot${v.en_linea ? " is-on" : ""}"></i>En la página ahora</span><strong data-n="${v.en_linea}">${fmtNum.format(v.en_linea)}</strong></div>
+        <div><span>Visitas hoy</span><strong data-n="${v.hoy}">${fmtNum.format(v.hoy)}</strong></div>
+        <div><span>Personas distintas hoy</span><strong data-n="${v.unicos_hoy}">${fmtNum.format(v.unicos_hoy)}</strong></div>
+        <div><span>Últimos 7 días</span><strong data-n="${v.semana}">${fmtNum.format(v.semana)}</strong></div>
+        <div><span>Total</span><strong data-n="${v.total}">${fmtNum.format(v.total)}</strong></div>
+      </div>
+      <div class="visits__grid">
+        <div class="visits__chart"><h3>Visitas por día</h3><ol class="days">${barras}</ol></div>
+        <div><h3>De dónde llegan <small>(7 días)</small></h3>${lista(v.origenes, (f) => origenVisita(f.origen), semana)}</div>
+        <div><h3>Dispositivo <small>(7 días)</small></h3>${lista(v.dispositivos, (f) => DISPOSITIVOS[f.dispositivo] || f.dispositivo, semana)}</div>
+        <div><h3>Últimas visitas</h3>${ultimas}</div>
+      </div>`;
+}
+
+function visitasSeccion(v) {
+  return `
+    <section class="box visits" aria-labelledby="visitas-titulo">
+      <div class="visits__head">
+        <h2 id="visitas-titulo">Visitas a tu página</h2>
+        <span class="live" id="visitas-estado"><i class="dot is-on"></i>En vivo</span>
+      </div>
+      <div id="visitas" data-live="/visitas.json" aria-live="polite">${visitasContenido(v)}</div>
+    </section>`;
+}
+
 /* ---------- Inicio ---------- */
 
-function inicio({ estados, seguimientos, recientes, totales }, ok) {
+function inicio({ estados, seguimientos, recientes, totales, visitas }, ok) {
   const embudo = Object.entries(ESTADOS)
     .map(
       ([k, label]) => `
@@ -187,6 +276,8 @@ function inicio({ estados, seguimientos, recientes, totales }, ok) {
       <h1>Inicio</h1>
       <a class="btn btn--primary" href="/solicitudes/nueva">Registrar solicitud</a>
     </header>
+
+    ${visitasSeccion(visitas)}
 
     <section class="funnel" aria-label="Solicitudes por estado">${embudo}</section>
 
@@ -511,4 +602,4 @@ function exportar() {
   });
 }
 
-module.exports = { entrar, inicio, solicitudes, solicitudForm, clientes, clienteForm, exportar, documento, esc };
+module.exports = { entrar, inicio, visitasContenido, solicitudes, solicitudForm, clientes, clienteForm, exportar, documento, esc };

@@ -18,6 +18,12 @@ Página para ofrecer servicios de desarrollo de páginas web, aplicaciones móvi
 
 Al enviar el formulario, la solicitud se guarda en la base de datos y, si hay número de WhatsApp configurado, se abre WhatsApp con el mensaje listo. Si no hay número, la solicitud solo se guarda y la persona ve una confirmación.
 
+## Contador de visitas
+
+Cada vez que alguien abre la página, `script.js` avisa a `/api/visita`, y mientras la pestaña sigue abierta envía una señal cada 30 segundos a `/api/presencia`. El panel muestra esos datos en vivo.
+
+No se guardan direcciones IP, cookies ni datos personales. Para contar personas distintas se usa una huella anónima que cambia cada día. Los robots de buscadores no se cuentan, y la copia de GitHub Pages no registra visitas.
+
 ## Variables de entorno
 
 Ningún dato personal ni contraseña se guarda en el repositorio. Todo se configura como variable de entorno:

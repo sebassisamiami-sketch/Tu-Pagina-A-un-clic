@@ -40,6 +40,21 @@ const isSet = (value) => Boolean(value) && !value.startsWith("__");
     document.body.appendChild(fab);
   }
 
+  /* Contador de visitas (solo en el servidor propio, no en la copia de GitHub Pages) */
+  if (!/github\.io$/.test(location.hostname) && location.protocol === "https:") {
+    const enviar = (url, datos) =>
+      fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(datos), keepalive: true }).catch(() => {});
+    const ruta = location.pathname;
+    enviar("/api/visita", { ruta, ref: document.referrer });
+    // Mientras la pestaña esté abierta y visible, avisa que la persona sigue en la página.
+    setInterval(() => {
+      if (document.visibilityState === "visible") enviar("/api/presencia", { ruta });
+    }, 30000);
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible") enviar("/api/presencia", { ruta });
+    });
+  }
+
   /* Demo: cambio de dispositivo */
   const device = document.querySelector(".device");
   if (device) {

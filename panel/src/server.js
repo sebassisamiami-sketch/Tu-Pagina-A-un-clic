@@ -139,7 +139,14 @@ const envolver = (fn) => (req, res, next) => Promise.resolve(fn(req, res, next))
 /* ---------- Inicio ---------- */
 
 app.get("/", envolver(async (req, res) => {
-  res.send(views.inicio(await db.resumen(), ok(req)));
+  const [resumen, visitas] = await Promise.all([db.resumen(), db.visitas()]);
+  res.send(views.inicio({ ...resumen, visitas }, ok(req)));
+}));
+
+// Datos de visitas para la actualización en vivo del inicio.
+app.get("/visitas.json", envolver(async (req, res) => {
+  const v = await db.visitas();
+  res.json({ html: views.visitasContenido(v), en_linea: v.en_linea, hoy: v.hoy });
 }));
 
 /* ---------- Solicitudes ---------- */
