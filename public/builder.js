@@ -23,7 +23,7 @@
     shirt: '<path d="M8 3 3 6l2 4 2-1v12h10V9l2 1 2-4-5-3c-.5 1.7-2 3-4 3S8.5 4.7 8 3z"/>',
     jean: '<path d="M6 3h12l1 18h-5l-2-11-2 11H5z"/>',
     shoe: '<path d="M3 15c0-3 1-7 2-9 2 0 3 2 5 3l3 1c4 1 8 2 8 5v2H3z"/><path d="M3 17h18"/>',
-    cap: '<path d="M4 15a8 8 0 0 1 16 0z"/><path d="M12 7v-2M4 15h17l-2 3H6"/>',
+    cap: '<path d="M4 15a8 8 0 0 1 16 0z"/><path d="M12 7V6"/><path d="M14 15h7.5l-1.5 2.5H14"/>',
     cut: '<circle cx="6" cy="7" r="3"/><circle cx="6" cy="17" r="3"/><path d="M8.5 8.5 20 18M8.5 15.5 20 6"/>',
     beard: '<path d="M5 6c0 9 3 14 7 14s7-5 7-14"/><path d="M9 13h6"/>',
     star: '<path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/>',
@@ -34,6 +34,11 @@
     pin: '<path d="M12 21s7-6.3 7-12a7 7 0 0 0-14 0c0 5.7 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/>',
     card: '<rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 10h19M6 15h4"/>',
     check: '<path d="m5 12.5 4.5 4.5L19 7.5"/>',
+    play: '<path d="M8 5v14l11-7z"/>',
+    mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/>',
+    plus: '<path d="M12 5v14M5 12h14"/>',
+    globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.5 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.5-3.8-9S9.5 5.5 12 3z"/>',
+    tag: '<path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.5"/>',
   };
   const ico = (n) => `<svg viewBox="0 0 24 24" aria-hidden="true">${ICONOS[n]}</svg>`;
 
@@ -162,9 +167,75 @@
     reservas: "Reservas en línea",
     pagos: "Pagos en línea",
     galeria: "Galería de fotos",
+    opiniones: "Opiniones de clientes",
+    faq: "Preguntas frecuentes",
+    contacto: "Formulario de contacto",
+    video: "Video de presentación",
+    planes: "Planes y precios",
+    blog: "Blog o noticias",
+    boletin: "Suscripción por correo",
+    promo: "Barra de promociones",
+    idiomas: "Varios idiomas",
+    redes: "Enlaces a redes sociales",
   };
-  const ESTILOS = { moderno: "Moderno", elegante: "Elegante", llamativo: "Llamativo", oscuro: "Oscuro" };
-  const LETRAS = { moderna: "Moderna", elegante: "Elegante", amigable: "Amigable", impactante: "Impactante" };
+  const ESTILOS = {
+    moderno: "Moderno", elegante: "Elegante", llamativo: "Llamativo", oscuro: "Oscuro", minimalista: "Minimalista",
+    natural: "Natural", retro: "Retro", corporativo: "Corporativo", futurista: "Futurista",
+  };
+  const LETRAS = {
+    moderna: "Moderna", elegante: "Elegante", amigable: "Amigable", impactante: "Impactante", geometrica: "Geométrica",
+    editorial: "Editorial", tecnologica: "Tecnológica", manuscrita: "Manuscrita", condensada: "Condensada",
+  };
+
+  // Promoción y planes cambian según el tipo de página.
+  const PROMO = {
+    servicios: "Primera asesoría sin costo este mes",
+    restaurante: "Domicilio gratis en pedidos de más de $40.000",
+    tienda: "Envío gratis por compras desde $150.000",
+    reservas: "Martes de 2x1 en cortes",
+    portafolio: "Agenda abierta para sesiones de diciembre",
+  };
+  const PLANES = {
+    servicios: [["Básico", "150.000"], ["Empresa", "350.000"], ["Completo", "600.000"]],
+    restaurante: [["Almuerzo", "18.000"], ["Ejecutivo", "25.000"], ["Familiar", "70.000"]],
+    tienda: [["Estándar", "Gratis"], ["Express", "12.000"], ["Mismo día", "20.000"]],
+    reservas: [["Corte", "25.000"], ["Corte y barba", "35.000"], ["Mensual", "90.000"]],
+    portafolio: [["Retrato", "180.000"], ["Producto", "350.000"], ["Evento", "900.000"]],
+  };
+
+  const bloquesExtra = {
+    video: () => `<section class="m-sec"><div class="m-video"><span class="m-play">${ico("play")}</span><small>Conócenos en 1 minuto</small></div></section>`,
+    planes: (e) => `
+      <section class="m-sec m-sec--soft">
+        <h3 class="m-h">Planes y precios</h3>
+        <div class="m-plans">${PLANES[e.tipo].map(([n, p], i) => `<div class="m-plan${i === 1 ? " is-top" : ""}">${i === 1 ? "<i>Recomendado</i>" : ""}<b>${n}</b><em>${p === "Gratis" ? p : "$" + p}</em><span class="m-btn m-btn--sm">Elegir</span></div>`).join("")}</div>
+      </section>`,
+    opiniones: () => `
+      <section class="m-sec">
+        <h3 class="m-h">Lo que dicen los clientes</h3>
+        <div class="m-reviews">${[0, 1].map(() => `<div class="m-review"><span class="m-stars">${ico("star").repeat(5)}</span><span class="m-lines"><i></i><i></i></span><small>Aquí van las opiniones reales de tus clientes</small></div>`).join("")}</div>
+      </section>`,
+    blog: () => `
+      <section class="m-sec">
+        <h3 class="m-h">Blog</h3>
+        <div class="m-posts">${["5 consejos para empezar", "Novedades de la temporada", "Cómo elegir bien"].map((t, i) => `<div class="m-post"><span class="m-ph m-ph--${i}"></span><b>${t}</b><small>Leer más</small></div>`).join("")}</div>
+      </section>`,
+    faq: () => `
+      <section class="m-sec m-sec--soft">
+        <h3 class="m-h">Preguntas frecuentes</h3>
+        <div class="m-faq">${["¿Hacen envíos o domicilios?", "¿Qué medios de pago aceptan?", "¿Cuál es el horario de atención?"].map((q, i) => `<div class="m-q${i === 0 ? " is-open" : ""}"><b>${q}</b><span>${ico("plus")}</span>${i === 0 ? "<small>Sí, a toda la ciudad. Escríbenos y te contamos los tiempos.</small>" : ""}</div>`).join("")}</div>
+      </section>`,
+    contacto: () => `
+      <section class="m-sec">
+        <h3 class="m-h">Escríbenos</h3>
+        <div class="m-form"><span class="m-in">Tu nombre</span><span class="m-in">Tu correo</span><span class="m-in m-in--area">¿En qué te ayudamos?</span><span class="m-btn">Enviar mensaje</span></div>
+      </section>`,
+    boletin: () => `
+      <section class="m-sec m-news">
+        <span class="m-ic">${ico("mail")}</span>
+        <div><b>Recibe novedades y descuentos</b><div class="m-news__row"><span class="m-in">tu@correo.com</span><span class="m-btn m-btn--sm">Suscribirme</span></div></div>
+      </section>`,
+  };
 
   /* ---------- Estado ---------- */
 
@@ -211,8 +282,14 @@
     $(".b-url").textContent = `${dominio}.com`;
 
     const extrasHtml = [
+      ex.has("planes") ? bloquesExtra.planes(e) : "",
       ex.has("reservas") && e.tipo !== "reservas" ? bloqueAgenda() : "",
       ex.has("galeria") && e.tipo !== "portafolio" ? `<section class="m-sec"><h3 class="m-h">Galería</h3>${bloqueGaleria(6)}</section>` : "",
+      ex.has("opiniones") ? bloquesExtra.opiniones() : "",
+      ex.has("blog") ? bloquesExtra.blog() : "",
+      ex.has("faq") ? bloquesExtra.faq() : "",
+      ex.has("contacto") ? bloquesExtra.contacto() : "",
+      ex.has("boletin") ? bloquesExtra.boletin() : "",
       ex.has("pagos")
         ? `<section class="m-sec m-pay"><span class="m-ic">${ico("card")}</span><div><b>Paga en línea</b><small>Tarjeta, PSE o transferencia</small></div></section>`
         : "",
@@ -222,9 +299,11 @@
     ].join("");
 
     sitio.innerHTML = `
+      ${ex.has("promo") ? `<div class="m-promo">${ico("tag")}<span>${PROMO[e.tipo]}</span></div>` : ""}
       <header class="m-nav">
         <span class="m-logo"><i>${esc(nombre.charAt(0).toUpperCase())}</i>${esc(nombre)}</span>
         <nav class="m-links">${t.links.map((l) => `<span>${l}</span>`).join("")}${t.carrito ? `<span class="m-cart">${ico("cart")}<b>2</b></span>` : ""}</nav>
+        ${ex.has("idiomas") ? `<span class="m-lang"><b>ES</b><span>EN</span></span>` : ""}
         <span class="m-burger"><i></i><i></i><i></i></span>
       </header>
       <section class="m-hero">
@@ -236,9 +315,10 @@
         </div>
         <div class="m-hero__art"><span class="m-blob"></span><span class="m-art">${ico(t.arte)}</span></div>
       </section>
+      ${ex.has("video") ? bloquesExtra.video() : ""}
       ${t.bloques(e)}
       ${extrasHtml}
-      <footer class="m-foot"><b>${esc(nombre)}</b><small>© ${new Date().getFullYear()} · Hecha con Tu Página a un Clic</small></footer>
+      <footer class="m-foot"><b>${esc(nombre)}</b>${ex.has("redes") ? `<span class="m-social"><span>Instagram</span><span>Facebook</span><span>TikTok</span></span>` : ""}<small>© ${new Date().getFullYear()} · Hecha con Tu Página a un Clic</small></footer>
       ${ex.has("whatsapp") ? `<span class="m-wa" aria-hidden="true"><svg viewBox="0 0 32 32"><path fill="currentColor" d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.6 6L4 29l8.2-2.1c1.2.4 2.5.6 3.8.6 6.6 0 12-5.4 12-12S22.6 3 16 3zm5.5 15.6c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 2.5 1 3 .8 3.6.7.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/></svg></span>` : ""}`;
 
     $("#b-resumen").innerHTML =
@@ -361,7 +441,9 @@
     letrasCargadas = true;
     const link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = "https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Playfair+Display:wght@600;700&display=swap";
+    link.href =
+      "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:wght@600;700&family=Montserrat:wght@400;700&family=Nunito:wght@400;700;800" +
+      "&family=Pacifico&family=Playfair+Display:wght@600;700&family=Space+Grotesk:wght@400;700&display=swap";
     document.head.appendChild(link);
   }
   if ("IntersectionObserver" in window) {
