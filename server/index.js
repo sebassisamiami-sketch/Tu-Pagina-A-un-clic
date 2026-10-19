@@ -181,7 +181,9 @@ app.use(
   express.static(PUBLIC_DIR, {
     index: "index.html",
     setHeaders(res, filePath) {
-      if (filePath.endsWith(".html")) res.set("Cache-Control", "no-cache");
+      // HTML, CSS y JavaScript se revalidan siempre (respuesta 304 si no cambiaron),
+      // así nadie ve una mezcla de versiones después de publicar cambios.
+      if (/\.(html|css|js)$/.test(filePath)) res.set("Cache-Control", "no-cache");
       else res.set("Cache-Control", "public, max-age=3600");
     },
   })
