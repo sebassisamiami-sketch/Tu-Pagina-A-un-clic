@@ -20,4 +20,22 @@
     <loc>https://tupaginaaunclic.com/guias/que-preparar-antes-de-pedir-tu-pagina-web/</loc>
     <lastmod>2026-10-18</lastmod>
   </url>
+  <url>
+    <loc>https://tupaginaaunclic.com/politica-de-privacidad/</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://tupaginaaunclic.com/politica-de-cookies/</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://tupaginaaunclic.com/terminos/</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
 </urlset>

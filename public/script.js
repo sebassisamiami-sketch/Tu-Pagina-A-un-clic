@@ -7,6 +7,7 @@ const CONFIG = {
 };
 
 const isSet = (value) => Boolean(value) && !value.startsWith("__");
+const BASE = new URL(".", document.currentScript ? document.currentScript.src : location.href);
 
 (function () {
   /* Año del pie */
@@ -20,7 +21,7 @@ const isSet = (value) => Boolean(value) && !value.startsWith("__");
       emailLink.href = "mailto:" + CONFIG.EMAIL;
       emailLink.textContent = CONFIG.EMAIL;
     } else {
-      emailLink.closest("p").hidden = true;
+      (emailLink.closest("li") || emailLink.closest("p")).hidden = true;
     }
   }
 
@@ -40,8 +41,12 @@ const isSet = (value) => Boolean(value) && !value.startsWith("__");
     document.body.appendChild(fab);
   }
 
-  /* Contador de visitas (solo en el servidor propio, no en la copia de GitHub Pages) */
-  if (!/github\.io$/.test(location.hostname) && location.protocol === "https:") {
+  /* Contador de visitas: solo si la persona aceptó las estadísticas.
+     No usa cookies ni guarda datos personales. No corre en la copia de GitHub Pages. */
+  let estadisticasActivas = false;
+  function iniciarEstadisticas() {
+    if (estadisticasActivas || /github\.io$/.test(location.hostname) || location.protocol !== "https:") return;
+    estadisticasActivas = true;
     const enviar = (url, datos) =>
       fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(datos), keepalive: true }).catch(() => {});
     const ruta = location.pathname;
@@ -52,6 +57,100 @@ const isSet = (value) => Boolean(value) && !value.startsWith("__");
     }, 30000);
     document.addEventListener("visibilitychange", () => {
       if (document.visibilityState === "visible") enviar("/api/presencia", { ruta });
+    });
+  }
+
+  /* Aviso de cookies y consentimiento */
+  const COOKIE = "tpc_consentimiento";
+  const VERSION = "1";
+
+  function leerConsentimiento() {
+    const m = document.cookie.match(new RegExp("(?:^|; )" + COOKIE + "=([^;]*)"));
+    if (!m) return null;
+    const [version, estadisticas] = decodeURIComponent(m[1]).split(".");
+    if (version !== VERSION) return null;
+    return { estadisticas: estadisticas === "1" };
+  }
+
+  function guardarConsentimiento(c) {
+    const valor = `${VERSION}.${c.estadisticas ? 1 : 0}`;
+    const seguro = location.protocol === "https:" ? "; Secure" : "";
+    document.cookie = `${COOKIE}=${valor}; Max-Age=${60 * 60 * 24 * 365}; Path=/; SameSite=Lax${seguro}`;
+  }
+
+  let aviso = null;
+  function cerrarAviso() {
+    if (!aviso) return;
+    aviso.remove();
+    aviso = null;
+    document.body.classList.remove("has-cookies");
+  }
+
+  function decidir(c) {
+    guardarConsentimiento(c);
+    cerrarAviso();
+    if (c.estadisticas) iniciarEstadisticas();
+    else if (estadisticasActivas) location.reload(); // detiene el contador si lo rechaza después
+  }
+
+  function mostrarAviso(configurar) {
+    cerrarAviso();
+    const actual = leerConsentimiento();
+    const privacidad = new URL("politica-de-privacidad/", BASE).href;
+    const cookies = new URL("politica-de-cookies/", BASE).href;
+    aviso = document.createElement("section");
+    aviso.className = "cookies";
+    aviso.setAttribute("role", "dialog");
+    aviso.setAttribute("aria-labelledby", "cookies-titulo");
+    aviso.innerHTML = `
+      <h2 id="cookies-titulo">Tu privacidad</h2>
+      <p>Usamos una cookie para recordar tu elección y, si nos lo permites, contamos las visitas de forma anónima para mejorar la página. No usamos cookies de publicidad. Lee la <a href="${cookies}">política de cookies</a> y la <a href="${privacidad}">de datos personales</a>.</p>
+      <div class="cookies__opts" hidden>
+        <label class="cookies__opt"><input type="checkbox" checked disabled><span><b>Necesarias</b><small>Guardan tu elección. Siempre activas.</small></span></label>
+        <label class="cookies__opt"><input type="checkbox" class="js-stats"${!actual || actual.estadisticas ? " checked" : ""}><span><b>Estadísticas</b><small>Cuentan visitas sin identificarte, para saber qué secciones sirven.</small></span></label>
+      </div>
+      <div class="cookies__actions">
+        <button type="button" class="btn btn--mango js-aceptar">Aceptar todas</button>
+        <button type="button" class="btn cookies__btn-sec js-necesarias">Solo necesarias</button>
+      </div>
+      <button type="button" class="cookies__link js-configurar">Configurar</button>`;
+    document.body.appendChild(aviso);
+    document.body.classList.add("has-cookies");
+
+    const opciones = aviso.querySelector(".cookies__opts");
+    const btnConfig = aviso.querySelector(".js-configurar");
+    const abrirOpciones = () => {
+      opciones.hidden = false;
+      btnConfig.textContent = "Guardar mi elección";
+      btnConfig.classList.add("is-save");
+    };
+    if (configurar) abrirOpciones();
+
+    aviso.querySelector(".js-aceptar").addEventListener("click", () => decidir({ estadisticas: true }));
+    aviso.querySelector(".js-necesarias").addEventListener("click", () => decidir({ estadisticas: false }));
+    btnConfig.addEventListener("click", () => {
+      if (!btnConfig.classList.contains("is-save")) return abrirOpciones();
+      decidir({ estadisticas: aviso.querySelector(".js-stats").checked });
+    });
+
+    const medir = () => document.body.style.setProperty("--cookies-h", aviso ? aviso.offsetHeight + "px" : "0px");
+    medir();
+    if (window.ResizeObserver) new ResizeObserver(medir).observe(aviso);
+  }
+
+  document.querySelectorAll(".js-cookies").forEach((b) => b.addEventListener("click", () => mostrarAviso(true)));
+
+  const consentimiento = leerConsentimiento();
+  if (!consentimiento) mostrarAviso(false);
+  else if (consentimiento.estadisticas) iniciarEstadisticas();
+
+  /* Enlaces de WhatsApp dentro del texto (políticas) */
+  if (isSet(CONFIG.WHATSAPP_NUMBER)) {
+    document.querySelectorAll(".js-whatsapp").forEach((a) => {
+      a.href = `https://wa.me/${CONFIG.WHATSAPP_NUMBER}`;
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.textContent = "+" + CONFIG.WHATSAPP_NUMBER;
     });
   }
 
@@ -233,6 +332,14 @@ const isSet = (value) => Boolean(value) && !value.startsWith("__");
     return lineas.join("\n");
   }
 
+  form.autoriza.addEventListener("change", () => {
+    if (form.autoriza.checked) {
+      form.autoriza.closest(".consent").classList.remove("is-invalid");
+      form.autoriza.removeAttribute("aria-invalid");
+      errorBox.hidden = true;
+    }
+  });
+
   form.addEventListener("input", (e) => {
     if (e.target.getAttribute("aria-invalid") === "true" && e.target.value.trim()) {
       e.target.removeAttribute("aria-invalid");
@@ -257,6 +364,13 @@ const isSet = (value) => Boolean(value) && !value.startsWith("__");
       showError("Escribe tu nombre para poder responderte.", form.nombre);
       return;
     }
+
+    if (!form.autoriza.checked) {
+      form.autoriza.closest(".consent").classList.add("is-invalid");
+      showError("Para enviar tu solicitud, marca la casilla de autorización de datos.", form.autoriza);
+      return;
+    }
+    datos.autoriza = true;
 
     const guardado = guardarSolicitud(datos);
 

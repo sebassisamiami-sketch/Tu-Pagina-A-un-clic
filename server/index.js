@@ -39,6 +39,20 @@ const scriptConDatos = scriptTemplate
   .replace("__WHATSAPP_NUMBER__", /^[0-9]{8,15}$/.test(whatsapp) ? whatsapp : "")
   .replace("__CONTACT_EMAIL__", /^[^\s@"'<>]+@[^\s@"'<>]+\.[A-Za-z]{2,}$/.test(email) ? email : "");
 
+/* Responsable de los datos en la política de privacidad: se define con RESPONSABLE_DATOS */
+const responsable = (process.env.RESPONSABLE_DATOS || "Tu Página a un Clic")
+  .replace(/[<>&"]/g, "")
+  .trim()
+  .slice(0, 200);
+const politicaPrivacidad = fs
+  .readFileSync(path.join(PUBLIC_DIR, "politica-de-privacidad", "index.html"), "utf8")
+  .replace(/__RESPONSABLE__/g, responsable);
+app.get("/politica-de-privacidad/", (req, res) => {
+  // Sin la barra final, los enlaces relativos de la página no funcionarían.
+  if (!req.path.endsWith("/")) return res.redirect(301, "/politica-de-privacidad/");
+  res.type("html").set("Cache-Control", "no-cache").send(politicaPrivacidad);
+});
+
 app.get("/script.js", (req, res) => {
   res.type("application/javascript").set("Cache-Control", "no-cache").send(scriptConDatos);
 });
@@ -74,6 +88,9 @@ app.post("/api/solicitudes", limiteSolicitudes, express.json({ limit: "10kb" }),
 
   if (!nombre) return res.status(400).json({ ok: false, error: "Escribe tu nombre para poder responderte." });
   if (!TIPOS.includes(tipo)) return res.status(400).json({ ok: false, error: "Elige qué necesitas." });
+  if (body.autoriza !== true) {
+    return res.status(400).json({ ok: false, error: "Para enviar tu solicitud, autoriza el tratamiento de tus datos." });
+  }
 
   if (!db.available()) {
     return res.status(503).json({ ok: false, error: "No pudimos guardar tu solicitud en este momento." });

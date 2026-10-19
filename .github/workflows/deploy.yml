@@ -27,6 +27,7 @@ jobs:
         env:
           WHATSAPP_NUMBER: ${{ secrets.WHATSAPP_NUMBER }}
           CONTACT_EMAIL: ${{ secrets.CONTACT_EMAIL }}
+          RESPONSABLE_DATOS: ${{ secrets.RESPONSABLE_DATOS }}
         run: |
           set -euo pipefail
           if [[ -n "$WHATSAPP_NUMBER" && ! "$WHATSAPP_NUMBER" =~ ^[0-9]{8,15}$ ]]; then
@@ -43,6 +44,9 @@ jobs:
             -e "s|__WHATSAPP_NUMBER__|${WHATSAPP_NUMBER}|g" \
             -e "s|__CONTACT_EMAIL__|${CONTACT_EMAIL}|g" \
             _site/script.js
+          RESPONSABLE="${RESPONSABLE_DATOS:-Tu Página a un Clic}"
+          RESPONSABLE="${RESPONSABLE//[<>&\"|]/}"
+          sed -i -e "s|__RESPONSABLE__|${RESPONSABLE}|g" _site/politica-de-privacidad/index.html
 
       - uses: actions/configure-pages@v5
 

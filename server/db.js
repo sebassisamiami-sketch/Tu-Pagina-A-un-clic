@@ -31,6 +31,8 @@ async function init() {
     )
   `);
   await pool.query("CREATE INDEX IF NOT EXISTS solicitudes_creada_idx ON solicitudes (creada DESC)");
+  // Fecha en que la persona autorizó el tratamiento de sus datos (Ley 1581 de 2012).
+  await pool.query("ALTER TABLE solicitudes ADD COLUMN IF NOT EXISTS autorizacion_datos TIMESTAMPTZ");
   await pool.query(SQL_VISITAS);
 }
 
@@ -78,8 +80,8 @@ function available() {
 
 async function crearSolicitud({ nombre, negocio, tipo, mensaje }) {
   const { rows } = await pool.query(
-    `INSERT INTO solicitudes (nombre, negocio, tipo, mensaje)
-     VALUES ($1, $2, $3, $4)
+    `INSERT INTO solicitudes (nombre, negocio, tipo, mensaje, autorizacion_datos)
+     VALUES ($1, $2, $3, $4, NOW())
      RETURNING id, creada`,
     [nombre, negocio || null, tipo, mensaje || null]
   );

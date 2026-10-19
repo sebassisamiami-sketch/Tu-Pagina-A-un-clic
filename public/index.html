@@ -380,6 +380,10 @@
             <label for="sitio">Deja este campo vacío</label>
             <input id="sitio" name="sitio" type="text" tabindex="-1" autocomplete="off">
           </div>
+          <label class="consent">
+            <input type="checkbox" name="autoriza" required>
+            <span>Autorizo el tratamiento de mis datos para responder mi solicitud, según la <a href="politica-de-privacidad/" target="_blank" rel="noopener">política de tratamiento de datos</a>.</span>
+          </label>
           <p class="form__error" role="alert" hidden></p>
           <p class="form__ok" role="status" hidden></p>
           <button class="btn btn--mango btn--block" type="submit">Enviar por WhatsApp</button>
@@ -391,7 +395,14 @@
   <footer class="foot">
     <div class="wrap foot__inner">
       <p>Tu Página a un Clic. Páginas web y aplicaciones móviles.</p>
-      <p><a href="guias/">Guías</a> · © <span class="js-year">2026</span></p>
+      <nav class="foot__links" aria-label="Información legal">
+        <a href="guias/">Guías</a>
+        <a href="politica-de-privacidad/">Privacidad</a>
+        <a href="politica-de-cookies/">Cookies</a>
+        <a href="terminos/">Términos</a>
+        <button type="button" class="foot__btn js-cookies">Configurar cookies</button>
+        <span>© <span class="js-year">2026</span></span>
+      </nav>
     </div>
   </footer>
 
