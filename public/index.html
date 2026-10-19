@@ -109,6 +109,7 @@
       </a>
       <nav class="nav" aria-label="Principal">
         <a href="#servicios">Servicios</a>
+        <a href="#pruebalo">Pruébalo gratis</a>
         <a href="#proceso">Cómo trabajo</a>
         <a href="guias/">Guías</a>
         <a href="#preguntas">Preguntas</a>
@@ -253,6 +254,116 @@
             <li><strong>Contenido editable.</strong> Si quieres cambiar textos o fotos tú mismo, lo dejo preparado para eso.</li>
             <li><strong>Mantenimiento.</strong> Actualizaciones, copias de seguridad y cambios cuando los necesites.</li>
           </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tint builder" id="pruebalo">
+      <div class="wrap">
+        <header class="section__head">
+          <h2>Arma tu página y mírala al instante</h2>
+          <p>Elige el tipo de página, tus colores, el estilo y la letra. Es gratis y no tienes que registrarte. Cuando te guste, me la envías y la cotizamos.</p>
+        </header>
+
+        <div class="builder__grid">
+          <div class="builder__panel">
+            <div class="field b-name">
+              <label for="b-nombre">Nombre de tu negocio</label>
+              <input id="b-nombre" type="text" maxlength="28" placeholder="Por ejemplo: Café Aroma" autocomplete="organization">
+            </div>
+
+            <div class="b-tabs" role="tablist" aria-label="Pasos para armar tu página">
+              <button type="button" role="tab" id="bt-tipo" aria-controls="bp-tipo" aria-selected="true"><i>1</i>Tipo</button>
+              <button type="button" role="tab" id="bt-color" aria-controls="bp-color" aria-selected="false" tabindex="-1"><i>2</i>Color</button>
+              <button type="button" role="tab" id="bt-estilo" aria-controls="bp-estilo" aria-selected="false" tabindex="-1"><i>3</i>Estilo</button>
+              <button type="button" role="tab" id="bt-letra" aria-controls="bp-letra" aria-selected="false" tabindex="-1"><i>4</i>Letra</button>
+              <button type="button" role="tab" id="bt-extras" aria-controls="bp-extras" aria-selected="false" tabindex="-1"><i>5</i>Extras</button>
+            </div>
+
+            <fieldset class="b-step" role="tabpanel" id="bp-tipo" aria-labelledby="bt-tipo">
+              <legend class="sr">¿Qué tipo de página necesitas?</legend>
+              <div class="b-opts">
+                <label class="b-opt"><input type="radio" name="b-tipo" value="servicios" checked><span><b>Negocio o servicios</b><small>Muestra lo que haces y recibe contactos</small></span></label>
+                <label class="b-opt"><input type="radio" name="b-tipo" value="restaurante"><span><b>Restaurante o café</b><small>Menú, pedidos y ubicación</small></span></label>
+                <label class="b-opt"><input type="radio" name="b-tipo" value="tienda"><span><b>Tienda en línea</b><small>Catálogo, carrito y pagos</small></span></label>
+                <label class="b-opt"><input type="radio" name="b-tipo" value="reservas"><span><b>Reservas y citas</b><small>Barbería, salón, consultorio</small></span></label>
+                <label class="b-opt"><input type="radio" name="b-tipo" value="portafolio"><span><b>Portafolio</b><small>Fotos, trabajos y proyectos</small></span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="b-step" role="tabpanel" id="bp-color" aria-labelledby="bt-color" hidden>
+              <legend class="sr">Color principal</legend>
+              <div class="swatches">
+                <label class="swatch" title="Azul"><input type="radio" name="b-color" value="#2433D9" data-nombre="Azul" checked><span style="--sw:#2433D9"></span><span class="sr">Azul</span></label>
+                <label class="swatch" title="Verde"><input type="radio" name="b-color" value="#1E8E5A" data-nombre="Verde"><span style="--sw:#1E8E5A"></span><span class="sr">Verde</span></label>
+                <label class="swatch" title="Rojo"><input type="radio" name="b-color" value="#D64545" data-nombre="Rojo"><span style="--sw:#D64545"></span><span class="sr">Rojo</span></label>
+                <label class="swatch" title="Naranja"><input type="radio" name="b-color" value="#EA6A12" data-nombre="Naranja"><span style="--sw:#EA6A12"></span><span class="sr">Naranja</span></label>
+                <label class="swatch" title="Morado"><input type="radio" name="b-color" value="#7A4BD6" data-nombre="Morado"><span style="--sw:#7A4BD6"></span><span class="sr">Morado</span></label>
+                <label class="swatch" title="Rosa"><input type="radio" name="b-color" value="#D63D78" data-nombre="Rosa"><span style="--sw:#D63D78"></span><span class="sr">Rosa</span></label>
+                <label class="swatch" title="Café"><input type="radio" name="b-color" value="#7B4A2D" data-nombre="Café"><span style="--sw:#7B4A2D"></span><span class="sr">Café</span></label>
+                <label class="swatch" title="Negro"><input type="radio" name="b-color" value="#22252F" data-nombre="Negro"><span style="--sw:#22252F"></span><span class="sr">Negro</span></label>
+                <label class="swatch swatch--custom" title="Otro color"><input type="radio" name="b-color" value="custom" data-nombre="Personalizado"><span></span><span class="sr">Otro color</span></label>
+              </div>
+              <label class="b-custom">Otro color: <input type="color" id="b-color-libre" value="#0E7C86"></label>
+            </fieldset>
+
+            <fieldset class="b-step" role="tabpanel" id="bp-estilo" aria-labelledby="bt-estilo" hidden>
+              <legend class="sr">Estilo de diseño</legend>
+              <div class="b-opts b-opts--2">
+                <label class="b-opt"><input type="radio" name="b-estilo" value="moderno" checked><span><b>Moderno</b><small>Limpio, con bordes suaves</small></span></label>
+                <label class="b-opt"><input type="radio" name="b-estilo" value="elegante"><span><b>Elegante</b><small>Sobrio, con líneas finas</small></span></label>
+                <label class="b-opt"><input type="radio" name="b-estilo" value="llamativo"><span><b>Llamativo</b><small>Bloques de color y letras grandes</small></span></label>
+                <label class="b-opt"><input type="radio" name="b-estilo" value="oscuro"><span><b>Oscuro</b><small>Fondo oscuro, aire premium</small></span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="b-step" role="tabpanel" id="bp-letra" aria-labelledby="bt-letra" hidden>
+              <legend class="sr">Tipografía</legend>
+              <div class="b-opts b-opts--2 b-opts--fonts">
+                <label class="b-opt" style="--f:var(--b-f-moderna)"><input type="radio" name="b-letra" value="moderna" checked><span><b>Moderna</b><small>Clara y actual</small></span></label>
+                <label class="b-opt" style="--f:var(--b-f-elegante)"><input type="radio" name="b-letra" value="elegante"><span><b>Elegante</b><small>Con serifa, clásica</small></span></label>
+                <label class="b-opt" style="--f:var(--b-f-amigable)"><input type="radio" name="b-letra" value="amigable"><span><b>Amigable</b><small>Redondeada y cercana</small></span></label>
+                <label class="b-opt" style="--f:var(--b-f-impactante)"><input type="radio" name="b-letra" value="impactante"><span><b>Impactante</b><small>Gruesa, para destacar</small></span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="b-step" role="tabpanel" id="bp-extras" aria-labelledby="bt-extras" hidden>
+              <legend class="sr">Funciones extra</legend>
+              <div class="b-opts">
+                <label class="b-opt b-opt--check"><input type="checkbox" name="b-extra" value="whatsapp" checked><span><b>Botón de WhatsApp</b><small>Te escriben con un toque</small></span></label>
+                <label class="b-opt b-opt--check"><input type="checkbox" name="b-extra" value="mapa"><span><b>Mapa y ubicación</b><small>Para que lleguen a tu local</small></span></label>
+                <label class="b-opt b-opt--check"><input type="checkbox" name="b-extra" value="reservas"><span><b>Reservas en línea</b><small>Agendan sin escribirte</small></span></label>
+                <label class="b-opt b-opt--check"><input type="checkbox" name="b-extra" value="pagos"><span><b>Pagos en línea</b><small>Cobra con tarjeta o PSE</small></span></label>
+                <label class="b-opt b-opt--check"><input type="checkbox" name="b-extra" value="galeria"><span><b>Galería de fotos</b><small>Muestra tus trabajos</small></span></label>
+              </div>
+            </fieldset>
+
+            <div class="b-nav">
+              <button type="button" class="b-next">Siguiente paso</button>
+              <button type="button" class="b-reset">Volver a empezar</button>
+            </div>
+          </div>
+
+          <div class="builder__preview">
+            <div class="b-devices" role="radiogroup" aria-label="Ver en">
+              <button type="button" role="radio" aria-checked="true" data-dev="cel">Celular</button>
+              <button type="button" role="radio" aria-checked="false" data-dev="pc">Computador</button>
+            </div>
+            <div class="b-stage">
+              <div class="b-frame" data-dev="cel">
+                <div class="b-bar" aria-hidden="true"><i></i><i></i><i></i><span class="b-url">tunegocio.com</span></div>
+                <div class="b-screen">
+                  <div class="b-site" id="b-site" role="img" aria-label="Vista previa de tu página con lo que elegiste"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="b-summary">
+            <p class="b-summary__text" id="b-resumen" aria-live="polite"></p>
+            <a class="btn btn--mango b-cta" href="#contacto">Quiero mi página así</a>
+            <p class="b-note">Es una vista previa de ejemplo. Tu página real se diseña a la medida de tu negocio.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -407,5 +518,6 @@
   </footer>
 
   <script src="script.js"></script>
+  <script src="builder.js" defer></script>
 </body>
 </html>
