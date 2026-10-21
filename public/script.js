@@ -63,7 +63,7 @@ const BASE = new URL(".", document.currentScript ? document.currentScript.src : 
 
   /* Aviso de cookies y consentimiento */
   const COOKIE = "tpc_consentimiento";
-  const VERSION = "1";
+  const VERSION = "2";
 
   function leerConsentimiento() {
     const m = document.cookie.match(new RegExp("(?:^|; )" + COOKIE + "=([^;]*)"));
@@ -105,10 +105,10 @@ const BASE = new URL(".", document.currentScript ? document.currentScript.src : 
     aviso.setAttribute("aria-labelledby", "cookies-titulo");
     aviso.innerHTML = `
       <h2 id="cookies-titulo">Tu privacidad</h2>
-      <p>Usamos una cookie para recordar tu elección y, si nos lo permites, contamos las visitas de forma anónima para mejorar la página. No usamos cookies de publicidad. Lee la <a href="${cookies}">política de cookies</a> y la <a href="${privacidad}">de datos personales</a>.</p>
+      <p>Usamos una cookie para recordar tu elección y, si nos lo permites, medimos las visitas con Google Analytics para mejorar la página. No usamos cookies de publicidad. Lee la <a href="${cookies}">política de cookies</a> y la <a href="${privacidad}">de datos personales</a>.</p>
       <div class="cookies__opts" hidden>
         <label class="cookies__opt"><input type="checkbox" checked disabled><span><b>Necesarias</b><small>Guardan tu elección. Siempre activas.</small></span></label>
-        <label class="cookies__opt"><input type="checkbox" class="js-stats"${!actual || actual.estadisticas ? " checked" : ""}><span><b>Estadísticas</b><small>Cuentan visitas sin identificarte, para saber qué secciones sirven.</small></span></label>
+        <label class="cookies__opt"><input type="checkbox" class="js-stats"${!actual || actual.estadisticas ? " checked" : ""}><span><b>Estadísticas</b><small>Google Analytics cuenta las visitas para saber qué secciones sirven.</small></span></label>
       </div>
       <div class="cookies__actions">
         <button type="button" class="btn btn--mango js-aceptar">Aceptar todas</button>
