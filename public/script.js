@@ -41,10 +41,11 @@ const BASE = new URL(".", document.currentScript ? document.currentScript.src : 
     document.body.appendChild(fab);
   }
 
-  /* Contador de visitas: solo si la persona aceptó las estadísticas.
-     No usa cookies ni guarda datos personales. No corre en la copia de GitHub Pages. */
+   /* Estadísticas: solo si la persona aceptó. Activa Google Analytics y el contador propio.
+     El contador propio no corre en la copia de GitHub Pages. */
   let estadisticasActivas = false;
   function iniciarEstadisticas() {
+    if (typeof gtag === "function") gtag('consent', 'update', { analytics_storage: 'granted' });
     if (estadisticasActivas || /github\.io$/.test(location.hostname) || location.protocol !== "https:") return;
     estadisticasActivas = true;
     const enviar = (url, datos) =>
