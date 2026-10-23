@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Precisión nocturna | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root {
+      --void: #08090a; --carbon: #0f1011; --obsidian: #161718; --graphite: #23252a; --smoke: #383b3f;
+      --ash: #62666d; --fog: #8a8f98; --mist: #d0d6e0; --paper: #ffffff;
+      --lime: #e4f222; --green: #27a644; --coral: #eb5757; --teal: #02b8cc; --iris: #6366f1; --lavender: #8b5cf6;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--void); color: var(--mist); font: 400 16px/1.5 "Inter", system-ui, sans-serif; font-feature-settings: "cv01", "ss03", "zero"; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .mono { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 12px; letter-spacing: -0.013em; }
+
+    nav { position: relative; z-index: 10; background: rgba(8, 9, 10, .8); backdrop-filter: blur(12px); border-bottom: .5px solid var(--graphite); }
+    nav .wrap { display: flex; align-items: center; gap: 32px; height: 64px; }
+    .logo { display: flex; align-items: center; gap: 10px; color: var(--paper); font-weight: 590; text-decoration: none; letter-spacing: -0.012em; }
+    .logo i { width: 20px; height: 20px; border-radius: 5px; background: linear-gradient(135deg, var(--paper), var(--fog)); }
+    nav ul { display: flex; gap: 24px; margin: 0; padding: 0; list-style: none; font-size: 14px; color: var(--fog); }
+    nav .acc { margin-left: auto; display: flex; gap: 10px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px; border-radius: 6px; font: 510 14px/1 "Inter", sans-serif; text-decoration: none; border: .5px solid var(--smoke); color: var(--mist); background: var(--carbon); }
+    .btn--lima { background: var(--lime); color: var(--void); border-color: var(--lime); }
+    .btn--lg { height: 44px; padding: 0 20px; font-size: 15px; }
+
+    .hero { position: relative; padding: 120px 0 40px; overflow: hidden; }
+    .hero::before { content: ""; position: absolute; inset: auto -20% -40% -20%; height: 70%; background: radial-gradient(ellipse at 50% 100%, rgba(99, 102, 241, .22), transparent 60%); pointer-events: none; }
+    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 4px 12px 4px 4px; border: .5px solid var(--graphite); border-radius: 9999px; font-size: 13px; color: var(--fog); }
+    .pill b { padding: 2px 8px; border-radius: 9999px; background: var(--obsidian); color: var(--paper); font-weight: 510; }
+    h1 { margin: 24px 0 0; max-width: 14ch; color: var(--paper); font-size: clamp(44px, 7vw, 72px); font-weight: 510; line-height: 1; letter-spacing: -0.022em; }
+    .lead { max-width: 560px; margin: 24px 0 32px; font-size: 18px; color: var(--fog); line-height: 1.5; }
+    .hero .acc { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .app { position: relative; margin-top: 72px; border: .5px solid var(--smoke); border-radius: 12px; background: var(--carbon); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .04); overflow: hidden; }
+    .app__top { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: .5px solid var(--graphite); font-size: 13px; color: var(--fog); }
+    .app__top span { margin-left: auto; }
+    .app__body { display: grid; grid-template-columns: 200px 1fr; min-height: 340px; }
+    .side { padding: 16px; border-right: .5px solid var(--graphite); font-size: 13px; display: grid; align-content: start; gap: 4px; }
+    .side div { padding: 6px 8px; border-radius: 6px; color: var(--fog); }
+    .side .on { background: var(--obsidian); color: var(--paper); }
+    .board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 16px; }
+    .col h4 { margin: 0 0 10px; font-size: 13px; font-weight: 510; color: var(--fog); display: flex; gap: 8px; align-items: center; }
+    .col h4 i { width: 8px; height: 8px; border-radius: 50%; }
+    .card { padding: 12px; margin-bottom: 8px; border: .5px solid var(--graphite); border-radius: 8px; background: var(--obsidian); font-size: 13px; color: var(--mist); }
+    .card .mono { color: var(--ash); display: block; margin-bottom: 4px; }
+    .tag { display: inline-block; margin-top: 8px; padding: 2px 8px; border-radius: 4px; font-size: 11px; }
+
+    section { padding: 96px 0; border-top: .5px solid var(--graphite); }
+    .eyebrow { color: var(--fog); font-size: 14px; margin-bottom: 12px; }
+    h2 { margin: 0; color: var(--paper); font-size: clamp(32px, 5vw, 48px); font-weight: 510; line-height: 1; letter-spacing: -0.022em; max-width: 18ch; }
+    .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 48px; }
+    .feat { padding: 24px; border: .5px solid var(--graphite); border-radius: 12px; background: var(--carbon); }
+    .feat h3 { margin: 16px 0 8px; color: var(--paper); font-size: 17px; font-weight: 590; letter-spacing: -0.011em; }
+    .feat p { margin: 0; color: var(--fog); font-size: 15px; }
+    .ico { width: 32px; height: 32px; border-radius: 6px; border: .5px solid var(--smoke); display: grid; place-items: center; }
+    .ico svg { width: 16px; height: 16px; stroke: var(--mist); fill: none; stroke-width: 1.5; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 48px; border-top: .5px solid var(--graphite); }
+    .stats div { padding: 24px 24px 0 0; }
+    .stats b { display: block; color: var(--paper); font-size: 40px; font-weight: 510; letter-spacing: -0.022em; }
+    .stats span { color: var(--fog); font-size: 14px; }
+    .cierre { text-align: center; padding: 120px 0; }
+    .cierre h2 { margin: 0 auto 32px; }
+    footer { padding: 32px 0; border-top: .5px solid var(--graphite); color: var(--ash); font-size: 13px; }
+    footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    @media (max-width: 860px) {
+      nav ul { display: none; }
+      .app__body { grid-template-columns: 1fr; }
+      .side { display: none; }
+      .board, .grid3 { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .hero { padding-top: 72px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Precisión nocturna</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=precision-nocturna#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <nav>
+    <div class="wrap">
+      <a class="logo" href="#"><i></i>Kardo</a>
+      <ul><li>Producto</li><li>Precios</li><li>Clientes</li><li>Cambios</li></ul>
+      <div class="acc"><a class="btn" href="#">Entrar</a><a class="btn btn--lima" href="#">Empezar gratis</a></div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <span class="pill"><b>Nuevo</b> Reabastecimiento automático con IA →</span>
+      <h1>El inventario de tu tienda, sin sorpresas.</h1>
+      <p class="lead">Kardo cuenta cada producto en tiempo real, te avisa antes de que algo se agote y arma los pedidos a tus proveedores por ti.</p>
+      <div class="acc"><a class="btn btn--lima btn--lg" href="#">Probar 14 días gratis</a><a class="btn btn--lg" href="#">Ver demostración</a></div>
+
+      <div class="app" aria-hidden="true">
+        <div class="app__top"><b style="color:var(--paper);font-weight:510">Bodega principal</b> / Pedidos <span class="mono">⌘ K</span></div>
+        <div class="app__body">
+          <div class="side"><div class="on">Pedidos</div><div>Productos</div><div>Proveedores</div><div>Reportes</div><div>Ajustes</div></div>
+          <div class="board">
+            <div class="col">
+              <h4><i style="background:var(--fog)"></i>Por pedir · 3</h4>
+              <div class="card"><span class="mono">INV-2041</span>Café de origen 500 g<br><span class="tag" style="background:rgba(235,87,87,.15);color:var(--coral)">Quedan 4</span></div>
+              <div class="card"><span class="mono">INV-2038</span>Vasos compostables x50<br><span class="tag" style="background:rgba(99,102,241,.18);color:#a5a7ff">Proveedor nuevo</span></div>
+            </div>
+            <div class="col">
+              <h4><i style="background:var(--lime)"></i>En camino · 2</h4>
+              <div class="card"><span class="mono">INV-2033</span>Leche de almendras 1 L<br><span class="tag" style="background:rgba(2,184,204,.15);color:var(--teal)">Llega el jueves</span></div>
+              <div class="card"><span class="mono">INV-2030</span>Filtros de papel V60</div>
+            </div>
+            <div class="col">
+              <h4><i style="background:var(--green)"></i>Recibido · 12</h4>
+              <div class="card"><span class="mono">INV-2027</span>Azúcar morena 1 kg<br><span class="tag" style="background:rgba(39,166,68,.15);color:#5fd27c">Completo</span></div>
+              <div class="card"><span class="mono">INV-2025</span>Chocolate 70 %</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Hecho para tiendas que crecen</p>
+      <h2>Todo tu stock, en una sola pantalla.</h2>
+      <div class="grid3">
+        <div class="feat"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div><h3>Conteo en vivo</h3><p>Cada venta descuenta del inventario al instante, en todas tus sedes.</p></div>
+        <div class="feat"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/></svg></div><h3>Pedidos automáticos</h3><p>Define un mínimo y Kardo prepara el pedido al proveedor antes de que se agote.</p></div>
+        <div class="feat"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><h3>Reportes claros</h3><p>Qué se vende, qué se queda quieto y cuánto dinero tienes en bodega.</p></div>
+      </div>
+      <div class="stats">
+        <div><b>2.400+</b><span>tiendas en Colombia</span></div>
+        <div><b>38 %</b><span>menos productos agotados</span></div>
+        <div><b>6 h</b><span>ahorradas por semana</span></div>
+        <div><b>99,9 %</b><span>de disponibilidad</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cierre">
+    <div class="wrap">
+      <h2>Empieza a contar mejor hoy.</h2>
+      <a class="btn btn--lima btn--lg" href="#">Crear cuenta gratis</a>
+    </div>
+  </section>
+
+  <footer><div class="wrap"><span>Kardo · negocio de ejemplo</span><span class="mono">v2.4.1</span></div></footer>
+</body>
+</html>

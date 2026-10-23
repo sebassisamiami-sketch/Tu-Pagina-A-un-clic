@@ -376,6 +376,24 @@ const Firestore = (function () {
   const LABEL_SUBMIT = hasWhatsApp ? "Enviar por WhatsApp" : "Enviar solicitud";
   submitBtn.textContent = LABEL_SUBMIT;
 
+  /* Si la persona llega desde "Quiero este estilo" (galería de estilos), el mensaje queda listo */
+  const ESTILOS = {
+    "precision-nocturna": "Precisión nocturna",
+    "neon-coral": "Neón coral",
+    "sala-blanca": "Sala blanca",
+    "galeria-calida": "Galería cálida",
+    "recreo": "Recreo",
+    "picante": "Picante",
+    "crema-editorial": "Crema editorial",
+    "galeria-nocturna": "Galería nocturna",
+  };
+  const estiloElegido = ESTILOS[new URLSearchParams(location.search).get("estilo")];
+  if (estiloElegido && !form.mensaje.value.trim()) {
+    form.mensaje.value = `Me gustó el estilo "${estiloElegido}" de la galería y quiero una página así para mi negocio.`;
+    const web = form.querySelector('input[name="tipo"][value="una página web"]');
+    if (web) web.checked = true;
+  }
+
   function showError(text, field) {
     okBox.hidden = true;
     errorBox.textContent = text;

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Picante | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --oro: #faae33; --rust: #823513; --azafran: #9f531b; --chile: #d1255c; --clavo: #281006; --especia: #402011; --cardamomo: #6b2e12; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--rust); color: var(--oro); font: 500 14px/1.3 "Inter", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .display { font-family: "Anton", "Bebas Neue", Impact, sans-serif; font-weight: 400; text-transform: uppercase; }
+    .wrap { max-width: 1440px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 48px); }
+    .punteado { border: 0; border-top: 3px dotted var(--azafran); margin: 0; }
+
+    nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 16px; }
+    nav ul { display: flex; gap: 8px; margin: 0; padding: 0; list-style: none; }
+    nav li a { display: block; padding: 10px 16px; border-radius: 999px; background: var(--especia); color: var(--oro); font-size: 13px; letter-spacing: .02em; text-transform: uppercase; }
+    nav li a.on { background: var(--oro); color: var(--clavo); }
+    .logo { font-size: 30px; letter-spacing: .01em; color: var(--oro); }
+    .pedir { padding: 12px 22px; border-radius: 999px; background: var(--oro); color: var(--clavo); font-size: 13px; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; }
+
+    .hero { position: relative; padding: 32px 0 48px; overflow: hidden; }
+    .hero::before { content: ""; position: absolute; inset: 0; opacity: .12; background-image: radial-gradient(circle at 20% 30%, var(--oro) 0 2px, transparent 3px), radial-gradient(circle at 70% 60%, var(--oro) 0 2px, transparent 3px), radial-gradient(circle at 40% 80%, var(--oro) 0 1.5px, transparent 2.5px); background-size: 120px 120px, 160px 160px, 90px 90px; }
+    .hero h1 { position: relative; margin: 0; font-size: clamp(88px, 17vw, 213px); line-height: .82; letter-spacing: -0.02em; color: var(--oro); }
+    .hero h1 span { display: block; color: var(--clavo); -webkit-text-stroke: 2px var(--oro); }
+    .hero .fila { position: relative; display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-top: 32px; flex-wrap: wrap; }
+    .hero p { max-width: 380px; margin: 0; color: #f6d9a7; font-size: 16px; line-height: 1.4; }
+    .sello { width: 150px; height: 150px; border-radius: 50%; border: 3px dotted var(--oro); display: grid; place-items: center; text-align: center; font-size: 22px; line-height: .95; transform: rotate(-12deg); }
+
+    .menu { padding: 64px 0 96px; }
+    .menu h2 { margin: 0 0 24px; font-size: clamp(48px, 8vw, 96px); line-height: .9; letter-spacing: -0.01em; }
+    .platos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .plato { padding: 16px; border-radius: 6px; background: var(--especia); }
+    .plato .img { aspect-ratio: 4 / 3; border-radius: 6px; background: var(--clavo); display: grid; place-items: center; margin-bottom: 14px; }
+    .plato h3 { margin: 0; font-size: 34px; line-height: .95; letter-spacing: -0.005em; }
+    .plato p { margin: 8px 0 14px; color: #e6c38c; font-size: 13px; line-height: 1.3; }
+    .plato .pie { display: flex; justify-content: space-between; align-items: center; }
+    .plato .precio { font-size: 26px; }
+    .chip { padding: 5px 10px; border-radius: 999px; background: var(--chile); color: #fff; font-size: 11px; font-weight: 600; letter-spacing: .03em; text-transform: uppercase; }
+    .add { padding: 9px 16px; border-radius: 999px; border: 2px solid var(--oro); font-size: 12px; font-weight: 600; text-transform: uppercase; }
+
+    .cinta { overflow: hidden; background: var(--oro); color: var(--clavo); padding: 14px 0; white-space: nowrap; }
+    .cinta div { display: inline-block; font-size: 40px; line-height: 1; animation: correr 22s linear infinite; }
+    @keyframes correr { to { transform: translateX(-50%); } }
+    footer { background: var(--clavo); padding: 48px 0; }
+    footer .display { font-size: clamp(56px, 10vw, 130px); line-height: .9; }
+    footer p { color: var(--azafran); margin: 16px 0 0; }
+    @media (max-width: 860px) {
+      nav ul { display: none; }
+      .platos { grid-template-columns: 1fr; }
+      .sello { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) { .cinta div { animation: none; } }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Picante</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=picante#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <nav><div class="wrap"><a class="logo display" href="#">Brasa Burger</a><ul><li><a class="on" href="#">Menú</a></li><li><a href="#">Combos</a></li><li><a href="#">Locales</a></li></ul><a class="pedir" href="#">Pedir ya</a></div></nav>
+  <hr class="punteado">
+
+  <header class="hero">
+    <div class="wrap">
+      <h1 class="display">A la brasa<span>sin piedad</span></h1>
+      <div class="fila">
+        <p>Carne madurada, pan brioche hecho en casa y una salsa de ají que no perdona. Hamburguesas de fuego, en Bogotá desde 2019.</p>
+        <div class="sello display" aria-hidden="true">100 %<br>carne<br>de res</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="cinta display" aria-hidden="true"><div>★ Brasa ★ Ají casero ★ Papas rústicas ★ Domicilio en 30 min ★ Brasa ★ Ají casero ★ Papas rústicas ★ Domicilio en 30 min ★&nbsp;</div></div>
+
+  <section class="menu">
+    <div class="wrap">
+      <h2 class="display">El menú</h2>
+      <div class="platos">
+        <article class="plato"><div class="img" aria-hidden="true"><svg width="120" height="90" viewBox="0 0 120 90"><path d="M10 40Q60-10 110 40z" fill="#faae33"/><rect x="8" y="44" width="104" height="10" rx="5" fill="#d1255c"/><rect x="6" y="56" width="108" height="14" rx="7" fill="#6b2e12"/><path d="M10 74h100q-8 14-50 14T10 74z" fill="#faae33"/></svg></div><h3 class="display">La Clásica</h3><p>Doble carne, queso cheddar, cebolla caramelizada y salsa de la casa.</p><div class="pie"><span class="precio display">$28.000</span><a class="add" href="#">Agregar</a></div></article>
+        <article class="plato"><div class="img" aria-hidden="true"><svg width="120" height="90" viewBox="0 0 120 90"><path d="M10 40Q60-10 110 40z" fill="#faae33"/><rect x="8" y="44" width="104" height="10" rx="5" fill="#9f531b"/><rect x="6" y="56" width="108" height="14" rx="7" fill="#402011"/><path d="M10 74h100q-8 14-50 14T10 74z" fill="#faae33"/></svg></div><h3 class="display">La Diabla</h3><p>Ají habanero, jalapeños asados, tocineta crocante y queso costeño.</p><div class="pie"><span class="chip">Muy picante</span><a class="add" href="#">Agregar</a></div></article>
+        <article class="plato"><div class="img" aria-hidden="true"><svg width="120" height="90" viewBox="0 0 120 90"><path d="M10 40Q60-10 110 40z" fill="#faae33"/><rect x="8" y="44" width="104" height="10" rx="5" fill="#a5ed6e"/><rect x="6" y="56" width="108" height="14" rx="7" fill="#9f531b"/><path d="M10 74h100q-8 14-50 14T10 74z" fill="#faae33"/></svg></div><h3 class="display">La Verde</h3><p>Medallón de garbanzo, aguacate, tomate asado y alioli de cilantro.</p><div class="pie"><span class="precio display">$25.000</span><a class="add" href="#">Agregar</a></div></article>
+      </div>
+    </div>
+  </section>
+
+  <footer><div class="wrap"><div class="display">Pide. Muerde. Repite.</div><p>Brasa Burger · negocio de ejemplo. Platos y precios ilustrativos.</p></div></footer>
+</body>
+</html>

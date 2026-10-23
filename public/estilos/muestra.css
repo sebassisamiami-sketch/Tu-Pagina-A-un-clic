@@ -1,0 +1,47 @@
+/* Barra que identifica cada página de /estilos/ como muestra de Tu Página a un Clic.
+   Se aísla del estilo de la muestra con su propia fuente y colores. */
+.tpc-barra {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  padding: 10px clamp(12px, 3vw, 24px);
+  background: #000;
+  color: #bdbdbd;
+  font: 400 13px/1.3 "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  letter-spacing: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, .12);
+}
+.tpc-barra * { box-sizing: border-box; }
+.tpc-barra__info { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.tpc-barra__info b { color: #fff; font-weight: 600; }
+.tpc-barra__tag {
+  flex: none;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: #ffb829;
+  color: #000;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.tpc-barra__acciones { display: flex; align-items: center; gap: 14px; }
+.tpc-barra a { color: #fff; text-decoration: none; }
+.tpc-barra a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.tpc-barra .tpc-barra__cta {
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: #8052ff;
+  color: #fff;
+  font-weight: 600;
+}
+.tpc-barra .tpc-barra__cta:hover { background: #9873ff; text-decoration: none; }
+@media (max-width: 560px) {
+  .tpc-barra__texto { display: none; }
+  .tpc-barra { padding-block: 8px; }
+}

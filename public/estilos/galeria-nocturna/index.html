@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Galería nocturna | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Inter:wght@300;400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --iris: #847dff; --cian: #00b3dd; --iris-palido: #d1c9ff; --iris-hondo: #4b49aa; --orquidea: #dd90d8; --periwinkle: #90b8f0;
+      --void: #000000; --abismo: #090a0b; --obsidiana: #0f1011; --grafito: #2e2e2e; --acero: #3f4041; --niebla: #6a6b6b; --ceniza: #9f9fa0; --plata: #cacaca; --nube: #f5f5f7; --puro: #ffffff; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--obsidiana); color: var(--ceniza); font: 400 16px/1.5 "Inter", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .serif { font-family: "Cormorant Garamond", "DM Serif Display", Georgia, serif; font-weight: 300; color: var(--nube); }
+    .mono { font: 400 11px/1 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--niebla); }
+
+    nav .wrap { display: flex; align-items: center; gap: 36px; height: 76px; }
+    .logo { font-size: 26px; letter-spacing: .02em; }
+    nav ul { display: flex; gap: 28px; margin: 0; padding: 0; list-style: none; font-size: 14px; color: var(--ceniza); }
+    .btn { display: inline-flex; align-items: center; height: 44px; padding: 0 22px; border-radius: 9999px; font-size: 14px; }
+    .btn--blanco { background: var(--puro); color: var(--void); }
+    .btn--linea { border: 1px solid var(--acero); color: var(--plata); }
+    nav .btn { margin-left: auto; }
+
+    .hero { padding: 96px 0 80px; text-align: center; }
+    .hero h1 { margin: 20px auto 24px; max-width: 12ch; font-size: clamp(56px, 10vw, 96px); line-height: .9; }
+    .hero h1 em { font-style: italic; color: var(--iris-palido); }
+    .hero p { max-width: 460px; margin: 0 auto 32px; font-weight: 300; font-size: 18px; }
+    .hero .acc { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    .vitrina { display: grid; grid-template-columns: 1.3fr 1fr 1fr; grid-template-rows: 300px 260px; gap: 16px; padding-bottom: 96px; }
+    .panel { position: relative; border-radius: 20px; padding: 32px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; color: var(--void); }
+    .panel .mono { color: rgba(0,0,0,.55); }
+    .panel h3 { margin: 0; font-size: 40px; line-height: .95; color: var(--void); }
+    .panel--iris { grid-row: span 2; background: var(--iris); }
+    .panel--orquidea { background: var(--orquidea); }
+    .panel--peri { background: var(--periwinkle); }
+    .panel--oscuro { grid-column: span 2; background: var(--grafito); color: var(--plata); }
+    .panel--oscuro h3 { color: var(--nube); }
+    .panel--oscuro .mono { color: var(--niebla); }
+    .joya { position: absolute; right: -40px; bottom: -40px; width: 300px; height: 300px; border-radius: 50%; border: 18px solid rgba(255,255,255,.55); box-shadow: inset 0 0 0 2px rgba(0,0,0,.08), 0 0 0 2px rgba(0,0,0,.06); }
+    .joya::after { content: ""; position: absolute; left: 50%; top: -34px; width: 46px; height: 46px; transform: translateX(-50%) rotate(45deg); background: linear-gradient(135deg, #fff, var(--iris-palido)); border-radius: 6px; box-shadow: 0 0 30px rgba(255,255,255,.8); }
+    .grafico { height: 80px; }
+    .grafico path { fill: none; stroke: var(--cian); stroke-width: 2; }
+
+    .cita { padding: 96px 0; border-top: 1px solid var(--grafito); text-align: center; }
+    .cita blockquote { margin: 0 auto; max-width: 20ch; font-size: clamp(38px, 6vw, 64px); line-height: 1; }
+    .cita p { margin-top: 24px; }
+    footer { padding: 32px 0; border-top: 1px solid var(--grafito); font-size: 13px; color: var(--niebla); }
+    @media (max-width: 860px) {
+      nav ul { display: none; }
+      .vitrina { grid-template-columns: 1fr; grid-template-rows: none; }
+      .panel { min-height: 240px; }
+      .panel--iris { grid-row: auto; min-height: 340px; }
+      .panel--oscuro { grid-column: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Galería nocturna</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=galeria-nocturna#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <nav><div class="wrap"><a class="logo serif" href="#">Aurum</a><ul><li>Colecciones</li><li>A la medida</li><li>Taller</li><li>Citas</li></ul><a class="btn btn--blanco" href="#">Agendar cita</a></div></nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <span class="mono">Joyería de autor · Bogotá</span>
+      <h1 class="serif">Piezas que se <em>heredan</em>.</h1>
+      <p>Anillos, collares y argollas hechos a mano en oro colombiano, una pieza a la vez.</p>
+      <div class="acc"><a class="btn btn--blanco" href="#">Ver colecciones</a><a class="btn btn--linea" href="#">Diseñar mi argolla</a></div>
+    </div>
+  </header>
+
+  <section class="wrap">
+    <div class="vitrina">
+      <article class="panel panel--iris"><span class="mono">Colección 01</span><h3 class="serif">Argollas<br>de compromiso</h3><div class="joya" aria-hidden="true"></div></article>
+      <article class="panel panel--orquidea"><span class="mono">Colección 02</span><h3 class="serif">Aretes</h3></article>
+      <article class="panel panel--peri"><span class="mono">Colección 03</span><h3 class="serif">Collares</h3></article>
+      <article class="panel panel--oscuro">
+        <div><span class="mono">Oro 18 k · precio del gramo</span><h3 class="serif" style="margin-top:12px">Transparente, siempre.</h3></div>
+        <svg class="grafico" viewBox="0 0 400 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60 L40 55 L80 58 L120 44 L160 48 L200 36 L240 40 L280 28 L320 32 L360 18 L400 22"/></svg>
+      </article>
+    </div>
+  </section>
+
+  <section class="cita">
+    <div class="wrap">
+      <blockquote class="serif">“Lo diseñamos juntos. Hoy es lo más valioso que tengo.”</blockquote>
+      <p class="mono">Andrea R. · argolla a la medida</p>
+    </div>
+  </section>
+
+  <footer><div class="wrap">Aurum · negocio de ejemplo. Piezas y precios ilustrativos.</div></footer>
+</body>
+</html>

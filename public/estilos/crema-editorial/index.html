@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Crema editorial | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Geist+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --violeta: #0447ff; --naranja: #ff4704; --ink: #000000; --grafito: #44403b; --smoke: #777169; --ash: #a59f97; --stone: #ebe8e4; --taupe: #f5f3f1; --cascara: #fdfcfc; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--cascara); color: var(--smoke); font: 400 16px/1.5 "Inter", system-ui, sans-serif; letter-spacing: .01em; -webkit-font-smoothing: antialiased; }
+    a { color: var(--ink); text-decoration: none; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .titular { font-weight: 300; letter-spacing: -0.02em; color: var(--ink); }
+
+    nav .wrap { display: flex; align-items: center; gap: 32px; height: 72px; }
+    .logo { font-weight: 500; font-size: 18px; letter-spacing: -0.01em; }
+    nav ul { display: flex; gap: 28px; margin: 0; padding: 0; list-style: none; font-size: 15px; color: var(--grafito); }
+    nav .acc { margin-left: auto; display: flex; gap: 8px; }
+    .btn { display: inline-flex; align-items: center; height: 40px; padding: 0 18px; border-radius: 9999px; font-size: 15px; font-weight: 500; letter-spacing: 0; }
+    .btn--negro { background: var(--ink); color: #fff; }
+    .btn--claro { background: var(--cascara); border: 1px solid var(--stone); color: var(--ink); }
+
+    .hero { padding: 88px 0 64px; text-align: center; }
+    .hero .tag { display: inline-block; padding: 6px 14px; border-radius: 9999px; background: var(--taupe); color: var(--grafito); font-size: 14px; }
+    .hero h1 { margin: 24px auto 16px; max-width: 16ch; font-size: clamp(40px, 6vw, 64px); line-height: 1.08; }
+    .hero p { max-width: 520px; margin: 0 auto 28px; font-size: 20px; line-height: 1.35; color: var(--smoke); letter-spacing: 0; }
+    .hero .acc { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+
+    .escena { position: relative; margin: 56px auto 0; max-width: 1080px; aspect-ratio: 16 / 7; border-radius: 20px; background: var(--taupe); overflow: hidden; display: grid; place-items: center; }
+    .esferas { position: relative; width: 340px; height: 220px; }
+    .esferas i { position: absolute; border-radius: 50%; }
+    .esferas .a { left: 30px; top: 10px; width: 200px; height: 200px; background: radial-gradient(circle at 32% 30%, #fff 0 4%, #7d9bff 18%, var(--violeta) 55%, #01208a 100%); box-shadow: 0 30px 50px -20px rgba(4,71,255,.5); }
+    .esferas .b { right: 20px; bottom: 0; width: 140px; height: 140px; background: radial-gradient(circle at 32% 30%, #fff 0 5%, #ff9a73 22%, var(--naranja) 58%, #8a2400 100%); box-shadow: 0 24px 40px -16px rgba(255,71,4,.5); }
+    .escena .nota { position: absolute; left: 24px; bottom: 20px; font: 400 13px/1.69 "Geist Mono", monospace; color: var(--smoke); }
+
+    section { padding: 96px 0; }
+    .dos { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    h2 { margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1.08; }
+    .lead { font-size: 18px; line-height: 1.6; color: var(--smoke); margin: 0 0 16px; letter-spacing: 0; }
+    .menu { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
+    .tiempo { padding: 28px; border-radius: 20px; background: var(--taupe); }
+    .tiempo .num { font: 400 13px/1 "Geist Mono", monospace; color: var(--ash); }
+    .tiempo h3 { margin: 40px 0 8px; font-size: 24px; font-weight: 300; letter-spacing: -0.02em; color: var(--ink); }
+    .tiempo p { margin: 0; font-size: 15px; line-height: 1.47; color: var(--smoke); letter-spacing: 0; }
+    .linea { border: 0; border-top: 1px solid var(--stone); margin: 0; }
+    .reserva { text-align: center; }
+    .reserva h2 { margin: 0 auto 24px; max-width: 18ch; }
+    .reserva .datos { display: flex; justify-content: center; gap: 40px; margin-top: 40px; font-size: 15px; color: var(--grafito); flex-wrap: wrap; }
+    footer { padding: 32px 0; color: var(--ash); font-size: 14px; }
+    @media (max-width: 820px) {
+      nav ul, nav .btn--claro { display: none; }
+      .escena .nota { display: none; }
+      .dos, .menu { grid-template-columns: 1fr; }
+      .escena { aspect-ratio: 4 / 3; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Crema editorial</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=crema-editorial#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <nav><div class="wrap"><a class="logo" href="#">Fogón de Autor</a><ul><li>Menú</li><li>La cocina</li><li>Eventos</li><li>Diario</li></ul><div class="acc"><a class="btn btn--claro" href="#">Carta de vinos</a><a class="btn btn--negro" href="#">Reservar</a></div></div></nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <span class="tag">Menú de temporada · otoño</span>
+      <h1 class="titular">Cocina colombiana, contada en siete tiempos.</h1>
+      <p>Ingredientes de pequeños productores, cocinados al fuego lento de la leña y servidos sin prisa.</p>
+      <div class="acc"><a class="btn btn--negro" href="#">Reservar una mesa</a><a class="btn btn--claro" href="#">Ver el menú</a></div>
+      <div class="escena" aria-hidden="true">
+        <div class="esferas"><i class="a"></i><i class="b"></i></div>
+        <span class="nota">Temporada 04 · 7 tiempos · 2 h 30 min</span>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <div class="dos">
+        <h2 class="titular">Un menú que cambia con lo que da la tierra.</h2>
+        <div>
+          <p class="lead">Cada temporada visitamos a las familias que cultivan lo que servimos. El menú nace de esas visitas: papas nativas de Boyacá, cacao de Tumaco, pescado del Pacífico.</p>
+          <p class="lead">El resultado es una mesa pequeña, de 24 puestos, donde cada plato tiene una historia.</p>
+        </div>
+      </div>
+      <div class="menu">
+        <article class="tiempo"><span class="num">01</span><h3>Papas nativas</h3><p>Tres variedades de Boyacá, ají de uchuva y suero costeño.</p></article>
+        <article class="tiempo"><span class="num">04</span><h3>Pesca del día</h3><p>Curada en sal de Zipaquirá, leche de coco y hojas de bijao.</p></article>
+        <article class="tiempo"><span class="num">07</span><h3>Cacao de Tumaco</h3><p>Ganache al 70 %, helado de queso fresco y miel de caña.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <hr class="linea">
+
+  <section class="reserva">
+    <div class="wrap">
+      <h2 class="titular">Una mesa de 24 puestos. Reserva con tiempo.</h2>
+      <a class="btn btn--negro" href="#">Reservar una mesa</a>
+      <div class="datos"><span>Martes a sábado · 7:00 p. m.</span><span>Chapinero, Bogotá</span><span>$290.000 por persona</span></div>
+    </div>
+  </section>
+
+  <footer><div class="wrap">Fogón de Autor · negocio de ejemplo. Platos y precios ilustrativos.</div></footer>
+</body>
+</html>

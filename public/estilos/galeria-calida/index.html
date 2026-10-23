@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Galería cálida | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --rausch: #ff385c; --rausch-600: #e00b41; --hof: #222222; --foggy: #6a6a6a; --g500: #c1c1c1; --deco: #dddddd; --bebe: #ebebeb; --faint: #f7f7f7; --blanco: #ffffff; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--blanco); color: var(--hof); font: 400 14px/1.43 "DM Sans", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1440px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 80px); }
+
+    header.top { border-bottom: 1px solid var(--bebe); }
+    header.top .fila { display: flex; align-items: center; height: 80px; gap: 24px; }
+    .logo { display: flex; align-items: center; gap: 8px; color: var(--rausch); font-weight: 700; font-size: 20px; letter-spacing: -0.02em; }
+    .logo svg { width: 30px; height: 30px; fill: var(--rausch); }
+    .centro { display: flex; gap: 28px; margin: 0 auto; font-size: 16px; font-weight: 500; color: var(--foggy); }
+    .centro b { color: var(--hof); font-weight: 500; position: relative; }
+    .centro b::after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; height: 2px; background: var(--hof); border-radius: 2px; }
+    .der { display: flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 500; }
+    .avatar { display: flex; align-items: center; gap: 10px; padding: 6px 6px 6px 12px; border: 1px solid var(--deco); border-radius: 9999px; }
+    .avatar i { width: 30px; height: 30px; border-radius: 50%; background: var(--foggy); }
+
+    .buscar { display: flex; align-items: center; max-width: 850px; margin: 24px auto 28px; border: 1px solid var(--deco); border-radius: 9999px; box-shadow: 0 3px 12px rgba(0,0,0,.08); background: #fff; }
+    .buscar div { flex: 1; padding: 14px 28px; border-radius: 9999px; }
+    .buscar div + div { border-left: 1px solid var(--bebe); }
+    .buscar label { display: block; font-size: 12px; font-weight: 600; }
+    .buscar span { color: var(--foggy); font-size: 14px; }
+    .buscar button { flex: none; width: 48px; height: 48px; margin-right: 8px; border: 0; border-radius: 50%; background: var(--rausch); display: grid; place-items: center; cursor: pointer; }
+    .buscar button svg { width: 16px; height: 16px; stroke: #fff; stroke-width: 3; fill: none; }
+
+    .cats { display: flex; gap: 32px; padding: 12px 0 0; overflow-x: auto; border-bottom: 1px solid var(--bebe); }
+    .cat { display: grid; justify-items: center; gap: 8px; padding-bottom: 12px; font-size: 12px; font-weight: 500; color: var(--foggy); white-space: nowrap; border-bottom: 2px solid transparent; }
+    .cat.on { color: var(--hof); border-color: var(--hof); }
+    .cat i { width: 24px; height: 24px; border-radius: 6px; background: currentColor; opacity: .7; }
+
+    h2 { margin: 40px 0 20px; font-size: 22px; font-weight: 500; letter-spacing: -0.02em; }
+    .lista { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px 24px; padding-bottom: 48px; }
+    .item .foto { position: relative; aspect-ratio: 20 / 19; border-radius: 12px; overflow: hidden; }
+    .item .foto i { position: absolute; inset: 0; }
+    .corazon { position: absolute; right: 14px; top: 14px; width: 24px; height: 24px; }
+    .corazon svg { width: 100%; height: 100%; fill: rgba(0,0,0,.45); stroke: #fff; stroke-width: 2; }
+    .item .favorito { position: absolute; left: 12px; top: 12px; padding: 5px 10px; border-radius: 9999px; background: #fff; font-size: 12px; font-weight: 600; box-shadow: 0 2px 6px rgba(0,0,0,.15); }
+    .item .meta { display: flex; justify-content: space-between; margin-top: 12px; font-weight: 600; font-size: 15px; }
+    .item p { margin: 2px 0 0; color: var(--foggy); }
+    .item .precio { margin-top: 6px; }
+    .item .precio b { font-weight: 600; }
+    .puntos { display: flex; gap: 4px; position: absolute; left: 50%; bottom: 12px; transform: translateX(-50%); }
+    .puntos i { position: static; width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.6); }
+    .puntos i:first-child { background: #fff; }
+
+    .anfitrion { margin: 0 0 64px; padding: 40px; border-radius: 12px; background: var(--faint); display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .anfitrion h3 { margin: 0 0 6px; font-size: 28px; font-weight: 700; letter-spacing: -0.02em; }
+    .anfitrion p { margin: 0; color: var(--foggy); font-size: 16px; }
+    .btn { display: inline-flex; padding: 14px 24px; border-radius: 8px; background: var(--rausch); color: #fff; font-size: 16px; font-weight: 600; }
+    footer { background: var(--faint); border-top: 1px solid var(--deco); padding: 24px 0; color: var(--foggy); }
+    @media (max-width: 1100px) { .lista { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 820px) {
+      .centro, .der span { display: none; }
+      .buscar div + div { display: none; }
+      .lista { grid-template-columns: repeat(2, 1fr); gap: 28px 16px; }
+    }
+    @media (max-width: 520px) { .lista { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Galería cálida</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=galeria-calida#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <header class="top">
+    <div class="wrap">
+      <div class="fila">
+        <a class="logo" href="#"><svg viewBox="0 0 32 32"><path d="M16 3 4 14v15h9v-9h6v9h9V14z"/></svg>El Roble</a>
+        <div class="centro"><b>Cabañas</b><span>Experiencias</span><span>Eventos</span></div>
+        <div class="der"><span>Hazte anfitrión</span><div class="avatar">☰ <i></i></div></div>
+      </div>
+      <div class="buscar">
+        <div><label>Dónde</label><span>Explora destinos</span></div>
+        <div><label>Llegada</label><span>Agrega fechas</span></div>
+        <div><label>Salida</label><span>Agrega fechas</span></div>
+        <div><label>Quién</label><span>¿Cuántos?</span></div>
+        <button type="button" aria-label="Buscar"><svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="7"/><path d="m21 21-6-6"/></svg></button>
+      </div>
+      <div class="cats">
+        <span class="cat on"><i></i>Bosque</span><span class="cat"><i></i>Lago</span><span class="cat"><i></i>Montaña</span><span class="cat"><i></i>Glamping</span><span class="cat"><i></i>Con piscina</span><span class="cat"><i></i>Café</span><span class="cat"><i></i>Mascotas</span><span class="cat"><i></i>Vista</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h2>Cabañas populares cerca de Bogotá</h2>
+    <div class="lista">
+      <article class="item"><div class="foto"><i style="background:linear-gradient(160deg,#c9d6a3,#5c7a3a 55%,#2f3e1f)"></i><span class="favorito">Favorito</span><span class="corazon"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.3-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.7-8 11-8 11z"/></svg></span><span class="puntos"><i></i><i></i><i></i></span></div><div class="meta"><span>La Calera, Cundinamarca</span><span>★ 4,96</span></div><p>Cabaña en el bosque · chimenea</p><p class="precio"><b>$320.000</b> COP noche</p></article>
+      <article class="item"><div class="foto"><i style="background:linear-gradient(170deg,#bfe0f2,#6aa6c9 50%,#2b5d7a)"></i><span class="corazon"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.3-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.7-8 11-8 11z"/></svg></span><span class="puntos"><i></i><i></i><i></i></span></div><div class="meta"><span>Guatavita, Cundinamarca</span><span>★ 4,91</span></div><p>Frente al embalse · muelle privado</p><p class="precio"><b>$410.000</b> COP noche</p></article>
+      <article class="item"><div class="foto"><i style="background:linear-gradient(150deg,#f3d9b1,#c98e52 55%,#7a4a24)"></i><span class="favorito">Favorito</span><span class="corazon"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.3-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.7-8 11-8 11z"/></svg></span><span class="puntos"><i></i><i></i><i></i></span></div><div class="meta"><span>Villa de Leyva, Boyacá</span><span>★ 4,98</span></div><p>Domo glamping · cielo estrellado</p><p class="precio"><b>$280.000</b> COP noche</p></article>
+      <article class="item"><div class="foto"><i style="background:linear-gradient(165deg,#d9cfe8,#8d7bb0 50%,#3f3260)"></i><span class="corazon"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.3-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.7-8 11-8 11z"/></svg></span><span class="puntos"><i></i><i></i><i></i></span></div><div class="meta"><span>Suesca, Cundinamarca</span><span>★ 4,88</span></div><p>Cabaña de piedra · escalada cerca</p><p class="precio"><b>$250.000</b> COP noche</p></article>
+      <article class="item"><div class="foto"><i style="background:linear-gradient(160deg,#cfe8d4,#5fa476 55%,#24543a)"></i><span class="corazon"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.3-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.7-8 11-8 11z"/></svg></span><span class="puntos"><i></i><i></i><i></i></span></div><div class="meta"><span>Choachí, Cundinamarca</span><span>★ 4,93</span></div><p>Termales a 5 min · desayuno</p><p class="precio"><b>$360.000</b> COP noche</p></article>
+      <article class="item"><div class="foto"><i style="background:linear-gradient(160deg,#f2d0c4,#d27a62 55%,#7c3628)"></i><span class="favorito">Favorito</span><span class="corazon"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.3-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.7-8 11-8 11z"/></svg></span><span class="puntos"><i></i><i></i><i></i></span></div><div class="meta"><span>Tabio, Cundinamarca</span><span>★ 4,97</span></div><p>Finca cafetera · huerta</p><p class="precio"><b>$300.000</b> COP noche</p></article>
+      <article class="item"><div class="foto"><i style="background:linear-gradient(170deg,#e4e4e4,#9a9a9a 55%,#4a4a4a)"></i><span class="corazon"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.3-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.7-8 11-8 11z"/></svg></span><span class="puntos"><i></i><i></i><i></i></span></div><div class="meta"><span>Sopó, Cundinamarca</span><span>★ 4,86</span></div><p>Loft minimalista · vista al valle</p><p class="precio"><b>$230.000</b> COP noche</p></article>
+      <article class="item"><div class="foto"><i style="background:linear-gradient(155deg,#fbe7a8,#e0b44c 55%,#8a6418)"></i><span class="corazon"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.3-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.7-8 11-8 11z"/></svg></span><span class="puntos"><i></i><i></i><i></i></span></div><div class="meta"><span>Zipaquirá, Cundinamarca</span><span>★ 4,90</span></div><p>Casa de campo · jacuzzi</p><p class="precio"><b>$390.000</b> COP noche</p></article>
+    </div>
+
+    <div class="anfitrion">
+      <div><h3>¿Tienes una cabaña?</h3><p>Publícala en El Roble y recibe reservas desde la primera semana.</p></div>
+      <a class="btn" href="#">Empezar a publicar</a>
+    </div>
+  </main>
+
+  <footer><div class="wrap">El Roble · negocio de ejemplo. Lugares, calificaciones y precios ilustrativos.</div></footer>
+</body>
+</html>

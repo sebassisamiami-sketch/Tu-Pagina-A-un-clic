@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Sala blanca | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root {
+      --azul: #0071e3; --link: #0066cc; --senal: #2997ff;
+      --carbon: #1d1d1f; --smoke: #333333; --ash: #707070; --mist: #858585; --pebble: #e2e2e5; --frost: #f5f5f7; --ice: #f4f8fb; --blanco: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--blanco); color: var(--carbon); font: 400 17px/1.47 "Inter", system-ui, sans-serif; letter-spacing: -0.016em; -webkit-font-smoothing: antialiased; }
+    a { color: var(--link); text-decoration: none; }
+
+    nav { background: rgba(251,251,253,.85); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(0,0,0,.08); }
+    nav .wrap { display: flex; align-items: center; justify-content: center; gap: 36px; height: 48px; font-size: 12px; color: var(--carbon); letter-spacing: -0.01em; }
+    nav b { font-weight: 600; }
+    nav span { opacity: .8; }
+    .sub { position: relative; border-bottom: 1px solid rgba(0,0,0,.08); background: rgba(255,255,255,.9); }
+    .sub .wrap { max-width: 1000px; margin: 0 auto; padding: 0 22px; display: flex; align-items: center; height: 52px; }
+    .sub h2 { margin: 0; font-size: 21px; font-weight: 600; letter-spacing: -0.005em; }
+    .sub .der { margin-left: auto; display: flex; gap: 24px; align-items: center; font-size: 12px; color: var(--ash); }
+    .pill { display: inline-flex; align-items: center; justify-content: center; padding: 8px 16px; border-radius: 980px; font-size: 14px; font-weight: 400; letter-spacing: -0.01em; }
+    .pill--azul { background: var(--azul); color: #fff; }
+    .pill--linea { border: 1px solid var(--link); color: var(--link); }
+    .pill--lg { padding: 12px 22px; font-size: 17px; }
+
+    .hero { text-align: center; padding: 64px 22px 0; background: var(--frost); overflow: hidden; }
+    .hero .eyebrow { color: #b6420f; font-size: 17px; font-weight: 600; }
+    .hero h1 { margin: 6px 0 0; font-size: clamp(44px, 8vw, 80px); font-weight: 600; line-height: 1.05; letter-spacing: -0.015em; }
+    .hero p { margin: 12px auto 22px; max-width: 520px; font-size: clamp(19px, 2.4vw, 24px); font-weight: 300; line-height: 1.3; color: var(--carbon); }
+    .hero .acc { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .objeto { position: relative; width: min(680px, 92vw); aspect-ratio: 16 / 9; margin: 48px auto 0; }
+    .objeto .halo { position: absolute; inset: 18% 10% -30%; background: radial-gradient(ellipse at 50% 40%, #ffffff 0, #e9eef5 45%, transparent 70%); }
+    .objeto .diente { position: absolute; left: 50%; top: 8%; width: 46%; height: 92%; transform: translateX(-50%); background: linear-gradient(160deg, #ffffff 0%, #eef2f7 45%, #d9e0ea 100%); border-radius: 46% 46% 30% 30% / 34% 34% 66% 66%; box-shadow: inset -18px -24px 40px rgba(120,140,170,.25), inset 14px 10px 30px #fff, 0 40px 60px -30px rgba(29,29,31,.35); }
+    .objeto .diente::after { content: ""; position: absolute; left: 50%; bottom: -6%; width: 18%; height: 30%; transform: translateX(-50%); background: var(--frost); border-radius: 50% 50% 0 0; }
+    .objeto .brillo { position: absolute; left: 41%; top: 18%; width: 6%; height: 30%; border-radius: 50%; background: linear-gradient(#fff, transparent); opacity: .9; filter: blur(2px); }
+
+    .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 12px; }
+    .tile { min-height: 520px; border-radius: 0; padding: 52px 24px 0; text-align: center; background: var(--frost); overflow: hidden; position: relative; }
+    .tile--oscuro { background: #000; color: #f5f5f7; }
+    .tile h3 { margin: 0; font-size: clamp(32px, 4vw, 40px); font-weight: 600; letter-spacing: -0.01em; line-height: 1.1; }
+    .tile p { margin: 8px 0 18px; font-size: 21px; font-weight: 300; }
+    .tile .acc { display: flex; gap: 14px; justify-content: center; }
+    .tile .forma { position: absolute; left: 50%; bottom: -40px; transform: translateX(-50%); width: 260px; height: 260px; border-radius: 50%; }
+    .tile--oscuro .forma { background: radial-gradient(circle at 35% 30%, #4aa3ff, #0071e3 45%, #001b3d 80%); box-shadow: 0 0 120px rgba(41,151,255,.45); }
+    .tile .forma--clara { background: radial-gradient(circle at 35% 30%, #fff, #e2e2e5 60%, #c7c7cc); }
+
+    .datos { max-width: 1000px; margin: 0 auto; padding: 96px 22px; text-align: center; }
+    .datos h2 { margin: 0 0 56px; font-size: clamp(32px, 5vw, 48px); font-weight: 600; letter-spacing: -0.01em; line-height: 1.08; }
+    .datos .fila { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .datos b { display: block; font-size: 48px; font-weight: 600; color: var(--carbon); letter-spacing: -0.02em; }
+    .datos span { color: var(--ash); font-size: 17px; }
+    footer { background: var(--frost); color: var(--ash); font-size: 12px; padding: 20px 22px; border-top: 1px solid var(--pebble); }
+    footer .wrap { max-width: 1000px; margin: 0 auto; }
+    @media (max-width: 760px) {
+      nav span { display: none; }
+      .sub .der span { display: none; }
+      .tiles { grid-template-columns: 1fr; }
+      .tile { min-height: 440px; }
+      .datos .fila { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Sala blanca</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=sala-blanca#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <nav><div class="wrap"><b>Sonrisa Clara</b><span>Tratamientos</span><span>Especialistas</span><span>Sedes</span><span>Precios</span><span>Contacto</span></div></nav>
+  <div class="sub"><div class="wrap"><h2>Diseño de sonrisa</h2><div class="der"><span>Cómo funciona</span><a class="pill pill--azul" href="#">Agendar</a></div></div></div>
+
+  <header class="hero">
+    <div class="eyebrow">Nuevo</div>
+    <h1>Diseño de sonrisa.</h1>
+    <p>Tu sonrisa ideal, planeada en 3D antes de empezar.</p>
+    <div class="acc"><a class="pill pill--azul pill--lg" href="#">Agendar valoración</a><a class="pill pill--linea pill--lg" href="#">Más información ›</a></div>
+    <div class="objeto" aria-hidden="true"><div class="halo"></div><div class="diente"></div><div class="brillo"></div></div>
+  </header>
+
+  <div class="tiles">
+    <div class="tile tile--oscuro">
+      <h3>Ortodoncia invisible</h3>
+      <p>Alineadores casi imperceptibles.</p>
+      <div class="acc"><a class="pill pill--azul" href="#">Conocer más</a><a class="pill pill--linea" href="#" style="color:#2997ff;border-color:#2997ff">Ver precios</a></div>
+      <div class="forma" aria-hidden="true"></div>
+    </div>
+    <div class="tile">
+      <h3>Blanqueamiento</h3>
+      <p>Hasta 8 tonos en una sola cita.</p>
+      <div class="acc"><a class="pill pill--azul" href="#">Conocer más</a><a class="pill pill--linea" href="#">Ver precios</a></div>
+      <div class="forma forma--clara" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <section class="datos">
+    <h2>Atención que se nota.<br>Resultados que se ven.</h2>
+    <div class="fila">
+      <div><b>15</b><span>años cuidando sonrisas</span></div>
+      <div><b>4,9</b><span>de calificación de pacientes</span></div>
+      <div><b>3</b><span>sedes en la ciudad</span></div>
+    </div>
+  </section>
+
+  <footer><div class="wrap">Sonrisa Clara · negocio de ejemplo. Los tratamientos y precios son ilustrativos.</div></footer>
+</body>
+</html>
