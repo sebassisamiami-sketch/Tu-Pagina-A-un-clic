@@ -8,10 +8,12 @@ Página para ofrecer servicios de desarrollo de páginas web, aplicaciones móvi
 ## Estructura
 
 - `public/`: la página (HTML, CSS, JavaScript e íconos). `public/builder.js` es el simulador "Arma tu página" y `public/particulas.js` dibuja la constelación de fondo.
-- `server/index.js`: servidor Express que sirve la página y la API.
+- `server/app.js`: servidor Express con la API, `script.js` y la política de privacidad. `server/index.js` lo arranca en tu computador.
+- `funciones.js`: punto de entrada de la página en Firebase Functions.
 - `server/db.js`: conexión a Postgres y consultas.
 - `panel/`: panel de clientes, desplegado como un servicio aparte.
-- `railway.json`: configuración de despliegue en Railway.
+- `firebase.json` y `.firebaserc`: despliegue en Firebase (Hosting + Functions).
+- `scripts/migrar-datos.js`: copia los datos de una base Postgres a otra.
 - `.github/workflows/deploy.yml`: publicación de la versión estática en GitHub Pages.
 
 ## Cómo funciona el formulario
@@ -68,3 +70,23 @@ Abre `http://localhost:3000`. Sin `DATABASE_URL` la página funciona igual, pero
 ## GitHub Pages
 
 La versión estática se sigue publicando en GitHub Pages en cada cambio a `main`. Usa los secretos `WHATSAPP_NUMBER` y `CONTACT_EMAIL` de **Settings > Secrets and variables > Actions**. En esa versión no hay backend: el formulario solo abre WhatsApp.
+
+## Desplegar en Firebase
+
+La página estática va en Firebase Hosting; la API (formulario y visitas) y el panel corren en Firebase Functions (plan Blaze). La base de datos es Postgres en Neon.
+
+1. Instala la herramienta e inicia sesión: `npm install -g firebase-tools` y `firebase login`.
+2. Crea el sitio del panel (solo la primera vez): `firebase hosting:sites:create tu-pagina-a-un-clic-panel`.
+3. Guarda los secretos (te pide el valor; no queda en el repositorio):
+   `firebase functions:secrets:set DATABASE_URL`, `ADMIN_USER`, `ADMIN_PASSWORD` y `SESSION_SECRET`.
+4. Copia `.env.example` como `.env` y `panel/.env.example` como `panel/.env`, y llénalos.
+5. Instala dependencias: `npm install` y `cd panel && npm install`.
+6. Despliega todo: `firebase deploy`.
+
+### Pasar los datos de otra base
+
+```bash
+ORIGEN_URL="postgres://...base anterior..." DESTINO_URL="postgres://...base nueva..." npm run migrar-datos
+```
+
+Copia clientes, solicitudes y visitas. No toca la base de origen y se detiene si la nueva ya tiene datos.

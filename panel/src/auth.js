@@ -2,7 +2,8 @@ const crypto = require("crypto");
 
 const USER = process.env.ADMIN_USER || "";
 const PASSWORD = process.env.ADMIN_PASSWORD || "";
-const COOKIE = "panel_sesion";
+// Firebase Hosting solo deja pasar una cookie, y debe llamarse "__session".
+const COOKIE = "__session";
 const DURACION_MS = 7 * 24 * 60 * 60 * 1000;
 
 // Clave para firmar las sesiones. Si no se define SESSION_SECRET, se deriva de la contraseña
@@ -91,7 +92,9 @@ function mismoOrigen(req, res, next) {
   if (req.method !== "POST") return next();
   const origen = req.get("origin") || req.get("referer") || "";
   try {
-    if (new URL(origen).host === req.get("host")) return next();
+    // Detrás de Firebase Hosting el dominio original llega en X-Forwarded-Host.
+    const host = (req.get("x-forwarded-host") || req.get("host") || "").split(",")[0].trim();
+    if (new URL(origen).host === host) return next();
   } catch (_) {}
   res.status(403).type("text/plain; charset=utf-8").send("Acción no permitida.");
 }

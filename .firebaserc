@@ -1,0 +1,17 @@
+{
+  "projects": {
+    "default": "tu-pagina-a-un-clic"
+  },
+  "targets": {
+    "tu-pagina-a-un-clic": {
+      "hosting": {
+        "pagina": [
+          "tu-pagina-a-un-clic"
+        ],
+        "panel": [
+          "tu-pagina-a-un-clic-panel"
+        ]
+      }
+    }
+  }
+}

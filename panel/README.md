@@ -13,7 +13,7 @@ Aplicación privada para llevar el control de las solicitudes y los clientes.
 
 | Variable | Para qué sirve |
 | --- | --- |
-| `DATABASE_URL` | La misma base de datos de la página. En Railway: `${{Postgres.DATABASE_URL}}`. |
+| `DATABASE_URL` | La misma base de datos de la página. En Firebase va como secreto. |
 | `ADMIN_USER` | Usuario para entrar. |
 | `ADMIN_PASSWORD` | Contraseña, mínimo 12 caracteres. Sin ella el panel queda desactivado. |
 | `SESSION_SECRET` | Opcional. Clave para firmar las sesiones (mínimo 32 caracteres). Si no se define, se deriva de la contraseña. |
@@ -41,3 +41,7 @@ npm run dev
 ```
 
 Abre `http://localhost:4000`.
+
+## Desplegar en Firebase
+
+El panel se publica junto con la página con `firebase deploy` (ver el README principal). Usuario, contraseña, `SESSION_SECRET` y `DATABASE_URL` van como secretos de Firebase. La sesión usa la cookie `__session`, la única que Firebase Hosting deja pasar.
