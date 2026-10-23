@@ -1,134 +1,44 @@
 {
-  "functions": [
-    {
-      "codebase": "pagina",
-      "source": ".",
-      "runtime": "nodejs22",
-      "ignore": [
-        "node_modules",
-        ".git",
-        ".github",
-        ".firebase",
-        "panel",
-        "scripts",
-        "*.md",
-        "*.log",
-        ".env.example",
-        "railway.json"
-      ]
-    },
-    {
-      "codebase": "panel",
-      "source": "panel",
-      "runtime": "nodejs22",
-      "ignore": [
-        "node_modules",
-        "*.md",
-        "*.log",
-        ".env.example",
-        "railway.json"
-      ]
-    }
-  ],
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
   "hosting": [
     {
       "target": "pagina",
-      "public": "public",
-      "ignore": [
-        "firebase.json",
-        "**/.*",
-        "**/node_modules/**",
-        "script.js",
-        "politica-de-privacidad/index.html"
-      ],
-      "rewrites": [
-        {
-          "source": "/api/**",
-          "function": {
-            "functionId": "pagina",
-            "region": "us-east1"
-          }
-        },
-        {
-          "source": "/script.js",
-          "function": {
-            "functionId": "pagina",
-            "region": "us-east1"
-          }
-        },
-        {
-          "source": "/politica-de-privacidad{,/}",
-          "function": {
-            "functionId": "pagina",
-            "region": "us-east1"
-          }
-        }
-      ],
+      "public": "dist",
+      "predeploy": ["node scripts/construir.js"],
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "headers": [
         {
           "source": "**",
           "headers": [
-            {
-              "key": "X-Content-Type-Options",
-              "value": "nosniff"
-            },
-            {
-              "key": "Referrer-Policy",
-              "value": "strict-origin-when-cross-origin"
-            },
-            {
-              "key": "X-Frame-Options",
-              "value": "DENY"
-            },
-            {
-              "key": "Permissions-Policy",
-              "value": "camera=(), microphone=(), geolocation=()"
-            },
-            {
-              "key": "Cache-Control",
-              "value": "no-cache"
-            }
+            { "key": "X-Content-Type-Options", "value": "nosniff" },
+            { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+            { "key": "X-Frame-Options", "value": "DENY" },
+            { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
+            { "key": "Cache-Control", "value": "no-cache" }
           ]
         },
         {
           "source": "/assets/**",
-          "headers": [
-            {
-              "key": "Cache-Control",
-              "value": "public, max-age=3600"
-            }
-          ]
+          "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600" }]
         }
       ]
     },
     {
       "target": "panel",
       "public": "panel/public",
-      "rewrites": [
-        {
-          "source": "**",
-          "function": {
-            "functionId": "panel",
-            "region": "us-east1"
-          }
-        }
-      ],
+      "rewrites": [{ "source": "**", "destination": "/index.html" }],
       "headers": [
         {
           "source": "**",
           "headers": [
-            {
-              "key": "X-Robots-Tag",
-              "value": "noindex, nofollow"
-            },
-            {
-              "key": "X-Content-Type-Options",
-              "value": "nosniff"
-            },
-            {
-              "key": "X-Frame-Options",
-              "value": "DENY"
-            }
+            { "key": "X-Robots-Tag", "value": "noindex, nofollow" },
+            { "key": "X-Content-Type-Options", "value": "nosniff" },
+            { "key": "X-Frame-Options", "value": "DENY" },
+            { "key": "Referrer-Policy", "value": "same-origin" },
+            { "key": "Cache-Control", "value": "no-cache" }
           ]
         }
       ]

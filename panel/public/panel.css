@@ -1,5 +1,5 @@
 :root {
-  --azul: #2433D9;
+  --azul: #5B2EE0; /* violeta de la marca, con contraste para texto blanco */
   --hondo: #121A6B;
   --tinta: #161A3D;
   --papel: #F5F6FB;
@@ -244,7 +244,7 @@ legend { padding: 0 0 4px; font: 600 1.05rem/1.2 var(--texto); }
 
 /* Entrar */
 
-.login { min-height: 100vh; display: grid; place-items: center; padding: 24px 16px; background: var(--azul); }
+.login { min-height: 100vh; display: grid; place-items: center; padding: 24px 16px; background: #000; }
 .login__card { width: min(400px, 100%); display: grid; gap: 12px; padding: 32px 28px; background: var(--blanco); border-radius: 20px; box-shadow: 0 30px 60px -30px rgba(8, 12, 60, .7); }
 .login__mark { width: 44px; height: 44px; }
 .login__card h1 { font-size: 1.4rem; margin-bottom: 8px; }
@@ -300,3 +300,12 @@ legend { padding: 0 0 4px; font: 600 1.05rem/1.2 var(--texto); }
   .visits__grid { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) { .dot.is-on { animation: none; } }
+
+/* Panel en Firebase: inicio de sesión con Google y avisos */
+.flash--error { background: #FBE7E5; color: var(--rojo); }
+.login__card .flash { margin: 0; }
+.login__card code, .box code { padding: 1px 6px; border-radius: 6px; background: #F1F2F8; font-size: .9em; }
+.uid { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.uid code { word-break: break-all; }
+.uid .btn { margin-top: 0 !important; min-height: 36px !important; }
+label.btn { cursor: pointer; }

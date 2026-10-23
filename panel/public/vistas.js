@@ -1,4 +1,4 @@
-const { ORIGENES, ESTADOS, TIPOS } = require("./db");
+import { ORIGENES, ESTADOS, TIPOS } from "./constantes.js";
 
 /* ---------- Utilidades ---------- */
 
@@ -42,6 +42,7 @@ const MENSAJES = {
   "cliente-guardado": "Cliente guardado.",
   "cliente-creado": "Cliente creado.",
   "cliente-eliminado": "Cliente eliminado. Sus solicitudes se conservan sin cliente asignado.",
+  importado: "Respaldo importado.",
   vinculado: "Cliente creado y vinculado a la solicitud.",
   estado: "Estado actualizado.",
 };
@@ -53,6 +54,7 @@ const ICONOS = {
   solicitudes: '<path d="M4 5h16v11H8l-4 4z"/><path d="M8 9h8M8 12h5"/>',
   clientes: '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.3-5.5 6.5-5.5s5.7 2 6.5 5.5"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.8c1.7.8 3 2.6 3.5 5.2"/>',
   exportar: '<path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 17v3h16v-3"/>',
+  respaldo: '<path d="M4 7c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3z"/><path d="M4 7v10c0 1.7 3.6 3 8 3s8-1.3 8-3V7M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/>',
 };
 
 function layout({ titulo, activo, contenido, ok }) {
@@ -61,6 +63,7 @@ function layout({ titulo, activo, contenido, ok }) {
     ["solicitudes", "/solicitudes", "Solicitudes"],
     ["clientes", "/clientes", "Clientes"],
     ["exportar", "/exportar", "Exportar a Excel"],
+    ["respaldo", "/respaldo", "Respaldo"],
   ]
     .map(
       ([id, href, label]) =>
@@ -76,7 +79,7 @@ function layout({ titulo, activo, contenido, ok }) {
   <div class="app">
     <aside class="side">
       <a class="brand" href="/">
-        <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="9" fill="#fff"/><path d="M11 8 L11 23 L15 19.5 L18 26 L20.8 24.7 L17.9 18.3 L23 18 Z" fill="#FFB627" stroke="#161A3D" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="9" fill="#8052FF"/><path d="M11 8 L11 23 L15 19.5 L18 26 L20.8 24.7 L17.9 18.3 L23 18 Z" fill="#FFB627" stroke="#161A3D" stroke-width="1.4" stroke-linejoin="round"/></svg>
         <span>Panel de<br>clientes</span>
       </a>
       <nav class="nav" aria-label="Secciones">${nav}</nav>
@@ -91,49 +94,48 @@ function layout({ titulo, activo, contenido, ok }) {
 }
 
 function documento(titulo, cuerpo) {
-  return `<!doctype html>
-<html lang="es">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
-<title>${esc(titulo)} | Panel de clientes</title>
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=Unbounded:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/panel.css">
-</head>
-<body>
-${cuerpo}
-<script src="/panel.js" defer></script>
-</body>
-</html>`;
+  document.title = `${titulo} | Panel de clientes`;
+  return cuerpo;
 }
 
 /* ---------- Entrar ---------- */
 
-function entrar({ error, volver, desactivado }) {
+const MARCA = `<svg class="login__mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="9" fill="#8052FF"/><path d="M11 8 L11 23 L15 19.5 L18 26 L20.8 24.7 L17.9 18.3 L23 18 Z" fill="#FFB627" stroke="#161A3D" stroke-width="1.4" stroke-linejoin="round"/></svg>`;
+
+function entrar({ error, cargando } = {}) {
   return documento(
     "Entrar",
     `
   <main class="login">
-    <form class="login__card" method="post" action="/entrar">
-      <svg class="login__mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="9" fill="#2433D9"/><path d="M11 8 L11 23 L15 19.5 L18 26 L20.8 24.7 L17.9 18.3 L23 18 Z" fill="#FFB627" stroke="#161A3D" stroke-width="1.4" stroke-linejoin="round"/></svg>
+    <div class="login__card">
+      ${MARCA}
       <h1>Panel de clientes</h1>
-      ${
-        desactivado
-          ? `<p class="error">El panel está desactivado. Define ADMIN_USER y ADMIN_PASSWORD (mínimo 12 caracteres) en las variables del servicio.</p>`
-          : `
       ${error ? `<p class="error" role="alert">${esc(error)}</p>` : ""}
-      <input type="hidden" name="volver" value="${esc(volver || "/")}">
-      <label for="usuario">Usuario</label>
-      <input id="usuario" name="usuario" autocomplete="username" required autofocus>
-      <label for="clave">Contraseña</label>
-      <input id="clave" name="clave" type="password" autocomplete="current-password" required>
-      <button class="btn btn--primary" type="submit">Entrar</button>`
+      ${
+        cargando
+          ? '<p class="muted">Cargando…</p>'
+          : `<p class="muted">Entra con la cuenta de Google autorizada.</p>
+      <button class="btn btn--primary" type="button" data-accion="entrar">Entrar con Google</button>`
       }
-    </form>
+    </div>
+  </main>`
+  );
+}
+
+function sinAcceso({ correo, uid }) {
+  return documento(
+    "Sin acceso",
+    `
+  <main class="login">
+    <div class="login__card">
+      ${MARCA}
+      <h1>Esta cuenta no tiene acceso</h1>
+      <p class="muted">Entraste como <strong>${esc(correo)}</strong>, pero esa cuenta no está autorizada para ver el panel.</p>
+      <p class="muted">Si es tu cuenta, autorízala una sola vez: en la consola de Firebase entra a <strong>Firestore Database</strong>, crea la colección <code>admins</code> y agrega un documento cuyo ID sea:</p>
+      <p class="uid"><code id="uid">${esc(uid)}</code> <button class="btn" type="button" data-accion="copiar-uid">Copiar</button></p>
+      <p class="muted">Ponle un campo cualquiera, por ejemplo <code>rol</code> con el valor <code>admin</code>. Luego recarga esta página.</p>
+      <button class="btn btn--ghost" type="button" data-accion="salir">Usar otra cuenta</button>
+    </div>
   </main>`
   );
 }
@@ -223,7 +225,7 @@ function visitasSeccion(v) {
         <h2 id="visitas-titulo">Visitas a tu página</h2>
         <span class="live" id="visitas-estado"><i class="dot is-on"></i>En vivo</span>
       </div>
-      <div id="visitas" data-live="/visitas.json" aria-live="polite">${visitasContenido(v)}</div>
+      <div id="visitas" aria-live="polite">${visitasContenido(v)}</div>
     </section>`;
 }
 
@@ -368,7 +370,7 @@ function solicitudForm({ s, clientes, errores, ok }) {
   const clienteOpts =
     `<option value="">Sin cliente asignado</option>` +
     clientes
-      .map((c) => `<option value="${c.id}"${Number(s.cliente_id) === c.id ? " selected" : ""}>${esc(c.nombre)}${c.negocio ? ` (${esc(c.negocio)})` : ""}</option>`)
+      .map((c) => `<option value="${esc(c.id)}"${String(s.cliente_id || "") === String(c.id) ? " selected" : ""}>${esc(c.nombre)}${c.negocio ? ` (${esc(c.negocio)})` : ""}</option>`)
       .join("");
 
   const wa = telefonoWhatsApp(s.telefono);
@@ -398,7 +400,7 @@ function solicitudForm({ s, clientes, errores, ok }) {
         <dl class="meta">
           <dt>Recibida</dt><dd>${fechaHora(s.creada)}</dd>
           <dt>Última edición</dt><dd>${fechaHora(s.actualizada)}</dd>
-          <dt>Número</dt><dd>${s.id}</dd>
+          <dt>Número</dt><dd>${esc(s.numero ?? "Se asigna en un momento")}</dd>
         </dl>
         <form method="post" action="/solicitudes/${s.id}/eliminar" data-confirm="¿Eliminar esta solicitud? No se puede deshacer.">
           <button class="btn btn--danger" type="submit">Eliminar solicitud</button>
@@ -602,4 +604,29 @@ function exportar() {
   });
 }
 
-module.exports = { entrar, inicio, visitasContenido, solicitudes, solicitudForm, clientes, clienteForm, exportar, documento, esc };
+/* ---------- Respaldo ---------- */
+
+function respaldo({ progreso } = {}) {
+  return layout({
+    titulo: "Respaldo",
+    activo: "respaldo",
+    contenido: `
+    <header class="head"><h1>Respaldo</h1></header>
+    <div class="export">
+      <section class="box">
+        <h2>Descargar respaldo</h2>
+        <p class="muted">Un archivo con todas tus solicitudes y clientes. Guárdalo en un lugar seguro: tiene datos personales de tus clientes.</p>
+        <button class="btn btn--primary" type="button" data-accion="descargar-respaldo">Descargar respaldo</button>
+      </section>
+      <section class="box">
+        <h2>Importar</h2>
+        <p class="muted">Carga un respaldo descargado aquí o el archivo <code>respaldo.json</code> que sale al exportar la base anterior de Railway. Si un registro ya existe, se actualiza: importar dos veces no duplica nada.</p>
+        <label class="btn" for="archivo-respaldo">Elegir archivo…</label>
+        <input id="archivo-respaldo" type="file" accept=".json,application/json" hidden>
+        <p class="muted" id="progreso-respaldo" aria-live="polite">${esc(progreso || "")}</p>
+      </section>
+    </div>`,
+  });
+}
+
+export { entrar, sinAcceso, inicio, visitasContenido, solicitudes, solicitudForm, clientes, clienteForm, exportar, respaldo, esc };

@@ -1,6 +1,6 @@
 // Los datos de contacto no se guardan en el repositorio.
-// Al publicar, el flujo de GitHub Actions reemplaza estos marcadores con los
-// secretos WHATSAPP_NUMBER y CONTACT_EMAIL configurados en el repositorio.
+// Al publicar, scripts/construir.js (Firebase) o el flujo de GitHub Actions reemplazan estos marcadores con los
+// valores de WHATSAPP_NUMBER y CONTACT_EMAIL (archivo .env o secretos del repositorio).
 const CONFIG = {
   WHATSAPP_NUMBER: "__WHATSAPP_NUMBER__",
   EMAIL: "__CONTACT_EMAIL__",
@@ -8,6 +8,67 @@ const CONFIG = {
 
 const isSet = (value) => Boolean(value) && !value.startsWith("__");
 const BASE = new URL(".", document.currentScript ? document.currentScript.src : location.href);
+
+/* Firestore (plan gratis de Firebase): se escribe con su API web, sin cargar librerías.
+   La configuración la entrega Firebase Hosting en /__/firebase/init.json, así que no hay
+   claves en el repositorio. En la copia de GitHub Pages no existe y no se guarda nada.
+   Las reglas de Firestore solo permiten crear documentos con datos válidos. */
+const Firestore = (function () {
+  const local = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+  const HOST = local ? "http://127.0.0.1:8080" : "https://firestore.googleapis.com";
+  let config = null;
+
+  function cargar() {
+    if (!config) {
+      config = fetch("/__/firebase/init.json", { cache: "force-cache" })
+        .then((r) => (r.ok ? r.json() : null))
+        .then((c) => (c && c.projectId && c.apiKey ? c : null))
+        .catch(() => null);
+    }
+    return config;
+  }
+
+  const valor = (v) => (typeof v === "boolean" ? { booleanValue: v } : { stringValue: String(v) });
+
+  function idAleatorio() {
+    const a = new Uint8Array(15);
+    crypto.getRandomValues(a);
+    return Array.from(a, (b) => "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"[b % 62]).join("") + Date.now().toString(36);
+  }
+
+  // ruta: "coleccion" (documento nuevo) o "coleccion/id". horas: campos que toman la hora del servidor.
+  async function guardar(ruta, campos, horas) {
+    const c = await cargar();
+    if (!c) return { ok: false, sinConfig: true };
+    const base = `projects/${c.projectId}/databases/(default)/documents`;
+    const nombre = ruta.includes("/") ? ruta : `${ruta}/${idAleatorio()}`;
+    const fields = {};
+    for (const [k, v] of Object.entries(campos)) {
+      if (v !== undefined && v !== null && v !== "") fields[k] = valor(v);
+    }
+    const cuerpo = {
+      writes: [
+        {
+          update: { name: `${base}/${nombre}`, fields },
+          updateTransforms: horas.map((f) => ({ fieldPath: f, setToServerValue: "REQUEST_TIME" })),
+        },
+      ],
+    };
+    try {
+      const r = await fetch(`${HOST}/v1/${base}:commit?key=${encodeURIComponent(c.apiKey)}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(cuerpo),
+        keepalive: true,
+      });
+      return { ok: r.ok };
+    } catch (_) {
+      return { ok: false };
+    }
+  }
+
+  return { guardar, disponible: () => cargar().then(Boolean) };
+})();
 
 (function () {
   /* Año del pie */
@@ -46,18 +107,49 @@ const BASE = new URL(".", document.currentScript ? document.currentScript.src : 
   let estadisticasActivas = false;
   function iniciarEstadisticas() {
     if (typeof gtag === "function") gtag('consent', 'update', { analytics_storage: 'granted' });
-    if (estadisticasActivas || /github\.io$/.test(location.hostname) || location.protocol !== "https:") return;
+    if (estadisticasActivas || /github\.io$/.test(location.hostname)) return;
+    const ua = navigator.userAgent || "";
+    if (/bot|crawl|spider|slurp|preview|lighthouse|headless|monitor|uptime/i.test(ua)) return;
     estadisticasActivas = true;
-    const enviar = (url, datos) =>
-      fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(datos), keepalive: true }).catch(() => {});
-    const ruta = location.pathname;
-    enviar("/api/visita", { ruta, ref: document.referrer });
-    // Mientras la pestaña esté abierta y visible, avisa que la persona sigue en la página.
+
+    // Identificador anónimo y aleatorio que cambia cada día: permite contar personas distintas
+    // del día sin poder seguir a nadie. No contiene datos personales ni la IP.
+    const dia = new Date(Date.now() - 5 * 3600 * 1000).toISOString().slice(0, 10);
+    let visitante = "";
+    try {
+      const guardado = JSON.parse(localStorage.getItem("tpc_visitante") || "null");
+      if (guardado && guardado.dia === dia && /^[A-Za-z0-9]{10,40}$/.test(guardado.id)) visitante = guardado.id;
+    } catch (_) {}
+    if (!visitante) {
+      const a = new Uint8Array(12);
+      crypto.getRandomValues(a);
+      visitante = Array.from(a, (b) => b.toString(36).padStart(2, "0")).join("").slice(0, 22);
+      try { localStorage.setItem("tpc_visitante", JSON.stringify({ dia, id: visitante })); } catch (_) {}
+    }
+
+    const dispositivo = /iPad|Tablet|PlayBook|Silk|(Android(?!.*Mobile))/i.test(ua) ? "tablet"
+      : /Mobi|iPhone|iPod|Android/i.test(ua) ? "celular" : "computador";
+    let origen = "";
+    if (/Instagram/i.test(ua)) origen = "instagram.com";
+    else if (/FBAN|FBAV|FB_IAB/i.test(ua)) origen = "facebook.com";
+    else if (/TikTok|musical_ly|BytedanceWebview/i.test(ua)) origen = "tiktok.com";
+    else {
+      try {
+        const h = new URL(document.referrer).hostname.replace(/^(www|m|l|lm)\./, "");
+        if (h && h !== location.hostname.replace(/^www\./, "")) origen = h.slice(0, 80);
+      } catch (_) {}
+    }
+
+    const ruta = /^\/[A-Za-z0-9_\/-]{0,120}$/.test(location.pathname) ? location.pathname : "/";
+    Firestore.guardar("visitas", { visitante, ruta, dispositivo, origen }, ["creada"]);
+    const presencia = () => Firestore.guardar(`presencia/${visitante}`, { ruta }, ["visto"]);
+    presencia();
+    // Mientras la pestaña esté abierta y visible, avisa cada minuto que la persona sigue en la página.
     setInterval(() => {
-      if (document.visibilityState === "visible") enviar("/api/presencia", { ruta });
-    }, 30000);
+      if (document.visibilityState === "visible") presencia();
+    }, 60000);
     document.addEventListener("visibilitychange", () => {
-      if (document.visibilityState === "visible") enviar("/api/presencia", { ruta });
+      if (document.visibilityState === "visible") presencia();
     });
   }
 
@@ -301,14 +393,20 @@ const BASE = new URL(".", document.currentScript ? document.currentScript.src : 
   }
 
   function guardarSolicitud(datos) {
-    return fetch("/api/solicitudes", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(datos),
-      keepalive: true,
-    })
-      .then((r) => r.json().catch(() => ({})).then((body) => ({ ok: r.ok, error: body.error })))
-      .catch(() => ({ ok: false }));
+    // Campo trampa para bots: las personas no lo ven ni lo llenan.
+    if (datos.sitio) return Promise.resolve({ ok: true });
+    return Firestore.guardar(
+      "solicitudes",
+      {
+        nombre: datos.nombre.slice(0, 100),
+        negocio: datos.negocio.slice(0, 120),
+        tipo: datos.tipo,
+        mensaje: datos.mensaje.slice(0, 2000),
+        origen: "web",
+        estado: "nueva",
+      },
+      ["creada", "actualizada", "autorizacion_datos"]
+    );
   }
 
   // Mensaje ordenado para WhatsApp (*texto* se ve en negrita).

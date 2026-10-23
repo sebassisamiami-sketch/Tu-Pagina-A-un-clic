@@ -1,0 +1,76 @@
+rules_version = '2';
+
+// Reglas de Firestore para Tu Página a un Clic.
+// - Cualquier visitante puede CREAR una solicitud o una visita, con datos validados.
+// - Nadie puede leer, editar ni borrar datos, salvo el administrador.
+// - El administrador es una cuenta de Google cuyo ID aparece en la colección "admins"
+//   (se agrega a mano en la consola de Firebase; no se guarda en el repositorio).
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function esAdmin() {
+      return request.auth != null
+        && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    function textoOpcional(datos, campo, max) {
+      return !(campo in datos) || (datos[campo] is string && datos[campo].size() <= max);
+    }
+
+    match /admins/{uid} {
+      // Cada persona solo puede comprobar si ella misma es administradora.
+      allow read: if request.auth != null && request.auth.uid == uid;
+      allow write: if false;
+    }
+
+    match /solicitudes/{id} {
+      allow read, update, delete: if esAdmin();
+      allow create: if esAdmin() || solicitudDesdeLaPagina();
+    }
+
+    function solicitudDesdeLaPagina() {
+      let d = request.resource.data;
+      return d.keys().hasOnly(['nombre', 'negocio', 'tipo', 'mensaje', 'origen', 'estado', 'creada', 'actualizada', 'autorizacion_datos'])
+        && d.keys().hasAll(['nombre', 'tipo', 'origen', 'estado', 'creada', 'actualizada', 'autorizacion_datos'])
+        && d.nombre is string && d.nombre.size() > 0 && d.nombre.size() <= 100
+        && textoOpcional(d, 'negocio', 120)
+        && textoOpcional(d, 'mensaje', 2000)
+        && d.tipo in ['una página web', 'una aplicación móvil', 'una página web y una app', 'un sistema a la medida', 'asesoría, todavía no lo tengo claro']
+        && d.origen == 'web'
+        && d.estado == 'nueva'
+        && d.creada == request.time
+        && d.actualizada == request.time
+        && d.autorizacion_datos == request.time;
+    }
+
+    match /clientes/{id} {
+      allow read, write: if esAdmin();
+    }
+
+    // Contador de visitas: sin IP ni datos personales.
+    match /visitas/{id} {
+      allow read, delete: if esAdmin();
+      allow create: if esAdmin() || visitaValida();
+    }
+
+    function visitaValida() {
+      let d = request.resource.data;
+      return d.keys().hasOnly(['visitante', 'ruta', 'dispositivo', 'origen', 'creada'])
+        && d.keys().hasAll(['visitante', 'ruta', 'dispositivo', 'creada'])
+        && d.visitante is string && d.visitante.size() <= 40
+        && d.ruta is string && d.ruta.matches('^/[A-Za-z0-9_/-]{0,120}$')
+        && d.dispositivo in ['celular', 'tablet', 'computador']
+        && textoOpcional(d, 'origen', 80)
+        && d.creada == request.time;
+    }
+
+    // Quién está en la página ahora: un documento por visitante anónimo.
+    match /presencia/{visitante} {
+      allow read, delete: if esAdmin();
+      allow create, update: if visitante.size() <= 40
+        && request.resource.data.keys().hasOnly(['ruta', 'visto'])
+        && request.resource.data.ruta is string && request.resource.data.ruta.size() <= 130
+        && request.resource.data.visto == request.time;
+    }
+  }
+}

@@ -1,92 +1,70 @@
 # Tu Página a un Clic
 
-Página para ofrecer servicios de desarrollo de páginas web, aplicaciones móviles y sistemas a la medida. Tiene dos servicios que comparten la misma base de datos:
+Página para ofrecer servicios de desarrollo de páginas web, aplicaciones móviles y sistemas a la medida. Todo corre en **Firebase con el plan gratis (Spark)**, sin servidor propio:
 
-- **La página** (raíz del repositorio): sitio público con un backend que guarda las solicitudes del formulario.
-- **El panel** (carpeta `panel/`): aplicación privada para registrar solicitudes de WhatsApp o correo, organizar clientes y exportar a Excel. Ver [panel/README.md](panel/README.md).
+- **La página** (`public/`): Firebase Hosting. El formulario y el contador de visitas guardan directo en Firestore.
+- **El panel** (`panel/public/`): app privada en su propio sitio de Hosting, con inicio de sesión de Google. Ver [panel/README.md](panel/README.md).
+- **Firestore**: base de datos. `firestore.rules` solo deja que los visitantes creen solicitudes y visitas con datos válidos; leer y editar es solo para el administrador.
 
 ## Estructura
 
 - `public/`: la página (HTML, CSS, JavaScript e íconos). `public/builder.js` es el simulador "Arma tu página" y `public/particulas.js` dibuja la constelación de fondo.
-- `server/app.js`: servidor Express con la API, `script.js` y la política de privacidad. `server/index.js` lo arranca en tu computador.
-- `funciones.js`: punto de entrada de la página en Firebase Functions.
-- `server/db.js`: conexión a Postgres y consultas.
-- `panel/`: panel de clientes, desplegado como un servicio aparte.
-- `firebase.json` y `.firebaserc`: despliegue en Firebase (Hosting + Functions).
-- `scripts/migrar-datos.js`: copia los datos de una base Postgres a otra.
-- `.github/workflows/deploy.yml`: publicación de la versión estática en GitHub Pages.
+- `panel/public/`: el panel de clientes (HTML y módulos de JavaScript, sin compilación).
+- `firestore.rules`: reglas de seguridad de la base de datos.
+- `firebase.json` y `.firebaserc`: configuración de Firebase (dos sitios de Hosting: `pagina` y `panel`).
+- `scripts/construir.js`: arma la carpeta `dist/` que se publica, insertando los datos de contacto desde `.env`.
+- `scripts/exportar-postgres.js`: exporta los datos de la base Postgres anterior a `respaldo.json`.
+- `.github/workflows/deploy.yml`: publicación de una copia estática en GitHub Pages (esa copia no guarda solicitudes).
 
 ## Cómo funciona el formulario
 
-Al enviar el formulario, la solicitud se guarda en la base de datos y, si hay número de WhatsApp configurado, se abre WhatsApp con el mensaje listo. Si no hay número, la solicitud solo se guarda y la persona ve una confirmación.
+Al enviar el formulario se abre WhatsApp con el mensaje listo y, al mismo tiempo, la solicitud se guarda en Firestore (colección `solicitudes`). La configuración de Firebase la entrega Hosting en `/__/firebase/init.json`, así que no hay claves en el repositorio.
 
 ## Contador de visitas
 
-Si la persona aceptó las estadísticas en el aviso de cookies, cada vez que abre la página `script.js` avisa a `/api/visita`, y mientras la pestaña sigue abierta envía una señal cada 30 segundos a `/api/presencia`. El panel muestra esos datos en vivo.
-
-No se guardan direcciones IP, cookies ni datos personales. Para contar personas distintas se usa una huella anónima que cambia cada día. Los robots de buscadores no se cuentan, y la copia de GitHub Pages no registra visitas.
+Si la persona aceptó las estadísticas en el aviso de cookies, la página registra la visita en Firestore (`visitas`) y, mientras la pestaña está abierta, avisa cada minuto que sigue ahí (`presencia`). No se guardan IP ni datos personales: para contar personas distintas se usa un identificador aleatorio que cambia cada día. La copia de GitHub Pages no registra visitas.
 
 ## Cookies y políticas
 
-Al entrar por primera vez aparece un aviso para aceptar o rechazar las estadísticas. La elección se guarda en la cookie `tpc_consentimiento` por 12 meses y se puede cambiar desde "Configurar cookies" en el pie de página. El contador de visitas solo funciona si la persona acepta las estadísticas.
+Al entrar por primera vez aparece un aviso para aceptar o rechazar las estadísticas. La elección se guarda en la cookie `tpc_consentimiento` por 12 meses y se puede cambiar desde "Configurar cookies" en el pie de página.
 
 Páginas legales: `politica-de-privacidad/` (Ley 1581 de 2012), `politica-de-cookies/` y `terminos/`. El formulario exige marcar la autorización de tratamiento de datos, y la fecha de esa autorización se guarda con cada solicitud.
 
-## Variables de entorno
+## Datos de contacto
 
-Ningún dato personal ni contraseña se guarda en el repositorio. Todo se configura como variable de entorno:
+Ningún dato personal se guarda en el repositorio. Copia `.env.example` como `.env` (no se sube a GitHub) y llénalo:
 
 | Variable | Para qué sirve |
 | --- | --- |
-| `DATABASE_URL` | Conexión a Postgres. En Railway se toma del servicio de base de datos. |
 | `WHATSAPP_NUMBER` | Número con indicativo de país, solo dígitos (ejemplo: `573001234567`). |
 | `CONTACT_EMAIL` | Correo de contacto que se muestra en la página. |
-| `RESPONSABLE_DATOS` | Opcional. Nombre del responsable que aparece en la política de tratamiento de datos (por ejemplo, tu nombre y cédula o NIT). Si no se define, aparece "Tu Página a un Clic". En GitHub Pages se toma del secreto del mismo nombre. |
-| `DATABASE_SSL` | Opcional. `true` si la base de datos exige SSL (por ejemplo, al usar una URL pública). |
+| `RESPONSABLE_DATOS` | Nombre del responsable en la política de privacidad. |
 
-## Desplegar en Railway
+## Publicar en Firebase (plan gratis)
 
-1. En Railway crea un proyecto con **Deploy from GitHub repo** y elige este repositorio.
-2. En el mismo proyecto agrega una base de datos: **Create > Database > PostgreSQL**.
-3. En el servicio de la página, pestaña **Variables**, agrega:
-   - `DATABASE_URL` con el valor `${{Postgres.DATABASE_URL}}`
-   - `WHATSAPP_NUMBER` y `CONTACT_EMAIL`
-4. En **Settings > Networking** pulsa **Generate Domain** para obtener la dirección pública.
+Primera vez, en la consola de Firebase del proyecto `tu-pagina-a-un-clic`:
 
-La tabla de solicitudes se crea sola la primera vez que arranca el servidor. Railway revisa `/api/salud` para saber si el servicio está en línea.
+1. **Firestore Database → Crear base de datos**, en modo producción.
+2. **Authentication → Comenzar → Google**: actívalo.
+3. **Authentication → Configuración → Dominios autorizados**: agrega `tu-pagina-a-un-clic-panel.web.app`.
 
-Para el panel de clientes, sigue los pasos de [panel/README.md](panel/README.md).
+En la terminal, desde esta carpeta:
 
-## Ver en local
+```bash
+npm install -g firebase-tools
+firebase login
+firebase deploy
+```
+
+`firebase deploy` arma `dist/`, publica la página y el panel, y sube las reglas de Firestore.
+
+Después, entra al panel con tu cuenta de Google. La primera vez te mostrará tu ID: créale un documento con ese ID en la colección `admins` de Firestore (desde la consola) y recarga.
+
+### Pasar los datos de la base anterior
 
 ```bash
 npm install
-DATABASE_URL=postgres://usuario:clave@localhost:5432/basededatos \
-npm run dev
+ORIGEN_URL="postgres://...URL pública de la base anterior..." npm run exportar-datos
 ```
 
-Abre `http://localhost:3000`. Sin `DATABASE_URL` la página funciona igual, pero las solicitudes no se guardan.
-
-## GitHub Pages
-
-La versión estática se sigue publicando en GitHub Pages en cada cambio a `main`. Usa los secretos `WHATSAPP_NUMBER` y `CONTACT_EMAIL` de **Settings > Secrets and variables > Actions**. En esa versión no hay backend: el formulario solo abre WhatsApp.
-
-## Desplegar en Firebase
-
-La página estática va en Firebase Hosting; la API (formulario y visitas) y el panel corren en Firebase Functions (plan Blaze). La base de datos es Postgres en Neon.
-
-1. Instala la herramienta e inicia sesión: `npm install -g firebase-tools` y `firebase login`.
-2. Crea el sitio del panel (solo la primera vez): `firebase hosting:sites:create tu-pagina-a-un-clic-panel`.
-3. Guarda los secretos (te pide el valor; no queda en el repositorio):
-   `firebase functions:secrets:set DATABASE_URL`, `ADMIN_USER`, `ADMIN_PASSWORD` y `SESSION_SECRET`.
-4. Copia `.env.example` como `.env` y `panel/.env.example` como `panel/.env`, y llénalos.
-5. Instala dependencias: `npm install` y `cd panel && npm install`.
-6. Despliega todo: `firebase deploy`.
-
-### Pasar los datos de otra base
-
-```bash
-ORIGEN_URL="postgres://...base anterior..." DESTINO_URL="postgres://...base nueva..." npm run migrar-datos
-```
-
-Copia clientes, solicitudes y visitas. No toca la base de origen y se detiene si la nueva ya tiene datos.
+En PowerShell: `$env:ORIGEN_URL="postgres://..."` y luego `npm run exportar-datos`. Se crea `respaldo.json`; impórtalo en el panel, en **Respaldo → Importar**. Importar dos veces no duplica nada.

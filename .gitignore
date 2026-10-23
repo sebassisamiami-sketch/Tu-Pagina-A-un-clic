@@ -7,3 +7,8 @@ node_modules/
 firebase-debug*.log
 .runtimeconfig.json
 .secret.local
+
+# Carpeta generada al publicar (con los datos de contacto insertados)
+dist/
+# Respaldo exportado de la base anterior: tiene datos de clientes, no se sube
+respaldo*.json
