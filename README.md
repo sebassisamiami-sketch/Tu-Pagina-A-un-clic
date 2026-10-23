@@ -7,7 +7,7 @@ Página para ofrecer servicios de desarrollo de páginas web, aplicaciones móvi
 
 ## Estructura
 
-- `public/`: la página (HTML, CSS, JavaScript e íconos). `public/builder.js` es el simulador "Arma tu página".
+- `public/`: la página (HTML, CSS, JavaScript e íconos). `public/builder.js` es el simulador "Arma tu página" y `public/particulas.js` dibuja la constelación de fondo.
 - `server/index.js`: servidor Express que sirve la página y la API.
 - `server/db.js`: conexión a Postgres y consultas.
 - `panel/`: panel de clientes, desplegado como un servicio aparte.

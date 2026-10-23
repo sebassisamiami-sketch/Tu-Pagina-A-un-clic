@@ -26,7 +26,7 @@
   <meta name="description" content="Diseño y desarrollo de páginas web, tiendas en línea y aplicaciones móviles para Android e iPhone. Para negocios y emprendedores en Colombia. Cotiza tu proyecto por WhatsApp.">
   <link rel="canonical" href="https://tupaginaaunclic.com/">
   <meta name="robots" content="index, follow, max-image-preview:large">
-  <meta name="theme-color" content="#2433D9">
+  <meta name="theme-color" content="#000000">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_CO">
   <meta property="og:site_name" content="Tu Página a un Clic">
@@ -111,7 +111,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Familjen+Grotesk:wght@400;500;600&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -139,9 +139,11 @@
 
   <main id="contenido">
     <section class="hero">
+      <canvas class="stars" data-modo="grupo" aria-hidden="true"></canvas>
       <div class="wrap hero__grid">
         <div class="hero__copy">
-          <h1>Tu página web y tu app, a un clic de tus clientes.</h1>
+          <p class="eyebrow">Páginas web y apps en Colombia</p>
+          <h1>Tu página web y tu app, <em>a un clic</em> de tus clientes.</h1>
           <p class="hero__lead">Diseño y desarrollo páginas web y aplicaciones móviles que se ven bien y funcionan en celular, tablet y computador. Para negocios y emprendedores en Colombia.</p>
           <div class="hero__actions">
             <a class="btn btn--mango" href="#contacto">Cotizar mi proyecto</a>
@@ -207,12 +209,15 @@
 
     <section class="section" id="servicios">
       <div class="wrap">
-        <header class="section__head">
-          <h2>Lo que puedo construir para ti</h2>
+        <header class="section__head reveal">
+          <div>
+            <p class="eyebrow">Servicios</p>
+            <h2>Lo que puedo construir para ti</h2>
+          </div>
           <p>Desde una página sencilla para que te encuentren en Google hasta una aplicación con usuarios, pagos y panel de administración.</p>
         </header>
 
-        <div class="services">
+        <div class="services reveal">
           <article class="service">
             <div class="service__icon" aria-hidden="true">
               <svg viewBox="0 0 48 48"><rect x="4" y="8" width="40" height="28" rx="4"/><path d="M4 15h40"/><path d="M18 42h12M24 36v6"/></svg>
@@ -265,7 +270,7 @@
           </article>
         </div>
 
-        <div class="extras">
+        <div class="extras reveal">
           <h3>Incluido o disponible en cada proyecto</h3>
           <ul>
             <li><strong>Dominio y hosting.</strong> Te ayudo a elegir y configurar tu dirección .com o .co.</li>
@@ -279,8 +284,11 @@
 
     <section class="section section--tint builder" id="pruebalo">
       <div class="wrap">
-        <header class="section__head">
-          <h2>Arma tu página y mírala al instante</h2>
+        <header class="section__head reveal">
+          <div>
+            <p class="eyebrow">Pruébalo gratis</p>
+            <h2>Arma tu página y mírala al instante</h2>
+          </div>
           <p>Elige el tipo de página, tus colores, el estilo y la letra. Es gratis y no tienes que registrarte. Cuando te guste, me la envías y la cotizamos. Ten en cuenta que es solo una muestra para darte ideas: tu página final se diseña desde cero para tu negocio, con tus fotos, tus textos y más secciones, funciones y mejoras hechas a tu medida.</p>
         </header>
 
@@ -434,12 +442,15 @@
 
     <section class="section section--deep" id="proceso">
       <div class="wrap">
-        <header class="section__head">
-          <h2>Cómo trabajamos juntos</h2>
+        <header class="section__head reveal">
+          <div>
+            <p class="eyebrow">Proceso</p>
+            <h2>Cómo trabajamos juntos</h2>
+          </div>
           <p>Sabes en qué va tu proyecto en cada momento y hablas directamente con quien lo programa.</p>
         </header>
 
-        <ol class="steps">
+        <ol class="steps reveal">
           <li>
             <h3>Conversamos</h3>
             <p>Me cuentas qué hace tu negocio, a quién le vendes y qué necesitas. Sin costo y sin compromiso.</p>
@@ -466,8 +477,11 @@
 
     <section class="section about">
       <div class="wrap about__grid">
-        <h2>Quién está detrás</h2>
-        <div class="about__text">
+        <div class="reveal">
+          <p class="eyebrow">Sobre mí</p>
+          <h2>Quién está detrás</h2>
+        </div>
+        <div class="about__text reveal">
           <p>Soy desarrollador de software. Me fijo tanto en que tu página o tu app se vea bien como en que funcione rápido y en que la información de tu negocio quede ordenada y segura.</p>
           <p>Trabajo de forma remota con clientes de cualquier ciudad y me adapto a tu horario.</p>
         </div>
@@ -476,8 +490,11 @@
 
     <section class="home-guides">
       <div class="wrap">
-        <header class="section__head">
-          <h2>Guías antes de empezar</h2>
+        <header class="section__head reveal">
+          <div>
+            <p class="eyebrow">Guías</p>
+            <h2>Guías antes de empezar</h2>
+          </div>
           <p>Respuestas claras a lo que más me preguntan antes de un proyecto.</p>
         </header>
         <ul class="guides">
@@ -490,7 +507,10 @@
 
     <section class="section section--tint" id="preguntas">
       <div class="wrap faq">
-        <h2>Preguntas frecuentes</h2>
+        <div class="reveal">
+          <p class="eyebrow">Dudas</p>
+          <h2>Preguntas frecuentes</h2>
+        </div>
         <div class="faq__list">
           <details>
             <summary>¿Cuánto cuesta una página o una app?</summary>
@@ -521,8 +541,10 @@
     </section>
 
     <section class="section contact" id="contacto">
+      <canvas class="stars" data-modo="ambiente" aria-hidden="true"></canvas>
       <div class="wrap contact__grid">
         <div class="contact__copy">
+          <p class="eyebrow">Contacto</p>
           <h2>Cuéntame tu idea</h2>
           <p>Llena estos datos y se abrirá WhatsApp con tu mensaje listo para enviar. Te respondo con preguntas y una cotización.</p>
           <p class="contact__alt">¿Prefieres correo? Escríbeme a <a class="js-email" href="#">tu correo</a>.</p>
@@ -583,5 +605,6 @@
 
   <script src="script.js"></script>
   <script src="builder.js" defer></script>
+  <script src="particulas.js" defer></script>
 </body>
 </html>
