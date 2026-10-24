@@ -38,15 +38,9 @@ jobs:
             echo "::error::CONTACT_EMAIL no tiene un formato de correo válido."
             exit 1
           fi
+          node scripts/construir.js
           mkdir -p _site
-          cp -r public/. _site/
-          sed -i \
-            -e "s|__WHATSAPP_NUMBER__|${WHATSAPP_NUMBER}|g" \
-            -e "s|__CONTACT_EMAIL__|${CONTACT_EMAIL}|g" \
-            _site/script.js
-          RESPONSABLE="${RESPONSABLE_DATOS:-Tu Página a un Clic}"
-          RESPONSABLE="${RESPONSABLE//[<>&\"|]/}"
-          sed -i -e "s|__RESPONSABLE__|${RESPONSABLE}|g" _site/politica-de-privacidad/index.html
+          cp -r dist/. _site/
 
       - uses: actions/configure-pages@v5
 

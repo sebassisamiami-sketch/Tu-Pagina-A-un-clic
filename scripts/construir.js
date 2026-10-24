@@ -45,6 +45,14 @@ fs.writeFileSync(
   fs.readFileSync(script, "utf8").replace("__WHATSAPP_NUMBER__", whatsapp).replace("__CONTACT_EMAIL__", correo)
 );
 
+// Teléfono en los datos estructurados (lo usa Google para identificar el negocio).
+const inicio = path.join(DESTINO, "index.html");
+let htmlInicio = fs.readFileSync(inicio, "utf8");
+htmlInicio = whatsapp
+  ? htmlInicio.replace(/__TELEFONO__/g, `+${whatsapp}`)
+  : htmlInicio.replace(/\n\s*"telephone": "__TELEFONO__",/, "").replace(/\n\s*"contactPoint": \{[^\n]*\},/, "");
+fs.writeFileSync(inicio, htmlInicio);
+
 const politica = path.join(DESTINO, "politica-de-privacidad", "index.html");
 fs.writeFileSync(politica, fs.readFileSync(politica, "utf8").replace(/__RESPONSABLE__/g, responsable));
 
