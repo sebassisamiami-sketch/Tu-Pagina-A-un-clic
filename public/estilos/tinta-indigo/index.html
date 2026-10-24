@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Tinta índigo | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --indigo: #533afd; --indigo-h: #7389ff; --noche: #061b31; --pizarra: #64748d; --acero: #50617a; --humo: #839bc8; --blanco: #fff; --niebla: #f8fafd; --escarcha: #e5edf5; --borde: #d6d9fc; --lavado: #e8e9ff; --violeta: #182659; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--blanco); color: var(--noche); font: 300 16px/1.5 "Inter Tight", system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1320px; margin: 0 auto; padding: 0 32px; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; height: 38px; padding: 0 16px; border-radius: 4px; font-size: 15px; font-weight: 400; white-space: nowrap; }
+    .btn--indigo { background: var(--indigo); color: #fff; }
+    .btn--borde { border: 1px solid var(--borde); color: var(--indigo); background: rgba(255,255,255,.7); }
+
+    .heroe { position: relative; overflow: hidden; padding-bottom: 80px; }
+    .malla { position: absolute; left: -10%; right: -10%; top: -45%; height: 120%; transform: skewY(-12deg); transform-origin: 0; background:
+      radial-gradient(40% 60% at 15% 70%, #ff7a59 0%, transparent 60%),
+      radial-gradient(35% 55% at 40% 60%, #ff4ea0 0%, transparent 60%),
+      radial-gradient(40% 70% at 70% 55%, #533afd 0%, transparent 65%),
+      radial-gradient(35% 60% at 95% 70%, #36c2ff 0%, transparent 60%),
+      linear-gradient(90deg, #ffb35c, #a960ee 50%, #33c3ff); filter: saturate(1.1); }
+    .malla::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 30%; background: linear-gradient(transparent, rgba(255,255,255,.0)); }
+    nav { position: relative; z-index: 2; }
+    nav .wrap { display: flex; align-items: center; height: 72px; gap: 26px; }
+    .logo { font-weight: 500; font-size: 26px; letter-spacing: -0.05em; color: #fff; }
+    nav ul { display: flex; gap: 24px; margin: 0; padding: 0; list-style: none; font-size: 15px; font-weight: 400; color: #fff; }
+    nav ul li::after { content: " ⌄"; font-size: 11px; }
+    nav .der { margin-left: auto; display: flex; gap: 16px; align-items: center; color: #fff; font-weight: 400; font-size: 15px; }
+    nav .der .btn { background: rgba(255,255,255,.22); color: #fff; backdrop-filter: blur(6px); }
+    .contenido { position: relative; z-index: 2; padding-top: 150px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: end; }
+    .contenido .tag { display: inline-block; font-size: 14px; color: var(--acero); margin-bottom: 14px; }
+    h1 { margin: 0 0 22px; font-size: clamp(42px, 5.6vw, 76px); line-height: 1.02; font-weight: 300; letter-spacing: -0.035em; color: var(--noche); }
+    .lead { margin: 0 0 30px; max-width: 520px; font-size: 18px; line-height: 1.55; color: var(--acero); }
+    .acc { display: flex; gap: 10px; flex-wrap: wrap; }
+    .tablero { background: var(--blanco); border: 1px solid var(--escarcha); border-radius: 8px; box-shadow: 0 50px 100px -20px rgba(50,50,93,.25), 0 30px 60px -30px rgba(0,0,0,.3); padding: 22px; font-size: 13px; font-weight: 400; }
+    .tablero header { display: flex; justify-content: space-between; color: var(--pizarra); margin-bottom: 8px; }
+    .tablero b { display: block; font-size: 32px; font-weight: 400; letter-spacing: -0.03em; color: var(--noche); }
+    .linea-graf { height: 110px; margin: 14px 0 18px; background: linear-gradient(180deg, rgba(83,58,253,.14), transparent); clip-path: polygon(0 80%, 12% 70%, 24% 74%, 36% 52%, 48% 58%, 60% 36%, 72% 42%, 84% 20%, 100% 10%, 100% 100%, 0 100%); border-top: 2px solid var(--indigo); }
+    .filas div { display: flex; justify-content: space-between; padding: 9px 0; border-top: 1px solid var(--escarcha); }
+    .estado { color: #0b8a5b; } .estado.r { color: #b45309; }
+    .logos { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 24px; padding-block: 40px; border-bottom: 1px solid var(--escarcha); color: var(--acero); font-weight: 500; font-size: 20px; letter-spacing: -0.03em; }
+
+    section { padding-block: 104px; }
+    .eyebrow { color: var(--indigo); font-weight: 500; font-size: 15px; }
+    h2 { margin: 10px 0 18px; max-width: 18ch; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; font-weight: 300; letter-spacing: -0.03em; }
+    .cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 56px; }
+    .col { border-left: 1px solid var(--borde); padding-left: 20px; }
+    .col h3 { margin: 0 0 6px; font-weight: 500; font-size: 17px; }
+    .col p { margin: 0; color: var(--pizarra); }
+    .col a { display: inline-block; margin-top: 12px; color: var(--indigo); font-weight: 400; }
+    .oscura { background: var(--noche); color: #fff; }
+    .oscura h2 { color: #fff; }
+    .cifras { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: 48px; }
+    .cifras b { display: block; font-size: 44px; font-weight: 300; letter-spacing: -0.03em; border-left: 1px solid var(--indigo-h); padding-left: 16px; }
+    .cifras span { display: block; padding-left: 17px; color: var(--humo); }
+    footer { padding: 32px 0; color: var(--pizarra); font-size: 14px; }
+
+    @media (max-width: 900px) {
+      nav ul, nav .der a:first-child { display: none; }
+      .contenido { grid-template-columns: 1fr; padding-top: 110px; }
+      .malla { top: -62%; height: 100%; }
+      .contenido .tag, .lead { color: var(--acero); }
+      .wrap { padding: 0 20px; }
+      .cols, .cifras { grid-template-columns: 1fr 1fr; }
+      section { padding-block: 72px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Tinta índigo</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=tinta-indigo#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <header class="heroe">
+    <div class="malla" aria-hidden="true"></div>
+    <nav><div class="wrap">
+      <a class="logo" href="#">envíoya</a>
+      <ul><li>Productos</li><li>Soluciones</li><li>Integraciones</li><li>Recursos</li><li style="list-style:none">Tarifas</li></ul>
+      <div class="der"><a href="#">Iniciar sesión</a><a class="btn" href="#">Contacta con ventas ›</a></div>
+    </div></nav>
+    <div class="wrap contenido">
+      <div>
+        <span class="tag">Logística para tiendas en línea</span>
+        <h1>La infraestructura de envíos para hacer crecer tu tienda.</h1>
+        <p class="lead">Cotiza, imprime guías y rastrea cada pedido con las principales transportadoras del país, desde un solo panel y con tarifas de empresa grande.</p>
+        <div class="acc"><a class="btn btn--indigo" href="#">Empieza ahora ›</a><a class="btn btn--borde" href="#">Ver tarifas</a></div>
+      </div>
+      <div class="tablero" aria-label="Panel de ejemplo">
+        <header><span>Envíos de octubre</span><span>Hoy</span></header>
+        <b>3.482</b>
+        <div class="linea-graf"></div>
+        <div class="filas">
+          <div><span>Pedido #8812 · Medellín</span><span class="estado">Entregado</span></div>
+          <div><span>Pedido #8813 · Cali</span><span class="estado">En ruta</span></div>
+          <div><span>Pedido #8814 · Pasto</span><span class="estado r">Novedad</span></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap logos" aria-label="Clientes de ejemplo"><span>moda andina</span><span>Tostao+</span><span>KALEIDO</span><span>casa verde</span><span>Ruta 66</span><span>bamba</span></div>
+
+  <section>
+    <div class="wrap">
+      <span class="eyebrow">Una plataforma modular</span>
+      <h2>Todo lo que necesitas para despachar más rápido.</h2>
+      <div class="cols">
+        <div class="col"><h3>Cotizador en tu tienda</h3><p>Muestra el costo real del envío antes de pagar, sin sorpresas.</p><a href="#">Más información ›</a></div>
+        <div class="col"><h3>Guías en lote</h3><p>Genera 200 guías en un clic y recógelas en tu bodega.</p><a href="#">Más información ›</a></div>
+        <div class="col"><h3>Rastreo para tu cliente</h3><p>Avisos por WhatsApp en cada paso, con tu marca.</p><a href="#">Más información ›</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="oscura">
+    <div class="wrap">
+      <span class="eyebrow" style="color:#a5a3ff">Escala sin límites</span>
+      <h2>Una red de envíos pensada para Colombia.</h2>
+      <div class="cifras">
+        <div><b>1.100+</b><span>municipios cubiertos</span></div>
+        <div><b>48 h</b><span>entrega promedio nacional</span></div>
+        <div><b>32 %</b><span>menos en costo de envío</span></div>
+        <div><b>99,4 %</b><span>pedidos sin novedad</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer><div class="wrap">EnvíoYa · negocio de ejemplo · Bogotá, Colombia. Cifras ilustrativas.</div></footer>
+</body>
+</html>

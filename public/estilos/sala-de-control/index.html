@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Sala de control | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --lienzo: #101010; --carbon: #1d1a18; --trazo: #3d3a39; --grafito: #4d4947; --granito: #8a8380; --piedra: #b8b3b0; --hueso: #eee; --tiza: #fafafa; --naranja: #ee6018; --verde: #a0ca92; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--lienzo); color: var(--tiza); font: 400 16px/1.5 "Geist", system-ui, sans-serif; letter-spacing: -0.01em; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+    a { color: inherit; text-decoration: none; }
+    .mono { font: 400 12px/1.5 "Geist Mono", monospace; letter-spacing: .02em; text-transform: uppercase; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; height: 34px; padding: 0 14px; border-radius: 3px; font: 400 12px/1 "Geist Mono"; text-transform: uppercase; letter-spacing: .03em; white-space: nowrap; }
+    .btn--claro { background: var(--tiza); color: #000; }
+    .btn--oscuro { background: var(--carbon); border: 1px solid var(--trazo); }
+
+    nav .wrap { display: flex; align-items: center; height: 64px; gap: 26px; }
+    .logo { display: flex; align-items: center; gap: 8px; font: 500 16px/1 "Geist"; letter-spacing: .12em; }
+    nav ul { display: flex; gap: 22px; margin: 0 0 0 auto; padding: 0; list-style: none; color: var(--piedra); }
+    nav .der { display: flex; gap: 6px; }
+
+    .heroe { position: relative; padding-block: 90px 110px; background: radial-gradient(60% 50% at 80% 20%, rgba(255,255,255,.05), transparent 70%); }
+    .heroe .wrap { display: grid; grid-template-columns: .9fr 1.3fr; gap: 40px; align-items: end; }
+    h1 { margin: 0 0 18px; font-size: clamp(44px, 5.4vw, 72px); line-height: 1.02; font-weight: 400; letter-spacing: -0.04em; }
+    .heroe p.mono { color: var(--piedra); text-transform: none; font-size: 14px; margin: 0 0 26px; max-width: 380px; }
+    .acc { display: flex; gap: 8px; }
+    .tablero { border-radius: 10px; border: 1px solid var(--trazo); background: #0b0b0b; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,.6); }
+    .tablero header { display: flex; align-items: center; gap: 6px; padding: 10px 12px; border-bottom: 1px solid var(--trazo); }
+    .tablero header i { width: 10px; height: 10px; border-radius: 50%; background: #ff5f57; } .tablero header i:nth-child(2) { background: #febc2e; } .tablero header i:nth-child(3) { background: #28c840; }
+    .tablero header span { margin-left: 12px; color: var(--granito); }
+    .tablero .cuerpo { display: grid; grid-template-columns: 140px 1fr; }
+    .lado { border-right: 1px solid var(--trazo); padding: 14px; display: grid; gap: 10px; align-content: start; color: var(--granito); }
+    .lado b { color: var(--tiza); font-weight: 400; }
+    .metricas { padding: 14px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .m { border: 1px solid var(--trazo); border-radius: 6px; padding: 12px; }
+    .m span { color: var(--granito); }
+    .m b { display: block; font-size: 30px; font-weight: 400; letter-spacing: -0.03em; margin: 4px 0; }
+    .m svg { width: 100%; height: 40px; }
+    .m.ancha { grid-column: span 3; }
+    .m.ancha svg { height: 90px; }
+    .pulso { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--verde); box-shadow: 0 0 0 4px rgba(160,202,146,.18); margin-right: 6px; }
+
+    .logos { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; padding-block: 34px; border-top: 1px solid var(--trazo); border-bottom: 1px solid var(--trazo); color: var(--granito); }
+    section { padding-block: 110px; }
+    h2 { margin: 12px 0 44px; max-width: 18ch; font-size: clamp(32px, 4vw, 44px); line-height: 1.1; font-weight: 400; letter-spacing: -0.03em; }
+    .claras { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .clara { background: var(--hueso); color: #111; border-radius: 10px; padding: 28px; min-height: 280px; display: flex; flex-direction: column; background-image: radial-gradient(rgba(0,0,0,.06) 1px, transparent 1.2px); background-size: 8px 8px; }
+    .clara .mono { color: var(--grafito); }
+    .clara h3 { margin: auto 0 8px; font-weight: 500; font-size: 22px; letter-spacing: -0.03em; }
+    .clara p { margin: 0; color: #4a4744; font-size: 15px; }
+    .cta { background: var(--hueso); color: #111; border-radius: 10px; padding: 60px 40px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+    .cta h2 { margin: 0; color: #111; }
+    .cta .btn--oscuro { background: #111; color: #fff; }
+    footer { padding: 32px 0 48px; color: var(--granito); border-top: 1px solid var(--trazo); }
+
+    @media (max-width: 900px) {
+      nav ul, nav .der .btn--claro { display: none; }
+      nav .der { margin-left: auto; }
+      .heroe .wrap { grid-template-columns: 1fr; }
+      .tablero .cuerpo { grid-template-columns: 1fr; }
+      .lado { display: none; }
+      .metricas { grid-template-columns: 1fr 1fr; } .m.ancha { grid-column: span 2; }
+      .claras { grid-template-columns: 1fr; }
+      .clara { min-height: 200px; }
+      section { padding-block: 72px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Sala de control</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=sala-de-control#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <nav><div class="wrap">
+    <a class="logo" href="#"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#fff" stroke-width="1.6"><rect x="1.5" y="6" width="15" height="10.5"/><path d="M1.5 6 L6 2 V6 L10.5 2 V6"/></svg>PLANTA</a>
+    <ul class="mono"><li>Producto ›</li><li>Industrias ›</li><li>Precios</li><li>Casos</li><li>Docs</li></ul>
+    <div class="der"><a class="btn btn--claro" href="#">Ingresar</a><a class="btn btn--oscuro" href="#">Hablar con ventas</a></div>
+  </div></nav>
+
+  <header class="heroe">
+    <div class="wrap">
+      <div>
+        <h1>Tu fábrica, en una sola pantalla</h1>
+        <p class="mono">Sensores, turnos y producción en tiempo real. Detecta paradas antes de que cuesten dinero.</p>
+        <div class="acc"><a class="btn btn--claro" href="#">Pedir demo</a><a class="btn btn--oscuro" href="#">Ver casos →</a></div>
+      </div>
+      <div class="tablero" aria-label="Panel de ejemplo">
+        <header><i></i><i></i><i></i><span class="mono">Planta Itagüí · Línea 3</span></header>
+        <div class="cuerpo">
+          <div class="lado mono"><b>● Línea 3</b><span>Línea 1</span><span>Línea 2</span><span>Bodega</span><span>Calidad</span></div>
+          <div class="metricas">
+            <div class="m"><span class="mono">Unidades</span><b>1.284</b><svg viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M0 30 Q15 10 30 22 T60 14 T100 8" fill="none" stroke="#a0ca92" stroke-width="2"/></svg></div>
+            <div class="m"><span class="mono">Eficiencia</span><b>87 %</b><svg viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M0 20 Q20 34 40 20 T80 18 T100 12" fill="none" stroke="#a0ca92" stroke-width="2"/></svg></div>
+            <div class="m"><span class="mono">Paradas</span><b>3</b><svg viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M0 34 L30 32 L45 10 L60 30 L100 28" fill="none" stroke="#ee6018" stroke-width="2"/></svg></div>
+            <div class="m ancha"><span class="mono"><i class="pulso"></i>Temperatura del horno · en vivo</span><svg viewBox="0 0 300 90" preserveAspectRatio="none"><path d="M0 70 C40 70 50 30 90 34 S150 76 190 52 S250 14 300 20" fill="none" stroke="#ee6018" stroke-width="2"/><path d="M0 80 C50 74 80 60 120 62 S200 44 300 40" fill="none" stroke="#a0ca92" stroke-width="2" stroke-dasharray="4 4"/></svg></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap logos mono" aria-label="Clientes de ejemplo"><span>Lácteos Sabana</span><span>Textil Andes</span><span>Plásticos JR</span><span>Cerámica Norte</span><span>Empaques 360</span></div>
+
+  <section>
+    <div class="wrap">
+      <span class="mono" style="color:var(--naranja)">● Cómo funciona</span>
+      <h2>De la máquina al tablero en un día.</h2>
+      <div class="claras">
+        <article class="clara"><span class="mono">01 · Conecta</span><h3>Sensores sin obras</h3><p>Se instalan sobre tus máquinas actuales, sin parar la producción.</p></article>
+        <article class="clara"><span class="mono">02 · Observa</span><h3>Alertas a tiempo</h3><p>Avisos al celular del jefe de turno cuando algo se sale de rango.</p></article>
+        <article class="clara"><span class="mono">03 · Mejora</span><h3>Reportes para gerencia</h3><p>Eficiencia por línea, turno y producto, listos cada lunes.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap"><div class="cta"><h2>Pon tu planta en piloto automático.</h2><a class="btn btn--oscuro" href="#">Pedir demo →</a></div></div>
+  </section>
+
+  <footer><div class="wrap mono">Planta · negocio de ejemplo · Itagüí, Colombia</div></footer>
+</body>
+</html>

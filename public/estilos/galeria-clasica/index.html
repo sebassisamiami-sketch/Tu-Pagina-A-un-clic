@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Galería clásica | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --masilla: #c4c3b6; --tinta: #000; --hueso: #e7e5e4; --tiza: #ebebeb; --vitela: #dfdcd5; --grafito: #595855; --ceniza: #808080; --papel: #fff; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--hueso); color: var(--tinta); font: 400 15px/1.5 "Inter", system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+    a { color: inherit; text-decoration: none; }
+    .serif { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 300; }
+    .wrap { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+    .hex { display: inline-flex; align-items: center; height: 34px; padding: 0 26px; background: var(--tinta); color: #fff; font-size: 13px; clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 12px 100%, 0 50%); }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; font-size: 13px; }
+    .sello { width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid var(--tinta); display: grid; place-items: center; font: 400 18px/1 "Cormorant Garamond"; }
+
+    .heroe { text-align: center; padding-top: 110px; }
+    .heroe h1 { margin: 0; font-size: clamp(36px, 4vw, 52px); line-height: 1; text-transform: uppercase; letter-spacing: .01em; }
+    .heroe h1 em { font-style: italic; text-transform: none; }
+    .stats { display: flex; justify-content: center; gap: 28px; margin: 14px 0 26px; font: 400 20px/1 "Cormorant Garamond"; text-transform: uppercase; }
+    .marca { position: relative; margin-top: 70px; overflow: hidden; }
+    .marca b { display: block; text-align: center; font: 300 clamp(180px, 30vw, 374px)/.8 "Cormorant Garamond", serif; letter-spacing: -0.04em; position: relative; z-index: 1; }
+    .marca img { display: block; width: 100%; height: 380px; object-fit: cover; margin-top: -90px; position: relative; z-index: 2; mask: linear-gradient(transparent 0, #000 22%); -webkit-mask: linear-gradient(transparent 0, #000 22%); }
+
+    .sala { background: var(--tinta); color: var(--hueso); padding-block: 120px; }
+    .sala h2 { margin: 0 auto 18px; text-align: center; max-width: 16ch; font-size: clamp(44px, 6vw, 80px); line-height: 1; }
+    .sala p.c { text-align: center; color: var(--ceniza); margin: 0 auto 60px; max-width: 460px; }
+    .vinetas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+    .vineta { text-align: center; }
+    .vineta img { display: block; width: 78%; margin: 0 auto 22px; aspect-ratio: 1; height: auto; object-fit: cover; border-radius: 50%; }
+    .vineta h3 { margin: 0 0 6px; font: 400 26px/1.1 "Cormorant Garamond"; }
+    .vineta span { color: var(--ceniza); font-size: 13px; text-transform: uppercase; letter-spacing: .08em; }
+
+    .lotes { padding-block: 110px; }
+    .lotes header { display: flex; justify-content: space-between; align-items: end; margin-bottom: 34px; gap: 20px; flex-wrap: wrap; }
+    .lotes h2 { margin: 0; font-size: clamp(40px, 5vw, 64px); line-height: 1; }
+    .cartas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .carta { background: var(--papel); padding: 18px; border-radius: 9px; clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 0 100%); }
+    .carta img { display: block; width: 100%; aspect-ratio: 4 / 5; height: auto; object-fit: cover; }
+    .carta h3 { margin: 16px 0 4px; font: 400 24px/1.1 "Cormorant Garamond"; }
+    .carta .fila { display: flex; justify-content: space-between; color: var(--grafito); font-size: 13px; }
+    footer { border-top: 1px solid var(--masilla); padding: 28px 0 40px; color: var(--grafito); font-size: 13px; }
+
+    @media (max-width: 860px) {
+      .heroe { padding-top: 70px; }
+      .marca img { height: 240px; margin-top: -50px; }
+      .vinetas, .cartas { grid-template-columns: 1fr; }
+      .vineta img { width: 70%; }
+      .sala, .lotes { padding-block: 72px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Galería clásica</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=galeria-clasica#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <nav><span class="sello" aria-label="Casa Ocre">O</span><a href="#">Próxima subasta · 14 nov</a></nav>
+
+  <header class="heroe">
+    <h1 class="serif">Arte que perdura<br><em>de</em> generación en generación</h1>
+    <div class="stats"><span>Obras: 1.240</span><span>Artistas: 86</span></div>
+    <a class="hex" href="#">Ver la colección</a>
+    <div class="marca">
+      <b>Ocre</b>
+      <img src="../fotos/pintura-ancha.webp" alt="Pintura de paisaje con árboles y montañas" width="782" height="499">
+    </div>
+  </header>
+
+  <section class="sala">
+    <div class="wrap">
+      <h2 class="serif">Paisajes del siglo XIX</h2>
+      <p class="c">Una selección de óleos restaurados en nuestro taller, con certificado de autenticidad.</p>
+      <div class="vinetas">
+        <div class="vineta"><img src="../fotos/pintura-1.webp" alt="Óleo de valle bajo nubes" width="400" height="400" loading="lazy"><h3>Valle tras la tormenta</h3><span>Óleo sobre tela · 1864</span></div>
+        <div class="vineta"><img src="../fotos/pintura-2.webp" alt="Óleo de camino entre montañas" width="400" height="400" loading="lazy"><h3>Camino de la sierra</h3><span>Óleo sobre tela · 1851</span></div>
+        <div class="vineta"><img src="../fotos/pintura-3.webp" alt="Óleo de pradera florecida" width="400" height="400" loading="lazy"><h3>Pradera en mayo</h3><span>Óleo sobre tabla · 1889</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="lotes">
+    <div class="wrap">
+      <header><h2 class="serif">Lotes destacados</h2><a class="hex" href="#">Registrarme para pujar</a></header>
+      <div class="cartas">
+        <article class="carta"><img src="../fotos/pintura-2.webp" alt="" width="400" height="400" loading="lazy"><h3>Lote 12 · Camino de la sierra</h3><div class="fila"><span>Base</span><span>$ 18.000.000</span></div></article>
+        <article class="carta"><img src="../fotos/pintura-1.webp" alt="" width="400" height="400" loading="lazy"><h3>Lote 27 · Valle tras la tormenta</h3><div class="fila"><span>Base</span><span>$ 24.500.000</span></div></article>
+        <article class="carta"><img src="../fotos/pintura-3.webp" alt="" width="400" height="400" loading="lazy"><h3>Lote 31 · Pradera en mayo</h3><div class="fila"><span>Base</span><span>$ 12.000.000</span></div></article>
+      </div>
+    </div>
+  </section>
+
+  <footer><div class="wrap">Casa Ocre · negocio de ejemplo · Cartagena, Colombia. Obras, fechas y precios ilustrativos.</div></footer>
+</body>
+</html>

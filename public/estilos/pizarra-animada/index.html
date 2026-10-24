@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Pizarra animada | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --negro: #0e100f; --crema: #fffce1; --s50: #7c7c6f; --s25: #42433d; --off: #191919; --verde: #0ae448; --verde2: #abff84; --naranja: #ff8709; --rosa: #fec5fb; --lila: #9d95ff; --azul: #00bae2; --fucsia: #f100cb; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--negro); color: var(--crema); font: 400 19px/1.45 "Hanken Grotesk", system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+    .pild { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 18px; border-radius: 100px; border: 1px solid var(--crema); font-size: 15px; font-weight: 500; white-space: nowrap; }
+    .pild--grad { position: relative; height: 56px; padding: 0 28px; border: 0; font-size: 18px; }
+    .pild--grad::before { content: ""; position: absolute; inset: 0; border-radius: 100px; padding: 2px; background: linear-gradient(90deg, var(--verde), var(--azul), var(--lila), var(--fucsia)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; }
+    .aviso { background: var(--verde2); color: var(--negro); text-align: center; font-size: 13px; padding: 8px 16px; }
+    .aviso u { text-underline-offset: 2px; }
+    nav .wrap { display: flex; align-items: center; height: 72px; gap: 26px; border-bottom: 1px solid var(--s25); }
+    .logo { font: italic 600 26px/1 "Hanken Grotesk"; letter-spacing: -0.06em; }
+    nav ul { display: flex; gap: 24px; margin: 0; padding: 0; list-style: none; font-size: 15px; color: #d8d6c2; }
+    nav .der { margin-left: auto; display: flex; gap: 16px; align-items: center; font-size: 14px; color: #d8d6c2; }
+
+    .heroe { position: relative; padding-block: 40px 90px; overflow: hidden; }
+    h1 { margin: 0; font-weight: 500; font-size: clamp(88px, 17vw, 224px); line-height: .9; letter-spacing: -0.055em; }
+    h1 span { display: block; padding-left: 26%; }
+    .blob { position: absolute; border-radius: 50%; filter: drop-shadow(0 20px 30px rgba(0,0,0,.4)); }
+    .b1 { left: 9%; top: 26px; width: 96px; height: 96px; background: conic-gradient(from 45deg, #ff8709, #fec5fb, #ff8709, #fec5fb, #ff8709); border-radius: 22px; transform: rotate(18deg); clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%); }
+    .b2 { right: 13%; top: 46%; width: 90px; height: 170px; border-radius: 60px; background: linear-gradient(160deg, #fec5fb, #9d95ff 55%, #00bae2); transform: rotate(28deg); }
+    .b3 { right: 4%; top: 14%; width: 120px; height: 120px; background: radial-gradient(circle at 35% 30%, #fff 0 6%, #abff84 20%, #0ae448 55%, #067a2a); }
+    .anotacion { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-top: 36px; flex-wrap: wrap; }
+    .anotacion p { margin: 0; max-width: 420px; font-size: 20px; position: relative; padding: 0 22px; }
+    .anotacion p::before, .anotacion p::after { position: absolute; top: -6px; font-size: 54px; line-height: 1; font-weight: 300; color: var(--crema); }
+    .anotacion p::before { content: "{"; left: -8px; } .anotacion p::after { content: "}"; right: -8px; }
+
+    section { padding-block: 110px; border-top: 1px solid var(--s25); }
+    .herramientas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .h { border-radius: 8px; background: var(--off); padding: 26px; min-height: 300px; display: flex; flex-direction: column; }
+    .h b { font-size: 40px; font-weight: 500; letter-spacing: -0.04em; line-height: 1; }
+    .h p { margin: auto 0 0; color: #c9c7b2; font-size: 16px; }
+    .h .forma { width: 90px; height: 90px; margin: 26px 0; border-radius: 50%; }
+    .h:nth-child(1) b { color: var(--naranja); } .h:nth-child(1) .forma { background: radial-gradient(circle at 35% 30%, #fff3, transparent 40%), linear-gradient(135deg, #ffb35c, #ff8709); border-radius: 26px; }
+    .h:nth-child(2) b { color: var(--rosa); } .h:nth-child(2) .forma { background: linear-gradient(135deg, #fec5fb, #00bae2); border-radius: 50% 50% 12px 50%; }
+    .h:nth-child(3) b { color: var(--lila); } .h:nth-child(3) .forma { background: linear-gradient(135deg, #9d95ff, #f100cb); clip-path: polygon(50% 0, 100% 100%, 0 100%); border-radius: 0; }
+    .h:nth-child(4) b { color: var(--azul); } .h:nth-child(4) .forma { background: linear-gradient(135deg, #00bae2, #abff84); border-radius: 50%; }
+    h2 { margin: 0 0 48px; font-size: clamp(54px, 9vw, 101px); line-height: .95; font-weight: 500; letter-spacing: -0.05em; }
+    h2 em { font-style: normal; color: var(--verde); }
+    .cierre { text-align: center; }
+    footer { padding: 32px 0 48px; color: var(--s50); font-size: 14px; border-top: 1px solid var(--s25); }
+
+    @media (max-width: 900px) {
+      nav ul, nav .der a:first-child { display: none; }
+      .wrap { padding: 0 20px; }
+      h1 span { padding-left: 10%; }
+      .b1 { width: 64px; height: 64px; left: auto; right: 8%; top: 10px; } .b2 { display: none; } .b3 { display: none; }
+      .herramientas { grid-template-columns: 1fr 1fr; }
+      .h { min-height: 240px; padding: 20px; } .h b { font-size: 30px; }
+      section { padding-block: 72px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Pizarra animada</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=pizarra-animada#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <div class="aviso">🎉 Nuevo curso de animación 3D <u>con 30 % de descuento</u> hasta el viernes</div>
+  <nav><div class="wrap">
+    <a class="logo" href="#">MOVIMIENTO</a>
+    <ul><li>Cursos</li><li>Proyectos</li><li>Comunidad</li><li>Profes</li><li>Becas</li></ul>
+    <div class="der"><a href="#">Ingresar</a><a class="pild" href="#">Inscríbete</a></div>
+  </div></nav>
+
+  <header class="heroe">
+    <div class="blob b1" aria-hidden="true"></div><div class="blob b2" aria-hidden="true"></div><div class="blob b3" aria-hidden="true"></div>
+    <div class="wrap">
+      <h1>Anima<span>cualquier cosa</span></h1>
+      <div class="anotacion">
+        <p>Movimiento: la escuela de animación donde aprendes haciendo, con proyectos reales y profes de la industria.</p>
+        <a class="pild pild--grad" href="#">Ver los cursos ⊕</a>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <h2>Escoge tu <em>camino</em>.</h2>
+      <div class="herramientas">
+        <article class="h"><b>Ilustración</b><div class="forma"></div><p>Personajes y fondos para redes, libros y marcas.</p></article>
+        <article class="h"><b>3D</b><div class="forma"></div><p>Modelado, luz y render de objetos y escenas.</p></article>
+        <article class="h"><b>Video</b><div class="forma"></div><p>Edición, ritmo y efectos para contar historias.</p></article>
+        <article class="h"><b>Interfaces</b><div class="forma"></div><p>Animaciones para apps y páginas web.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cierre">
+    <div class="wrap"><h2>Tu primera clase <em>es gratis</em>.</h2><a class="pild pild--grad" href="#">Reservar mi cupo</a></div>
+  </section>
+
+  <footer><div class="wrap">Movimiento · negocio de ejemplo · Bogotá, Colombia</div></footer>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Terciopelo | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --negro: #000; --linea: #292d30; --hueso: #f0f0f0; --ceniza: #a1a4a5; --hierro: #6e727a; --carbon: #464a4d; --iris: #9281f7; --iris2: #baa7ff; --azul: #70b8ff; --verde: #3ad389; --ambar: #ffca16; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--negro); color: var(--hueso); font: 400 16px/1.55 "Inter", system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .mono { font-family: "JetBrains Mono", monospace; font-size: 13px; }
+    .serif { font-family: "Newsreader", Georgia, serif; font-weight: 400; letter-spacing: -0.02em; }
+    .btn { display: inline-flex; align-items: center; height: 40px; padding: 0 18px; border-radius: 6px; font-size: 14px; font-weight: 500; }
+    .btn--claro { background: #fff; color: #000; }
+    .btn--oscuro { background: rgba(255,255,255,.06); border: 1px solid var(--linea); box-shadow: inset 0 1px 0 rgba(255,255,255,.06); }
+
+    nav { border-bottom: 1px solid rgba(41,45,48,.6); }
+    nav .wrap { display: flex; align-items: center; height: 64px; gap: 28px; }
+    .logo { font: 500 19px/1 "Inter"; letter-spacing: -0.03em; }
+    nav ul { display: flex; gap: 22px; margin: 0 auto; padding: 0; list-style: none; font-size: 14px; color: var(--ceniza); }
+    nav .der { display: flex; gap: 14px; align-items: center; font-size: 14px; color: var(--ceniza); }
+
+    .heroe { position: relative; overflow: hidden; background: radial-gradient(70% 70% at 70% 30%, rgba(255,255,255,.07), transparent 60%); }
+    .heroe .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; min-height: 620px; }
+    .aviso { display: inline-flex; gap: 6px; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--linea); background: rgba(146,129,247,.08); font-size: 13px; color: var(--hueso); }
+    h1 { margin: 26px 0 18px; font-size: clamp(56px, 7vw, 96px); line-height: 1; background: linear-gradient(180deg, #fff 40%, #9a9a9a); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .lead { margin: 0 0 32px; max-width: 420px; color: var(--ceniza); font-size: 17px; }
+    .acc { display: flex; gap: 12px; align-items: center; }
+    .escena { perspective: 1200px; display: grid; place-items: center; height: 460px; }
+    .cubo { position: relative; width: 240px; height: 240px; transform-style: preserve-3d; transform: rotateX(-24deg) rotateY(38deg); animation: girar 18s linear infinite; }
+    @keyframes girar { to { transform: rotateX(-24deg) rotateY(398deg); } }
+    .cara { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 4px; background: #050505; }
+    .cara i { border-radius: 6px; background: linear-gradient(145deg, #2a2a2e, #0b0b0d 60%); box-shadow: inset 0 1px 0 rgba(255,255,255,.12), inset 0 -2px 6px rgba(0,0,0,.6); }
+    .cara i:nth-child(5) { background: linear-gradient(145deg, #333338, #121214); }
+    .f1 { transform: translateZ(120px); } .f2 { transform: rotateY(90deg) translateZ(120px); } .f3 { transform: rotateX(90deg) translateZ(120px); }
+    .f4 { transform: rotateY(180deg) translateZ(120px); } .f5 { transform: rotateY(-90deg) translateZ(120px); } .f6 { transform: rotateX(-90deg) translateZ(120px); }
+    .piso { position: absolute; width: 380px; height: 80px; border-radius: 50%; background: radial-gradient(rgba(255,255,255,.1), transparent 70%); transform: translateY(190px); }
+
+    .logos { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; padding-block: 36px; border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea); color: var(--hierro); font-weight: 500; letter-spacing: -0.02em; font-size: 18px; }
+    section { padding-block: 112px; }
+    h2 { margin: 0 0 16px; font-size: clamp(40px, 5vw, 64px); line-height: 1.05; }
+    .dos { display: grid; grid-template-columns: 1fr 1.15fr; gap: 56px; align-items: center; }
+    .dos p { color: var(--ceniza); max-width: 440px; }
+    .lista { margin: 28px 0 0; padding: 0; list-style: none; display: grid; gap: 12px; color: var(--hueso); }
+    .lista li::before { content: "✓"; color: var(--iris); margin-right: 10px; }
+    .codigo { border-radius: 16px; border: 1px solid var(--linea); background: linear-gradient(180deg, #0b0e14, #050608); overflow: hidden; }
+    .codigo header { display: flex; gap: 18px; padding: 12px 18px; border-bottom: 1px solid var(--linea); color: var(--hierro); }
+    .codigo header span.on { color: var(--hueso); }
+    .codigo pre { margin: 0; padding: 22px; font: 400 13px/1.8 "JetBrains Mono", monospace; color: var(--ceniza); white-space: pre-wrap; }
+    .k { color: var(--iris2); } .s { color: var(--verde); } .n { color: var(--ambar); } .c { color: var(--hierro); }
+    .tarjetas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--linea); border: 1px solid var(--linea); border-radius: 16px; overflow: hidden; margin-top: 48px; }
+    .t { background: #000; padding: 32px; }
+    .t h3 { margin: 18px 0 6px; font-weight: 500; font-size: 17px; }
+    .t p { margin: 0; color: var(--ceniza); font-size: 15px; }
+    .ico { width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--linea); display: grid; place-items: center; color: var(--iris); }
+    .cierre { text-align: center; }
+    .cierre h2 { margin: 0 auto 28px; max-width: 14ch; }
+    footer { padding: 32px 0; border-top: 1px solid var(--linea); color: var(--hierro); font-size: 14px; }
+
+    @media (max-width: 860px) {
+      nav ul, nav .der a:first-child { display: none; }
+      nav .der { margin-left: auto; }
+      .heroe .wrap { grid-template-columns: 1fr; min-height: 0; padding-top: 56px; }
+      .escena { height: 320px; order: -1; }
+      .cubo { width: 160px; height: 160px; }
+      .f1 { transform: translateZ(80px); } .f2 { transform: rotateY(90deg) translateZ(80px); } .f3 { transform: rotateX(90deg) translateZ(80px); }
+      .f4 { transform: rotateY(180deg) translateZ(80px); } .f5 { transform: rotateY(-90deg) translateZ(80px); } .f6 { transform: rotateX(-90deg) translateZ(80px); }
+      .piso { transform: translateY(130px); width: 260px; }
+      .dos, .tarjetas { grid-template-columns: 1fr; }
+      section { padding-block: 72px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .cubo { animation: none; } }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Terciopelo</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=terciopelo#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <nav><div class="wrap">
+    <a class="logo" href="#">buzón</a>
+    <ul><li>Producto ⌄</li><li>Empresa ⌄</li><li>Recursos ⌄</li><li>Ayuda</li><li>Docs</li><li>Precios</li></ul>
+    <div class="der"><a href="#">Ingresar</a><a class="btn btn--oscuro" href="#">Empezar</a></div>
+  </div></nav>
+
+  <header class="heroe">
+    <div class="wrap">
+      <div>
+        <span class="aviso">Nuevo: mensajes por WhatsApp ›</span>
+        <h1 class="serif">Mensajes para tus clientes</h1>
+        <p class="lead">La forma más simple de enviar confirmaciones, recordatorios y facturas por correo, SMS y WhatsApp. Sin caer en spam.</p>
+        <div class="acc"><a class="btn btn--claro" href="#">Empezar gratis</a><a class="btn" href="#" style="color:var(--ceniza)">Documentación</a></div>
+      </div>
+      <div class="escena" aria-hidden="true">
+        <div class="piso"></div>
+        <div class="cubo">
+          <div class="cara f1"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="cara f2"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="cara f3"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="cara f4"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="cara f5"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="cara f6"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap logos" aria-label="Clientes de ejemplo"><span>clínica norte</span><span>Tiquetes+</span><span>ÓPTICA</span><span>agenda.co</span><span>Lavandería 24</span></div>
+
+  <section>
+    <div class="wrap dos">
+      <div>
+        <h2 class="serif">Conecta en minutos</h2>
+        <p>Envía tu primer mensaje con una sola línea de código o desde el panel, sin programar.</p>
+        <ul class="lista"><li>Plantillas listas para citas y pedidos</li><li>Dominio propio verificado</li><li>Reportes de entrega y apertura</li></ul>
+      </div>
+      <div class="codigo">
+        <header class="mono"><span class="on">enviar.js</span><span>curl</span><span>python</span></header>
+<pre><span class="k">import</span> { Buzon } <span class="k">from</span> <span class="s">'buzon'</span>;
+
+<span class="k">const</span> buzon = <span class="k">new</span> Buzon(<span class="s">'bz_123456'</span>);
+
+<span class="k">await</span> buzon.whatsapp.enviar({
+  para: <span class="s">'+57 300 000 0000'</span>,
+  plantilla: <span class="s">'recordatorio_cita'</span>,
+  datos: { hora: <span class="s">'3:00 p. m.'</span>, sede: <span class="s">'Chapinero'</span> },
+});
+<span class="c">// ✓ Entregado en 0,8 s</span></pre>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="tarjetas">
+        <div class="t"><span class="ico">✉</span><h3>Correo transaccional</h3><p>Facturas y confirmaciones que sí llegan a la bandeja.</p></div>
+        <div class="t"><span class="ico">◎</span><h3>SMS y WhatsApp</h3><p>Recordatorios que reducen las citas perdidas.</p></div>
+        <div class="t"><span class="ico">▤</span><h3>Métricas claras</h3><p>Entregas, aperturas y respuestas en tiempo real.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cierre">
+    <div class="wrap"><h2 class="serif">Tus clientes, siempre al tanto</h2><a class="btn btn--claro" href="#">Empezar gratis</a></div>
+  </section>
+
+  <footer><div class="wrap">Buzón · negocio de ejemplo · Medellín, Colombia</div></footer>
+</body>
+</html>
