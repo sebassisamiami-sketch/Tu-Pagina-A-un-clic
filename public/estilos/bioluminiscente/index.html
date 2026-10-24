@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Bioluminiscente | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400&family=Roboto+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --lima: #cef79e; --abismo: #222f30; --hueso: #f7f7f5; --papel: #fff; --grafito: #4d5757; --liquen: #c9cbbe; --tejido: #e7e8e1; --vacio: #000; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--hueso); color: var(--vacio); font: 400 18px/1.3 "Inter Tight", system-ui, sans-serif; letter-spacing: -0.018px; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .mono { font: 400 13px/1.23 "Roboto Mono", ui-monospace, monospace; letter-spacing: .02em; text-transform: uppercase; }
+    .marco { padding: 12px; }
+
+    /* Portada: caja negra redondeada */
+    .portada { position: relative; min-height: min(860px, calc(100vh - 70px)); border-radius: 20px; background: var(--vacio); color: #fff; overflow: hidden; display: flex; flex-direction: column; padding: 28px 32px 32px; }
+    .portada nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; position: relative; z-index: 2; }
+    .logo { display: flex; align-items: center; gap: 10px; font-size: 17px; }
+    .logo svg { width: 26px; height: 26px; }
+    .pildora { display: flex; gap: 2px; padding: 4px; border-radius: 12px; background: var(--liquen); }
+    .pildora a { padding: 9px 16px; border-radius: 8px; color: var(--abismo); }
+    .pildora a.on { background: var(--abismo); color: #fff; }
+    .portada h1 { position: relative; z-index: 2; margin: 56px 0 0; max-width: 11ch; font-size: clamp(52px, 8.6vw, 111px); line-height: 1; letter-spacing: -0.02em; font-weight: 400; }
+    .portada .pie { position: relative; z-index: 2; margin-top: auto; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .portada .pie p { margin: 0; max-width: 470px; font-size: 22px; line-height: 1.3; color: #fff; }
+    .acc { display: flex; gap: 4px; }
+    .btn-osc { display: inline-flex; align-items: center; height: 44px; padding: 0 18px; border-radius: 8px; background: var(--abismo); color: #fff; }
+    .flecha { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 8px; background: var(--lima); color: var(--abismo); font-size: 20px; }
+
+    /* Célula luminosa (imagen generada con CSS) */
+    .celulas { position: absolute; right: -6%; top: 10%; width: 62%; aspect-ratio: 1; z-index: 1; pointer-events: none; }
+    .celulas i { position: absolute; border-radius: 50%; }
+    .celulas .n1 { inset: 12% 14% 18% 10%; background: radial-gradient(circle at 40% 38%, rgba(206,247,158,.55) 0 3%, rgba(206,247,158,.18) 9%, transparent 22%), radial-gradient(circle at 50% 50%, #1a2b22 0 38%, #0c1612 60%, transparent 71%); box-shadow: inset 0 0 80px rgba(206,247,158,.12); }
+    .celulas .n2 { width: 34%; height: 34%; left: 2%; top: 52%; background: radial-gradient(circle at 45% 40%, rgba(206,247,158,.6) 0 4%, rgba(206,247,158,.15) 14%, #0f1b16 40%, transparent 71%); }
+    .celulas .n3 { width: 22%; height: 22%; right: 6%; top: 4%; background: radial-gradient(circle at 50% 45%, rgba(206,247,158,.45) 0 5%, #132019 38%, transparent 70%); }
+    .celulas .n4 { width: 3px; height: 3px; left: 46%; top: 40%; background: var(--lima); box-shadow: 30px 50px 0 var(--lima), -60px 90px 0 rgba(206,247,158,.6), 110px -20px 0 rgba(206,247,158,.7), 80px 160px 0 var(--lima), -120px -40px 0 rgba(206,247,158,.5), 160px 120px 0 rgba(206,247,158,.4); }
+    .celulas::after { content: ""; position: absolute; inset: 0; background: repeating-radial-gradient(circle at 45% 45%, transparent 0 22px, rgba(206,247,158,.05) 23px 24px); border-radius: 50%; mask: radial-gradient(circle, #000 30%, transparent 70%); }
+
+    /* Secciones claras */
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+    section { padding-block: 110px; }
+    .contador { display: flex; align-items: center; gap: 14px; color: var(--grafito); }
+    .contador b { font-weight: 400; color: var(--vacio); }
+    .linea { flex: 1; height: 1px; background: var(--liquen); }
+    h2 { margin: 28px 0 0; max-width: 17ch; font-size: clamp(36px, 5vw, 58px); line-height: 1.1; letter-spacing: -0.012em; font-weight: 400; }
+    .plataforma { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 64px; }
+    .pieza { border-radius: 16px; background: var(--papel); padding: 12px 12px 28px; }
+    .pieza .img { aspect-ratio: 4 / 3; border-radius: 12px; background: #0c1612; position: relative; overflow: hidden; }
+    .pieza .img::before { content: ""; position: absolute; inset: -20%; background: radial-gradient(circle at 30% 40%, rgba(206,247,158,.55) 0 2%, transparent 12%), radial-gradient(circle at 62% 58%, rgba(206,247,158,.4) 0 3%, transparent 16%), radial-gradient(circle at 48% 50%, #22382c 0 26%, transparent 46%), radial-gradient(circle at 75% 25%, #1b2e24 0 12%, transparent 26%); }
+    .pieza:nth-child(2) .img::before { background: repeating-linear-gradient(115deg, transparent 0 18px, rgba(206,247,158,.12) 19px 20px), radial-gradient(circle at 50% 60%, rgba(206,247,158,.5) 0 3%, #1d3127 22%, #0c1612 60%); }
+    .pieza:nth-child(3) .img::before { background: radial-gradient(circle at 20% 30%, rgba(206,247,158,.6) 0 1.5%, transparent 4%), radial-gradient(circle at 70% 70%, rgba(206,247,158,.6) 0 1.5%, transparent 4%), radial-gradient(circle at 45% 55%, rgba(206,247,158,.6) 0 1.5%, transparent 4%), conic-gradient(from 30deg at 50% 50%, #0c1612, #1e3328, #0c1612, #17281f, #0c1612); }
+    .pieza .tag { display: inline-flex; align-items: center; gap: 8px; margin: 22px 12px 0; color: var(--grafito); }
+    .pieza .tag::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--lima); box-shadow: 0 0 0 1px var(--abismo); }
+    .pieza h3 { margin: 10px 12px 0; font-size: 24px; line-height: 1.2; font-weight: 400; letter-spacing: -0.006em; }
+    .pieza p { margin: 8px 12px 0; font-size: 16px; color: var(--grafito); }
+
+    .noticias { background: var(--tejido); }
+    .cabeza { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; }
+    .btn-fant { display: inline-flex; align-items: center; height: 44px; padding: 0 18px; border: 1px solid var(--abismo); border-radius: 8px; }
+    .lista { margin-top: 48px; border-top: 1px solid var(--liquen); }
+    .nota { display: grid; grid-template-columns: 160px 1fr auto; gap: 24px; align-items: center; padding: 26px 0; border-bottom: 1px solid var(--liquen); }
+    .nota time { color: var(--grafito); }
+    .nota h3 { margin: 0; font-size: 24px; font-weight: 400; line-height: 1.2; letter-spacing: -0.006em; }
+    .pub { padding: 6px 12px; border-radius: 9999px; background: var(--papel); color: var(--grafito); white-space: nowrap; }
+
+    footer { margin: 12px; border-radius: 20px; background: var(--vacio); color: #fff; padding: 64px 32px 32px; }
+    footer .gran { font-size: clamp(40px, 7vw, 89px); line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 64px; }
+    footer .fila { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; color: var(--liquen); }
+
+    @media (max-width: 860px) {
+      .pildora a:not(.on) { display: none; }
+      .portada { padding: 20px; min-height: 640px; }
+      .celulas { width: 110%; right: -40%; top: 30%; opacity: .7; }
+      .plataforma { grid-template-columns: 1fr; }
+      .nota { grid-template-columns: 1fr; gap: 10px; }
+      .wrap { padding: 0 20px; }
+      section { padding-block: 72px; }
+      footer { padding: 40px 20px 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Bioluminiscente</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=bioluminiscente#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <div class="marco">
+    <header class="portada">
+      <nav>
+        <a class="logo" href="#"><svg viewBox="0 0 26 26" fill="none" stroke="#fff" stroke-width="1.4"><ellipse cx="13" cy="13" rx="11" ry="6"/><ellipse cx="13" cy="13" rx="5" ry="11"/></svg>VitroLab</a>
+        <div class="pildora mono"><a href="#">Análisis</a><a href="#">Laboratorio</a><a href="#">Noticias</a><a class="on" href="#">Agendar</a></div>
+      </nav>
+      <div class="celulas" aria-hidden="true"><i class="n1"></i><i class="n2"></i><i class="n3"></i><i class="n4"></i></div>
+      <h1>Diagnóstico molecular para decidir a tiempo.</h1>
+      <div class="pie">
+        <p>Pruebas genéticas, microbiología y toxicología con resultados en 48 horas, leídos por especialistas.</p>
+        <div class="acc"><a class="btn-osc mono" href="#">Ver los análisis</a><a class="flecha" href="#" aria-label="Ver los análisis">→</a></div>
+      </div>
+    </header>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="contador mono"><b>01</b>/03<span class="linea"></span>Laboratorio</div>
+      <h2>Tres áreas, un mismo estándar de precisión.</h2>
+      <div class="plataforma">
+        <article class="pieza"><div class="img"></div><span class="tag mono">Genética</span><h3>Paneles de riesgo hereditario</h3><p>Secuenciación de 120 genes con asesoría para entender cada resultado.</p></article>
+        <article class="pieza"><div class="img"></div><span class="tag mono">Microbiología</span><h3>Cultivos y antibiogramas</h3><p>Identificamos el agente y el tratamiento que sí funciona contra él.</p></article>
+        <article class="pieza"><div class="img"></div><span class="tag mono">Toxicología</span><h3>Pruebas ocupacionales</h3><p>Para empresas que necesitan resultados confiables y trazables.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="noticias">
+    <div class="wrap">
+      <div class="cabeza">
+        <div><div class="contador mono"><b>02</b>/03</div><h2>Desde el laboratorio.</h2></div>
+        <a class="btn-fant mono" href="#">Todas las noticias</a>
+      </div>
+      <div class="lista">
+        <a class="nota" href="#"><time class="mono">12 · 10 · 2026</time><h3>Nueva línea de pruebas de farmacogenética para clínicas aliadas.</h3><span class="pub mono">Comunicado</span></a>
+        <a class="nota" href="#"><time class="mono">28 · 09 · 2026</time><h3>Obtenemos la acreditación ISO 15189 para microbiología.</h3><span class="pub mono">Calidad</span></a>
+        <a class="nota" href="#"><time class="mono">03 · 09 · 2026</time><h3>Cómo leer un panel genético sin perderse en los términos.</h3><span class="pub mono">Guía</span></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="gran">Agenda tu toma de muestra.</p>
+    <div class="fila mono"><span>VitroLab · negocio de ejemplo</span><span>Medellín · Colombia</span></div>
+  </footer>
+</body>
+</html>

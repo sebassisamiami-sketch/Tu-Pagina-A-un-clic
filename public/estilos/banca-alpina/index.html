@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Banca alpina | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --onyx: #171721; --grafito: #1e1e2a; --obsidiana: #272735; --pizarra: #70707d; --bruma: #e2e3ed; --ceniza: #c3c3cc; --marfil: #ededf3; --cobalto: #5266eb; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--onyx); color: var(--marfil); font: 400 16px/1.5 "Instrument Sans", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 18px; border-radius: 32px; font-weight: 500; font-size: 15px; white-space: nowrap; }
+    .btn--cobalto { background: var(--cobalto); color: #fff; }
+    .btn--borde { border: 1px solid rgba(237,237,243,.35); color: var(--marfil); }
+
+    .heroe { position: relative; min-height: 760px; display: flex; flex-direction: column; overflow: hidden; }
+    .heroe .foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 60%; }
+    .heroe::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(23,23,33,.7) 0%, rgba(23,23,33,.5) 40%, rgba(23,23,33,.15) 65%, rgba(23,23,33,.85) 100%); }
+    .heroe > * { position: relative; z-index: 2; }
+    nav .wrap { display: flex; align-items: center; height: 72px; gap: 24px; }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 600; letter-spacing: .18em; font-size: 14px; }
+    .logo svg { width: 26px; height: 26px; }
+    nav ul { display: flex; gap: 32px; margin: 0 auto; padding: 0; list-style: none; font-size: 15px; color: var(--marfil); }
+    nav ul li::after { content: " ⌄"; font-size: 12px; color: var(--ceniza); }
+    nav .der { display: flex; align-items: center; gap: 20px; font-size: 15px; }
+    .centro { text-align: center; padding-top: 72px; }
+    h1 { margin: 0 auto; max-width: 15ch; font-size: clamp(40px, 6vw, 65px); line-height: 1.1; font-weight: 500; letter-spacing: -0.02em; text-shadow: 0 2px 30px rgba(23,23,33,.35); }
+    .centro p { margin: 16px auto 32px; max-width: 520px; font-size: 18px; color: var(--marfil); opacity: .9; }
+    .captura { display: flex; max-width: 440px; margin: 0 auto; padding: 4px; border-radius: 32px; background: rgba(39,39,53,.55); backdrop-filter: blur(10px); }
+    .captura span { flex: 1; display: flex; align-items: center; padding: 0 18px; color: var(--ceniza); font-size: 15px; text-align: left; }
+    .aviso { margin-top: auto; padding: 14px 24px; text-align: center; font-size: 12px; color: var(--ceniza); }
+
+    section { padding-block: 112px; }
+    .eyebrow { font-size: 14px; color: var(--ceniza); letter-spacing: .02em; }
+    h2 { margin: 12px 0 0; max-width: 18ch; font-size: clamp(32px, 4vw, 42px); line-height: 1.15; font-weight: 500; letter-spacing: -0.015em; }
+    .grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 16px; margin-top: 56px; }
+    .tarjeta { border-radius: 12px; background: var(--grafito); padding: 32px; border: 1px solid rgba(112,112,125,.25); }
+    .tarjeta h3 { margin: 0 0 8px; font-size: 22px; font-weight: 500; letter-spacing: -0.01em; }
+    .tarjeta p { margin: 0; color: var(--ceniza); }
+    .saldo { margin-top: 28px; border-radius: 10px; background: var(--obsidiana); padding: 22px; }
+    .saldo small { color: var(--ceniza); }
+    .saldo b { display: block; font-size: clamp(28px, 7vw, 38px); font-weight: 500; letter-spacing: -0.02em; margin: 4px 0 18px; }
+    .barras { display: flex; align-items: end; gap: 6px; height: 90px; }
+    .barras i { flex: 1; border-radius: 3px 3px 0 0; background: #3a3a4c; }
+    .barras i:nth-child(9) { background: var(--cobalto); }
+    .movs { margin-top: 24px; display: grid; gap: 2px; }
+    .mov { display: flex; justify-content: space-between; padding: 12px 14px; border-radius: 8px; background: var(--obsidiana); font-size: 14px; }
+    .mov span:last-child { color: var(--ceniza); }
+    .tres { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
+    .tres .tarjeta { padding: 28px; }
+    .ico { width: 36px; height: 36px; border-radius: 10px; background: var(--obsidiana); display: grid; place-items: center; margin-bottom: 28px; color: var(--marfil); }
+    .cierre { text-align: center; border-top: 1px solid rgba(112,112,125,.25); }
+    .cierre h2 { margin: 0 auto 28px; }
+    footer { padding: 32px 0 48px; color: var(--pizarra); font-size: 13px; }
+
+    @media (max-width: 860px) {
+      nav ul, nav .der a:first-child { display: none; }
+      nav .der { margin-left: auto; }
+      .heroe { min-height: 680px; }
+      .grid, .tres { grid-template-columns: 1fr; }
+      section { padding-block: 72px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Banca alpina</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=banca-alpina#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <header class="heroe">
+    <img class="foto" src="../fotos/montana.webp" alt="Ilustración de montañas con niebla al amanecer" width="1600" height="1000">
+    <nav><div class="wrap">
+      <a class="logo" href="#"><svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="13" cy="13" r="12"/><path d="M5 18 L11 10 L14 14 L17 11 L21 18"/></svg>CUMBRE</a>
+      <ul><li>Cuentas</li><li>Empresas</li><li>Recursos</li><li>Nosotros</li></ul>
+      <div class="der"><a href="#">Ingresar</a><a class="btn btn--cobalto" href="#">Abrir cuenta</a></div>
+    </div></nav>
+    <div class="centro wrap">
+      <h1>Una cuenta empresarial radicalmente simple</h1>
+      <p>Abre tu cuenta en 10 minutos, sin filas ni cuota de manejo, y controla cada peso de tu negocio.</p>
+      <div class="captura"><span>Tu correo empresarial</span><a class="btn btn--cobalto" href="#">Abrir cuenta</a></div>
+    </div>
+    <p class="aviso">Cumbre es un negocio de ejemplo creado para mostrar este estilo. No ofrece productos financieros reales.</p>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <span class="eyebrow">Para empresas que crecen</span>
+      <h2>Todo tu dinero, visible desde un solo lugar.</h2>
+      <div class="grid">
+        <article class="tarjeta">
+          <h3>Saldo en tiempo real</h3>
+          <p>Mira entradas, salidas y proyecciones sin descargar extractos.</p>
+          <div class="saldo"><small>Saldo disponible</small><b>$ 184.320.500</b>
+            <div class="barras"><i style="height:40%"></i><i style="height:55%"></i><i style="height:48%"></i><i style="height:62%"></i><i style="height:58%"></i><i style="height:70%"></i><i style="height:66%"></i><i style="height:78%"></i><i style="height:92%"></i><i style="height:80%"></i></div>
+          </div>
+        </article>
+        <article class="tarjeta">
+          <h3>Pagos sin fricción</h3>
+          <p>Paga a proveedores y nómina con aprobación en dos pasos.</p>
+          <div class="movs">
+            <div class="mov"><span>Nómina octubre</span><span>− $ 42.800.000</span></div>
+            <div class="mov"><span>Café Origen S.A.S.</span><span>+ $ 6.150.000</span></div>
+            <div class="mov"><span>Arriendo bodega</span><span>− $ 9.500.000</span></div>
+            <div class="mov"><span>Transferencia recibida</span><span>+ $ 18.000.000</span></div>
+          </div>
+        </article>
+      </div>
+      <div class="tres">
+        <article class="tarjeta"><div class="ico">◎</div><h3>Tarjetas por equipo</h3><p>Límites por persona y alertas al instante.</p></article>
+        <article class="tarjeta"><div class="ico">↻</div><h3>Conciliación automática</h3><p>Tus movimientos llegan ordenados a tu contador.</p></article>
+        <article class="tarjeta"><div class="ico">◇</div><h3>Seguridad de banco</h3><p>Doble factor y permisos por rol en cada cuenta.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cierre">
+    <div class="wrap">
+      <h2>Tu negocio merece una banca a su altura.</h2>
+      <a class="btn btn--cobalto" href="#">Abrir cuenta</a>
+    </div>
+  </section>
+
+  <footer><div class="wrap">Cumbre · negocio de ejemplo · Bogotá, Colombia</div></footer>
+</body>
+</html>

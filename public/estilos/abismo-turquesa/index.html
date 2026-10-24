@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Abismo turquesa | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --abismo: #012624; --hondo: #011d1c; --alga: #003734; --bruma: #edfffe; --plata: #bbc7c6; --pizarra: #707777; --lavanda: #fde9ff; --bio: #00827c; --aurora: #cbfffc; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--hondo); color: #fff; font: 400 16px/1.5 "Manrope", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .etq { font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--plata); }
+    .btn-grad { display: inline-flex; align-items: center; gap: 10px; height: 46px; padding: 0 22px; border-radius: 6px; background: linear-gradient(90deg, var(--aurora), var(--lavanda)); color: var(--abismo); font-size: 13px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; }
+
+    nav { position: relative; z-index: 3; border-bottom: 1px solid rgba(187,199,198,.12); background: rgba(1,38,36,.6); backdrop-filter: blur(8px); }
+    nav .wrap { display: flex; align-items: center; gap: 24px; height: 76px; }
+    .logo { display: flex; align-items: center; gap: 10px; font-size: 22px; letter-spacing: .02em; }
+    nav ul { display: flex; gap: 36px; margin: 0 auto; padding: 0; list-style: none; }
+
+    .heroe { position: relative; overflow: hidden; text-align: center; padding: 120px 0 160px; background: radial-gradient(60% 55% at 50% 100%, rgba(0,130,124,.75), transparent 70%), radial-gradient(40% 40% at 15% 30%, rgba(0,55,52,.9), transparent 70%), var(--abismo); }
+    .heroe canvas { position: absolute; left: 50%; bottom: -320px; width: 760px; height: 760px; transform: translateX(-50%); opacity: .9; }
+    .heroe .wrap { position: relative; z-index: 2; }
+    h1 { margin: 24px auto 0; max-width: 12ch; font-size: clamp(44px, 7vw, 96px); line-height: 1.02; font-weight: 500; letter-spacing: -0.035em; }
+    .heroe p { margin: 28px auto 40px; max-width: 520px; color: var(--plata); font-size: 18px; }
+
+    section { padding-block: 120px; }
+    .cifras { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(187,199,198,.15); border-bottom: 1px solid rgba(187,199,198,.15); }
+    .cifra { padding: 40px 32px; }
+    .cifra + .cifra { border-left: 1px solid rgba(187,199,198,.15); }
+    .cifra b { display: block; font-size: clamp(44px, 5vw, 61px); font-weight: 500; letter-spacing: -0.03em; line-height: 1; background: linear-gradient(90deg, #fff, var(--aurora)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .cifra span { display: block; margin-top: 12px; color: var(--plata); }
+    h2 { margin: 16px 0 0; max-width: 16ch; font-size: clamp(34px, 4.6vw, 61px); line-height: 1.05; font-weight: 500; letter-spacing: -0.03em; }
+    .filas { margin-top: 56px; display: grid; gap: 12px; }
+    .fila { display: grid; grid-template-columns: 80px 1fr 1.2fr 56px; gap: 24px; align-items: center; padding: 28px; border-radius: 16px; background: var(--abismo); border: 1px solid rgba(187,199,198,.1); }
+    .fila:nth-child(2) { background: var(--alga); }
+    .molecula { width: 56px; height: 56px; position: relative; }
+    .molecula i { position: absolute; width: 12px; height: 12px; border-radius: 50%; border: 1px solid #fff; }
+    .molecula i:nth-child(1) { left: 0; top: 22px; } .molecula i:nth-child(2) { left: 22px; top: 0; } .molecula i:nth-child(3) { left: 44px; top: 22px; } .molecula i:nth-child(4) { left: 22px; top: 44px; background: var(--aurora); border-color: var(--aurora); }
+    .molecula::before { content: ""; position: absolute; inset: 6px; border: 1px solid rgba(255,255,255,.4); transform: rotate(45deg) scale(.72); }
+    .fila h3 { margin: 0; font-size: 24px; font-weight: 500; letter-spacing: -0.02em; }
+    .fila p { margin: 0; color: var(--plata); }
+    .flecha { width: 48px; height: 48px; border-radius: 6px; border: 1px solid rgba(187,199,198,.3); display: grid; place-items: center; }
+    .gigante { overflow: hidden; white-space: nowrap; font-size: clamp(80px, 16vw, 220px); font-weight: 500; letter-spacing: -0.05em; line-height: .9; color: transparent; -webkit-text-stroke: 1px rgba(203,255,252,.35); padding: 40px 0; }
+    .cierre { text-align: center; padding-top: 0; }
+    .cierre h2 { margin: 16px auto 36px; }
+    footer { border-top: 1px solid rgba(187,199,198,.12); padding: 32px 0; color: var(--pizarra); font-size: 14px; }
+
+    @media (max-width: 860px) {
+      nav ul { display: none; }
+      nav .btn-grad { margin-left: auto; height: 40px; padding: 0 14px; font-size: 11px; }
+      .heroe { padding: 80px 0 140px; }
+      .heroe canvas { width: 520px; height: 520px; bottom: -240px; }
+      .cifras { grid-template-columns: 1fr; }
+      .cifra + .cifra { border-left: 0; border-top: 1px solid rgba(187,199,198,.15); }
+      .fila { grid-template-columns: 56px 1fr; }
+      .fila p { grid-column: 1 / -1; }
+      .fila .flecha { display: none; }
+      section { padding-block: 80px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Abismo turquesa</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=abismo-turquesa#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <nav><div class="wrap">
+    <a class="logo" href="#"><svg width="22" height="22" viewBox="0 0 22 22" fill="#fff"><circle cx="4" cy="17" r="2.4"/><circle cx="11" cy="10" r="2.4"/><circle cx="18" cy="17" r="2.4"/><circle cx="11" cy="3" r="1.6"/></svg>MAREA</a>
+    <ul class="etq"><li>Soluciones</li><li>Proyectos</li><li>Datos</li><li>Equipo</li></ul>
+    <a class="btn-grad" href="#">Cotizar</a>
+  </div></nav>
+
+  <header class="heroe">
+    <canvas id="esfera" width="760" height="760" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <span class="etq">Marea Energía</span>
+      <h1>Energía solar que se mide sola</h1>
+      <p>Instalamos paneles en empresas y te mostramos, minuto a minuto, cuánto produces y cuánto ahorras.</p>
+      <a class="btn-grad" href="#">Calcular mi ahorro ↗</a>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <div class="cifras">
+        <div class="cifra"><b>38 %</b><span>menos en la factura de energía</span></div>
+        <div class="cifra"><b>4,2 MW</b><span>instalados en Colombia</span></div>
+        <div class="cifra"><b>210</b><span>empresas monitoreadas</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <span class="etq">Cómo trabajamos</span>
+      <h2>De tu techo a un tablero en vivo.</h2>
+      <div class="filas">
+        <article class="fila"><div class="molecula"><i></i><i></i><i></i><i></i></div><h3>Estudio de sitio</h3><p>Medimos sombra, inclinación y consumo para diseñar el sistema exacto.</p><span class="flecha">↗</span></article>
+        <article class="fila"><div class="molecula"><i></i><i></i><i></i><i></i></div><h3>Instalación certificada</h3><p>Paneles, inversores y trámites con la red, en menos de 30 días.</p><span class="flecha">↗</span></article>
+        <article class="fila"><div class="molecula"><i></i><i></i><i></i><i></i></div><h3>Monitoreo continuo</h3><p>Alertas si algo baja su rendimiento y reportes para tu junta.</p><span class="flecha">↗</span></article>
+      </div>
+    </div>
+  </section>
+
+  <div class="gigante" aria-hidden="true">luz · datos · ahorro ·</div>
+
+  <section class="cierre">
+    <div class="wrap">
+      <span class="etq">Empecemos</span>
+      <h2>Tu techo ya está produciendo. Falta conectarlo.</h2>
+      <a class="btn-grad" href="#">Agendar visita ↗</a>
+    </div>
+  </section>
+
+  <footer><div class="wrap">Marea Energía · negocio de ejemplo · Barranquilla, Colombia</div></footer>
+
+  <script>
+    (function () {
+      const c = document.getElementById('esfera'); if (!c) return;
+      const x = c.getContext('2d'), N = 1400, R = 300, pts = [];
+      for (let i = 0; i < N; i++) { const y = 1 - (i / (N - 1)) * 2, r = Math.sqrt(1 - y * y), t = i * 2.39996; pts.push([Math.cos(t) * r, y, Math.sin(t) * r]); }
+      const quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let a = 0.6;
+      function dibujar() {
+        x.clearRect(0, 0, 760, 760);
+        const s = Math.sin(a), co = Math.cos(a);
+        for (const [px, py, pz] of pts) {
+          const X = px * co - pz * s, Z = px * s + pz * co, k = (Z + 1.6) / 2.6;
+          x.globalAlpha = 0.15 + k * 0.75;
+          x.fillStyle = py > 0.55 ? '#fde9ff' : (k > .7 ? '#cbfffc' : '#00b3aa');
+          x.beginPath(); x.arc(380 + X * R, 380 + py * R, 0.6 + k * 1.4, 0, 6.283); x.fill();
+        }
+        if (!quieto) { a += 0.0025; requestAnimationFrame(dibujar); }
+      }
+      dibujar();
+    })();
+  </script>
+</body>
+</html>

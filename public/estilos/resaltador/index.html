@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Resaltador | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --resaltador: #e4f222; --tinta: #0c0a08; --obsidiana: #1a1919; --papel: #fff; --hueso: #f4f2f0; --ceniza: #6d6c6b; --linea: #e5e7eb; --humo: #d3d3d3; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--papel); color: var(--tinta); font: 400 16px/1.5 "Hanken Grotesk", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .btn { display: inline-flex; align-items: center; height: 40px; padding: 0 16px; border-radius: 6px; font-size: 15px; font-weight: 500; white-space: nowrap; }
+    .btn--amarillo { background: var(--resaltador); color: var(--tinta); }
+    .btn--borde { border: 1px solid var(--tinta); }
+    .anuncio { background: var(--tinta); color: #fff; text-align: center; padding: 10px 16px; font-size: 13px; }
+    .anuncio a { text-decoration: underline; margin-left: 6px; }
+    nav { border-bottom: 1px solid var(--linea); }
+    nav .wrap { display: flex; align-items: center; height: 64px; gap: 28px; }
+    .logo { font-size: 22px; font-weight: 500; letter-spacing: -0.04em; display: flex; align-items: center; gap: 4px; }
+    .logo svg { width: 20px; height: 14px; }
+    nav ul { display: flex; gap: 22px; margin: 0; padding: 0; list-style: none; font-size: 14px; }
+    nav .der { margin-left: auto; display: flex; gap: 16px; align-items: center; font-size: 14px; }
+
+    .heroe { background: radial-gradient(circle, #e7e5e2 1px, transparent 1.4px) 0 0 / 14px 14px; padding: 72px 0 0; }
+    .contador { display: inline-flex; gap: 8px; align-items: center; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--ceniza); }
+    .contador b { font-weight: 500; color: var(--tinta); background: var(--hueso); padding: 2px 6px; border-radius: 4px; font-variant-numeric: tabular-nums; letter-spacing: 0; }
+    h1 { margin: 14px 0 10px; font-size: clamp(40px, 6vw, 64px); line-height: 1.02; font-weight: 400; letter-spacing: -0.035em; }
+    .heroe p { margin: 0 0 32px; color: var(--ceniza); font-size: 16px; }
+    .correo { display: flex; max-width: 470px; padding: 8px; border-radius: 10px; background: var(--hueso); align-items: center; }
+    .correo span { flex: 1; padding: 0 12px; color: #4b4a49; font-size: 15px; }
+    .captura { margin-top: 56px; background: var(--hueso); border-radius: 16px 16px 0 0; padding: 40px 40px 0; }
+    .ventana { max-width: 920px; margin: 0 auto; background: var(--papel); border: 1px solid var(--linea); border-bottom: 0; border-radius: 10px 10px 0 0; box-shadow: 0 10px 40px rgba(0,0,0,.06); overflow: hidden; }
+    .barra-v { display: flex; align-items: center; gap: 6px; height: 34px; padding: 0 14px; border-bottom: 1px solid var(--linea); font-size: 11px; color: var(--ceniza); }
+    .barra-v i { width: 9px; height: 9px; border-radius: 50%; background: var(--humo); }
+    .barra-v span { margin: 0 auto; }
+    .app { display: grid; grid-template-columns: 180px 1fr; min-height: 340px; }
+    .lado { border-right: 1px solid var(--linea); padding: 16px; font-size: 13px; display: grid; gap: 10px; align-content: start; color: var(--ceniza); }
+    .lado b { color: var(--tinta); font-weight: 500; }
+    .principal { padding: 22px 26px; }
+    .principal h3 { margin: 0 0 16px; font-weight: 500; font-size: 20px; letter-spacing: -0.02em; display: flex; justify-content: space-between; align-items: center; }
+    .chip { font-size: 11px; padding: 3px 8px; border-radius: 4px; background: var(--resaltador); }
+    .kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 18px; }
+    .kpi { border: 1px solid var(--linea); border-radius: 8px; padding: 12px; }
+    .kpi small { color: var(--ceniza); font-size: 12px; }
+    .kpi b { display: block; font-size: 22px; font-weight: 500; letter-spacing: -0.02em; }
+    .tabla { font-size: 13px; }
+    .tabla div { display: grid; grid-template-columns: 1.4fr 1fr 1fr 90px; padding: 9px 0; border-bottom: 1px solid var(--linea); }
+    .tabla div:first-child { color: var(--ceniza); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; }
+    .ok { color: #2f7d32; } .pend { color: #a26a00; }
+
+    section { padding-block: 104px; }
+    h2 { margin: 0 0 40px; max-width: 18ch; font-size: clamp(32px, 4vw, 40px); line-height: 1.1; font-weight: 400; letter-spacing: -0.03em; }
+    .logos { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--linea); border-left: 1px solid var(--linea); }
+    .logos span { border-right: 1px solid var(--linea); border-bottom: 1px solid var(--linea); padding: 32px 10px; text-align: center; color: var(--ceniza); font-weight: 500; letter-spacing: -0.02em; font-size: 18px; }
+    .tarjetas { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+    .card { border-radius: 16px; border: 1px solid var(--linea); padding: 32px; }
+    .card.lavado { background: var(--hueso); border-color: transparent; }
+    .card.oscura { background: var(--obsidiana); color: #fff; border-color: transparent; }
+    .card blockquote { margin: 0 0 24px; font-size: 24px; line-height: 1.3; letter-spacing: -0.02em; }
+    .card cite { font-style: normal; color: var(--ceniza); font-size: 14px; }
+    .card.oscura b { display: block; font-size: 56px; font-weight: 400; letter-spacing: -0.04em; color: var(--resaltador); line-height: 1; margin-bottom: 12px; }
+    .cierre { text-align: center; background: var(--hueso); }
+    .cierre h2 { margin: 0 auto 28px; }
+    footer { padding: 32px 0; color: var(--ceniza); font-size: 14px; border-top: 1px solid var(--linea); }
+
+    @media (max-width: 860px) {
+      nav ul, nav .der a:first-child { display: none; }
+      .captura { padding: 16px 12px 0; }
+      .app { grid-template-columns: 1fr; }
+      .lado { display: none; }
+      .kpis { grid-template-columns: 1fr 1fr; }
+      .kpi:nth-child(3) { display: none; }
+      .tabla div { grid-template-columns: 1.4fr 1fr 80px; }
+      .tabla div span:nth-child(2) { display: none; }
+      .logos { grid-template-columns: repeat(2, 1fr); }
+      .logos span:last-child { display: none; }
+      .tarjetas { grid-template-columns: 1fr; }
+      section { padding-block: 72px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Resaltador</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=resaltador#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <div class="anuncio">Nuevo: facturación electrónica conectada con la DIAN en un clic. <a href="#">Conoce más</a></div>
+  <nav><div class="wrap">
+    <a class="logo" href="#">cuenta clara<svg viewBox="0 0 20 14" fill="none" stroke="#0c0a08" stroke-width="2.2"><path d="M2 8 L7 12 L18 2"/></svg></a>
+    <ul><li>Productos ⌄</li><li>Contadores ⌄</li><li>Recursos ⌄</li><li>Clientes</li><li>Precios</li></ul>
+    <div class="der"><a href="#">Ingresar</a><a class="btn btn--amarillo" href="#">Ver una demo</a></div>
+  </div></nav>
+
+  <header class="heroe">
+    <div class="wrap">
+      <span class="contador">Facturas procesadas hoy <b id="contador">12.408</b></span>
+      <h1>El tiempo es dinero. Ahorra los dos.</h1>
+      <p>Facturas, gastos, nómina y pagos de tu pyme, conciliados solos y listos para tu contador.</p>
+      <div class="correo"><span>Tu correo de trabajo</span><a class="btn btn--amarillo" href="#">Empieza gratis</a></div>
+      <div class="captura">
+        <div class="ventana">
+          <div class="barra-v"><i></i><i></i><i></i><span>cuenta clara</span></div>
+          <div class="app">
+            <div class="lado"><b>Inicio</b><span>Facturas</span><span>Gastos</span><span>Nómina</span><span>Pagos</span><span>Reportes</span></div>
+            <div class="principal">
+              <h3>Octubre 2026 <span class="chip">Al día</span></h3>
+              <div class="kpis">
+                <div class="kpi"><small>Ingresos</small><b>$ 86,4 M</b></div>
+                <div class="kpi"><small>Gastos</small><b>$ 51,2 M</b></div>
+                <div class="kpi"><small>IVA por pagar</small><b>$ 6,9 M</b></div>
+              </div>
+              <div class="tabla">
+                <div><span>Proveedor</span><span>Categoría</span><span>Valor</span><span>Estado</span></div>
+                <div><span>Papelería Central</span><span>Oficina</span><span>$ 420.000</span><span class="ok">Conciliado</span></div>
+                <div><span>Transportes Andinos</span><span>Logística</span><span>$ 2.150.000</span><span class="ok">Conciliado</span></div>
+                <div><span>Nube Hosting</span><span>Software</span><span>$ 310.000</span><span class="pend">Revisar</span></div>
+                <div><span>Café Origen</span><span>Cliente</span><span>$ 6.150.000</span><span class="ok">Pagado</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <h2>Más de 4.000 pymes ya cerraron el mes sin estrés.</h2>
+      <div class="logos" aria-label="Clientes de ejemplo"><span>granero 21</span><span>Óptica Luz</span><span>moto+</span><span>Panadería Real</span><span>vivero sol</span></div>
+      <div class="tarjetas">
+        <div class="card lavado"><blockquote>“Antes cerrábamos el mes en dos semanas. Ahora en dos días, y sin hojas de cálculo.”</blockquote><cite>Gerente de una ferretería · cliente de ejemplo</cite></div>
+        <div class="card oscura"><b>9 horas</b>ahorradas cada semana, en promedio, por cada pyme que usa Cuenta Clara.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cierre">
+    <div class="wrap">
+      <h2>Deja que las cuentas se hagan solas.</h2>
+      <a class="btn btn--amarillo" href="#">Empieza gratis</a>
+    </div>
+  </section>
+
+  <footer><div class="wrap">Cuenta Clara · negocio de ejemplo · Bucaramanga, Colombia</div></footer>
+
+  <script>
+    (function () {
+      const el = document.getElementById('contador'); let n = 12408;
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      setInterval(function () { n += Math.ceil(Math.random() * 3); el.textContent = n.toLocaleString('es-CO'); }, 1400);
+    })();
+  </script>
+</body>
+</html>

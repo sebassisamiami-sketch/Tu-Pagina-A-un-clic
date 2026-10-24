@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Cuaderno | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --azul: #0075de; --papel: #f6f5f4; --blanco: #fff; --tinta: #000; --carbon: #111; --piedra: #757575; --grafito: #615d59; --cielo: #e6f3fe; --calendula: #ffb110; --coral: #f64932; --azafran: #e89d01; --moca: #b18164; --medianoche: #02093a; --durazno: #ffe8d6; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--blanco); color: var(--carbon); font: 400 16px/1.5 "Inter", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .btn { display: inline-flex; align-items: center; height: 40px; padding: 0 16px; border-radius: 8px; font-weight: 500; font-size: 15px; white-space: nowrap; }
+    .btn--azul { background: var(--azul); color: #fff; }
+    .btn--cielo { background: var(--cielo); color: #0062bb; }
+
+    nav .wrap { display: flex; align-items: center; height: 64px; gap: 24px; max-width: 1440px; }
+    .logo { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 18px; }
+    .logo span { display: grid; place-items: center; width: 28px; height: 28px; border: 2px solid var(--tinta); border-radius: 6px; font: 700 15px "Newsreader", serif; box-shadow: 2px 2px 0 var(--tinta); }
+    nav ul { display: flex; gap: 22px; margin: 0 auto; padding: 0; list-style: none; font-size: 15px; font-weight: 500; color: var(--carbon); }
+    nav .der { display: flex; gap: 14px; align-items: center; font-weight: 500; font-size: 15px; }
+
+    .heroe { text-align: center; padding: 72px 0 40px; }
+    .caras { display: inline-flex; margin-bottom: 28px; }
+    .caras svg { width: 58px; height: 58px; margin-left: -8px; }
+    h1 { margin: 0 auto; max-width: 14ch; font-size: clamp(44px, 7vw, 80px); line-height: 1; font-weight: 700; letter-spacing: -0.035em; color: var(--tinta); }
+    .resalte { display: inline-block; padding: 0 .32em .06em .3em; line-height: 1.05; white-space: nowrap; border-radius: 9999px; background: var(--durazno); font-weight: 500; letter-spacing: -0.02em; }
+    .resalte::before { content: ""; display: inline-block; vertical-align: middle; width: .26em; height: .26em; margin-right: .22em; border-radius: 50%; background: #ff6a00; }
+    .heroe p { margin: 22px auto 28px; max-width: 520px; font-size: 18px; color: var(--carbon); }
+    .acc { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+    .garabato { position: relative; max-width: 1100px; margin: 48px auto 0; }
+    .tablero { background: var(--papel); border-radius: 12px; border: 1px solid #e9e7e4; padding: 22px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; text-align: left; }
+    .col h4 { margin: 0 0 10px; font-size: 13px; font-weight: 500; color: var(--grafito); display: flex; gap: 8px; align-items: center; }
+    .col h4 i { width: 8px; height: 8px; border-radius: 50%; background: var(--calendula); }
+    .col:nth-child(2) h4 i { background: var(--azul); } .col:nth-child(3) h4 i { background: #2fa36b; }
+    .tarea { background: var(--blanco); border: 1px solid #ebe9e6; border-radius: 8px; padding: 12px; margin-bottom: 8px; font-size: 14px; font-weight: 500; }
+    .tarea small { display: inline-block; margin-top: 8px; padding: 2px 8px; border-radius: 4px; background: var(--cielo); color: #0062bb; font-weight: 500; font-size: 12px; }
+    .tarea small.n { background: var(--durazno); color: #a84a00; }
+    .flotante { position: absolute; width: 46px; height: 46px; }
+    .f1 { left: -10px; top: -30px; } .f2 { right: -6px; top: 40%; }
+
+    section { padding-block: 104px; }
+    .titulo { text-align: center; }
+    h2 { margin: 0 auto 14px; max-width: 16ch; font-size: clamp(34px, 5vw, 54px); line-height: 1.04; font-weight: 700; letter-spacing: -0.03em; }
+    .titulo p { margin: 0 auto 48px; max-width: 520px; color: var(--grafito); font: 400 20px/1.4 "Newsreader", serif; }
+    .notas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .nota { border-radius: 12px; padding: 26px; min-height: 300px; display: flex; flex-direction: column; color: #fff; }
+    .nota:nth-child(1) { background: var(--coral); } .nota:nth-child(2) { background: var(--calendula); color: var(--tinta); } .nota:nth-child(3) { background: #62aef0; } .nota:nth-child(4) { background: var(--medianoche); }
+    .nota h3 { margin: 0 0 8px; font-size: 24px; line-height: 1.1; letter-spacing: -0.02em; font-weight: 700; }
+    .nota p { margin: 0; opacity: .9; }
+    .nota svg { margin-top: auto; align-self: flex-end; width: 64px; height: 64px; }
+    .blancas { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+    .blanca { border: 1px solid #e9e7e4; border-radius: 12px; padding: 28px; background: var(--blanco); }
+    .blanca h3 { margin: 0 0 6px; font-size: 22px; letter-spacing: -0.02em; }
+    .blanca p { margin: 0; color: var(--grafito); }
+    .cierre { background: var(--papel); text-align: center; }
+    footer { padding: 32px 0; color: var(--piedra); font-size: 14px; }
+
+    @media (max-width: 860px) {
+      nav ul, nav .der a:first-child { display: none; }
+      nav .der { margin-left: auto; }
+      .caras svg { width: 42px; height: 42px; }
+      .tablero { grid-template-columns: 1fr; }
+      .col:nth-child(3) { display: none; }
+      .notas { grid-template-columns: 1fr 1fr; }
+      .blancas { grid-template-columns: 1fr; }
+      .flotante { display: none; }
+      section { padding-block: 72px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Cuaderno</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=cuaderno#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <nav><div class="wrap">
+    <a class="logo" href="#"><svg width="26" height="28" viewBox="0 0 26 28" fill="#ffb110" stroke="#000" stroke-width="2"><path d="M13 2 L24 8 V20 L13 26 L2 20 V8 Z"/></svg>Colmena</a>
+    <ul><li>Espacios</li><li>Planes</li><li>Eventos</li><li>Comunidad</li><li>Precios</li></ul>
+    <div class="der"><a href="#">Ingresar</a><a class="btn btn--azul" href="#">Reservar gratis</a></div>
+  </div></nav>
+
+  <header class="heroe wrap">
+    <div class="caras" aria-hidden="true">
+      <svg viewBox="0 0 58 58"><circle cx="29" cy="29" r="27" fill="#fff" stroke="#0075de" stroke-width="2"/><path d="M16 30 Q18 14 30 14 Q42 14 42 30 Q36 22 28 24 Q20 26 16 30Z" fill="#111"/><circle cx="24" cy="32" r="1.8"/><circle cx="34" cy="32" r="1.8"/><path d="M24 40 Q29 44 34 40" stroke="#111" stroke-width="2" fill="none"/></svg>
+      <svg viewBox="0 0 58 58"><circle cx="29" cy="29" r="27" fill="#fff" stroke="#111" stroke-width="2"/><path d="M22 20 Q28 16 30 22" stroke="#111" stroke-width="2" fill="none"/><circle cx="23" cy="30" r="1.8"/><circle cx="35" cy="30" r="1.8"/><path d="M29 32 L27 38 L31 38" stroke="#111" stroke-width="2" fill="none"/></svg>
+      <svg viewBox="0 0 58 58"><circle cx="29" cy="29" r="27" fill="#f64932" stroke="#111" stroke-width="2"/><rect x="18" y="16" width="22" height="14" rx="2" fill="#fff" stroke="#111" stroke-width="2"/><path d="M29 30 V44" stroke="#111" stroke-width="3"/></svg>
+      <svg viewBox="0 0 58 58"><circle cx="29" cy="29" r="27" fill="#ffb110" stroke="#111" stroke-width="2"/><path d="M15 26 Q20 10 36 14 Q46 18 44 28 Q38 20 30 22 Q22 24 15 26Z" fill="#111"/><circle cx="24" cy="32" r="1.8"/><circle cx="35" cy="32" r="1.8"/><path d="M25 40 Q30 42 34 39" stroke="#111" stroke-width="2" fill="none"/></svg>
+      <svg viewBox="0 0 58 58"><circle cx="29" cy="29" r="27" fill="#fff" stroke="#2fa36b" stroke-width="2"/><path d="M20 22 Q29 12 38 22" stroke="#111" stroke-width="2" fill="none"/><path d="M22 32 h5 M32 32 h5" stroke="#111" stroke-width="2"/><path d="M26 41 Q29 38 32 41" stroke="#111" stroke-width="2" fill="none"/></svg>
+      <svg viewBox="0 0 58 58"><circle cx="29" cy="29" r="27" fill="#62aef0" stroke="#111" stroke-width="2"/><rect x="16" y="18" width="26" height="20" rx="3" fill="#fff" stroke="#111" stroke-width="2"/><path d="M16 24 H42" stroke="#111" stroke-width="2"/></svg>
+      <svg viewBox="0 0 58 58"><circle cx="29" cy="29" r="27" fill="#fff" stroke="#f64932" stroke-width="2"/><circle cx="22" cy="30" r="5" fill="none" stroke="#111" stroke-width="2"/><circle cx="36" cy="30" r="5" fill="none" stroke="#111" stroke-width="2"/><path d="M27 30 h4 M18 18 Q29 10 40 18" stroke="#111" stroke-width="2" fill="none"/><path d="M24 42 Q29 45 34 42" stroke="#111" stroke-width="2" fill="none"/></svg>
+    </div>
+    <h1>Donde los equipos <span class="resalte">crean</span> juntos.</h1>
+    <p>Un coworking en Medellín con escritorios, salas y una comunidad que te ayuda a sacar adelante tu proyecto.</p>
+    <div class="acc"><a class="btn btn--azul" href="#">Reservar un día gratis</a><a class="btn btn--cielo" href="#">Ver los planes</a></div>
+    <div class="garabato">
+      <svg class="flotante f1" viewBox="0 0 46 46"><circle cx="23" cy="23" r="21" fill="#ffb110" stroke="#111" stroke-width="2"/><path d="M14 22 l6 6 l12 -12" stroke="#111" stroke-width="3" fill="none"/></svg>
+      <svg class="flotante f2" viewBox="0 0 46 46"><circle cx="23" cy="23" r="21" fill="#c4baff" stroke="#111" stroke-width="2"/><path d="M23 12 v22 M12 23 h22" stroke="#111" stroke-width="3"/></svg>
+      <div class="tablero">
+        <div class="col"><h4><i></i>Por hacer</h4><div class="tarea">Reservar sala para demo<br><small>Sala Ceiba</small></div><div class="tarea">Taller de finanzas<br><small class="n">Jueves</small></div></div>
+        <div class="col"><h4><i></i>En curso</h4><div class="tarea">Lanzamiento de la tienda<br><small>Equipo Lumo</small></div><div class="tarea">Grabar pódcast<br><small class="n">Cabina 2</small></div></div>
+        <div class="col"><h4><i></i>Listo</h4><div class="tarea">Contrato de 6 meses<br><small>Plan equipo</small></div><div class="tarea">Café con mentores<br><small class="n">Viernes</small></div></div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <div class="titulo"><h2>Un espacio para cada forma de trabajar.</h2><p>Escoge por días, por mes o para todo tu equipo. Cambia de plan cuando quieras.</p></div>
+      <div class="notas">
+        <article class="nota"><h3>Escritorio flexible</h3><p>Llegas, te sientas y trabajas.</p><svg viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="2.5"><rect x="8" y="26" width="48" height="6" rx="2"/><path d="M14 32 V52 M50 32 V52"/><rect x="22" y="12" width="20" height="14" rx="2"/></svg></article>
+        <article class="nota"><h3>Oficina privada</h3><p>Para equipos de 2 a 12 personas.</p><svg viewBox="0 0 64 64" fill="none" stroke="#000" stroke-width="2.5"><rect x="12" y="10" width="40" height="46" rx="3"/><circle cx="42" cy="34" r="2" fill="#000"/></svg></article>
+        <article class="nota"><h3>Salas de reunión</h3><p>Con pantalla y café incluido.</p><svg viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="2.5"><circle cx="20" cy="22" r="7"/><circle cx="44" cy="22" r="7"/><path d="M8 50 Q20 34 32 50 Q44 34 56 50"/></svg></article>
+        <article class="nota"><h3>Eventos</h3><p>Lanzamientos y talleres hasta 80 personas.</p><svg viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="2.5"><path d="M32 8 L38 26 L56 26 L42 37 L47 55 L32 44 L17 55 L22 37 L8 26 L26 26Z"/></svg></article>
+      </div>
+      <div class="blancas">
+        <div class="blanca"><h3>Internet de fibra de 1 Gb</h3><p>Con respaldo, para que nunca se caiga una llamada.</p></div>
+        <div class="blanca"><h3>Comunidad de 300 miembros</h3><p>Desayunos, mentorías y ferias cada mes.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cierre">
+    <div class="wrap titulo"><h2>Tu primer día va por nuestra cuenta.</h2><p>Ven, prueba el espacio y conoce a la comunidad.</p><a class="btn btn--azul" href="#">Reservar gratis</a></div>
+  </section>
+
+  <footer><div class="wrap">Colmena · negocio de ejemplo · Medellín, Colombia</div></footer>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Tinta y papel | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500&family=Newsreader:ital,wght@0,300;0,400;1,300&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --violeta: #0007cb; --blanco: #fff; --crema: #faf9f6; --lino: #f1eee9; --piedra: #d3cec6; --linea: #dedbd6; --tinta: #111; --hierro: #414141; --grafito: #585858; --humo: #888; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--crema); color: var(--tinta); font: 300 16px/1.5 "Albert Sans", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .mono { font: 400 11px/1.4 "IBM Plex Mono", monospace; letter-spacing: .12em; text-transform: uppercase; }
+    .serif { font-family: "Newsreader", serif; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 14px; border-radius: 4px; font-size: 14px; font-weight: 400; white-space: nowrap; }
+    .btn--negro { background: var(--tinta); color: #fff; }
+    .btn--borde { border: 1px solid var(--tinta); background: var(--blanco); }
+
+    .anuncio { background: var(--lino); text-align: center; padding: 8px 40px; font-size: 13px; position: relative; }
+    .anuncio a { text-decoration: underline; margin-left: 4px; }
+    .anuncio span { position: absolute; right: 16px; }
+    nav .wrap { display: flex; align-items: center; height: 64px; gap: 24px; max-width: 1440px; }
+    .logo { display: flex; align-items: center; gap: 8px; font-weight: 500; }
+    .logo svg { width: 24px; height: 24px; }
+    nav ul { display: flex; gap: 20px; margin: 0; padding: 0; list-style: none; font-size: 14px; font-weight: 400; }
+    nav .der { margin-left: auto; display: flex; gap: 16px; align-items: center; font-size: 14px; font-weight: 400; }
+
+    .heroe { position: relative; padding: 56px 0 48px; }
+    .heroe .wrap { display: grid; grid-template-columns: 2fr 1fr; gap: 48px; align-items: end; max-width: 1440px; }
+    .punto { position: absolute; width: 6px; height: 6px; background: var(--violeta); }
+    .p1 { left: 24px; top: 24px; } .p2 { right: 24px; top: 24px; }
+    h1 { margin: 0; font-size: clamp(44px, 6.4vw, 80px); line-height: 1; font-weight: 300; letter-spacing: -0.035em; }
+    .lado p { margin: 0 0 18px; font: 300 17px/1.45 "Newsreader", serif; color: var(--hierro); }
+    .lado p u { text-underline-offset: 3px; }
+    .lado .acc { display: flex; gap: 8px; }
+    .tira { position: relative; height: 300px; margin-top: 24px; overflow: hidden; }
+    .tira > * { position: absolute; object-fit: cover; }
+    .tira .a { left: 0; top: 30px; width: 80px; height: 90px; }
+    .tira .b { left: 14%; top: 0; width: 120px; height: 170px; filter: sepia(.4); }
+    .tira .c { left: 31%; top: 50px; width: 170px; height: 110px; }
+    .tira .d { left: 53%; top: 0; width: 120px; height: 190px; }
+    .tira .flor { left: 70%; top: -10px; width: 150px; height: 200px; }
+    .tira .e { right: 0; top: 40px; width: 90px; height: 120px; }
+    .panel { margin-top: -110px; position: relative; z-index: 2; }
+    .ventana { max-width: 1100px; margin: 0 auto; background: var(--blanco); border: 1px solid var(--linea); border-radius: 4px; box-shadow: 0 30px 60px -30px rgba(17,17,17,.25); display: grid; grid-template-columns: 220px 1fr 280px; min-height: 360px; font-size: 13px; font-weight: 400; }
+    .ventana > div { padding: 18px; }
+    .ventana .bandeja { border-right: 1px solid var(--linea); display: grid; gap: 4px; align-content: start; }
+    .ventana .bandeja span { padding: 8px 10px; border-radius: 4px; display: flex; justify-content: space-between; color: var(--grafito); }
+    .ventana .bandeja span.on { background: var(--lino); color: var(--tinta); }
+    .chat { display: grid; gap: 12px; align-content: start; }
+    .msg { max-width: 80%; padding: 10px 12px; border-radius: 4px; background: var(--lino); }
+    .msg.yo { justify-self: end; background: var(--violeta); color: #fff; }
+    .msg small { display: block; color: var(--humo); margin-bottom: 2px; }
+    .ficha { border-left: 1px solid var(--linea); display: grid; gap: 10px; align-content: start; }
+    .ficha div { display: flex; justify-content: space-between; border-bottom: 1px solid var(--linea); padding-bottom: 8px; }
+    .ficha div span:first-child { color: var(--humo); }
+
+    section { padding-block: 112px; }
+    .dos { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    h2 { margin: 12px 0 0; font-size: clamp(32px, 4vw, 54px); line-height: 1.05; font-weight: 300; letter-spacing: -0.03em; }
+    .lista { border-top: 1px solid var(--linea); }
+    .lista > div { padding: 22px 0; border-bottom: 1px solid var(--linea); display: grid; grid-template-columns: 40px 1fr; gap: 12px; }
+    .lista h3 { margin: 0 0 4px; font-size: 20px; font-weight: 400; letter-spacing: -0.01em; }
+    .lista p { margin: 0; color: var(--grafito); font: 300 16px/1.45 "Newsreader", serif; }
+    .logos { display: grid; grid-template-columns: repeat(6, 1fr); border-top: 1px solid var(--linea); margin-top: 72px; }
+    .logos span { padding: 28px 8px; text-align: center; color: var(--grafito); font-weight: 500; letter-spacing: -0.02em; }
+    .cierre { background: var(--tinta); color: var(--crema); text-align: center; }
+    .cierre h2 { margin: 0 auto 28px; max-width: 16ch; }
+    .cierre .btn--borde { background: transparent; border-color: var(--crema); }
+    footer { padding: 32px 0; color: var(--humo); font-size: 14px; }
+
+    @media (max-width: 860px) {
+      nav ul, nav .der a:not(.btn--negro) { display: none; }
+      .heroe .wrap { grid-template-columns: 1fr; gap: 24px; }
+      .tira { height: 220px; }
+      .tira .a, .tira .e { display: none; }
+      .tira .b { left: 0; } .tira .c { left: 32%; width: 130px; } .tira .d { left: 62%; width: 110px; } .tira .flor { display: none; }
+      .panel { margin-top: -60px; }
+      .ventana { grid-template-columns: 1fr; }
+      .ventana .bandeja, .ficha { display: none !important; }
+      .dos { grid-template-columns: 1fr; gap: 32px; }
+      .logos { grid-template-columns: repeat(3, 1fr); }
+      section { padding-block: 72px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Tinta y papel</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=tinta-y-papel#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <div class="anuncio">Nuevo: respuestas automáticas por WhatsApp para tu tienda — <a href="#">conoce más</a><span>×</span></div>
+  <nav><div class="wrap">
+    <a class="logo" href="#"><svg viewBox="0 0 24 24"><rect width="24" height="24" rx="5" fill="#111"/><circle cx="12" cy="12" r="5" fill="none" stroke="#fff" stroke-width="2"/></svg>Lumen</a>
+    <ul><li>Servicio ▾</li><li>Clientes</li><li>Recursos ▾</li><li>Precios</li></ul>
+    <div class="der"><a href="#">Hablar con ventas</a><a href="#">Ver demo</a><a class="btn btn--negro" href="#">Prueba gratis</a><a class="btn btn--borde" href="#">Agente con IA →</a></div>
+  </div></nav>
+
+  <header class="heroe">
+    <span class="punto p1"></span><span class="punto p2"></span>
+    <div class="wrap">
+      <h1>El centro de atención hecho para tiendas que crecen</h1>
+      <div class="lado"><p>Lumen responde a tus clientes por WhatsApp, Instagram y correo desde una sola bandeja, con un <u>asistente</u> que aprende de cada conversación.</p><div class="acc"><a class="btn btn--negro" href="#">Prueba gratis</a><a class="btn btn--borde" href="#">Ver demo</a></div></div>
+    </div>
+    <div class="tira wrap" aria-hidden="true">
+      <img class="a" src="../fotos/mar.webp" alt="" width="400" height="400">
+      <img class="b" src="../fotos/sombras.webp" alt="" width="400" height="560">
+      <img class="c" src="../fotos/cielo.webp" alt="" width="560" height="360">
+      <img class="d" src="../fotos/mirada.webp" alt="" width="400" height="620">
+      <svg class="flor" viewBox="0 0 150 200" fill="#111"><path d="M75 190 C72 150 78 120 74 96 M74 96 C50 92 30 70 40 50 C52 30 70 46 74 62 C70 40 80 14 98 18 C118 22 112 50 96 62 C116 54 136 66 128 86 C120 104 94 100 74 96Z" stroke="#111" stroke-width="5" fill="#111"/><path d="M74 140 C60 128 42 130 36 140 C52 146 64 146 74 140Z M76 160 C90 150 108 152 112 160 C98 166 86 166 76 160Z"/></svg>
+      <img class="e" src="../fotos/globos.webp" alt="" width="400" height="520">
+    </div>
+  </header>
+
+  <div class="panel wrap">
+    <div class="ventana">
+      <div class="bandeja"><span class="on">Bandeja <b>12</b></span><span>WhatsApp <b>7</b></span><span>Instagram <b>3</b></span><span>Correo <b>2</b></span><span>Resueltas</span></div>
+      <div class="chat">
+        <div class="msg"><small>Camila · WhatsApp</small>Hola, ¿mi pedido 4821 ya salió? Lo necesito para el sábado.</div>
+        <div class="msg yo"><small style="color:#c9cbff">Asistente Lumen</small>¡Hola, Camila! Salió hoy a las 10:12 a. m. y llega el viernes. Te dejo la guía: 7781-02.</div>
+        <div class="msg"><small>Camila · WhatsApp</small>Perfecto, mil gracias.</div>
+      </div>
+      <div class="ficha"><b style="font-weight:500">Camila Restrepo</b><div><span>Pedidos</span><span>6</span></div><div><span>Ciudad</span><span>Manizales</span></div><div><span>Cliente desde</span><span>2024</span></div><div><span>Satisfacción</span><span>★★★★★</span></div></div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="dos">
+        <div><span class="mono">Cómo funciona</span><h2>Menos tiempo respondiendo, más tiempo vendiendo.</h2></div>
+        <div class="lista">
+          <div><span class="mono">01</span><div><h3>Una sola bandeja</h3><p>Todos tus canales en un lugar, con el historial de cada cliente.</p></div></div>
+          <div><span class="mono">02</span><div><h3>Asistente que aprende</h3><p>Resuelve las preguntas frecuentes y te pasa las difíciles.</p></div></div>
+          <div><span class="mono">03</span><div><h3>Reportes claros</h3><p>Tiempo de respuesta, temas y satisfacción, cada semana.</p></div></div>
+        </div>
+      </div>
+      <div class="logos" aria-label="Clientes de ejemplo"><span>Casa Lis</span><span>tejido.co</span><span>Bambú</span><span>NOVA</span><span>sol &amp; sal</span><span>Mercadito</span></div>
+    </div>
+  </section>
+
+  <section class="cierre">
+    <div class="wrap"><span class="mono">Empieza hoy</span><h2>Tus clientes ya están escribiendo.</h2><a class="btn btn--borde" href="#">Prueba gratis por 14 días</a></div>
+  </section>
+
+  <footer><div class="wrap">Lumen · negocio de ejemplo · Manizales, Colombia</div></footer>
+</body>
+</html>

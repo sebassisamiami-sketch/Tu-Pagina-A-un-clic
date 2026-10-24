@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Monocromo | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --papel: #fafafa; --blanco: #fff; --linea: #ebebeb; --ceniza: #c9c9c9; --grafito: #8f8f8f; --piedra: #666; --carbon: #4d4d4d; --obsidiana: #171717; --negro: #000; --verde: #297a3a; }
+    * { box-sizing: border-box; }
+    body { margin: 0; overflow-x: clip; background: var(--papel); color: var(--negro); font: 400 16px/1.5 "Geist", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .mono { font-family: "Geist Mono", ui-monospace, monospace; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; }
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    .btn { display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 6px; font-size: 14px; font-weight: 500; white-space: nowrap; }
+    .btn--negro { background: var(--negro); color: #fff; }
+    .btn--borde { background: var(--blanco); border: 1px solid var(--linea); box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+    .pild { border-radius: 9999px; height: 40px; padding: 0 18px; }
+
+    nav { position: sticky; top: 41px; z-index: 10; background: rgba(250,250,250,.85); backdrop-filter: blur(8px); border-bottom: 1px solid var(--linea); }
+    nav .wrap { display: flex; align-items: center; height: 60px; gap: 28px; }
+    .logo { display: flex; align-items: center; gap: 8px; font-weight: 600; letter-spacing: -0.02em; font-size: 18px; }
+    .logo i { width: 18px; height: 18px; border-radius: 50%; background: var(--negro); box-shadow: 9px 0 0 -4px var(--negro); }
+    nav ul { display: flex; gap: 22px; margin: 0; padding: 0; list-style: none; font-size: 14px; color: var(--piedra); }
+    nav .der { margin-left: auto; display: flex; gap: 8px; }
+
+    .heroe { display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: center; min-height: 600px; gap: 24px; border-bottom: 1px solid var(--linea); }
+    h1 { margin: 0 0 24px; font-size: clamp(44px, 5.4vw, 64px); line-height: 1.02; font-weight: 400; letter-spacing: -0.06em; }
+    .acc { display: flex; gap: 8px; flex-wrap: wrap; }
+    .orbe { position: relative; justify-self: center; width: 240px; height: 240px; }
+    .orbe::before { content: ""; position: absolute; inset: -120px; border-radius: 50%; background: radial-gradient(circle, rgba(0,0,0,.04), transparent 65%); }
+    .orbe span { position: absolute; inset: 30px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #4a4a4a, #000 55%); box-shadow: 0 50px 60px -30px rgba(0,0,0,.45); }
+    .orbe span + span { inset: auto; width: 70px; height: 70px; right: -18px; top: 0; background: radial-gradient(circle at 35% 30%, #fff, #e5e5e5 70%); box-shadow: 0 20px 30px -12px rgba(0,0,0,.2); }
+    .lineas { line-height: 2; color: var(--obsidiana); }
+    .logos { display: grid; grid-template-columns: repeat(6, 1fr); border-bottom: 1px solid var(--linea); }
+    .logos span { padding: 28px 12px; text-align: center; color: var(--carbon); font-weight: 600; letter-spacing: -0.03em; font-size: 18px; filter: grayscale(1); }
+    .logos span:nth-child(2) { font-family: Georgia, serif; font-style: italic; font-weight: 400; }
+    .logos span:nth-child(4) { letter-spacing: .2em; font-size: 14px; }
+
+    section { padding-block: 96px; border-bottom: 1px solid var(--linea); }
+    .eyebrow { color: var(--piedra); }
+    h2 { margin: 12px 0 48px; max-width: 18ch; font-size: clamp(32px, 4vw, 48px); line-height: 1.05; font-weight: 500; letter-spacing: -0.05em; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--linea); border-radius: 6px; background: var(--blanco); }
+    .celda { padding: 32px; }
+    .celda + .celda { border-left: 1px solid var(--linea); }
+    .celda h3 { margin: 18px 0 6px; font-size: 18px; font-weight: 500; letter-spacing: -0.02em; }
+    .celda p { margin: 0; color: var(--piedra); font-size: 15px; }
+    .dos { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }
+    .term { border-radius: 6px; background: var(--obsidiana); color: #ededed; padding: 22px; font: 400 13px/1.8 "Geist Mono", monospace; overflow: hidden; }
+    .term .g { color: #4ade80; } .term .d { color: #8f8f8f; }
+    .tarjeta { border: 1px solid var(--linea); border-radius: 6px; background: var(--blanco); padding: 28px; }
+    .tarjeta b { display: block; font-size: 48px; font-weight: 500; letter-spacing: -0.05em; line-height: 1; margin: 18px 0 8px; }
+    .tarjeta p { margin: 0; color: var(--piedra); }
+    .cierre { text-align: center; }
+    .cierre h2 { margin: 0 auto 28px; }
+    footer { padding: 32px 0 56px; color: var(--grafito); font-size: 14px; }
+
+    @media (max-width: 860px) {
+      nav ul, nav .der .btn--borde { display: none; }
+      .heroe { grid-template-columns: 1fr; padding: 56px 24px; min-height: 0; }
+      .orbe { order: -1; width: 180px; height: 180px; }
+      .logos { grid-template-columns: repeat(3, 1fr); }
+      .grid, .dos { grid-template-columns: 1fr; }
+      .celda + .celda { border-left: 0; border-top: 1px solid var(--linea); }
+      section { padding-block: 64px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Monocromo</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=monocromo#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <nav><div class="wrap">
+    <a class="logo" href="#"><i></i>nodo</a>
+    <ul><li>Servicios</li><li>Casos</li><li>Precios</li><li>Blog</li></ul>
+    <div class="der"><a class="btn btn--borde" href="#">Agendar llamada</a><a class="btn btn--negro" href="#">Empezar</a></div>
+  </div></nav>
+
+  <header class="wrap heroe">
+    <div>
+      <h1>Tiendas en línea que no se caen</h1>
+      <div class="acc"><a class="btn btn--negro pild" href="#">Cotizar proyecto</a><a class="btn btn--borde pild" href="#">Ver casos</a></div>
+    </div>
+    <div class="orbe" aria-hidden="true"><span></span><span></span></div>
+    <div class="lineas mono">Para marcas que venden en línea<br>Despliegues en segundos<br>Soporte las 24 horas</div>
+  </header>
+
+  <div class="wrap logos" aria-label="Clientes de ejemplo">
+    <span>almacén sur</span><span>Ferretería</span><span>MOVA</span><span>PIXEL</span><span>verdea</span><span>Kiosko</span>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <span class="eyebrow mono">Lo que hacemos</span>
+      <h2>Desarrollo, hosting y soporte en un solo equipo.</h2>
+      <div class="grid">
+        <div class="celda"><span class="mono">01 · Desarrollo</span><h3>Tiendas a la medida</h3><p>Catálogo, pagos y envíos conectados desde el primer día.</p></div>
+        <div class="celda"><span class="mono">02 · Hosting</span><h3>Rápidas en todo el país</h3><p>Servidores cerca de tus clientes y copias diarias.</p></div>
+        <div class="celda"><span class="mono">03 · Soporte</span><h3>Alguien siempre responde</h3><p>Monitoreo constante y respuesta en menos de una hora.</p></div>
+      </div>
+      <div class="dos">
+        <div class="term"><span class="d">$</span> nodo publicar<br><span class="d">▸ Compilando tienda…</span><br><span class="d">▸ 214 productos optimizados</span><br><span class="g">✓ Publicado en 18 s</span><br><span class="d">→ https://tienda-ejemplo.co</span></div>
+        <div class="tarjeta"><span class="mono">Disponibilidad este año</span><b>99,98 %</b><p>Medido en las tiendas que mantenemos.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cierre">
+    <div class="wrap">
+      <h2>Tu próxima temporada alta, sin sustos.</h2>
+      <a class="btn btn--negro pild" href="#">Hablemos</a>
+    </div>
+  </section>
+
+  <footer><div class="wrap">Nodo · negocio de ejemplo · Cali, Colombia</div></footer>
+</body>
+</html>

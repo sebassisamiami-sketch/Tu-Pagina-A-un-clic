@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Pergamino | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=EB+Garamond:ital,wght@0,400;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --pergamino: #f7f7f4; --hueso: #f2f1ed; --lino: #e6e5e0; --piedra: #cdcdc9; --niebla: #a1a19f; --madera: #84847e; --ceniza: #7a7974; --tinta: #26251e; --brasa: #f54e00; --ambar: #c08532; --bosque: #34785c; --carmesi: #cf2d56; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--pergamino); color: var(--tinta); font: 400 16px/1.5 "Inter", system-ui, sans-serif; letter-spacing: -0.005em; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1300px; margin: 0 auto; padding: 0 32px; }
+    .mono { font: 400 12px/1.5 "JetBrains Mono", monospace; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; height: 38px; padding: 0 16px; border-radius: 999px; font-size: 14px; white-space: nowrap; }
+    .btn--tinta { background: var(--tinta); color: var(--pergamino); }
+    .btn--hueso { background: var(--lino); }
+    .btn--borde { border: 1px solid var(--piedra); }
+
+    nav .wrap { display: flex; align-items: center; height: 64px; gap: 24px; }
+    .logo { display: flex; align-items: center; gap: 8px; font-weight: 500; letter-spacing: .06em; font-size: 14px; }
+    .logo svg { width: 18px; height: 18px; }
+    nav ul { display: flex; gap: 28px; margin: 0 auto; padding: 0; list-style: none; font-size: 14px; }
+    nav .der { display: flex; gap: 8px; align-items: center; font-size: 14px; }
+    nav .der > a:first-child { margin-right: 6px; }
+
+    .heroe { padding-block: 72px 40px; }
+    h1 { margin: 0 0 26px; max-width: 22ch; font-size: clamp(26px, 2.6vw, 34px); line-height: 1.22; font-weight: 400; letter-spacing: -0.02em; }
+    .acc { display: flex; gap: 8px; flex-wrap: wrap; }
+    .lienzo { position: relative; margin-top: 44px; border-radius: 4px; overflow: hidden; padding: 40px 64px 0; min-height: 560px; }
+    .lienzo > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(.7) sepia(.18); }
+    .app { position: relative; background: var(--hueso); border-radius: 8px 8px 0 0; box-shadow: 0 28px 70px rgba(38,37,30,.28), 0 0 0 1px rgba(38,37,30,.08); display: grid; grid-template-columns: 240px 1fr 1.3fr; font-size: 13px; min-height: 520px; }
+    .app .titulo { grid-column: 1 / -1; display: flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px; border-bottom: 1px solid var(--lino); color: var(--ceniza); font-size: 12px; }
+    .app .titulo i { width: 9px; height: 9px; border-radius: 50%; background: var(--piedra); }
+    .app .titulo span { margin: 0 auto; }
+    .col { padding: 14px; border-right: 1px solid var(--lino); }
+    .col h4 { margin: 0 0 10px; font-weight: 500; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--ceniza); }
+    .item { padding: 8px; border-radius: 4px; margin-bottom: 2px; }
+    .item b { display: block; font-weight: 500; }
+    .item small { color: var(--niebla); }
+    .item.on { background: var(--lino); }
+    .ok { color: var(--bosque); }
+    .peticion { background: var(--pergamino); border: 1px solid var(--lino); border-radius: 4px; padding: 10px; margin-bottom: 12px; }
+    .doc { padding: 18px 24px; background: var(--pergamino); }
+    .doc .ruta { color: var(--ceniza); display: flex; justify-content: space-between; margin-bottom: 18px; }
+    .doc .ruta b { background: var(--ambar); color: #fff; padding: 2px 8px; border-radius: 4px; font-weight: 500; }
+    .doc h3 { margin: 0 0 10px; font: 400 26px/1.15 "EB Garamond", serif; }
+    .doc p { margin: 0 0 12px; font: 400 16px/1.5 "EB Garamond", serif; color: #3d3c35; }
+    .doc mark { background: rgba(245,78,0,.14); color: inherit; border-bottom: 1px solid var(--brasa); }
+    .doc .tachar { text-decoration: line-through; color: var(--carmesi); }
+    .doc .nuevo { color: var(--bosque); }
+
+    section { padding-block: 112px; }
+    .dos { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; }
+    h2 { margin: 0; font-size: clamp(28px, 3vw, 36px); line-height: 1.2; font-weight: 400; letter-spacing: -0.02em; }
+    h2 em { font: italic 400 1.08em "EB Garamond", serif; }
+    .lnk { color: var(--brasa); }
+    .tarjetas { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .t { background: var(--hueso); border: 1px solid var(--lino); border-radius: 4px; padding: 24px; box-shadow: 0 1px 2px rgba(38,37,30,.04); }
+    .t h3 { margin: 18px 0 6px; font-weight: 500; font-size: 17px; }
+    .t p { margin: 0; color: var(--ceniza); font-size: 15px; }
+    .cita { border-top: 1px solid var(--lino); padding-top: 64px; }
+    .cita blockquote { margin: 0 0 18px; max-width: 30ch; font: 400 34px/1.25 "EB Garamond", serif; letter-spacing: -0.01em; }
+    .cita cite { font-style: normal; color: var(--ceniza); }
+    footer { padding: 40px 0; border-top: 1px solid var(--lino); color: var(--ceniza); font-size: 14px; }
+
+    @media (max-width: 900px) {
+      nav ul, nav .der .btn--borde, nav .der > a:first-child { display: none; }
+      nav .der { margin-left: auto; }
+      .wrap { padding: 0 20px; }
+      .lienzo { padding: 20px 12px 0; min-height: 0; }
+      .app { grid-template-columns: 1fr; min-height: 0; }
+      .app .col { display: none; }
+      .dos, .tarjetas { grid-template-columns: 1fr; gap: 32px; }
+      section { padding-block: 72px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Pergamino</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=pergamino#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <nav><div class="wrap">
+    <a class="logo" href="#"><svg viewBox="0 0 18 18" fill="none" stroke="#26251e" stroke-width="1.6"><path d="M3 15 L13 5 M10 3 L15 8 L8 15 L3 15 L3 10 Z"/></svg>PLUMA</a>
+    <ul><li>Producto</li><li>Firmas</li><li>Precios</li><li>Recursos</li></ul>
+    <div class="der"><a href="#">Ingresar</a><a class="btn btn--borde" href="#">Hablar con ventas</a><a class="btn btn--tinta" href="#">Probar gratis</a></div>
+  </div></nav>
+
+  <header class="wrap heroe">
+    <h1>Pluma es el asistente de redacción para abogados que revisan contratos todos los días.</h1>
+    <div class="acc"><a class="btn btn--tinta" href="#">Probar 14 días gratis</a><a class="btn btn--hueso" href="#">Agendar una demo →</a></div>
+    <div class="lienzo">
+      <img src="../fotos/paisaje.webp" alt="" width="1600" height="900">
+      <div class="app">
+        <div class="titulo"><i></i><i></i><i></i><span>Pluma</span></div>
+        <div class="col"><h4>En revisión 2</h4>
+          <div class="item"><b>Arrendamiento local 12</b><small>Revisando cláusulas…</small></div>
+          <div class="item on"><b>Contrato de servicios</b><small>Generando cambios</small></div>
+          <h4 style="margin-top:18px">Listos 3</h4>
+          <div class="item"><b>Acuerdo de confidencialidad</b><small class="ok">+12 −4 · aprobado</small></div>
+          <div class="item"><b>Compraventa vehículo</b><small class="ok">+3 −1 · aprobado</small></div>
+          <div class="item"><b>Poder general</b><small class="ok">+6 −2 · aprobado</small></div>
+        </div>
+        <div class="col"><h4>Instrucción</h4>
+          <div class="peticion">Revisa la cláusula de terminación y protege al cliente si el proveedor incumple dos entregas seguidas.</div>
+          <span class="mono" style="color:var(--niebla)">Pensó 4 s · Leyó 3 contratos similares</span>
+        </div>
+        <div class="doc">
+          <div class="ruta mono"><span>Contratos › servicios.docx</span><b>Aplicar</b></div>
+          <h3>Cláusula novena: terminación</h3>
+          <p>El contratante podrá dar por terminado el presente contrato <span class="tachar">con aviso de sesenta (60) días</span> <span class="nuevo">de forma inmediata y sin penalidad</span> cuando el contratista <mark>incumpla dos (2) entregas consecutivas</mark> en los plazos pactados.</p>
+          <p>En tal caso, el contratista reintegrará los valores pagados por entregas no realizadas dentro de los diez (10) días hábiles siguientes.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap dos">
+      <h2>Redacta con criterio, <em>no con plantillas</em>. <a class="lnk" href="#">Ver cómo funciona →</a></h2>
+      <div class="tarjetas">
+        <div class="t"><span class="mono" style="color:var(--brasa)">01</span><h3>Revisión con contexto</h3><p>Lee tus contratos anteriores y propone cambios en tu estilo.</p></div>
+        <div class="t"><span class="mono" style="color:var(--brasa)">02</span><h3>Control de cambios</h3><p>Cada sugerencia queda marcada para que tú decidas.</p></div>
+        <div class="t"><span class="mono" style="color:var(--brasa)">03</span><h3>Normativa colombiana</h3><p>Referencias al Código Civil y de Comercio vigentes.</p></div>
+        <div class="t"><span class="mono" style="color:var(--brasa)">04</span><h3>Confidencial por diseño</h3><p>Tus documentos nunca se usan para entrenar a nadie.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap cita">
+    <blockquote>“Revisamos el doble de contratos con el mismo equipo, y con menos errores.”</blockquote>
+    <cite>Socia de una firma de abogados · cliente de ejemplo</cite>
+  </section>
+
+  <footer><div class="wrap">Pluma · negocio de ejemplo · Bogotá, Colombia</div></footer>
+</body>
+</html>

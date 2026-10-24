@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Hora dorada | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --vino: #421d24; --violeta: #714cb6; --lila: #d4c7ff; --laguna: #0c4243; --pergamino: #f2f0eb; --bruma: #e3e3e2; --carbon: #292827; --piedra: #666; --blanco: #fff; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--pergamino); color: var(--carbon); font: 400 16px/1.5 "Inter", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; height: 40px; padding: 0 16px; border-radius: 8px; font-weight: 540; font-size: 14px; white-space: nowrap; }
+    .btn--lila { background: var(--lila); color: var(--carbon); }
+    .btn--vino { height: 48px; padding: 0 6px 0 20px; border-radius: 16px; background: var(--carbon); color: #fff; font-size: 15px; }
+    .btn--vino i { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; background: var(--violeta); font-style: normal; }
+
+    .heroe { position: relative; min-height: 780px; overflow: hidden; color: #fff; }
+    .heroe .foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+    .heroe::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(41,40,39,.35), rgba(41,40,39,0) 45%, rgba(41,40,39,.25)); }
+    .heroe > * { position: relative; z-index: 2; }
+    .aviso { display: flex; justify-content: center; padding-top: 14px; }
+    .aviso a { display: inline-flex; align-items: center; gap: 12px; padding: 8px 10px 8px 16px; border-radius: 999px; background: rgba(66,29,36,.55); backdrop-filter: blur(12px); font-size: 15px; font-weight: 500; }
+    .aviso small { padding: 4px 10px; border-radius: 999px; border: 1px solid rgba(255,255,255,.6); font-size: 12px; }
+    nav .wrap { display: flex; align-items: center; height: 68px; gap: 28px; }
+    .logo { display: flex; align-items: center; gap: 8px; font-weight: 700; letter-spacing: .08em; font-size: 15px; }
+    .logo svg { width: 18px; height: 18px; }
+    nav ul { display: flex; gap: 24px; margin: 0; padding: 0; list-style: none; font-size: 14px; font-weight: 500; opacity: .95; }
+    nav .der { margin-left: auto; display: flex; gap: 20px; align-items: center; font-size: 14px; font-weight: 500; }
+    .centro { text-align: center; padding-top: 64px; }
+    h1 { margin: 0 auto; max-width: 13ch; font-size: clamp(44px, 6.4vw, 72px); line-height: .98; font-weight: 460; letter-spacing: -0.03em; text-shadow: 0 2px 40px rgba(41,40,39,.25); }
+    .centro p { margin: 18px auto 28px; font-size: 20px; font-weight: 460; }
+    .vidrio { position: absolute; left: 24px; bottom: 40px; width: 300px; padding: 18px; border-radius: 16px; background: rgba(41,40,39,.38); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,.22); font-size: 14px; line-height: 1.45; }
+    .vidrio b { display: block; font-size: 18px; margin-bottom: 8px; }
+    .vidrio .si { display: inline-block; margin-top: 12px; float: right; padding: 6px 14px; border-radius: 999px; background: rgba(255,255,255,.85); color: var(--carbon); font-weight: 600; }
+    .iconos { position: absolute; left: 340px; bottom: 40px; display: grid; gap: 8px; }
+    .iconos i { width: 34px; height: 34px; border-radius: 10px; background: rgba(255,255,255,.2); backdrop-filter: blur(10px); display: grid; place-items: center; font-style: normal; }
+    .agenda { position: absolute; right: 24px; bottom: 40px; width: 280px; padding: 16px; border-radius: 16px; background: rgba(255,255,255,.88); color: var(--carbon); font-size: 13px; }
+    .agenda b { font-size: 15px; } .agenda div { display: flex; justify-content: space-between; padding: 8px 0; border-top: 1px solid var(--bruma); }
+    .agenda div span:last-child { color: var(--violeta); font-weight: 600; }
+
+    section { padding-block: 112px; }
+    .eyebrow { font-weight: 600; font-size: 14px; color: var(--violeta); }
+    h2 { margin: 12px 0 18px; max-width: 18ch; font-size: clamp(32px, 4.4vw, 49px); line-height: 1.12; font-weight: 460; letter-spacing: -0.025em; }
+    .lead { margin: 0 0 44px; max-width: 560px; color: var(--piedra); font-size: 18px; }
+    .pestanas { display: inline-flex; gap: 4px; padding: 4px; border-radius: 12px; background: var(--bruma); margin-bottom: 20px; }
+    .pestanas span { padding: 8px 14px; border-radius: 8px; font-size: 14px; font-weight: 500; }
+    .pestanas span.on { background: var(--blanco); box-shadow: 0 1px 2px rgba(0,0,0,.06); }
+    .suite { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .suite article { border-radius: 16px; background: var(--blanco); padding: 28px; border: 1px solid var(--bruma); }
+    .suite h3 { margin: 0 0 6px; font-size: 22px; font-weight: 540; letter-spacing: -0.02em; }
+    .suite p { margin: 0; color: var(--piedra); }
+    .suite .num { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: var(--lila); color: var(--vino); font-weight: 700; margin-bottom: 36px; }
+    .oscura { background: var(--vino); color: var(--pergamino); border-radius: 24px; margin: 0 24px; position: relative; overflow: hidden; }
+    .oscura::before { content: ""; position: absolute; right: 8%; top: 18%; width: 280px; height: 180px; border: 1px solid rgba(212,199,255,.4); border-radius: 12px; transform: rotate(-6deg); }
+    .oscura::after { content: ""; position: absolute; right: 14%; top: 30%; width: 220px; height: 160px; background: rgba(212,199,255,.12); border-radius: 12px; transform: rotate(5deg); }
+    .oscura h2 { color: #fff; }
+    .oscura .cita { font-family: "Brush Script MT", cursive; font-size: 30px; color: var(--lila); }
+    .cierre { text-align: center; }
+    .cierre h2 { margin: 0 auto 28px; }
+    footer { padding: 40px 0; border-top: 1px solid var(--bruma); color: var(--piedra); font-size: 14px; }
+    .lnk { color: var(--violeta); text-decoration: underline; text-underline-offset: 3px; }
+
+    @media (max-width: 860px) {
+      nav ul, nav .der a:first-child, nav .der a:nth-child(2) { display: none; }
+      .aviso a { font-size: 13px; }
+      .heroe { min-height: 760px; }
+      .vidrio { width: auto; right: 24px; bottom: 24px; }
+      .iconos, .agenda { display: none; }
+      .suite { grid-template-columns: 1fr; }
+      .oscura { margin: 0 12px; }
+      .oscura::before, .oscura::after { display: none; }
+      section { padding-block: 72px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Hora dorada</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=hora-dorada#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <header class="heroe">
+    <img class="foto" src="../fotos/retrato-cielo.webp" alt="Cielo al atardecer sobre las montañas" width="1600" height="1000">
+    <div class="aviso"><a href="#">¿Lideras un equipo nuevo? <small>Conoce el programa →</small></a></div>
+    <nav><div class="wrap">
+      <a class="logo" href="#"><svg viewBox="0 0 18 18" fill="#fff"><path d="M9 0 L11.5 6.5 L18 9 L11.5 11.5 L9 18 L6.5 11.5 L0 9 L6.5 6.5Z"/></svg>RUMBO</a>
+      <ul><li>Programas ⌄</li><li>Empresas</li><li>Historias</li><li>Precios</li></ul>
+      <div class="der"><a href="#">Hablar con ventas</a><a href="#">Ingresar</a><a class="btn btn--lila" href="#">Agendar</a></div>
+    </div></nav>
+    <div class="centro wrap">
+      <h1>Lidera mejor, en cada conversación</h1>
+      <p>Coaching ejecutivo uno a uno, con sesiones semanales y seguimiento real.</p>
+      <a class="btn btn--vino" href="#">Agenda tu sesión gratis <i>→</i></a>
+    </div>
+    <div class="vidrio"><b>✦</b>Tienes una conversación difícil con tu equipo el jueves. ¿Quieres preparar los puntos clave con tu coach mañana a las 8:00?<span class="si">Sí</span></div>
+    <div class="iconos" aria-hidden="true"><i>✦</i><i>◐</i><i>☰</i></div>
+    <div class="agenda"><b>Esta semana</b><div><span>Sesión 1:1</span><span>Mar 8:00</span></div><div><span>Revisión de metas</span><span>Jue 7:30</span></div><div><span>Taller de feedback</span><span>Vie 9:00</span></div></div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <span class="eyebrow">Programas</span>
+      <h2>Un acompañamiento a la medida de tu momento.</h2>
+      <p class="lead">Cada programa empieza con un diagnóstico y termina con un plan que tu equipo puede ver.</p>
+      <div class="pestanas"><span class="on">Líderes nuevos</span><span>Gerentes</span><span>Fundadores</span></div>
+      <div class="suite">
+        <article><span class="num">01</span><h3>Diagnóstico 360°</h3><p>Escuchamos a tu equipo y a tus jefes antes de la primera sesión.</p></article>
+        <article><span class="num">02</span><h3>Sesiones semanales</h3><p>50 minutos con tu coach, presenciales o en video.</p></article>
+        <article><span class="num">03</span><h3>Plan medible</h3><p>Metas claras y un reporte de avance cada mes. <a class="lnk" href="#">Ver ejemplo</a></p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="oscura">
+    <div class="wrap">
+      <span class="cita">“Por fin sé qué decir.”</span>
+      <h2>El 87 % de nuestros clientes asciende en menos de dos años.</h2>
+      <p class="lead" style="color:#d9cfd1">Datos ilustrativos de un negocio de ejemplo.</p>
+    </div>
+  </section>
+
+  <section class="cierre">
+    <div class="wrap">
+      <h2>Tu próxima conversación importante empieza aquí.</h2>
+      <a class="btn btn--vino" href="#">Agenda tu sesión gratis <i>→</i></a>
+    </div>
+  </section>
+
+  <footer><div class="wrap">Rumbo · negocio de ejemplo · Bogotá, Colombia</div></footer>
+</body>
+</html>

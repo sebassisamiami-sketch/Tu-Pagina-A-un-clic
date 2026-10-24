@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Catálogo industrial | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --niebla: #f6f8f7; --tinta: #000; --carbon: #0f0e12; --acero: #e5e5e5; --grafito: #b2b2b2; --ambar: #ffb400; --naranja: #ff5a1f; }
+    * { box-sizing: border-box; border-radius: 0; }
+    body { margin: 0; background: var(--niebla); color: var(--tinta); font: 100 13px/1.5 "Inter", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 22px; }
+
+    .banda { background: linear-gradient(180deg, #1a191e 0%, #3b3b40 55%, #6d6d72 100%); color: #fff; overflow: hidden; }
+    nav { display: grid; grid-template-columns: 1.2fr repeat(4, 1fr) auto; gap: 22px; padding: 26px 22px; max-width: 1200px; margin: 0 auto; }
+    .marca { font-weight: 300; font-size: 22px; line-height: 1.05; }
+    .item { display: grid; grid-template-columns: 30px 1fr; gap: 4px 10px; }
+    .item svg { grid-row: span 2; width: 28px; height: 28px; }
+    .item b { font-weight: 300; font-size: 19px; line-height: 1.15; }
+    .item small { font-size: 11px; line-height: 1.3; color: #cfcfcf; }
+    .glifo { width: 44px; height: 44px; }
+    .escena { position: relative; height: 560px; display: grid; place-items: end center; padding-bottom: 0; }
+    .equipo { width: min(560px, 82vw); aspect-ratio: 1.35; background: linear-gradient(180deg, #fafafa, #e9e9e9); transform: perspective(1100px) rotateX(24deg); transform-origin: bottom; margin-bottom: -10px; padding: 26px 30px; display: grid; grid-template-columns: 1.4fr 1fr; grid-template-rows: auto 1fr auto; gap: 14px; box-shadow: 0 -2px 0 #fff inset, 0 40px 60px rgba(0,0,0,.45); color: #222; font-weight: 300; }
+    .equipo .cod { grid-column: 1 / -1; display: flex; justify-content: space-between; font-size: 13px; }
+    .equipo .cod b { color: var(--naranja); font-weight: 400; }
+    .equipo .nombre { font-size: 62px; font-weight: 100; letter-spacing: .02em; line-height: 1; border: 1px solid #333; padding: 10px 14px; align-self: start; }
+    .equipo .perillas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; align-content: start; }
+    .equipo .perillas i { aspect-ratio: 1; border-radius: 50% !important; background: radial-gradient(circle at 40% 35%, #fff, #bbb 60%, #8c8c8c); box-shadow: 0 2px 3px rgba(0,0,0,.3); }
+    .equipo .perillas i:nth-child(2) { background: radial-gradient(circle at 40% 35%, #ffb28f, var(--naranja) 60%, #b33b0c); }
+    .equipo .puntos { grid-column: 2; height: 60px; background: radial-gradient(circle, #222 1.6px, transparent 2px) 0 0 / 9px 9px; }
+    .equipo .teclas { display: flex; gap: 6px; align-items: end; }
+    .equipo .teclas i { flex: 1; height: 20px; background: #2a2a2a; }
+    .equipo .teclas i:nth-child(3) { background: var(--naranja); }
+    .aviso { position: absolute; left: 22px; bottom: 30px; width: 220px; aspect-ratio: 1.15; background: var(--ambar); clip-path: polygon(50% 0, 100% 100%, 0 100%); display: flex; align-items: end; justify-content: center; padding: 0 30px 22px; text-align: center; color: #000; font-size: 10px; font-weight: 300; line-height: 1.35; }
+
+    section { padding-block: 66px; }
+    .rotulo { display: inline-block; background: var(--tinta); color: #fff; font-size: 13px; padding: 4px 8px; font-weight: 300; }
+    h2 { margin: 22px 0 33px; font-size: 40px; font-weight: 300; line-height: 1.11; max-width: 22ch; }
+    .rejilla { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+    .prod img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; background: #fff; }
+    .prod h3 { margin: 12px 0 0; font-size: 19px; font-weight: 300; line-height: 1.15; }
+    .prod p { margin: 2px 0 0; color: #555; }
+    .prod .precio { display: block; margin-top: 8px; font-weight: 300; font-size: 13px; }
+    .dos { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .dos .oscuro { background: var(--carbon); color: #fff; padding: 33px; min-height: 360px; display: flex; flex-direction: column; justify-content: space-between; }
+    .dos .oscuro h3 { margin: 0; font-size: 40px; font-weight: 100; line-height: 1.11; }
+    .dos .claro { border-top: 1px solid var(--grafito); padding: 22px 0; }
+    .spec { display: grid; grid-template-columns: 140px 1fr; border-bottom: 1px solid var(--acero); padding: 12px 0; }
+    .spec span:first-child { color: #777; }
+    a.lnk { text-decoration: underline; text-underline-offset: 3px; }
+    footer { background: var(--carbon); color: #cfcfcf; padding: 44px 0; }
+    footer .wrap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+    footer b { display: block; color: #fff; font-weight: 300; font-size: 19px; margin-bottom: 8px; }
+
+    @media (max-width: 860px) {
+      nav { grid-template-columns: 1fr auto; }
+      nav .item { display: none; }
+      .escena { height: 400px; }
+      .equipo { padding: 16px; } .equipo .nombre { font-size: 36px; }
+      .aviso { width: 110px; font-size: 0; padding: 0; left: 12px; bottom: 12px; }
+      .rejilla { grid-template-columns: 1fr 1fr; }
+      .dos { grid-template-columns: 1fr; }
+      footer .wrap { grid-template-columns: 1fr 1fr; }
+      h2 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Catálogo industrial</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=catalogo-industrial#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <header class="banda">
+    <nav>
+      <a class="marca" href="#">tono<br>audio taller</a>
+      <a class="item" href="#"><svg viewBox="0 0 28 28" fill="#fff"><circle cx="9" cy="9" r="6"/><circle cx="19" cy="19" r="6"/></svg><b>equipos</b><small>parlantes<br>audífonos</small></a>
+      <a class="item" href="#"><svg viewBox="0 0 28 28" fill="none" stroke="#fff" stroke-width="2"><rect x="5" y="3" width="18" height="22"/><path d="M5 10 H23"/></svg><b>tienda</b><small>envíos<br>garantía</small></a>
+      <a class="item" href="#"><svg viewBox="0 0 28 28" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="22" height="22"/></svg><b>diario</b><small>notas<br>sesiones</small></a>
+      <a class="item" href="#"><svg viewBox="0 0 28 28" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M16 16 L25 25"/></svg><b>buscar</b><small>manuales<br>soporte</small></a>
+      <svg class="glifo" viewBox="0 0 44 44" fill="#fff"><rect x="2" y="2" width="18" height="18"/><circle cx="33" cy="11" r="9"/><path d="M2 42 L20 24 V42 Z"/><rect x="24" y="24" width="18" height="18" fill="none" stroke="#fff" stroke-width="3"/></svg>
+    </nav>
+    <div class="escena">
+      <div class="equipo" aria-label="Ilustración de un equipo de audio">
+        <div class="cod"><span><b>TN</b>—07</span><span>radio de mesa · 2026</span></div>
+        <div class="nombre">R.07</div>
+        <div class="perillas"><i></i><i></i><i></i></div>
+        <div class="teclas"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="puntos"></div>
+      </div>
+      <div class="aviso">usamos cookies para medir y mejorar tu visita. lee más en la política de privacidad.</div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <span class="rotulo">nuevo</span>
+      <h2>equipos de audio hechos a mano en Bogotá.</h2>
+      <div class="rejilla">
+        <a class="prod" href="#"><img src="../fotos/parlante.webp" alt="Ilustración de un parlante de madera" width="600" height="600" loading="lazy"><h3>parlante p.02</h3><p>madera de nogal, 40 W</p><span class="precio">$ 1.290.000</span></a>
+        <a class="prod" href="#"><img src="../fotos/audifonos.webp" alt="Ilustración de unos audífonos" width="600" height="600" loading="lazy"><h3>audífonos a.01</h3><p>cuero y aluminio</p><span class="precio">$ 890.000</span></a>
+        <a class="prod" href="#"><img src="../fotos/tocadiscos.webp" alt="Ilustración de un tocadiscos" width="600" height="600" loading="lazy"><h3>tocadiscos t.03</h3><p>tracción por correa</p><span class="precio">$ 2.450.000</span></a>
+        <a class="prod" href="#"><img src="../fotos/sintetizador.webp" alt="Ilustración de un sintetizador" width="600" height="600" loading="lazy"><h3>sintetizador s.01</h3><p>analógico, 8 voces</p><span class="precio">$ 3.100.000</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap dos">
+      <div class="oscuro"><h3>radio r.07<br>sonido de sala<br>en 30 cm.</h3><a class="lnk" href="#">ver ficha técnica</a></div>
+      <div class="claro">
+        <div class="spec"><span>potencia</span><span>2 × 20 W</span></div>
+        <div class="spec"><span>conexión</span><span>bluetooth 5.3, entrada de línea</span></div>
+        <div class="spec"><span>batería</span><span>14 horas</span></div>
+        <div class="spec"><span>materiales</span><span>aluminio anodizado y nogal</span></div>
+        <div class="spec"><span>garantía</span><span>3 años</span></div>
+        <p><a class="lnk" href="#">agregar al carrito</a></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div><b>tono</b>negocio de ejemplo</div>
+      <div><b>tienda</b>envíos<br>garantía<br>devoluciones</div>
+      <div><b>taller</b>Chapinero, Bogotá<br>lun a sáb</div>
+      <div><b>soporte</b>manuales<br>contacto</div>
+    </div>
+  </footer>
+</body>
+</html>

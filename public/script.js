@@ -380,12 +380,24 @@ const Firestore = (function () {
   const ESTILOS = {
     "precision-nocturna": "Precisión nocturna",
     "neon-coral": "Neón coral",
+    "bioluminiscente": "Bioluminiscente",
+    "banca-alpina": "Banca alpina",
+    "abismo-turquesa": "Abismo turquesa",
     "sala-blanca": "Sala blanca",
     "galeria-calida": "Galería cálida",
+    "catalogo-industrial": "Catálogo industrial",
+    "monocromo": "Monocromo",
+    "lienzo-blanco": "Lienzo blanco",
     "recreo": "Recreo",
     "picante": "Picante",
+    "cuaderno": "Cuaderno",
+    "brutal": "Brutal",
+    "resaltador": "Resaltador",
     "crema-editorial": "Crema editorial",
     "galeria-nocturna": "Galería nocturna",
+    "hora-dorada": "Hora dorada",
+    "tinta-y-papel": "Tinta y papel",
+    "pergamino": "Pergamino",
   };
   const estiloElegido = ESTILOS[new URLSearchParams(location.search).get("estilo")];
   if (estiloElegido && !form.mensaje.value.trim()) {

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Brutal | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --negro: #000; --blanco: #fff; --lienzo: #e5e5e5; --bruma: #f3f3f3; --ceniza: #c6c6c6; --humo: #979797; --pizarra: #444; --grafito: #2f2f2f; --menta: #d1ffca; --voltaje: #fff100; --rosa: #ff8fd1; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--lienzo); color: var(--negro); font: 400 16px/1.5 "Inter", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .mono { font: 400 12px/1.4 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: .04em; }
+    .cond { font-family: "Barlow Condensed", sans-serif; font-weight: 700; text-transform: uppercase; line-height: .9; letter-spacing: -0.01em; }
+    .btn { display: inline-flex; align-items: center; height: 44px; padding: 0 20px; border-radius: 6px; font-weight: 500; font-size: 15px; white-space: nowrap; }
+    .btn--negro { background: var(--negro); color: #fff; }
+    .btn--borde { border: 1.5px solid var(--negro); }
+
+    nav .wrap { display: flex; align-items: center; height: 84px; gap: 24px; }
+    .logo { display: flex; align-items: center; gap: 8px; font-weight: 500; font-size: 20px; letter-spacing: -0.03em; }
+    .logo i { width: 22px; height: 22px; border: 3px solid var(--negro); border-radius: 4px; transform: rotate(45deg) scale(.8); }
+    nav ul { display: flex; gap: 4px; margin: 0 auto; padding: 6px; list-style: none; background: var(--blanco); border-radius: 48px; font-size: 14px; font-weight: 500; }
+    nav li { padding: 8px 16px; border-radius: 48px; }
+    nav li:first-child { background: var(--bruma); }
+
+    .heroe { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 24px; padding: 56px 0 96px; }
+    h1 { margin: 0; font-size: clamp(64px, 10vw, 130px); }
+    .heroe p { max-width: 420px; margin: 28px 0 32px; font-size: 18px; color: var(--grafito); }
+    .acc { display: flex; gap: 10px; flex-wrap: wrap; }
+    .bloques { position: relative; height: 520px; perspective: 1400px; }
+    .cubo { position: absolute; width: 170px; height: 170px; transform-style: preserve-3d; transform: rotateX(-22deg) rotateY(38deg); }
+    .cubo i { position: absolute; inset: 0; background: #d9d6d0 radial-gradient(rgba(0,0,0,.08) 1px, transparent 1.5px) 0 0 / 7px 7px; border: 1px solid rgba(0,0,0,.06); }
+    .cubo i:nth-child(1) { transform: translateZ(85px); }
+    .cubo i:nth-child(2) { transform: rotateY(90deg) translateZ(85px); background-color: #bfbcb5; }
+    .cubo i:nth-child(3) { transform: rotateX(90deg) translateZ(85px); background-color: #ecebe7; }
+    .c1 { left: 18%; top: 40px; } .c2 { left: 44%; top: 150px; } .c3 { left: 12%; top: 250px; } .c4 { left: 40%; top: 330px; width: 120px; height: 120px; }
+    .c4 i:nth-child(1) { transform: translateZ(60px); } .c4 i:nth-child(2) { transform: rotateY(90deg) translateZ(60px); } .c4 i:nth-child(3) { transform: rotateX(90deg) translateZ(60px); }
+    .c2 i:nth-child(1) { background: #2b2b2b; } .c2 i:nth-child(2) { background: #1b1b1b; }
+    .pieza { position: absolute; border-radius: 10px; box-shadow: inset -10px -14px 0 rgba(0,0,0,.12); }
+    .verde { left: 8%; top: 210px; width: 90px; height: 70px; background: #8de07a; transform: skewY(-12deg); }
+    .amarilla { left: 66%; top: 300px; width: 110px; height: 90px; background: var(--voltaje); transform: skewY(14deg); }
+    .rosada { left: 36%; top: 60px; width: 80px; height: 50px; background: var(--rosa); transform: skewY(-10deg); }
+    .etq-bloque { position: absolute; left: 47%; top: 210px; transform: rotate(-8deg); background: #fff; padding: 4px 8px; }
+
+    section { padding-block: 96px; }
+    .tag { display: inline-block; padding: 6px 12px; border-radius: 9999px; background: var(--menta); }
+    h2 { margin: 18px 0 40px; padding-top: .08em; font-size: clamp(48px, 6vw, 80px); max-width: 14ch; }
+    .tarjetas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .t { border-radius: 28px; background: var(--blanco); padding: 32px; min-height: 340px; display: flex; flex-direction: column; }
+    .t h3 { margin: auto 0 10px; font-size: 40px; }
+    .t p { margin: 0; color: var(--pizarra); }
+    .t.inv { background: var(--negro); color: #fff; }
+    .t.inv p { color: var(--ceniza); }
+    .t.arco { border-radius: 160px 160px 28px 28px; background: var(--menta); }
+    .resaltar { background: var(--voltaje); padding: 0 6px; }
+    .cifras { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 2px solid var(--negro); margin-top: 64px; }
+    .cifras div { padding: 24px 0; }
+    .cifras b { display: block; font-size: 64px; }
+    footer { background: var(--negro); color: var(--ceniza); padding: 64px 0 40px; }
+    footer .cond { color: #fff; font-size: clamp(56px, 10vw, 130px); margin: 0 0 40px; }
+
+    @media (max-width: 860px) {
+      nav ul { display: none; }
+      nav .btn { margin-left: auto; }
+      .heroe { grid-template-columns: 1fr; padding: 24px 24px 40px; }
+      .t { min-height: 220px; }
+      .bloques { height: 380px; transform: scale(.75); transform-origin: top left; width: 133%; }
+      .tarjetas, .cifras { grid-template-columns: 1fr 1fr; }
+      .tarjetas { grid-template-columns: 1fr; }
+      section { padding-block: 64px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Brutal</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=brutal#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <nav><div class="wrap">
+    <a class="logo" href="#"><i></i>Bloque</a>
+    <ul><li>Estudio</li><li>Proyectos</li><li>Proceso</li><li>Materiales</li><li>Equipo</li><li>Prensa</li></ul>
+    <a class="btn btn--negro" href="#">Agendar visita</a>
+  </div></nav>
+
+  <header class="wrap heroe">
+    <div>
+      <h1 class="cond">Casas de concreto. No de catálogo.</h1>
+      <p>Bloque es un estudio de arquitectura que diseña y construye vivienda a la medida, de la primera idea a la entrega de llaves.</p>
+      <div class="acc"><a class="btn btn--negro" href="#">Ver proyectos</a><a class="btn btn--borde" href="#">Cómo trabajamos</a></div>
+    </div>
+    <div class="bloques" aria-hidden="true">
+      <div class="pieza rosada"></div>
+      <div class="cubo c1"><i></i><i></i><i></i></div>
+      <div class="cubo c3"><i></i><i></i><i></i></div>
+      <div class="cubo c2"><i></i><i></i><i></i></div>
+      <div class="pieza verde"></div>
+      <div class="cubo c4"><i></i><i></i><i></i></div>
+      <div class="pieza amarilla"></div>
+      <span class="etq-bloque mono">Lote 07</span>
+    </div>
+  </header>
+
+  <section style="background:var(--bruma)">
+    <div class="wrap">
+      <span class="tag mono">Servicios</span>
+      <h2 class="cond">Diseñamos, <span class="resaltar">construimos</span>, entregamos.</h2>
+      <div class="tarjetas">
+        <article class="t arco"><span class="mono">01</span><h3 class="cond">Diseño</h3><p>Planos, renders y presupuesto cerrado antes de poner un ladrillo.</p></article>
+        <article class="t inv"><span class="mono">02</span><h3 class="cond">Obra</h3><p>Equipo propio y bitácora semanal con fotos de cada avance.</p></article>
+        <article class="t"><span class="mono">03</span><h3 class="cond">Entrega</h3><p>Garantía de 10 años en estructura y acompañamiento en la mudanza.</p></article>
+      </div>
+      <div class="cifras">
+        <div><b class="cond">48</b><span class="mono">casas entregadas</span></div>
+        <div><b class="cond">12</b><span class="mono">años de estudio</span></div>
+        <div><b class="cond">0</b><span class="mono">sobrecostos</span></div>
+        <div><b class="cond">9</b><span class="mono">premios</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p class="cond">Construyamos la tuya.</p>
+      <span class="mono">Bloque · negocio de ejemplo · Pereira, Colombia</span>
+    </div>
+  </footer>
+</body>
+</html>
