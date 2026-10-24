@@ -23,3 +23,29 @@ export const TIPOS = [
   "un sistema a la medida",
   "asesoría, todavía no lo tengo claro",
 ];
+
+// Estilos de la galería (tupaginaaunclic.com/estilos/). Mantener igual que en public/script.js.
+export const SITIO = "https://tupaginaaunclic.com";
+
+export const ESTILOS = {
+  "precision-nocturna": "Precisión nocturna",
+  "neon-coral": "Neón coral",
+  "bioluminiscente": "Bioluminiscente",
+  "banca-alpina": "Banca alpina",
+  "abismo-turquesa": "Abismo turquesa",
+  "sala-blanca": "Sala blanca",
+  "galeria-calida": "Galería cálida",
+  "catalogo-industrial": "Catálogo industrial",
+  "monocromo": "Monocromo",
+  "lienzo-blanco": "Lienzo blanco",
+  "recreo": "Recreo",
+  "picante": "Picante",
+  "cuaderno": "Cuaderno",
+  "brutal": "Brutal",
+  "resaltador": "Resaltador",
+  "crema-editorial": "Crema editorial",
+  "galeria-nocturna": "Galería nocturna",
+  "hora-dorada": "Hora dorada",
+  "tinta-y-papel": "Tinta y papel",
+  "pergamino": "Pergamino",
+};

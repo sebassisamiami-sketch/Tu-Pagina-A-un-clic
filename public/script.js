@@ -399,7 +399,8 @@ const Firestore = (function () {
     "tinta-y-papel": "Tinta y papel",
     "pergamino": "Pergamino",
   };
-  const estiloElegido = ESTILOS[new URLSearchParams(location.search).get("estilo")];
+  const slugEstilo = new URLSearchParams(location.search).get("estilo");
+  const estiloElegido = ESTILOS[slugEstilo];
   if (estiloElegido && !form.mensaje.value.trim()) {
     form.mensaje.value = `Me gustó el estilo "${estiloElegido}" de la galería y quiero una página así para mi negocio.`;
     const web = form.querySelector('input[name="tipo"][value="una página web"]');
@@ -432,6 +433,7 @@ const Firestore = (function () {
         negocio: datos.negocio.slice(0, 120),
         tipo: datos.tipo,
         mensaje: datos.mensaje.slice(0, 2000),
+        estilo: datos.estilo || undefined,
         origen: "web",
         estado: "nueva",
       },
@@ -448,7 +450,16 @@ const Firestore = (function () {
     "asesoría, todavía no lo tengo claro": "Asesoría, todavía no tengo claro qué necesito",
   };
 
-  function mensajeWhatsApp({ nombre, negocio, tipo, mensaje }) {
+  // Enlace a la ficha del diseño: los datos van en el fragmento (#), que no llega a ningún servidor.
+  function fichaDelDiseno({ estilo, negocio, tipo, mensaje }) {
+    const p = new URLSearchParams({ e: estilo, t: tipo });
+    if (negocio) p.set("n", negocio);
+    const automatico = `Me gustó el estilo "${ESTILOS[estilo]}" de la galería y quiero una página así para mi negocio.`;
+    if (mensaje && mensaje !== automatico) p.set("m", mensaje.slice(0, 1500));
+    return `${location.origin}/estilos/prompt/#${p.toString()}`;
+  }
+
+  function mensajeWhatsApp({ nombre, negocio, tipo, mensaje, estilo }) {
     const lineas = [
       "¡Hola! Vi tu página *Tu Página a un Clic* y me gustaría cotizar un proyecto.",
       "",
@@ -457,6 +468,7 @@ const Firestore = (function () {
     if (negocio) lineas.push(`*Negocio:* ${negocio}`);
     lineas.push(`*Necesito:* ${NECESIDADES[tipo] || tipo}`);
     if (mensaje) lineas.push("", "*Detalles:*", mensaje);
+    if (estilo && ESTILOS[estilo]) lineas.push("", `*Estilo elegido:* ${ESTILOS[estilo]}`, `*Ficha del diseño:* ${fichaDelDiseno({ estilo, negocio, tipo, mensaje })}`);
     lineas.push("", "¿Me cuentas cómo trabajas y qué opciones tengo? ¡Gracias!");
     return lineas.join("\n");
   }
@@ -486,6 +498,7 @@ const Firestore = (function () {
       negocio: form.negocio.value.trim(),
       tipo: form.tipo.value,
       mensaje: form.mensaje.value.trim(),
+      estilo: estiloElegido ? slugEstilo : "",
       sitio: form.sitio.value,
     };
 

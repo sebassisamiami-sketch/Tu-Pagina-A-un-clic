@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <title>Ficha del diseño | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <style>
+    :root { --fondo: #0b0b0d; --caja: #151519; --linea: #2a2a31; --texto: #ededf0; --suave: #9a9aa3; --violeta: #8052ff; --verde: #4ade80; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--fondo); color: var(--texto); font: 400 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+    main { max-width: 860px; margin: 0 auto; padding: 32px 16px 64px; }
+    .etq { color: #ffb829; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    h1 { margin: 8px 0 6px; font-size: clamp(28px, 6vw, 40px); line-height: 1.1; letter-spacing: -0.02em; }
+    p { color: var(--suave); margin: 0 0 16px; }
+    .datos { display: grid; grid-template-columns: 140px 1fr; gap: 8px 16px; margin: 20px 0; padding: 16px; border: 1px solid var(--linea); border-radius: 12px; background: var(--caja); }
+    .datos dt { color: var(--suave); } .datos dd { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+    .acc { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; position: sticky; top: 0; padding: 10px 0; background: var(--fondo); }
+    button, .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px; border: 0; border-radius: 999px; background: var(--violeta); color: #fff; font-family: inherit; font-size: 16px; font-weight: 600; line-height: 1.2; text-decoration: none; cursor: pointer; }
+    .btn--borde { background: transparent; border: 1px solid var(--linea); color: var(--texto); }
+    button.ok { background: var(--verde); color: #04130a; }
+    textarea { width: 100%; min-height: 420px; padding: 16px; border: 1px solid var(--linea); border-radius: 12px; background: var(--caja); color: var(--texto); font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; resize: vertical; }
+    .error { padding: 14px 16px; border-radius: 12px; background: #3a1416; color: #ffd5d7; }
+    @media (max-width: 560px) { .datos { grid-template-columns: 1fr; gap: 2px; } .datos dd { margin-bottom: 10px; } button, .btn { flex: 1; } }
+  </style>
+</head>
+<body>
+  <main>
+    <span class="etq">Ficha del diseño</span>
+    <h1 id="titulo">Cargando…</h1>
+    <p>Este es el prompt completo para crear la página con el estilo que eligió el cliente: incluye sus datos y todo el código del diseño. Cópialo y pégalo en Claude.</p>
+
+    <dl class="datos" id="datos" hidden></dl>
+
+    <div class="acc">
+      <button type="button" id="copiar" disabled>Copiar prompt completo</button>
+      <a class="btn btn--borde" id="muestra" href="../" target="_blank" rel="noopener">Ver la muestra</a>
+    </div>
+
+    <p class="error" id="error" hidden></p>
+    <textarea id="prompt" readonly spellcheck="false" aria-label="Prompt completo"></textarea>
+  </main>
+
+  <script>
+    addEventListener("hashchange", () => location.reload());
+    (async function () {
+      // Los datos viajan en el fragmento (#...), que nunca se envía al servidor.
+      const p = new URLSearchParams(location.hash.slice(1));
+      const slug = (p.get("e") || "").toLowerCase();
+      const negocio = (p.get("n") || "").slice(0, 120);
+      const tipo = (p.get("t") || "una página web").slice(0, 80);
+      const mensaje = (p.get("m") || "").slice(0, 2000);
+      const $ = (id) => document.getElementById(id);
+      const fallar = (texto) => { $("titulo").textContent = "No se pudo armar la ficha"; $("error").textContent = texto; $("error").hidden = false; };
+
+      if (!/^[a-z-]{2,40}$/.test(slug)) return fallar("El enlace no indica un estilo válido. Ábrelo desde el mensaje de WhatsApp o desde el panel.");
+
+      let html;
+      try {
+        const r = await fetch(`../${slug}/`, { cache: "no-cache" });
+        if (!r.ok) throw new Error();
+        html = await r.text();
+      } catch (_) {
+        return fallar("No encontré ese estilo en la galería. Revisa que el enlace esté completo.");
+      }
+
+      const doc = new DOMParser().parseFromString(html, "text/html");
+      const nombre = (doc.querySelector(".tpc-barra__texto b") || {}).textContent || slug;
+      const origen = location.origin;
+
+      // Código limpio: sin la barra de "Muestra" y con rutas completas para fuentes e imágenes.
+      let codigo = html
+        .replace(/\s*<div class="tpc-barra">[\s\S]*?tpc-barra__acciones[\s\S]*?<\/div>\s*<\/div>/, "\n")
+        .replace(/\s*<link rel="stylesheet" href="\.\.\/muestra\.css">/, "")
+        .replace(/<meta name="robots" content="noindex, follow">\s*/, "")
+        .replace(/(src|href)="\.\.\/fotos\//g, `$1="${origen}/estilos/fotos/`)
+        .replace(/\s*<link rel="icon" href="\/favicon\.ico"[^>]*>/, "")
+        .trim();
+
+      const lineas = [
+        `Hazme una página web completa para un cliente usando el estilo «${nombre}» de mi galería (${origen}/estilos/${slug}/).`,
+        "",
+        "DATOS DEL CLIENTE",
+        `- Negocio: ${negocio || "(no lo indicó; pregúntame o deja un nombre provisional)"}`,
+        `- Necesita: ${tipo}`,
+        `- Lo que pidió: ${mensaje || "(no dejó detalles)"}`,
+        "",
+        "QUÉ DEBES HACER",
+        "1. Copia el diseño completo del código de abajo: estructura de secciones, colores, tipografías, tamaños, espaciados, botones, tarjetas, efectos y comportamiento en celular. No cambies el estilo.",
+        "2. Cambia todo el contenido para este negocio: nombre, logo de texto, titulares, textos, servicios o productos, precios de ejemplo, testimonios y datos de contacto. Todo en español de Colombia.",
+        "3. Las imágenes del ejemplo son de muestra: deja marcadores claros (por ejemplo «FOTO: fachada del local») donde vayan las fotos del cliente.",
+        "4. Agrega un botón de WhatsApp visible y un formulario o sección de contacto.",
+        "5. Incluye lo básico de SEO: <title>, meta description, etiquetas Open Graph y datos estructurados del negocio.",
+        "6. Entrega un solo archivo HTML listo para publicar, que se vea bien en celular y computador.",
+        "",
+        "CÓDIGO DEL ESTILO (referencia de diseño)",
+        "```html",
+        codigo,
+        "```",
+      ];
+      const prompt = lineas.join("\n");
+
+      $("titulo").textContent = `Estilo «${nombre}»`;
+      $("muestra").href = `../${slug}/`;
+      $("prompt").value = prompt;
+      const dl = $("datos");
+      for (const [k, v] of [["Negocio", negocio || "—"], ["Necesita", tipo], ["Lo que pidió", mensaje || "—"]]) {
+        const dt = document.createElement("dt"); dt.textContent = k;
+        const dd = document.createElement("dd"); dd.textContent = v;
+        dl.append(dt, dd);
+      }
+      dl.hidden = false;
+
+      const boton = $("copiar");
+      boton.disabled = false;
+      boton.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(prompt);
+        } catch (_) {
+          $("prompt").select();
+          document.execCommand("copy");
+        }
+        boton.textContent = "¡Copiado! Pégalo en Claude";
+        boton.classList.add("ok");
+        setTimeout(() => { boton.textContent = "Copiar prompt completo"; boton.classList.remove("ok"); }, 4000);
+      });
+    })();
+  </script>
+</body>
+</html>

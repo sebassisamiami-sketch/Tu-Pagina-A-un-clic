@@ -1,4 +1,5 @@
-import { ORIGENES, ESTADOS, TIPOS } from "./constantes.js";
+import { ORIGENES, ESTADOS, TIPOS, ESTILOS, SITIO } from "./constantes.js";
+import { fichaDelDiseno } from "./datos.js";
 
 /* ---------- Utilidades ---------- */
 
@@ -386,6 +387,18 @@ function solicitudForm({ s, clientes, errores, ok }) {
           ${!wa && !s.correo ? '<p class="muted">Agrega un teléfono o correo para contactar desde aquí.</p>' : ""}
         </div>
       </section>
+      ${
+        fichaDelDiseno(s)
+          ? `<section class="box">
+        <h2>Diseño elegido</h2>
+        <p>Estilo <strong>${esc(ESTILOS[s.estilo])}</strong>.</p>
+        <div class="actions">
+          <a class="btn btn--primary" href="${esc(fichaDelDiseno(s))}" target="_blank" rel="noopener">Abrir prompt completo</a>
+          <a class="btn" href="${SITIO}/estilos/${s.estilo}/" target="_blank" rel="noopener">Ver la muestra</a>
+        </div>
+      </section>`
+          : ""
+      }
       <section class="box">
         <h2>Cliente</h2>
         ${
@@ -438,6 +451,7 @@ function solicitudForm({ s, clientes, errores, ok }) {
             <div class="field"><label for="origen">Llegó por</label><select id="origen" name="origen">${opciones(ORIGENES, s.origen)}</select></div>
             <div class="field"><label for="tipo">Necesita</label><select id="tipo" name="tipo">${tipoOpts}</select></div>
           </div>
+          <div class="field"><label for="estilo">Estilo elegido <span class="opt">(opcional)</span></label><select id="estilo" name="estilo"><option value="">Sin estilo</option>${Object.entries(ESTILOS).map(([k, v]) => `<option value="${k}"${k === s.estilo ? " selected" : ""}>${esc(v)}</option>`).join("")}</select></div>
           <div class="field"><label for="mensaje">Lo que pidió</label><textarea id="mensaje" name="mensaje" rows="4" maxlength="4000" placeholder="Copia aquí el mensaje de WhatsApp o del correo">${esc(s.mensaje)}</textarea></div>
         </fieldset>
         <fieldset>

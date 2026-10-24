@@ -20,6 +20,10 @@ Página para ofrecer servicios de desarrollo de páginas web, aplicaciones móvi
 
 Al enviar el formulario se abre WhatsApp con el mensaje listo y, al mismo tiempo, la solicitud se guarda en Firestore (colección `solicitudes`). La configuración de Firebase la entrega Hosting en `/__/firebase/init.json`, así que no hay claves en el repositorio.
 
+## Galería de estilos y ficha del diseño
+
+`public/estilos/` tiene 20 muestras de diseño con negocios inventados. El botón "Quiero este estilo" lleva al formulario con el estilo ya elegido: la solicitud guarda el campo `estilo` y el mensaje de WhatsApp incluye un enlace a la **ficha del diseño** (`/estilos/prompt/`). La ficha arma un prompt con los datos del cliente y todo el código del estilo, listo para copiar y pegar en Claude. Los datos viajan en el fragmento del enlace (`#...`), así que no llegan a ningún servidor. En el panel, cada solicitud con estilo tiene el botón "Abrir prompt completo".
+
 ## Contador de visitas
 
 Si la persona aceptó las estadísticas en el aviso de cookies, la página registra la visita en Firestore (`visitas`) y, mientras la pestaña está abierta, avisa cada minuto que sigue ahí (`presencia`). No se guardan IP ni datos personales: para contar personas distintas se usa un identificador aleatorio que cambia cada día. La copia de GitHub Pages no registra visitas.

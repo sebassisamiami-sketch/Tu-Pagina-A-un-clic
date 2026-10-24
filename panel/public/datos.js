@@ -1,6 +1,6 @@
 // Cálculos del panel sobre los datos ya cargados de Firestore.
 // Todo en hora de Colombia (UTC-5, sin horario de verano).
-import { ORIGENES, ESTADOS } from "./constantes.js";
+import { ORIGENES, ESTADOS, ESTILOS, SITIO } from "./constantes.js";
 
 const OFFSET = 5 * 3600 * 1000;
 const DIA = 24 * 3600 * 1000;
@@ -149,6 +149,7 @@ export function leerSolicitud(form, TIPOS) {
     seguimiento: /^\d{4}-\d{2}-\d{2}$/.test(form.seguimiento || "") ? form.seguimiento : null,
     notas: limpiar(form.notas, 4000),
     cliente_id: limpiar(form.cliente_id, 60),
+    estilo: ESTILOS[form.estilo] ? form.estilo : null,
   };
   if (!d.nombre) errores.nombre = "Escribe el nombre de la persona.";
   if (d.correo && !CORREO.test(d.correo)) errores.correo = "Revisa el correo, no parece válido.";
@@ -251,4 +252,14 @@ export function prepararRespaldo(json) {
     }));
 
   return { clientes, solicitudes, visitas };
+}
+
+// Enlace a la ficha del diseño con el prompt completo. Los datos van en el fragmento (#).
+export function fichaDelDiseno(s) {
+  if (!s || !ESTILOS[s.estilo]) return null;
+  const p = new URLSearchParams({ e: s.estilo, t: s.tipo || "una página web" });
+  if (s.negocio) p.set("n", s.negocio);
+  const detalles = [s.mensaje, s.notas ? `Notas: ${s.notas}` : ""].filter(Boolean).join("\n\n");
+  if (detalles) p.set("m", detalles.slice(0, 1500));
+  return `${SITIO}/estilos/prompt/#${p.toString()}`;
 }
