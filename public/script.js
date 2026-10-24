@@ -526,9 +526,14 @@ const Firestore = (function () {
 
     const guardado = guardarSolicitud(datos);
 
+    // Cliente potencial para Analytics y Google Ads (solo cuenta si aceptó las estadísticas).
+    if (typeof gtag === "function") gtag("event", "generate_lead", { metodo: hasWhatsApp ? "whatsapp" : "formulario", tipo: datos.tipo });
+    const irAGracias = () => setTimeout(() => { location.href = new URL("gracias/", BASE).href; }, 800);
+
     if (hasWhatsApp) {
       window.open(`https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(mensajeWhatsApp(datos))}`, "_blank", "noopener");
       showOk("Se abrió WhatsApp con tu mensaje. Solo falta que lo envíes.");
+      irAGracias();
       return;
     }
 
@@ -540,6 +545,7 @@ const Firestore = (function () {
       if (res.ok) {
         form.reset();
         showOk("Solicitud enviada. Te contactaré pronto.");
+        irAGracias();
       } else {
         showError(res.error || "No pudimos enviar tu solicitud. Intenta de nuevo en unos minutos.");
       }
