@@ -38,7 +38,8 @@
     .menu h2 { margin: 0 0 24px; font-size: clamp(48px, 8vw, 96px); line-height: .9; letter-spacing: -0.01em; }
     .platos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .plato { padding: 16px; border-radius: 6px; background: var(--especia); }
-    .plato .img { aspect-ratio: 4 / 3; border-radius: 6px; background: var(--clavo); display: grid; place-items: center; margin-bottom: 14px; }
+    .plato .img { aspect-ratio: 4 / 3; border-radius: 6px; background: var(--clavo); overflow: hidden; margin-bottom: 14px; }
+    .plato .img img { display: block; width: 100%; height: 100%; object-fit: cover; }
     .plato h3 { margin: 0; font-size: 34px; line-height: .95; letter-spacing: -0.005em; }
     .plato p { margin: 8px 0 14px; color: #e6c38c; font-size: 13px; line-height: 1.3; }
     .plato .pie { display: flex; justify-content: space-between; align-items: center; }
@@ -85,9 +86,9 @@
     <div class="wrap">
       <h2 class="display">El menú</h2>
       <div class="platos">
-        <article class="plato"><div class="img" aria-hidden="true"><svg width="120" height="90" viewBox="0 0 120 90"><path d="M10 40Q60-10 110 40z" fill="#faae33"/><rect x="8" y="44" width="104" height="10" rx="5" fill="#d1255c"/><rect x="6" y="56" width="108" height="14" rx="7" fill="#6b2e12"/><path d="M10 74h100q-8 14-50 14T10 74z" fill="#faae33"/></svg></div><h3 class="display">La Clásica</h3><p>Doble carne, queso cheddar, cebolla caramelizada y salsa de la casa.</p><div class="pie"><span class="precio display">$28.000</span><a class="add" href="#">Agregar</a></div></article>
-        <article class="plato"><div class="img" aria-hidden="true"><svg width="120" height="90" viewBox="0 0 120 90"><path d="M10 40Q60-10 110 40z" fill="#faae33"/><rect x="8" y="44" width="104" height="10" rx="5" fill="#9f531b"/><rect x="6" y="56" width="108" height="14" rx="7" fill="#402011"/><path d="M10 74h100q-8 14-50 14T10 74z" fill="#faae33"/></svg></div><h3 class="display">La Diabla</h3><p>Ají habanero, jalapeños asados, tocineta crocante y queso costeño.</p><div class="pie"><span class="chip">Muy picante</span><a class="add" href="#">Agregar</a></div></article>
-        <article class="plato"><div class="img" aria-hidden="true"><svg width="120" height="90" viewBox="0 0 120 90"><path d="M10 40Q60-10 110 40z" fill="#faae33"/><rect x="8" y="44" width="104" height="10" rx="5" fill="#a5ed6e"/><rect x="6" y="56" width="108" height="14" rx="7" fill="#9f531b"/><path d="M10 74h100q-8 14-50 14T10 74z" fill="#faae33"/></svg></div><h3 class="display">La Verde</h3><p>Medallón de garbanzo, aguacate, tomate asado y alioli de cilantro.</p><div class="pie"><span class="precio display">$25.000</span><a class="add" href="#">Agregar</a></div></article>
+        <article class="plato"><div class="img"><img src="../fotos/burger-1.webp" alt="Hamburguesa clásica con queso y lechuga" width="400" height="400" loading="lazy"></div><h3 class="display">La Clásica</h3><p>Doble carne, queso cheddar, cebolla caramelizada y salsa de la casa.</p><div class="pie"><span class="precio display">$28.000</span><a class="add" href="#">Agregar</a></div></article>
+        <article class="plato"><div class="img"><img src="../fotos/burger-2.webp" alt="Hamburguesa doble con papas" width="400" height="400" loading="lazy"></div><h3 class="display">La Diabla</h3><p>Ají habanero, jalapeños asados, tocineta crocante y queso costeño.</p><div class="pie"><span class="chip">Muy picante</span><a class="add" href="#">Agregar</a></div></article>
+        <article class="plato"><div class="img"><img src="../fotos/burger-3.webp" alt="Hamburguesa con champiñones y repollo morado" width="400" height="400" loading="lazy"></div><h3 class="display">La Verde</h3><p>Medallón de garbanzo, aguacate, tomate asado y alioli de cilantro.</p><div class="pie"><span class="precio display">$25.000</span><a class="add" href="#">Agregar</a></div></article>
       </div>
     </div>
   </section>

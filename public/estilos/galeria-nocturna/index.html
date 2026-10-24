@@ -39,6 +39,9 @@
     .panel .mono { color: rgba(0,0,0,.55); }
     .panel h3 { margin: 0; font-size: 40px; line-height: .95; color: var(--void); }
     .panel--iris { grid-row: span 2; background: var(--iris); }
+    .panel .foto { position: absolute; right: 20px; bottom: 20px; width: 42%; aspect-ratio: 1; object-fit: cover; border-radius: 14px; }
+    .panel .foto--grande { width: 58%; top: 64px; bottom: auto; }
+    .panel h3 { position: relative; z-index: 1; max-width: 55%; }
     .panel--orquidea { background: var(--orquidea); }
     .panel--peri { background: var(--periwinkle); }
     .panel--oscuro { grid-column: span 2; background: var(--grafito); color: var(--plata); }
@@ -59,6 +62,8 @@
       .panel { min-height: 240px; }
       .panel--iris { grid-row: auto; min-height: 340px; }
       .panel--oscuro { grid-column: auto; }
+      .panel .foto, .panel .foto--grande { position: static; width: 100%; height: auto; aspect-ratio: 16 / 10; margin-top: 20px; }
+      .panel h3 { max-width: none; }
     }
   </style>
 </head>
@@ -81,9 +86,9 @@
 
   <section class="wrap">
     <div class="vitrina">
-      <article class="panel panel--iris"><span class="mono">Colección 01</span><h3 class="serif">Argollas<br>de compromiso</h3><div class="joya" aria-hidden="true"></div></article>
-      <article class="panel panel--orquidea"><span class="mono">Colección 02</span><h3 class="serif">Aretes</h3></article>
-      <article class="panel panel--peri"><span class="mono">Colección 03</span><h3 class="serif">Collares</h3></article>
+      <article class="panel panel--iris"><span class="mono">Colección 01</span><h3 class="serif">Argollas<br>de compromiso</h3><img class="foto foto--grande" src="../fotos/joya-anillo.webp" alt="Anillo de oro con diamante" width="400" height="400" loading="lazy"></article>
+      <article class="panel panel--orquidea"><span class="mono">Colección 02</span><h3 class="serif">Anillos</h3><img class="foto" src="../fotos/joya-modelo.webp" alt="Mujer con anillo y collar de oro" width="400" height="400" loading="lazy"></article>
+      <article class="panel panel--peri"><span class="mono">Colección 03</span><h3 class="serif">Collares</h3><img class="foto" src="../fotos/joya-collar.webp" alt="Collar de oro con aro" width="400" height="400" loading="lazy"></article>
       <article class="panel panel--oscuro">
         <div><span class="mono">Oro 18 k · precio del gramo</span><h3 class="serif" style="margin-top:12px">Transparente, siempre.</h3></div>
         <svg class="grafico" viewBox="0 0 400 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60 L40 55 L80 58 L120 44 L160 48 L200 36 L240 40 L280 28 L320 32 L360 18 L400 22"/></svg>

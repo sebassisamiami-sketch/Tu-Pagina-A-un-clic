@@ -72,3 +72,7 @@ ORIGEN_URL="postgres://...URL pública de la base anterior..." npm run exportar-
 ```
 
 En PowerShell: `$env:ORIGEN_URL="postgres://..."` y luego `npm run exportar-datos`. Se crea `respaldo.json`; impórtalo en el panel, en **Respaldo → Importar**. Importar dos veces no duplica nada.
+
+### Fotos de las muestras
+
+Las fotos de `public/estilos/fotos/` son de [Unsplash](https://unsplash.com/license) (licencia gratuita, uso comercial permitido, sin atribución obligatoria). IDs de origen: 1570793005386-840846445fed, 1595521624992-48a59aef95e3, 1568729937315-2ef5ee9cf4f2, 1703782997454-8eb0d4d94e9c, 1593053272490-e0ed6d6a42c5, 1641569618527-68e26db76db0, 1721886473357-1563de6e6883, 1624254495476-db6cc8b77e98, 1610970878459-a0e464d7592b, 1600688640154-9619e002df30, 1549611016-3a70d82b5040, 1616671285410-2a676a9a433d, 1689672235271-727de51355e6, 1514326640560-7d063ef2aed5, 1713950920412-97799efdf870, 1620656798579-1984d9e87df7, 1783541507490-edb026e2a961, 1631972234521-24e9d4fbb841, 1546435770-a3e426bf472b, 1613082852603-f4f1187885ea, 1529047033375-f402d3da24ca, 1525268771113-32d9e9021a97, 1567304441104-d7a7d3e4bc1b, 1486649567693-aaa9b2e59385, 1669801158950-f663cf15298c, 1767808569406-cfcf06dcb441, 1570410070243-b86939615984, 1526835746352-0b9da4054862 (en https://unsplash.com/photos/ID). `paisaje`, `arte-1` y `arte-2` son ilustraciones generadas por código.

@@ -44,9 +44,11 @@
     h2 { margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1.08; }
     .lead { font-size: 18px; line-height: 1.6; color: var(--smoke); margin: 0 0 16px; letter-spacing: 0; }
     .menu { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
-    .tiempo { padding: 28px; border-radius: 20px; background: var(--taupe); }
+    .tiempo { padding: 12px 12px 28px; border-radius: 20px; background: var(--taupe); }
+    .tiempo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; margin-bottom: 20px; }
+    .tiempo .num, .tiempo h3, .tiempo p { margin-left: 16px; margin-right: 16px; }
     .tiempo .num { font: 400 13px/1 "Geist Mono", monospace; color: var(--ash); }
-    .tiempo h3 { margin: 40px 0 8px; font-size: 24px; font-weight: 300; letter-spacing: -0.02em; color: var(--ink); }
+    .tiempo h3 { margin-top: 28px; margin-bottom: 8px; font-size: 24px; font-weight: 300; letter-spacing: -0.02em; color: var(--ink); }
     .tiempo p { margin: 0; font-size: 15px; line-height: 1.47; color: var(--smoke); letter-spacing: 0; }
     .linea { border: 0; border-top: 1px solid var(--stone); margin: 0; }
     .reserva { text-align: center; }
@@ -92,9 +94,9 @@
         </div>
       </div>
       <div class="menu">
-        <article class="tiempo"><span class="num">01</span><h3>Papas nativas</h3><p>Tres variedades de Boyacá, ají de uchuva y suero costeño.</p></article>
-        <article class="tiempo"><span class="num">04</span><h3>Pesca del día</h3><p>Curada en sal de Zipaquirá, leche de coco y hojas de bijao.</p></article>
-        <article class="tiempo"><span class="num">07</span><h3>Cacao de Tumaco</h3><p>Ganache al 70 %, helado de queso fresco y miel de caña.</p></article>
+        <article class="tiempo"><img src="../fotos/plato-1.webp" alt="Plato de autor con salsa en trazo" width="400" height="400" loading="lazy"><span class="num">01</span><h3>Papas nativas</h3><p>Tres variedades de Boyacá, ají de uchuva y suero costeño.</p></article>
+        <article class="tiempo"><img src="../fotos/plato-2.webp" alt="Entrada con flores y vegetales de temporada" width="400" height="400" loading="lazy"><span class="num">04</span><h3>Pesca del día</h3><p>Curada en sal de Zipaquirá, leche de coco y hojas de bijao.</p></article>
+        <article class="tiempo"><img src="../fotos/plato-3.webp" alt="Pescado con reducción y encurtidos" width="400" height="400" loading="lazy"><span class="num">07</span><h3>Cacao de Tumaco</h3><p>Ganache al 70 %, helado de queso fresco y miel de caña.</p></article>
       </div>
     </div>
   </section>
