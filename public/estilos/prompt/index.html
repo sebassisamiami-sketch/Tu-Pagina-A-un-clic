@@ -30,7 +30,7 @@
   <main>
     <span class="etq">Ficha del diseño</span>
     <h1 id="titulo">Cargando…</h1>
-    <p>Este es el prompt completo para crear la página con el estilo que eligió el cliente: incluye sus datos y todo el código del diseño. Cópialo y pégalo en Claude.</p>
+    <p>Este es el prompt completo para crear la página con el estilo que eligió el cliente: incluye sus datos y todo el código del diseño. Cópialo y pégalo en tu asistente de IA.</p>
 
     <dl class="datos" id="datos" hidden></dl>
 
@@ -122,7 +122,7 @@
           $("prompt").select();
           document.execCommand("copy");
         }
-        boton.textContent = "¡Copiado! Pégalo en Claude";
+        boton.textContent = "¡Copiado! Pégalo en tu asistente de IA";
         boton.classList.add("ok");
         setTimeout(() => { boton.textContent = "Copiar prompt completo"; boton.classList.remove("ok"); }, 4000);
       });
