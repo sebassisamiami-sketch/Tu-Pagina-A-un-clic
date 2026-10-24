@@ -1611,12 +1611,7 @@ body.has-cookies .wa-fab { bottom: calc(var(--cookies-h, 0px) + 28px); }
   .estilo__cel { right: 8px; }
 }
 
-/* Simulador: aviso de que es un boceto y no el diseño final */
-.b-aviso { display: grid; gap: 4px; margin-bottom: 14px; padding: 12px 14px; border: 1px solid rgba(255, 184, 41, .45); border-radius: 12px; background: rgba(255, 184, 41, .08); font-size: .88rem; line-height: 1.45; color: var(--plata); }
-.b-aviso b { color: var(--azafran); font-weight: 600; }
-.b-aviso a, .b-note a { color: var(--azafran); }
+/* Simulador: sello de simulador esquelético */
+.b-note a { color: var(--azafran); }
 .b-frame { position: relative; }
 .b-sello { position: absolute; z-index: 5; left: 50%; bottom: 14px; transform: translateX(-50%); padding: 4px 10px; border-radius: 999px; background: rgba(0, 0, 0, .78); color: #ffb829; font: 700 .68rem/1 var(--letra); letter-spacing: .14em; text-transform: uppercase; pointer-events: none; }
-@media (max-width: 900px) { .builder--app .b-aviso { margin: 0 12px 8px; padding: 8px 12px; font-size: .78rem; } .builder--app .b-aviso span { display: none; } }
-.b-aviso__cel { display: none; font-weight: 400; margin-left: 6px; }
-@media (max-width: 900px) { .builder--app .b-aviso__cel { display: inline; } }
