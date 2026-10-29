@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Retiro soleado | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --crema: #f9f4f2; --amarillo: #ffce00; --naranja: #ff7e1d; --azul: #0061ef; --tinta: #2d2c2b; --suave: #5f5b57; --rosa: #ffc9d3; --lila: #b8a8f5; --verde: #9cd7a3; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--crema); color: var(--tinta); font: 400 18px/1.5 "Figtree", system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+    .btn { display: inline-flex; align-items: center; height: 54px; padding: 0 30px; border-radius: 999px; font-weight: 700; font-size: 17px; white-space: nowrap; }
+    .btn--azul { background: var(--azul); color: #fff; }
+    .btn--borde { box-shadow: inset 0 0 0 2px var(--tinta); }
+    .banda { background: var(--amarillo); text-align: center; font-weight: 700; font-size: 15px; padding: 12px 16px; }
+    .banda u { text-underline-offset: 3px; }
+    nav .wrap { display: flex; align-items: center; height: 80px; gap: 30px; }
+    .logo { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 26px; color: var(--naranja); letter-spacing: -0.03em; }
+    .logo i { width: 28px; height: 28px; border-radius: 50%; background: var(--naranja); }
+    nav ul { display: flex; gap: 26px; margin: 0; padding: 0; list-style: none; font-weight: 500; font-size: 16px; }
+    nav .der { margin-left: auto; display: flex; gap: 18px; align-items: center; font-weight: 500; font-size: 16px; }
+    nav .btn { height: 46px; font-size: 16px; padding: 0 24px; }
+
+    .heroe { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; padding-block: 50px 90px; }
+    h1 { margin: 0 0 20px; font-size: clamp(48px, 6.4vw, 84px); line-height: 1.02; font-weight: 800; letter-spacing: -0.04em; }
+    .heroe p { margin: 0 0 30px; max-width: 460px; color: var(--suave); font-size: 20px; }
+    .heroe .acc { display: flex; gap: 12px; flex-wrap: wrap; }
+    .sol { position: relative; aspect-ratio: 1; max-width: 500px; margin-left: auto; width: 100%; }
+    .sol .disco { position: absolute; inset: 12%; border-radius: 50%; background: var(--naranja); }
+    .sol .disco::before, .sol .disco::after { content: ""; position: absolute; top: 40%; width: 16%; height: 8%; border: 6px solid var(--tinta); border-color: var(--tinta) transparent transparent; border-radius: 50% 50% 0 0 / 100% 100% 0 0; }
+    .sol .disco::before { left: 24%; } .sol .disco::after { right: 24%; }
+    .sol .boca { position: absolute; left: 50%; top: 56%; width: 22%; height: 11%; transform: translateX(-50%); border: 6px solid var(--tinta); border-top: 0; border-radius: 0 0 100px 100px; }
+    .sol .cachete { position: absolute; top: 54%; width: 10%; height: 6%; border-radius: 50%; background: #ff5a5f; opacity: .55; }
+    .sol .cachete:nth-of-type(2) { left: 22%; } .sol .cachete:nth-of-type(3) { right: 22%; }
+    .sol .rayos { position: absolute; inset: 0; border-radius: 50%; background: repeating-conic-gradient(var(--amarillo) 0 6deg, transparent 6deg 30deg); -webkit-mask: radial-gradient(circle, transparent 52%, #000 53%, #000 70%, transparent 71%); mask: radial-gradient(circle, transparent 52%, #000 53%, #000 70%, transparent 71%); }
+
+    section { padding-block: 90px; }
+    h2 { margin: 0 0 14px; font-size: clamp(36px, 4.6vw, 56px); line-height: 1.05; font-weight: 800; letter-spacing: -0.035em; text-align: center; }
+    .sub { margin: 0 auto 46px; max-width: 520px; text-align: center; color: var(--suave); }
+    .tarjetas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .tarjeta { border-radius: 28px; overflow: hidden; background: #fff; }
+    .tarjeta .ilus { height: 170px; position: relative; overflow: hidden; }
+    .tarjeta .ilus i { position: absolute; border-radius: 50%; }
+    .tarjeta div:last-child { padding: 18px 20px 22px; }
+    .tarjeta h3 { margin: 0 0 4px; font-size: 20px; font-weight: 800; }
+    .tarjeta small { color: var(--suave); font-size: 15px; }
+    .i1 { background: var(--lila); } .i1 i { width: 120px; height: 120px; left: 30px; bottom: -40px; background: #6f5bd8; } .i1 i + i { width: 40px; height: 40px; left: auto; right: 40px; top: 30px; bottom: auto; background: #fff; }
+    .i2 { background: var(--rosa); } .i2 i { width: 200px; height: 200px; left: 50%; top: 40px; transform: translateX(-50%); background: #ff7f9a; }
+    .i3 { background: var(--verde); } .i3 i { width: 90px; height: 140px; border-radius: 45px; left: 40%; bottom: -30px; background: #3f9a4d; }
+    .i4 { background: #a9d4ff; } .i4 i { width: 70px; height: 70px; left: 30px; top: 30px; background: var(--amarillo); } .i4 i + i { width: 240px; height: 120px; left: -20px; top: auto; bottom: -60px; background: #2c6fe0; }
+    .plan { background: var(--azul); color: #fff; border-radius: 40px; margin: 0 16px; padding: 70px 40px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; }
+    .plan h2 { text-align: left; color: #fff; }
+    .plan p { color: #d6e4ff; margin: 0; }
+    .plan .precio { background: #fff; color: var(--tinta); border-radius: 28px; padding: 30px; }
+    .plan .precio b { display: block; font-size: 44px; font-weight: 800; letter-spacing: -0.03em; }
+    .plan .precio .btn { width: 100%; justify-content: center; margin-top: 18px; }
+    footer { padding: 40px 0 50px; color: var(--suave); font-size: 14px; }
+
+    @media (max-width: 900px) {
+      nav ul, nav .der a:first-child { display: none; }
+      .wrap { padding: 0 18px; }
+      .heroe { grid-template-columns: 1fr; padding-block: 30px 60px; }
+      .sol { max-width: 340px; margin: 0 auto; }
+      .tarjetas { grid-template-columns: 1fr 1fr; }
+      .plan { grid-template-columns: 1fr; margin: 0 8px; padding: 50px 22px; border-radius: 28px; }
+      section { padding-block: 64px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Retiro soleado</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=retiro-soleado#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <div class="banda">Prueba Pausa gratis por 14 días · <u>Empieza hoy</u></div>
+  <nav><div class="wrap">
+    <a class="logo" href="#"><i></i>pausa</a>
+    <ul><li>Meditar</li><li>Dormir</li><li>Moverse</li><li>Empresas</li></ul>
+    <div class="der"><a href="#">Ingresar</a><a class="btn btn--azul" href="#">Probar gratis</a></div>
+  </div></nav>
+
+  <header class="wrap heroe">
+    <div>
+      <h1>Tu mente también merece un descanso</h1>
+      <p>Meditaciones guiadas de 5 minutos, sonidos para dormir y ejercicios para bajar el estrés, en español y con voces colombianas.</p>
+      <div class="acc"><a class="btn btn--azul" href="#">Probar 14 días gratis</a><a class="btn btn--borde" href="#">Ver el plan</a></div>
+    </div>
+    <div class="sol" aria-hidden="true"><div class="rayos"></div><div class="disco"></div><span class="boca"></span><span class="cachete"></span><span class="cachete"></span></div>
+  </header>
+
+  <section style="background:#fff;border-radius:40px 40px 0 0">
+    <div class="wrap">
+      <h2>Un ratico para ti, cada día</h2>
+      <p class="sub">Escoge cómo te sientes y Pausa te recomienda qué escuchar.</p>
+      <div class="tarjetas">
+        <article class="tarjeta" style="background:var(--crema)"><div class="ilus i1"><i></i><i></i></div><div><h3>Dormir mejor</h3><small>Historias · 20 min</small></div></article>
+        <article class="tarjeta" style="background:var(--crema)"><div class="ilus i2"><i></i></div><div><h3>Calmar la ansiedad</h3><small>Respiración · 5 min</small></div></article>
+        <article class="tarjeta" style="background:var(--crema)"><div class="ilus i3"><i></i></div><div><h3>Concentrarte</h3><small>Música · 45 min</small></div></article>
+        <article class="tarjeta" style="background:var(--crema)"><div class="ilus i4"><i></i><i></i></div><div><h3>Empezar el día</h3><small>Meditación · 10 min</small></div></article>
+      </div>
+    </div>
+  </section>
+
+  <div class="plan">
+    <div><h2>Menos estrés por menos de un café</h2><p>Un solo plan con todo incluido. Cancela cuando quieras desde la app.</p></div>
+    <div class="precio"><small>Plan anual</small><b>$14.900 / mes</b><small>Se cobra $178.800 al año</small><a class="btn btn--azul" href="#">Empezar prueba gratis</a></div>
+  </div>
+  <footer><div class="wrap">Pausa · negocio de ejemplo · Bogotá, Colombia. Precios ilustrativos. No reemplaza la atención profesional.</div></footer>
+</body>
+</html>

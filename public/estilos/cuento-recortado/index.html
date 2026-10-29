@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Cuento recortado | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --crema: #f5f1e4; --papel: #fffaf0; --verde: #8ed462; --verde2: #5fae3d; --verde3: #2f7a2a; --tinta: #1f2a1c; --suave: #5b6457; --sol: #ffcc3d; --coral: #ff8a65; --cielo: #9fd6f2; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--crema); color: var(--tinta); font: 400 18px/1.5 "Bricolage Grotesque", system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+    .btn { display: inline-flex; align-items: center; height: 52px; padding: 0 26px; border-radius: 999px; font-weight: 600; font-size: 17px; white-space: nowrap; }
+    .btn--tinta { background: var(--tinta); color: var(--crema); }
+    .btn--papel { background: var(--papel); box-shadow: 0 3px 0 rgba(31,42,28,.15); }
+
+    .marco { margin: 12px; border-radius: 32px; background: var(--verde); position: relative; overflow: hidden; }
+    .nav { position: relative; z-index: 3; display: flex; justify-content: center; padding-top: 18px; }
+    .nav div { display: flex; align-items: center; gap: 6px; background: var(--papel); border-radius: 999px; padding: 6px 6px 6px 22px; box-shadow: 0 8px 24px rgba(31,42,28,.12); }
+    .logo { font-weight: 800; font-size: 22px; letter-spacing: -0.03em; margin-right: 18px; }
+    .nav span { padding: 8px 14px; font-size: 15px; font-weight: 600; }
+    .nav .btn { height: 42px; font-size: 15px; padding: 0 20px; }
+    .heroe { position: relative; z-index: 2; text-align: center; padding: 70px 24px 0; }
+    h1 { margin: 0 auto 18px; max-width: 13ch; font-size: clamp(50px, 8vw, 104px); line-height: .95; font-weight: 800; letter-spacing: -0.045em; }
+    .heroe p { margin: 0 auto 28px; max-width: 520px; font-size: 20px; color: #263a1f; }
+    .heroe .acc { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .paisaje { display: block; width: 100%; height: auto; margin-top: -10px; }
+    .paisaje .c { filter: drop-shadow(0 -6px 8px rgba(31,42,28,.18)); }
+
+    section { padding-block: 100px; }
+    h2 { margin: 0 0 14px; font-size: clamp(38px, 5vw, 64px); line-height: 1; font-weight: 800; letter-spacing: -0.04em; }
+    .sub { margin: 0 0 44px; max-width: 520px; color: var(--suave); }
+    .libros { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .libro { background: var(--papel); border-radius: 24px; padding: 14px 14px 20px; box-shadow: 0 2px 0 rgba(31,42,28,.06); }
+    .tapa { aspect-ratio: 3 / 4; border-radius: 14px; position: relative; overflow: hidden; margin-bottom: 14px; }
+    .tapa i { position: absolute; border-radius: 50%; box-shadow: 0 6px 10px rgba(0,0,0,.18); }
+    .t1 { background: var(--cielo); } .t1 i:nth-child(1) { width: 140%; height: 60%; left: -20%; bottom: -24%; background: var(--verde2); } .t1 i:nth-child(2) { width: 40%; aspect-ratio: 1; height: auto; right: 14%; top: 16%; background: var(--sol); }
+    .t2 { background: var(--coral); } .t2 i:nth-child(1) { width: 90%; height: 70%; left: -30%; bottom: -30%; background: #ffd0b8; } .t2 i:nth-child(2) { width: 70%; height: 50%; right: -20%; bottom: -10%; background: #c94f3a; }
+    .t3 { background: var(--verde3); } .t3 i:nth-child(1) { width: 0; height: 0; border-radius: 0; box-shadow: none; left: 22%; bottom: 0; border: 50px solid transparent; border-bottom: 120px solid var(--verde); filter: drop-shadow(0 -4px 6px rgba(0,0,0,.2)); } .t3 i:nth-child(2) { width: 30%; aspect-ratio: 1; height: auto; left: 10%; top: 12%; background: #fffaf0; }
+    .t4 { background: var(--sol); } .t4 i:nth-child(1) { width: 120%; height: 50%; left: -10%; bottom: -20%; background: var(--cielo); } .t4 i:nth-child(2) { width: 60%; height: 40%; left: 20%; top: 18%; background: var(--coral); border-radius: 50% 50% 10px 10px; }
+    .libro h3 { margin: 0 0 4px; font-size: 20px; letter-spacing: -0.02em; line-height: 1.15; }
+    .libro small { color: var(--suave); font-size: 15px; }
+    .libro b { display: block; margin-top: 10px; }
+    .talleres { background: var(--papel); border-radius: 32px; margin: 0 12px; padding: 70px 0; }
+    .talleres .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+    .lista { display: grid; gap: 12px; }
+    .lista div { display: flex; justify-content: space-between; align-items: center; background: var(--crema); border-radius: 18px; padding: 18px 22px; font-weight: 600; }
+    .lista span { background: var(--verde); border-radius: 999px; padding: 4px 12px; font-size: 14px; white-space: nowrap; }
+    footer { padding: 40px 0 50px; color: var(--suave); font-size: 15px; }
+
+    @media (max-width: 900px) {
+      .nav span { display: none; }
+      .nav div { padding-left: 18px; }
+      .logo { margin-right: 6px; }
+      .heroe { padding-top: 50px; }
+      .libros { grid-template-columns: 1fr 1fr; }
+      .talleres .wrap { grid-template-columns: 1fr; }
+      section { padding-block: 64px; }
+      .marco { margin: 8px; border-radius: 24px; }
+      .talleres { margin: 0 8px; padding: 50px 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Cuento recortado</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=cuento-recortado#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <div class="marco">
+    <nav class="nav"><div><a class="logo" href="#">recorte</a><span>Libros</span><span>Talleres</span><span>Edades</span><span>Nosotros</span><a class="btn btn--tinta" href="#">Visítanos</a></div></nav>
+    <header class="heroe">
+      <h1>Historias para leer en voz alta</h1>
+      <p>Recorte es una librería infantil en Bogotá con libros escogidos uno a uno, talleres de lectura y cuentos los sábados.</p>
+      <div class="acc"><a class="btn btn--tinta" href="#">Ver libros</a><a class="btn btn--papel" href="#">Talleres del mes</a></div>
+    </header>
+    <svg class="paisaje" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true">
+      <circle cx="960" cy="110" r="56" fill="#ffcc3d" class="c"/>
+      <path class="c" fill="#b6e48f" d="M0 170 C 200 90 380 120 560 160 S 900 110 1200 150 V300 H0Z"/>
+      <path class="c" fill="#5fae3d" d="M0 220 C 180 160 360 190 520 220 S 860 170 1200 210 V300 H0Z"/>
+      <g class="c" fill="#2f7a2a"><path d="M150 230 l40 -110 l40 110z"/><path d="M215 236 l30 -80 l30 80z"/><path d="M880 214 l36 -100 l36 100z"/><path d="M940 220 l26 -70 l26 70z"/></g>
+      <g class="c"><rect x="560" y="170" width="90" height="70" fill="#fffaf0"/><path d="M548 176 l57 -50 l57 50z" fill="#ff8a65"/><rect x="592" y="200" width="24" height="40" fill="#1f2a1c"/></g>
+      <path class="c" fill="#f5f1e4" d="M0 260 C 240 230 420 250 600 262 S 960 240 1200 258 V300 H0Z"/>
+    </svg>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <h2>Recién llegados</h2>
+      <p class="sub">Libros ilustrados para primeros lectores, curiosos y soñadores de 2 a 10 años.</p>
+      <div class="libros">
+        <article class="libro"><div class="tapa t1"><i></i><i></i></div><h3>El sol que no quería salir</h3><small>2 a 5 años</small><b>$42.000</b></article>
+        <article class="libro"><div class="tapa t2"><i></i><i></i></div><h3>Zorro y la montaña roja</h3><small>4 a 7 años</small><b>$48.000</b></article>
+        <article class="libro"><div class="tapa t3"><i></i><i></i></div><h3>Un bosque en el bolsillo</h3><small>5 a 8 años</small><b>$51.000</b></article>
+        <article class="libro"><div class="tapa t4"><i></i><i></i></div><h3>La casa sobre el mar</h3><small>6 a 10 años</small><b>$55.000</b></article>
+      </div>
+    </div>
+  </section>
+
+  <div class="talleres">
+    <div class="wrap">
+      <div><h2>Talleres de los sábados</h2><p class="sub" style="margin-bottom:24px">Cupos para 12 niños. Traen la imaginación; nosotros ponemos el papel, las tijeras y el cuento.</p><a class="btn btn--tinta" href="#">Reservar cupo</a></div>
+      <div class="lista">
+        <div>Cuentos con recortes<span>9:00 a. m.</span></div>
+        <div>Mi primer libro hecho a mano<span>11:00 a. m.</span></div>
+        <div>Lectura en voz alta para familias<span>3:00 p. m.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <footer><div class="wrap">Recorte · negocio de ejemplo · Bogotá, Colombia. Precios ilustrativos.</div></footer>
+</body>
+</html>

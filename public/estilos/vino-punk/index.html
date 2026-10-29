@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Vino punk | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --vino: #260212; --vino2: #3a0a1f; --rojo: #e10600; --rosa: #ffd3d8; --crema: #fff5ec; --lila: #b9a2ff; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--vino); color: var(--rosa); font: 400 17px/1.5 "DM Sans", system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+    a { color: inherit; text-decoration: none; }
+    .comp { font-family: "Anton", sans-serif; font-weight: 400; text-transform: uppercase; line-height: .9; }
+    .wrap { max-width: 1360px; margin: 0 auto; padding: 0 32px; }
+    .btn { display: inline-flex; align-items: center; height: 52px; padding: 0 28px; border-radius: 999px; font-weight: 700; font-size: 16px; white-space: nowrap; }
+    .btn--rojo { background: var(--rojo); color: #fff; }
+    .btn--rosa { background: var(--rosa); color: var(--vino); }
+    nav .wrap { display: flex; align-items: center; height: 84px; gap: 30px; }
+    .logo { font: 400 34px/1 "Anton"; color: var(--rojo); text-transform: uppercase; letter-spacing: .01em; }
+    nav ul { display: flex; gap: 26px; margin: 0; padding: 0; list-style: none; font-weight: 500; }
+    nav .btn { margin-left: auto; height: 44px; }
+
+    .heroe { position: relative; padding-block: 30px 90px; }
+    h1 { margin: 0; font-size: clamp(76px, 13vw, 190px); color: var(--rojo); letter-spacing: -0.005em; position: relative; z-index: 2; }
+    h1 span { display: block; color: var(--rosa); padding-left: 18%; }
+    .mancha { position: absolute; right: 4%; top: 40px; width: min(520px, 42vw); aspect-ratio: 1; z-index: 1; }
+    .mancha img { width: 100%; height: 100%; object-fit: cover; border-radius: 58% 42% 55% 45% / 45% 55% 45% 55%; display: block; }
+    .mancha::after { content: "100 % plantas"; position: absolute; left: -30px; bottom: 30px; background: var(--lila); color: var(--vino); font: 400 24px/1 "Anton"; text-transform: uppercase; padding: 14px 20px; border-radius: 999px; transform: rotate(-10deg); }
+    .heroe .info { position: relative; z-index: 2; display: flex; gap: 30px; align-items: end; justify-content: space-between; margin-top: 40px; flex-wrap: wrap; }
+    .heroe p { margin: 0; max-width: 420px; font-size: 19px; color: var(--crema); }
+
+    .cinta-caja { overflow: hidden; padding-block: 24px; }
+    .cinta { background: var(--rojo); color: var(--crema); overflow: hidden; white-space: nowrap; padding: 18px 0; transform: rotate(-2deg); margin: 0 -20px; }
+    .cinta span { font: 400 40px/1 "Anton"; text-transform: uppercase; padding-right: 40px; }
+    section { padding-block: 110px; }
+    h2 { margin: 0 0 40px; font-size: clamp(56px, 9vw, 140px); color: var(--rosa); }
+    h2 em { font-style: normal; color: var(--rojo); }
+    .menu { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .item { background: var(--vino2); border-radius: 36px; padding: 22px; }
+    .item figure { margin: 0 0 18px; aspect-ratio: 1; }
+    .item img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 50% 50% 46% 54% / 55% 45% 55% 45%; }
+    .item:nth-child(2) img { border-radius: 40% 60% 60% 40% / 60% 40% 60% 40%; }
+    .item:nth-child(3) img { border-radius: 52% 48% 38% 62% / 42% 58% 42% 58%; }
+    .item div { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+    .item h3 { margin: 0; font: 400 34px/1 "Anton"; text-transform: uppercase; color: var(--crema); }
+    .item b { color: var(--rojo); font-size: 20px; }
+    .item p { margin: 8px 0 0; }
+    .rojo { background: var(--rojo); color: var(--crema); border-radius: 48px; margin: 0 16px 30px; padding: 80px 30px; text-align: center; }
+    .rojo h2 { color: var(--crema); margin-bottom: 26px; }
+    footer { padding: 20px 0 50px; font-size: 14px; color: #c69aa6; }
+
+    @media (max-width: 900px) {
+      nav ul { display: none; }
+      .wrap { padding: 0 18px; }
+      .mancha { position: relative; right: auto; top: auto; width: 82%; margin: 10px 0 0 auto; }
+      .mancha::after { font-size: 18px; left: -20px; bottom: auto; top: 20px; }
+      h1 span { padding-left: 8%; }
+      .menu { grid-template-columns: 1fr; }
+      section { padding-block: 70px; }
+      .rojo { margin: 0 8px 20px; border-radius: 32px; padding: 56px 20px; }
+      .cinta span { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Vino punk</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=vino-punk#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <nav><div class="wrap">
+    <a class="logo" href="#">Brote</a>
+    <ul><li>Menú</li><li>Locales</li><li>Domicilios</li><li>Historia</li></ul>
+    <a class="btn btn--rojo" href="#">Pedir ya</a>
+  </div></nav>
+
+  <header class="wrap heroe">
+    <div class="mancha"><img src="../fotos/burger-1.webp" alt="Hamburguesa de plantas" width="400" height="400"></div>
+    <h1 class="comp">Sabe a carne<span>es de plantas</span></h1>
+    <div class="info">
+      <p>Brote hace hamburguesas jugosas, con costra y todo el sabor, pero hechas 100 % con plantas. Pruébala y nos cuentas.</p>
+      <a class="btn btn--rosa" href="#">Ver el menú →</a>
+    </div>
+  </header>
+
+  <div class="cinta-caja"><div class="cinta" aria-hidden="true"><span>Jugosa ✺ Dorada ✺ Sin carne ✺ Sin culpa ✺ Jugosa ✺ Dorada ✺ Sin carne ✺ Sin culpa ✺</span></div></div>
+
+  <section>
+    <div class="wrap">
+      <h2 class="comp">Las <em>favoritas</em></h2>
+      <div class="menu">
+        <article class="item"><figure><img src="../fotos/burger-2.webp" alt="Hamburguesa doble" width="400" height="400" loading="lazy"></figure><div><h3>La Clásica</h3><b>$28.000</b></div><p>Doble carne de plantas, queso vegetal y pepinillos.</p></article>
+        <article class="item"><figure><img src="../fotos/burger-3.webp" alt="Hamburguesa con papas" width="400" height="400" loading="lazy"></figure><div><h3>La Picante</h3><b>$31.000</b></div><p>Jalapeños, salsa chipotle y cebolla crocante.</p></article>
+        <article class="item"><figure><img src="../fotos/plato-1.webp" alt="Plato de acompañamiento" width="400" height="400" loading="lazy"></figure><div><h3>Combo Brote</h3><b>$38.000</b></div><p>Hamburguesa, papas rústicas y limonada de coco.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <div class="rojo"><h2 class="comp">El planeta te lo agradece</h2><a class="btn btn--rosa" href="#">Buscar el local más cerca</a></div>
+  <footer><div class="wrap">Brote · negocio de ejemplo · Bogotá, Colombia. Precios ilustrativos.</div></footer>
+</body>
+</html>

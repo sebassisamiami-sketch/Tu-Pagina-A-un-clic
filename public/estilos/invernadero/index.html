@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Invernadero | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --crema: #f6f1e7; --bosque: #0f3e17; --bosque2: #2c5a33; --salvia: #c9d8c0; --lima: #e3f08a; --pizarra: #b5c3cc; --arena: #ebe2cf; --suave: #4d5f4f; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--crema); color: var(--bosque); font: 400 17px/1.55 "Inter", system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+    a { color: inherit; text-decoration: none; }
+    .serif { font-family: "Fraunces", Georgia, serif; font-weight: 300; }
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; height: 50px; padding: 0 26px; border-radius: 999px; font-weight: 500; font-size: 16px; white-space: nowrap; }
+    .btn--bosque { background: var(--bosque); color: var(--crema); }
+    .btn--borde { border: 1px solid var(--bosque); }
+    nav .wrap { display: flex; align-items: center; height: 84px; gap: 34px; }
+    .logo { font-family: "Fraunces", serif; font-size: 30px; font-weight: 400; letter-spacing: -0.02em; }
+    .logo em { font-style: italic; font-weight: 300; }
+    nav ul { display: flex; gap: 28px; margin: 0; padding: 0; list-style: none; font-size: 15px; }
+    nav .der { margin-left: auto; display: flex; gap: 18px; align-items: center; font-size: 15px; }
+
+    .heroe { padding-block: 60px 40px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 50px; align-items: end; }
+    h1 { margin: 0; font-size: clamp(54px, 8vw, 116px); line-height: .98; letter-spacing: -0.035em; }
+    h1 em { font-style: italic; color: var(--bosque2); }
+    .heroe p { margin: 0 0 26px; font-size: 19px; color: var(--suave); }
+    .heroe .acc { display: flex; gap: 10px; flex-wrap: wrap; }
+    .paneles { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 14px; padding-bottom: 100px; }
+    .panel { border-radius: 28px; padding: 30px; min-height: 440px; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+    .panel h3 { margin: 0 0 8px; font-size: 34px; line-height: 1.05; letter-spacing: -0.02em; position: relative; }
+    .panel p { margin: 0; color: var(--suave); max-width: 300px; position: relative; }
+    .panel .tag { align-self: flex-start; position: relative; margin-bottom: auto; background: rgba(255,255,255,.55); border-radius: 999px; padding: 6px 14px; font-size: 13px; font-weight: 500; }
+    .panel--salvia { background: var(--salvia); } .panel--lima { background: var(--lima); } .panel--pizarra { background: var(--pizarra); }
+    .hoja { position: absolute; right: -30px; top: 22px; width: 190px; height: 190px; border-radius: 0 60% 0 60%; background: var(--bosque2); opacity: .9; transform: rotate(-18deg); }
+    .hoja::after { content: ""; position: absolute; left: 50%; top: 6%; bottom: 6%; width: 2px; background: var(--salvia); transform: rotate(45deg); }
+    .sol { position: absolute; right: 50px; top: 56px; width: 110px; height: 110px; border-radius: 50%; background: radial-gradient(circle, #fff9 0 30%, transparent 31%), var(--bosque); box-shadow: 0 0 0 26px rgba(15,62,23,.12), 0 0 0 52px rgba(15,62,23,.06); }
+    .ondas { position: absolute; left: 0; right: 0; top: 70px; height: 120px; background: repeating-radial-gradient(circle at 50% 120%, transparent 0 18px, rgba(15,62,23,.25) 18px 20px); }
+
+    section { padding-block: 100px; background: var(--bosque); color: var(--crema); }
+    section .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+    h2 { margin: 0 0 20px; font-size: clamp(40px, 5.4vw, 76px); line-height: 1; letter-spacing: -0.03em; }
+    h2 em { font-style: italic; color: var(--lima); }
+    section p { color: #c5d3c3; margin: 0 0 28px; max-width: 460px; }
+    .lista { border-top: 1px solid rgba(246,241,231,.2); }
+    .lista div { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding: 22px 0; border-bottom: 1px solid rgba(246,241,231,.2); }
+    .lista b { font-family: "Fraunces", serif; font-weight: 300; font-size: 28px; }
+    .lista span { color: #c5d3c3; font-size: 15px; white-space: nowrap; }
+    .cita { padding-block: 100px; text-align: center; }
+    .cita blockquote { margin: 0 auto 20px; max-width: 900px; font-size: clamp(30px, 3.6vw, 48px); line-height: 1.15; letter-spacing: -0.02em; }
+    .cita small { color: var(--suave); }
+    footer { padding: 30px 0 50px; color: var(--suave); font-size: 14px; border-top: 1px solid #d9d0bd; }
+
+    @media (max-width: 900px) {
+      nav ul, nav .der > a:first-child { display: none; }
+      .wrap { padding: 0 18px; }
+      .heroe, section .wrap { grid-template-columns: 1fr; gap: 26px; }
+      .paneles { grid-template-columns: 1fr; padding-bottom: 64px; }
+      .panel { min-height: 360px; }
+      .logo { white-space: nowrap; font-size: 26px; }
+      nav .der .btn { padding: 0 18px; height: 44px; font-size: 15px; }
+      section, .cita { padding-block: 64px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Invernadero</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=invernadero#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <nav><div class="wrap">
+    <a class="logo" href="#">raíz <em>salud</em></a>
+    <ul><li>Terapias</li><li>Equipo</li><li>Planes</li><li>Blog</li></ul>
+    <div class="der"><a href="#">Ingresar</a><a class="btn btn--bosque" href="#">Agendar</a></div>
+  </div></nav>
+
+  <header class="wrap heroe">
+    <h1 class="serif">El cuerpo sana <em>a su ritmo</em></h1>
+    <div>
+      <p>Fisioterapia, nutrición y acompañamiento en un solo lugar. Un plan hecho para ti, con el mismo terapeuta de principio a fin.</p>
+      <div class="acc"><a class="btn btn--bosque" href="#">Agendar valoración</a><a class="btn btn--borde" href="#">Ver terapias</a></div>
+    </div>
+  </header>
+
+  <div class="wrap paneles">
+    <article class="panel panel--salvia"><div class="hoja"></div><span class="tag">Fisioterapia</span><h3 class="serif">Vuelve a moverte sin dolor</h3><p>Rehabilitación de lesiones, espalda y postura.</p></article>
+    <article class="panel panel--lima"><div class="sol"></div><span class="tag">Nutrición</span><h3 class="serif">Come mejor, sin dietas</h3><p>Planes sencillos que caben en tu semana.</p></article>
+    <article class="panel panel--pizarra"><div class="ondas"></div><span class="tag">Respiración</span><h3 class="serif">Duerme y descansa</h3><p>Sesiones para bajar el estrés y dormir mejor.</p></article>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div><h2 class="serif">Un plan que <em>crece contigo</em></h2><p>Empezamos con una valoración de 60 minutos y armamos un plan por semanas. Puedes ver tu avance desde el celular.</p><a class="btn" href="#" style="background:var(--lima);color:var(--bosque)">Conocer los planes</a></div>
+      <div class="lista">
+        <div><b>Valoración inicial</b><span>60 min · $90.000</span></div>
+        <div><b>Sesión de fisioterapia</b><span>45 min · $75.000</span></div>
+        <div><b>Plan mensual</b><span>8 sesiones · $520.000</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cita wrap"><blockquote class="serif">“Nos tomamos el tiempo de escucharte antes de tocarte. Esa es toda la diferencia.”</blockquote><small>Equipo Raíz Salud</small></div>
+  <footer><div class="wrap">Raíz Salud · negocio de ejemplo · Bogotá, Colombia. Precios ilustrativos.</div></footer>
+</body>
+</html>

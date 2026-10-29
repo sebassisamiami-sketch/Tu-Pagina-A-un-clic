@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Portal cósmico | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --vacio: #030308; --texto: #e9ecf5; --suave: #7c8196; --linea: rgba(233,236,245,.16); --cian: #6ef3ff; --violeta: #8f6bff; --rosa: #ff6bd5; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--vacio); color: var(--texto); font: 400 15px/1.6 "Space Grotesk", system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1320px; margin: 0 auto; padding: 0 32px; }
+    .fantasma { display: inline-flex; align-items: center; gap: 10px; height: 42px; padding: 0 20px; border-radius: 999px; border: 1px solid var(--linea); background: rgba(255,255,255,.03); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+    .fantasma i { width: 6px; height: 6px; border-radius: 50%; background: var(--cian); box-shadow: 0 0 10px var(--cian); }
+    .escena { position: relative; min-height: 100vh; max-height: 980px; overflow: hidden; display: flex; flex-direction: column;
+      background: radial-gradient(1px 1px at 12% 20%, #fff 50%, transparent), radial-gradient(1px 1px at 82% 12%, #fff 50%, transparent), radial-gradient(1.5px 1.5px at 66% 78%, #fff 50%, transparent), radial-gradient(1px 1px at 30% 70%, #cfd6ff 50%, transparent), radial-gradient(1px 1px at 50% 30%, #fff 50%, transparent), radial-gradient(1px 1px at 92% 52%, #fff 50%, transparent), radial-gradient(1px 1px at 6% 88%, #fff 50%, transparent), radial-gradient(1.5px 1.5px at 40% 8%, #fff 50%, transparent), radial-gradient(60% 50% at 50% 55%, #0d0b2a, var(--vacio) 70%); }
+    nav { position: relative; z-index: 3; }
+    nav .wrap { display: flex; align-items: center; height: 84px; gap: 14px; }
+    .logo { font-weight: 500; font-size: 16px; letter-spacing: .3em; text-transform: uppercase; margin-right: auto; }
+    .portal { position: absolute; left: 50%; top: 52%; width: 560px; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; }
+    .portal::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(from 200deg, var(--cian), var(--violeta), var(--rosa), #fff, var(--cian)); -webkit-mask: radial-gradient(circle, transparent 62%, #000 63%, #000 66%, transparent 67%); mask: radial-gradient(circle, transparent 62%, #000 63%, #000 66%, transparent 67%); filter: blur(1px); }
+    .portal::after { content: ""; position: absolute; inset: -60px; border-radius: 50%; background: conic-gradient(from 200deg, var(--cian), var(--violeta), var(--rosa), #fff, var(--cian)); -webkit-mask: radial-gradient(circle, transparent 50%, #000 56%, transparent 64%); mask: radial-gradient(circle, transparent 50%, #000 56%, transparent 64%); filter: blur(30px); opacity: .7; }
+    .nucleo { position: absolute; left: 50%; top: 52%; width: 300px; height: 300px; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle, rgba(143,107,255,.35), transparent 70%); filter: blur(20px); }
+    .centro { position: relative; z-index: 2; margin: auto; text-align: center; padding: 0 20px; }
+    .centro small { font-size: 12px; letter-spacing: .4em; text-transform: uppercase; color: var(--suave); }
+    h1 { margin: 14px 0 26px; font-size: clamp(44px, 7vw, 96px); line-height: .98; font-weight: 300; letter-spacing: -0.04em; }
+    .esquinas { position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: end; padding-bottom: 30px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--suave); gap: 20px; }
+
+    section { padding-block: 110px; border-top: 1px solid var(--linea); }
+    .titulo { display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 40px; flex-wrap: wrap; }
+    h2 { margin: 0; font-size: clamp(36px, 5vw, 64px); line-height: 1; font-weight: 300; letter-spacing: -0.04em; }
+    .trabajos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .trabajo { border: 1px solid var(--linea); border-radius: 22px; overflow: hidden; background: rgba(255,255,255,.02); }
+    .visual { aspect-ratio: 4 / 3; position: relative; overflow: hidden; }
+    .v1 { background: radial-gradient(circle at 30% 40%, var(--cian), transparent 40%), radial-gradient(circle at 70% 60%, var(--violeta), transparent 50%), #07071a; }
+    .v2 { background: conic-gradient(from 90deg at 50% 50%, #ff6bd5, #8f6bff, #0b0b20, #ff6bd5); }
+    .v3 { background: repeating-radial-gradient(circle at 50% 50%, #6ef3ff22 0 2px, transparent 2px 18px), radial-gradient(circle, #8f6bff66, #030308 70%); }
+    .trabajo div:last-child { padding: 18px 20px 22px; display: flex; justify-content: space-between; gap: 10px; }
+    .trabajo b { font-weight: 500; font-size: 18px; }
+    .trabajo span { color: var(--suave); font-size: 13px; }
+    .numeros { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--linea); margin-top: 70px; }
+    .numeros div { padding: 26px 20px 0 0; }
+    .numeros b { display: block; font-size: 48px; font-weight: 300; letter-spacing: -0.04em; background: linear-gradient(90deg, var(--cian), var(--violeta)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .numeros span { color: var(--suave); font-size: 13px; text-transform: uppercase; letter-spacing: .1em; }
+    footer { padding: 30px 0 50px; color: var(--suave); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; border-top: 1px solid var(--linea); }
+
+    @media (max-width: 900px) {
+      nav .fantasma:not(:last-child) { display: none; }
+      .wrap { padding: 0 18px; }
+      .escena { min-height: 720px; }
+      .portal { width: 360px; }
+      .nucleo { width: 200px; height: 200px; }
+      .esquinas span:nth-child(2) { display: none; }
+      .trabajos { grid-template-columns: 1fr; }
+      .numeros { grid-template-columns: 1fr 1fr; gap: 10px; }
+      section { padding-block: 70px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Portal cósmico</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=portal-cosmico#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <div class="escena">
+    <nav><div class="wrap">
+      <a class="logo" href="#">Órbita Lab</a>
+      <a class="fantasma" href="#">Trabajos</a>
+      <a class="fantasma" href="#">Laboratorio</a>
+      <a class="fantasma" href="#"><i></i>Contacto</a>
+    </div></nav>
+    <div class="portal" aria-hidden="true"></div><div class="nucleo" aria-hidden="true"></div>
+    <div class="centro">
+      <small>Estudio de experiencias digitales</small>
+      <h1>Creamos mundos<br>que se pueden tocar</h1>
+      <a class="fantasma" href="#"><i></i>Entrar al portal</a>
+    </div>
+    <div class="wrap esquinas"><span>Medellín · 6.24° N</span><span>Web 3D · Realidad aumentada · Eventos</span><span>Desplaza ↓</span></div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="titulo"><h2>Proyectos<br>recientes</h2><a class="fantasma" href="#">Ver todos</a></div>
+      <div class="trabajos">
+        <article class="trabajo"><div class="visual v1"></div><div><b>Festival Nebulosa</b><span>Web 3D</span></div></article>
+        <article class="trabajo"><div class="visual v2"></div><div><b>Museo del Agua</b><span>Instalación</span></div></article>
+        <article class="trabajo"><div class="visual v3"></div><div><b>Café Altura AR</b><span>Realidad aumentada</span></div></article>
+      </div>
+      <div class="numeros">
+        <div><b>120+</b><span>Proyectos</span></div>
+        <div><b>14</b><span>Países</span></div>
+        <div><b>9</b><span>Premios</span></div>
+        <div><b>2M</b><span>Visitantes</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer><div class="wrap">Órbita Lab · negocio de ejemplo · Medellín, Colombia. Cifras ilustrativas.</div></footer>
+</body>
+</html>

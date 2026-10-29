@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Voltaje lima | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --bosque: #163300; --lima: #9fe870; --lima-clara: #e2f6d5; --menta: #c5f2a6; --gris: #f2f4ef; --texto: #0e0f0c; --suave: #454745; --naranja: #ffc091; --azul: #a0e1e1; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #fff; color: var(--texto); font: 400 16px/1.5 "Inter", system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; height: 48px; padding: 0 24px; border-radius: 9999px; font-weight: 600; font-size: 16px; white-space: nowrap; }
+    .btn--lima { background: var(--lima); color: var(--bosque); }
+    .btn--suave { background: rgba(22,51,0,.08); color: var(--bosque); }
+    nav .wrap { display: flex; align-items: center; height: 80px; gap: 28px; }
+    .logo { display: flex; align-items: center; gap: 6px; font-weight: 900; font-size: 26px; color: var(--bosque); letter-spacing: -0.03em; }
+    .logo i { width: 22px; height: 22px; background: var(--bosque); clip-path: polygon(0 20%, 60% 20%, 40% 0, 100% 50%, 40% 100%, 60% 80%, 0 80%); }
+    nav ul { display: flex; gap: 6px; margin: 0; padding: 0; list-style: none; font-weight: 600; color: var(--bosque); }
+    nav ul li { padding: 8px 14px; border-radius: 9999px; } nav ul li:first-child { background: var(--gris); }
+    nav .der { margin-left: auto; display: flex; gap: 10px; align-items: center; font-weight: 600; color: var(--bosque); }
+
+    .heroe { text-align: center; padding-block: 48px 0; }
+    h1 { margin: 0 auto; max-width: 14ch; font-size: clamp(54px, 9.4vw, 128px); line-height: .92; font-weight: 900; letter-spacing: -0.02em; text-transform: uppercase; color: var(--bosque); }
+    .heroe p { margin: 26px auto 26px; max-width: 520px; font-size: 20px; color: var(--suave); }
+    .heroe .acc { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .globo { position: relative; width: min(620px, 90vw); aspect-ratio: 2 / 1; margin: 56px auto 0; overflow: hidden; }
+    .globo .esfera { position: absolute; left: 0; right: 0; top: 0; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 40% 30%, #c6f7a5, var(--lima) 45%, #6fc83f 80%); }
+    .globo .esfera::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: repeating-linear-gradient(90deg, transparent 0 58px, rgba(22,51,0,.18) 58px 60px), repeating-linear-gradient(0deg, transparent 0 58px, rgba(22,51,0,.18) 58px 60px); -webkit-mask: radial-gradient(circle, #000 60%, transparent 71%); mask: radial-gradient(circle, #000 60%, transparent 71%); }
+    .moneda { position: absolute; width: 74px; height: 74px; border-radius: 50%; display: grid; place-items: center; font-weight: 900; font-size: 26px; color: var(--bosque); box-shadow: inset 0 -6px 0 rgba(0,0,0,.12), 0 14px 24px rgba(22,51,0,.18); }
+    .m1 { left: 14%; top: 22%; background: var(--naranja); transform: rotate(-12deg); }
+    .m2 { right: 16%; top: 12%; background: var(--azul); transform: rotate(10deg); width: 88px; height: 88px; }
+    .m3 { left: 44%; top: 52%; background: #fff; }
+
+    .cambio { background: var(--bosque); color: #fff; padding-block: 100px; }
+    .cambio .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    h2 { margin: 0 0 18px; font-size: clamp(42px, 6vw, 80px); line-height: .94; font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em; }
+    .cambio h2 { color: var(--lima); }
+    .cambio p { color: var(--menta); font-size: 18px; margin: 0 0 24px; }
+    .calc { background: #fff; color: var(--texto); border-radius: 24px; padding: 24px; }
+    .campo { border: 1px solid #c9ccc5; border-radius: 12px; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; }
+    .campo small { display: block; color: var(--suave); font-size: 13px; }
+    .campo b { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; }
+    .campo span { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+    .campo span i { width: 26px; height: 26px; border-radius: 50%; background: linear-gradient(#fcd116 50%, #003893 50% 75%, #ce1126 75%); }
+    .campo span i.us { background: repeating-linear-gradient(#b22234 0 3px, #fff 3px 6px); }
+    .linea { padding: 14px 0 14px 22px; margin-left: 14px; border-left: 2px solid #e1e3de; font-size: 14px; color: var(--suave); }
+    .linea div { display: flex; justify-content: space-between; } .linea b { color: var(--texto); }
+    .calc .btn { width: 100%; margin-top: 16px; }
+
+    section.ventajas { padding-block: 100px; }
+    .ventajas h2 { color: var(--bosque); text-align: center; }
+    .tres { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px; }
+    .tres article { border-radius: 30px; padding: 32px; min-height: 280px; display: flex; flex-direction: column; }
+    .tres article:nth-child(1) { background: var(--lima-clara); } .tres article:nth-child(2) { background: var(--gris); } .tres article:nth-child(3) { background: var(--lima); }
+    .tres b { font-size: 56px; font-weight: 900; line-height: 1; color: var(--bosque); letter-spacing: -0.03em; margin-top: auto; }
+    .tres h3 { margin: 0 0 8px; font-size: 22px; color: var(--bosque); }
+    .tres p { margin: 0 0 24px; color: var(--suave); }
+    footer { padding: 30px 0 50px; color: var(--suave); font-size: 14px; border-top: 1px solid #e1e3de; }
+
+    @media (max-width: 900px) {
+      nav ul, nav .der a:first-child { display: none; }
+      .wrap { padding: 0 18px; }
+      .cambio .wrap, .tres { grid-template-columns: 1fr; }
+      .cambio { padding-block: 64px; } section.ventajas { padding-block: 64px; }
+      .moneda { width: 54px; height: 54px; font-size: 20px; } .m2 { width: 62px; height: 62px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Voltaje lima</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=voltaje-lima#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <nav><div class="wrap">
+    <a class="logo" href="#"><i></i>giro</a>
+    <ul><li>Personas</li><li>Empresas</li><li>Tarifas</li><li>Ayuda</li></ul>
+    <div class="der"><a href="#">Ingresar</a><a class="btn btn--lima" href="#">Crear cuenta</a></div>
+  </div></nav>
+
+  <header class="heroe">
+    <div class="wrap">
+      <h1>Tu plata aquí, allá y en todas partes</h1>
+      <p>Envía, recibe y cambia dinero en más de 40 países, con la tasa real y sin costos escondidos.</p>
+      <div class="acc"><a class="btn btn--lima" href="#">Abrir cuenta gratis</a><a class="btn btn--suave" href="#">Enviar dinero</a></div>
+      <div class="globo" aria-hidden="true"><div class="esfera"></div><span class="moneda m1">€</span><span class="moneda m2">$</span><span class="moneda m3">£</span></div>
+    </div>
+  </header>
+
+  <section class="cambio">
+    <div class="wrap">
+      <div>
+        <h2>Cambia a la tasa real</h2>
+        <p>La misma tasa que ves en internet. Te mostramos la tarifa antes de enviar, sin letra pequeña.</p>
+        <a class="btn btn--lima" href="#">Ver tarifas</a>
+      </div>
+      <div class="calc">
+        <div class="campo"><div><small>Tú envías</small><b>1.000.000</b></div><span><i></i>COP</span></div>
+        <div class="linea">
+          <div><span>Tarifa</span><b>– 6.900 COP</b></div>
+          <div><span>Tasa de cambio</span><b>4.012,50</b></div>
+          <div><span>Llega</span><b>en segundos</b></div>
+        </div>
+        <div class="campo"><div><small>Recibe</small><b>247,50</b></div><span><i class="us"></i>USD</span></div>
+        <a class="btn btn--lima" href="#">Enviar ahora</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="ventajas">
+    <div class="wrap">
+      <h2>Hecho para moverse</h2>
+      <div class="tres">
+        <article><h3>Envíos rápidos</h3><p>La mayoría llega el mismo día.</p><b>70 %</b></article>
+        <article><h3>Monedas</h3><p>Guarda y cambia saldos en una sola cuenta.</p><b>40+</b></article>
+        <article><h3>Tarifa clara</h3><p>Sabes cuánto pagas antes de enviar.</p><b>0,69 %</b></article>
+      </div>
+    </div>
+  </section>
+
+  <footer><div class="wrap">Giro · negocio de ejemplo · Bogotá, Colombia. Tasas y cifras ilustrativas.</div></footer>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Galería media luz | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --negro: #0c0c0c; --gris: #f1f1ef; --gris2: #e4e4e1; --tinta: #111; --suave: #6f6f6b; --blanco: #fff; --arena: #c9a77c; --oliva: #5c6b4a; --azul: #2f4a6b; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--blanco); color: var(--tinta); font: 400 15px/1.55 "Inter Tight", system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+    a { color: inherit; text-decoration: none; }
+    .serif { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; }
+    .wrap { max-width: 1400px; margin: 0 auto; padding: 0 28px; }
+    .btn { display: inline-flex; align-items: center; height: 46px; padding: 0 24px; border-radius: 4px; font-weight: 600; font-size: 14px; letter-spacing: .02em; white-space: nowrap; }
+    .btn--blanco { background: #fff; color: var(--tinta); }
+    .btn--negro { background: var(--tinta); color: #fff; }
+    .aviso { background: var(--gris); text-align: center; font-size: 13px; padding: 9px 16px; }
+    nav .wrap { display: flex; align-items: center; height: 66px; gap: 30px; border-bottom: 1px solid var(--gris2); }
+    .logo { font-weight: 600; font-size: 20px; letter-spacing: -0.02em; display: flex; gap: 8px; align-items: center; }
+    .logo i { width: 18px; height: 18px; background: var(--tinta); clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+    nav ul { display: flex; gap: 24px; margin: 0; padding: 0; list-style: none; font-weight: 500; font-size: 14px; }
+    nav .der { margin-left: auto; display: flex; gap: 20px; font-size: 14px; font-weight: 500; }
+
+    .split { display: grid; grid-template-columns: 1fr 1fr; min-height: 640px; }
+    .panel { background: var(--negro); color: #fff; padding: 60px 56px; display: flex; flex-direction: column; justify-content: space-between; gap: 40px; }
+    .panel small { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: #a3a39e; }
+    h1 { margin: 0; font-size: clamp(56px, 7.4vw, 112px); line-height: .92; letter-spacing: -0.02em; }
+    h1 em { color: var(--arena); }
+    .panel p { margin: 0 0 24px; color: #bdbdb8; max-width: 380px; font-size: 16px; }
+    .panel .acc { display: flex; gap: 10px; flex-wrap: wrap; }
+    .panel .btn--linea { color: #fff; box-shadow: inset 0 0 0 1px #4a4a47; }
+    .vitrina { background: var(--gris); display: grid; place-items: center; position: relative; overflow: hidden; }
+    .vitrina img { width: 78%; max-width: 520px; aspect-ratio: 1; object-fit: cover; mix-blend-mode: multiply; }
+    .vitrina .chip { position: absolute; left: 24px; bottom: 24px; background: #fff; border-radius: 4px; padding: 12px 16px; font-size: 13px; box-shadow: 0 6px 20px rgba(0,0,0,.08); }
+    .vitrina .chip b { display: block; font-size: 15px; }
+
+    section { padding-block: 90px; }
+    .cabeza { display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 30px; flex-wrap: wrap; }
+    h2 { margin: 0; font-size: clamp(40px, 5vw, 68px); line-height: .95; letter-spacing: -0.02em; }
+    h2 em { color: var(--suave); }
+    .filtros { display: flex; gap: 8px; flex-wrap: wrap; }
+    .filtros span { padding: 8px 14px; border-radius: 999px; border: 1px solid var(--gris2); font-size: 13px; font-weight: 500; }
+    .filtros span:first-child { background: var(--tinta); color: #fff; border-color: var(--tinta); }
+    .productos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .prod figure { margin: 0 0 14px; background: var(--gris); aspect-ratio: 1; display: grid; place-items: center; border-radius: 6px; overflow: hidden; position: relative; }
+    .prod img { width: 100%; height: 100%; object-fit: cover; mix-blend-mode: multiply; }
+    .prod figure span { position: absolute; left: 12px; top: 12px; background: #fff; border-radius: 3px; padding: 3px 8px; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+    .prod .fila { display: flex; justify-content: space-between; gap: 10px; }
+    .prod h3 { margin: 0; font-size: 17px; font-weight: 600; }
+    .prod small { color: var(--suave); }
+    .colores { display: flex; gap: 6px; margin-top: 10px; }
+    .colores i { width: 14px; height: 14px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(0,0,0,.15); }
+    .franja { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--gris2); border-bottom: 1px solid var(--gris2); }
+    .franja div { padding: 26px 20px; border-right: 1px solid var(--gris2); }
+    .franja div:last-child { border: 0; }
+    .franja b { display: block; font-family: "Instrument Serif", serif; font-weight: 400; font-size: 26px; }
+    .franja span { color: var(--suave); font-size: 14px; }
+    footer { padding: 30px 0 50px; color: var(--suave); font-size: 13px; }
+
+    @media (max-width: 900px) {
+      nav ul, nav .der span:not(:last-child) { display: none; }
+      .wrap { padding: 0 16px; }
+      .split { grid-template-columns: 1fr; }
+      .panel { padding: 44px 20px; }
+      .vitrina { min-height: 380px; }
+      .productos { grid-template-columns: 1fr 1fr; } .prod:last-child { display: none; }
+      .franja { grid-template-columns: 1fr 1fr; } .franja div:nth-child(2) { border-right: 0; } .franja div:nth-child(-n+2) { border-bottom: 1px solid var(--gris2); }
+      section { padding-block: 60px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Galería media luz</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=galeria-media-luz#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <div class="aviso">Envío gratis desde $250.000 · Garantía de por vida en costuras</div>
+  <nav><div class="wrap">
+    <a class="logo" href="#"><i></i>Morral Andino</a>
+    <ul><li>Mochilas</li><li>Viaje</li><li>Fotografía</li><li>Accesorios</li></ul>
+    <div class="der"><span>Buscar</span><span>Cuenta</span><span>Bolsa (0)</span></div>
+  </div></nav>
+
+  <header class="split">
+    <div class="panel">
+      <small>Nueva colección · Páramo</small>
+      <h1 class="serif">Hecha para <em>cada</em> camino</h1>
+      <div>
+        <p>Mochilas impermeables, livianas y diseñadas en Bogotá para el día a día, el trabajo y los viajes largos.</p>
+        <div class="acc"><a class="btn btn--blanco" href="#">Comprar ahora</a><a class="btn btn--linea" href="#">Ver la colección</a></div>
+      </div>
+    </div>
+    <div class="vitrina">
+      <img src="../fotos/mochila-blanca.webp" alt="Mochila blanca impermeable" width="400" height="400">
+      <div class="chip"><b>Páramo 20 L</b>Desde $389.000</div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <div class="cabeza"><h2 class="serif">Lo más <em>vendido</em></h2><div class="filtros"><span>Todo</span><span>Diario</span><span>Viaje</span><span>Foto</span></div></div>
+      <div class="productos">
+        <article class="prod"><figure><span>Nuevo</span><img src="../fotos/mochila-abierta.webp" alt="Mochila blanca abierta" width="400" height="400" loading="lazy"></figure><div class="fila"><h3>Páramo enrollable</h3><b>$429.000</b></div><small>24 L · Impermeable</small><div class="colores"><i style="background:#f4f4f2"></i><i style="background:#111"></i><i style="background:#5c6b4a"></i></div></article>
+        <article class="prod"><figure><img src="../fotos/mochila-cuero.webp" alt="Mochila de cuero color miel" width="400" height="400" loading="lazy"></figure><div class="fila"><h3>Ciudad mini</h3><b>$299.000</b></div><small>12 L · Cuero vegetal</small><div class="colores"><i style="background:#c9a77c"></i><i style="background:#2b2b2b"></i></div></article>
+        <article class="prod"><figure><img src="../fotos/prod-mochila.webp" alt="Mochila de viaje" width="400" height="400" loading="lazy"></figure><div class="fila"><h3>Travesía 35</h3><b>$519.000</b></div><small>35 L · Equipaje de mano</small><div class="colores"><i style="background:#2f4a6b"></i><i style="background:#111"></i><i style="background:#c9a77c"></i></div></article>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="franja">
+    <div><b>De por vida</b><span>Garantía en costuras</span></div>
+    <div><b>30 días</b><span>Para cambios</span></div>
+    <div><b>Hecho aquí</b><span>Taller en Bogotá</span></div>
+    <div><b>Reciclado</b><span>Telas de botellas PET</span></div>
+  </div></div>
+
+  <footer><div class="wrap">Morral Andino · negocio de ejemplo · Bogotá, Colombia. Precios ilustrativos.</div></footer>
+</body>
+</html>

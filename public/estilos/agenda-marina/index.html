@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Agenda marina | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --marino: #0b3558; --azul: #006bff; --azul-claro: #e8f1ff; --texto: #476788; --linea: #d4e0ed; --magenta: #e55cff; --cian: #17e9e0; --morado: #8247f5; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #fff; color: var(--texto); font: 400 17px/1.55 "Figtree", system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 54px; padding: 0 28px; border-radius: 8px; font-weight: 700; font-size: 17px; white-space: nowrap; }
+    .btn--azul { background: var(--azul); color: #fff; }
+    .btn--borde { border: 1px solid var(--linea); color: var(--marino); background: #fff; }
+    nav .wrap { display: flex; align-items: center; height: 84px; gap: 30px; }
+    .logo { display: flex; align-items: center; gap: 8px; color: var(--azul); font-weight: 800; font-size: 26px; letter-spacing: -0.03em; }
+    .logo i { width: 28px; height: 28px; border-radius: 50%; border: 6px solid var(--azul); border-right-color: transparent; transform: rotate(-45deg); }
+    nav ul { display: flex; gap: 26px; margin: 0; padding: 0; list-style: none; color: var(--marino); font-weight: 600; font-size: 16px; }
+    nav .der { margin-left: auto; display: flex; gap: 20px; align-items: center; color: var(--marino); font-weight: 600; }
+    nav .der .btn { height: 46px; font-size: 16px; }
+
+    .heroe { display: grid; grid-template-columns: 1fr 1.05fr; gap: 50px; align-items: center; padding-block: 60px 100px; }
+    h1 { margin: 0 0 22px; color: var(--marino); font-size: clamp(44px, 5.6vw, 72px); line-height: 1.05; font-weight: 800; letter-spacing: -0.035em; }
+    h1 span { color: var(--azul); }
+    .heroe p { margin: 0 0 30px; font-size: 20px; max-width: 480px; }
+    .heroe .acc { display: flex; flex-direction: column; gap: 12px; max-width: 380px; }
+    .heroe .acc .btn { width: 100%; }
+    .g { width: 20px; height: 20px; border-radius: 50%; background: conic-gradient(#ea4335 0 25%, #fbbc05 0 50%, #34a853 0 75%, #4285f4 0); }
+    .escena { position: relative; }
+    .blob { position: absolute; border-radius: 50%; filter: blur(0); }
+    .bl1 { width: 300px; height: 300px; right: -30px; top: -40px; background: var(--magenta); border-radius: 46% 54% 60% 40% / 50% 40% 60% 50%; }
+    .bl2 { width: 240px; height: 240px; left: -20px; bottom: -40px; background: var(--cian); border-radius: 60% 40% 45% 55% / 45% 60% 40% 55%; }
+    .bl3 { width: 140px; height: 140px; right: 40px; bottom: -30px; background: var(--morado); }
+    .widget { position: relative; display: grid; grid-template-columns: 1fr 1.25fr; background: #fff; border-radius: 12px; box-shadow: 0 30px 60px rgba(11,53,88,.18), 0 1px 4px rgba(11,53,88,.1); overflow: hidden; }
+    .widget .info { padding: 26px; border-right: 1px solid var(--linea); }
+    .avatar { width: 54px; height: 54px; border-radius: 50%; background: linear-gradient(135deg, #a7d8ff, var(--azul)); margin-bottom: 14px; }
+    .widget .info small { font-size: 14px; }
+    .widget .info h3 { margin: 4px 0 14px; color: var(--marino); font-size: 22px; line-height: 1.2; }
+    .widget .info p { margin: 0 0 8px; font-size: 14px; display: flex; gap: 8px; }
+    .cal { padding: 26px; }
+    .cal h4 { margin: 0 0 14px; color: var(--marino); font-size: 16px; }
+    .mes { display: flex; justify-content: space-between; color: var(--marino); font-size: 14px; font-weight: 600; margin-bottom: 10px; }
+    .dias { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; font-size: 13px; }
+    .dias span { aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; }
+    .dias .dl { color: var(--marino); font-size: 11px; font-weight: 600; }
+    .dias .ok { background: var(--azul-claro); color: var(--azul); font-weight: 700; }
+    .dias .sel { background: var(--azul); color: #fff; font-weight: 700; }
+    .horas { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
+    .horas span { border: 1px solid var(--azul); color: var(--azul); border-radius: 6px; text-align: center; padding: 8px 0; font-weight: 700; font-size: 14px; }
+    .horas span:first-child { background: #476788; border-color: #476788; color: #fff; }
+
+    section { padding-block: 100px; background: #f8fbff; }
+    h2 { margin: 0 auto 14px; max-width: 720px; text-align: center; color: var(--marino); font-size: clamp(34px, 4.4vw, 52px); line-height: 1.1; font-weight: 800; letter-spacing: -0.03em; }
+    .sub { text-align: center; margin: 0 auto 50px; max-width: 560px; }
+    .pasos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .paso { background: #fff; border: 1px solid var(--linea); border-radius: 12px; padding: 30px; }
+    .paso b { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 10px; background: var(--azul-claro); color: var(--azul); font-size: 18px; margin-bottom: 18px; }
+    .paso h3 { margin: 0 0 8px; color: var(--marino); font-size: 21px; }
+    .paso p { margin: 0; }
+    .cierre { background: var(--marino); color: #fff; text-align: center; padding-block: 90px; }
+    .cierre h2 { color: #fff; }
+    .cierre p { color: #b8cde3; margin: 0 0 28px; }
+    footer { padding: 30px 0 50px; font-size: 14px; }
+
+    @media (max-width: 900px) {
+      nav ul, nav .der > a:first-child { display: none; }
+      .wrap { padding: 0 18px; }
+      .heroe { grid-template-columns: 1fr; padding-block: 30px 70px; }
+      .widget { grid-template-columns: 1fr; }
+      .widget .info { border-right: 0; border-bottom: 1px solid var(--linea); }
+      .bl1 { width: 200px; height: 200px; right: -8px; }
+      .logo { font-size: 21px; white-space: nowrap; } .bl2 { width: 160px; height: 160px; }
+      .pasos { grid-template-columns: 1fr; }
+      section, .cierre { padding-block: 64px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Agenda marina</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=agenda-marina#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <nav><div class="wrap">
+    <a class="logo" href="#"><i></i>Sonrisa Clara</a>
+    <ul><li>Tratamientos ⌄</li><li>Especialistas</li><li>Precios</li><li>Sedes</li></ul>
+    <div class="der"><a href="#">Mis citas</a><a class="btn btn--azul" href="#">Agendar cita</a></div>
+  </div></nav>
+
+  <header class="wrap heroe">
+    <div>
+      <h1>Agenda tu cita <span>en un minuto</span></h1>
+      <p>Escoge el especialista, el día y la hora que te sirvan. Te confirmamos por WhatsApp y te recordamos un día antes.</p>
+      <div class="acc">
+        <a class="btn btn--azul" href="#">Agendar con correo</a>
+        <a class="btn btn--borde" href="#"><i class="g"></i>Continuar con Google</a>
+      </div>
+    </div>
+    <div class="escena">
+      <div class="blob bl1"></div><div class="blob bl2"></div><div class="blob bl3"></div>
+      <div class="widget">
+        <div class="info">
+          <div class="avatar"></div>
+          <small>Dra. Laura Méndez</small>
+          <h3>Limpieza y valoración</h3>
+          <p>🕒 40 minutos</p>
+          <p>📍 Sede Chapinero</p>
+          <p>💳 $120.000</p>
+        </div>
+        <div class="cal">
+          <h4>Escoge día y hora</h4>
+          <div class="mes"><span>‹</span><span>Noviembre</span><span>›</span></div>
+          <div class="dias">
+            <span class="dl">LU</span><span class="dl">MA</span><span class="dl">MI</span><span class="dl">JU</span><span class="dl">VI</span><span class="dl">SÁ</span><span class="dl">DO</span>
+            <span>3</span><span class="ok">4</span><span class="ok">5</span><span>6</span><span class="ok">7</span><span>8</span><span>9</span>
+            <span class="ok">10</span><span class="sel">11</span><span class="ok">12</span><span class="ok">13</span><span>14</span><span>15</span><span>16</span>
+          </div>
+          <div class="horas"><span>9:00</span><span>Confirmar</span><span>10:30</span><span>14:00</span></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <h2>Tu próxima cita, sin llamadas ni esperas</h2>
+      <p class="sub">Así de fácil es reservar en cualquiera de nuestras tres sedes en Bogotá.</p>
+      <div class="pasos">
+        <article class="paso"><b>1</b><h3>Escoge el tratamiento</h3><p>Limpieza, ortodoncia, blanqueamiento o una valoración general.</p></article>
+        <article class="paso"><b>2</b><h3>Elige la hora</h3><p>Ves en tiempo real los espacios libres de cada especialista.</p></article>
+        <article class="paso"><b>3</b><h3>Recibe la confirmación</h3><p>Te llega por WhatsApp y puedes cambiarla con un toque.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <div class="cierre"><div class="wrap"><h2>Tu sonrisa, en tu horario</h2><p>Primera valoración con 20 % de descuento.</p><a class="btn btn--azul" href="#">Agendar ahora</a></div></div>
+  <footer><div class="wrap">Sonrisa Clara · negocio de ejemplo · Bogotá, Colombia. Precios ilustrativos.</div></footer>
+</body>
+</html>

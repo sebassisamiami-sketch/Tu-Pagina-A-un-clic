@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Función privada | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --negro: #000; --carbon: #0d0d0d; --linea: rgba(255,255,255,.14); --blanco: #fff; --crema: #f3ecdf; --gris: #8a8a8a; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--negro); color: var(--blanco); font: 400 16px/1.55 "Inter", system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+    a { color: inherit; text-decoration: none; }
+    .serif { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; }
+    .wrap { max-width: 1320px; margin: 0 auto; padding: 0 32px; }
+    .pild { display: inline-flex; align-items: center; gap: 10px; height: 48px; padding: 0 24px; border-radius: 999px; font-weight: 500; font-size: 15px; white-space: nowrap; }
+    .pild--crema { background: var(--crema); color: #111; }
+    .pild--vidrio { background: rgba(255,255,255,.12); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--linea); }
+
+    .heroe { position: relative; min-height: 92vh; display: flex; flex-direction: column; }
+    .heroe > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 40%; filter: saturate(.85) contrast(1.05); }
+    .heroe::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.05) 35%, rgba(0,0,0,.2) 55%, #000 100%); }
+    nav { position: relative; z-index: 2; }
+    nav .wrap { display: flex; align-items: center; height: 84px; gap: 30px; }
+    .logo { font-size: 30px; letter-spacing: -0.01em; }
+    nav ul { display: flex; gap: 28px; margin: 0 auto; padding: 0; list-style: none; font-size: 14px; color: rgba(255,255,255,.8); }
+    .heroe .texto { position: relative; z-index: 2; width: 100%; margin-top: auto; padding-block: 0 64px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: end; }
+    h1 { margin: 0; font-size: clamp(54px, 8.2vw, 124px); line-height: .92; letter-spacing: -0.025em; }
+    h1 em { color: var(--crema); }
+    .heroe p { margin: 0 0 24px; color: rgba(255,255,255,.78); font-size: 17px; max-width: 400px; }
+    .heroe .acc { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    section { padding-block: 120px; border-top: 1px solid var(--linea); }
+    .manifiesto { font-size: clamp(34px, 4.6vw, 64px); line-height: 1.08; letter-spacing: -0.015em; max-width: 22ch; margin: 0; }
+    .manifiesto em { color: var(--gris); }
+    .etq { display: block; color: var(--gris); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 26px; }
+    .obras { margin-top: 70px; border-top: 1px solid var(--linea); }
+    .obra { display: grid; grid-template-columns: 80px 1.4fr 1fr 1fr 40px; gap: 20px; align-items: center; padding: 26px 0; border-bottom: 1px solid var(--linea); font-size: 15px; color: rgba(255,255,255,.7); }
+    .obra b { font-family: "Instrument Serif", serif; font-weight: 400; font-size: 36px; color: #fff; letter-spacing: -0.01em; }
+    .obra span:first-child { color: var(--gris); }
+    .obra i { font-style: normal; text-align: right; }
+    .cine { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 70px; }
+    .cine figure { margin: 0; border-radius: 18px; overflow: hidden; position: relative; aspect-ratio: 4 / 3; }
+    .cine img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .cine figcaption { position: absolute; left: 18px; bottom: 16px; font-size: 13px; }
+    .cierre { text-align: center; }
+    .cierre h2 { margin: 0 0 30px; font-size: clamp(48px, 7vw, 104px); line-height: .95; letter-spacing: -0.02em; font-weight: 400; }
+    footer { padding: 28px 0 48px; border-top: 1px solid var(--linea); color: var(--gris); font-size: 13px; }
+
+    @media (max-width: 900px) {
+      nav ul, nav .pild--vidrio { display: none; }
+      nav .pild { margin-left: auto; height: 42px; }
+      .wrap { padding: 0 18px; }
+      .heroe { min-height: 640px; }
+      .heroe .texto { grid-template-columns: 1fr; gap: 20px; padding-block: 0 40px; }
+      .obra { grid-template-columns: 40px 1fr auto; } .obra span:nth-child(3), .obra span:nth-child(4) { display: none; } .obra b { font-size: 28px; }
+      .cine { grid-template-columns: 1fr; }
+      section { padding-block: 72px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Función privada</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=funcion-privada#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <header class="heroe">
+    <img src="../fotos/dibujante-ancho.webp" alt="Arquitecto dibujando planos en su mesa de trabajo" width="800" height="500">
+    <nav><div class="wrap">
+      <a class="logo serif" href="#">Trazo</a>
+      <ul><li>Proyectos</li><li>Estudio</li><li>Proceso</li><li>Diario</li></ul>
+      <a class="pild pild--vidrio" href="#">Ingresar</a>
+      <a class="pild pild--crema" href="#">Hablemos</a>
+    </div></nav>
+    <div class="wrap texto">
+      <h1 class="serif">Casas que se sienten <em>como un buen recuerdo</em></h1>
+      <div>
+        <p>Trazo es un estudio de arquitectura en Medellín. Diseñamos casas y remodelaciones desde el primer boceto hasta la entrega de llaves.</p>
+        <div class="acc"><a class="pild pild--crema" href="#">Agendar una visita</a><a class="pild pild--vidrio" href="#">▶ Ver el estudio</a></div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <span class="etq">El estudio</span>
+      <p class="manifiesto serif">Dibujamos a mano antes de abrir el computador, <em>porque una casa empieza con una conversación y no con un plano.</em></p>
+      <div class="obras">
+        <div class="obra"><span>01</span><b>Casa Guadua</b><span>Vivienda · 240 m²</span><span>El Retiro, 2025</span><i>↗</i></div>
+        <div class="obra"><span>02</span><b>Patio Envigado</b><span>Remodelación · 180 m²</span><span>Envigado, 2024</span><i>↗</i></div>
+        <div class="obra"><span>03</span><b>Refugio Niebla</b><span>Cabaña · 90 m²</span><span>Guatapé, 2024</span><i>↗</i></div>
+      </div>
+      <div class="cine">
+        <figure><img src="../fotos/casa-madera.webp" alt="Casa de madera en la montaña" width="400" height="400" loading="lazy"><figcaption>Refugio Niebla — fachada norte</figcaption></figure>
+        <figure><img src="../fotos/dibujante.webp" alt="Mesa de dibujo con planos" width="400" height="400" loading="lazy"><figcaption>Taller — primeros bocetos</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="cierre">
+    <div class="wrap"><h2 class="serif">Tu casa, <em>en primera función.</em></h2><a class="pild pild--crema" href="#">Hablemos de tu proyecto</a></div>
+  </section>
+
+  <footer><div class="wrap">Trazo · negocio de ejemplo · Medellín, Colombia</div></footer>
+</body>
+</html>

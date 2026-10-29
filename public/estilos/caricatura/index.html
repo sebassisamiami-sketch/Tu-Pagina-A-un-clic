@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Caricatura | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --violeta: #8584bd; --violeta2: #6f6eaa; --amarillo: #ffe14d; --tinta: #1e1b3a; --rosa: #ff9fc0; --verde: #7ee0a5; --blanco: #fffdf5; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--violeta); color: var(--tinta); font: 600 18px/1.5 "Nunito", system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+    a { color: inherit; text-decoration: none; }
+    .gorda { font-family: "Archivo Black", sans-serif; font-weight: 400; text-transform: uppercase; }
+    .wrap { max-width: 1320px; margin: 0 auto; padding: 0 28px; }
+    .btn { display: inline-flex; align-items: center; height: 56px; padding: 0 30px; border-radius: 999px; font-weight: 800; font-size: 17px; border: 3px solid var(--tinta); box-shadow: 0 5px 0 var(--tinta); white-space: nowrap; }
+    .btn--amarillo { background: var(--amarillo); }
+    .btn--blanco { background: var(--blanco); }
+    nav .wrap { display: flex; align-items: center; height: 88px; gap: 26px; }
+    .logo { font: 400 26px/1 "Archivo Black"; color: var(--amarillo); text-transform: uppercase; -webkit-text-stroke: 1.5px var(--tinta); text-shadow: 3px 3px 0 var(--tinta); }
+    nav ul { display: flex; gap: 24px; margin: 0 auto; padding: 0; list-style: none; color: var(--blanco); font-weight: 800; }
+    nav .btn { height: 46px; font-size: 15px; padding: 0 22px; }
+
+    .heroe { position: relative; text-align: center; padding-top: 40px; overflow: hidden; }
+    h1 { margin: 0; font-size: clamp(76px, 17vw, 260px); line-height: .82; color: var(--amarillo); letter-spacing: -0.02em; -webkit-text-stroke: 3px var(--tinta); text-shadow: 6px 8px 0 var(--tinta); position: relative; z-index: 1; }
+    .heroe p { position: relative; z-index: 2; margin: 26px auto 26px; max-width: 520px; color: var(--blanco); font-size: 20px; }
+    .heroe .acc { position: relative; z-index: 2; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .mascota { display: block; width: min(440px, 80vw); height: auto; margin: 30px auto -6px; position: relative; z-index: 2; }
+    .estrella { position: absolute; width: 60px; height: 60px; background: var(--rosa); clip-path: polygon(50% 0, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); z-index: 2; }
+    .e1 { left: 8%; top: 60px; transform: rotate(-14deg); } .e2 { right: 9%; top: 240px; background: var(--verde); width: 44px; height: 44px; }
+
+    .blanca { background: var(--blanco); border-top: 3px solid var(--tinta); padding-block: 100px; }
+    h2 { margin: 0 0 40px; font-size: clamp(44px, 7vw, 100px); line-height: .9; text-align: center; }
+    h2 span { color: var(--violeta2); }
+    .productos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .prod { border: 3px solid var(--tinta); border-radius: 28px; padding: 22px; box-shadow: 6px 6px 0 var(--tinta); background: #fff; }
+    .prod .dibujo { height: 200px; border-radius: 18px; border: 3px solid var(--tinta); margin-bottom: 18px; display: grid; place-items: center; font-size: 80px; }
+    .prod:nth-child(1) .dibujo { background: var(--amarillo); } .prod:nth-child(2) .dibujo { background: var(--rosa); } .prod:nth-child(3) .dibujo { background: var(--verde); }
+    .prod div:last-child { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+    .prod h3 { margin: 0; font: 400 22px/1.1 "Archivo Black"; text-transform: uppercase; }
+    .prod b { font-weight: 800; }
+    .prod p { margin: 8px 0 0; color: #4b4870; font-size: 16px; }
+    .cinta { background: var(--amarillo); border-block: 3px solid var(--tinta); padding: 20px 0; text-align: center; font: 400 clamp(24px, 3vw, 40px)/1.1 "Archivo Black"; text-transform: uppercase; }
+    footer { background: var(--tinta); color: #b9b6e6; padding: 30px 0 50px; font-size: 14px; }
+
+    @media (max-width: 900px) {
+      nav ul { display: none; }
+      nav .btn { margin-left: auto; }
+      .wrap { padding: 0 18px; }
+      h1 { -webkit-text-stroke: 2px var(--tinta); text-shadow: 4px 5px 0 var(--tinta); }
+      .productos { grid-template-columns: 1fr; }
+      .blanca { padding-block: 64px; }
+      .e2 { top: 180px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Caricatura</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=caricatura#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <nav><div class="wrap">
+    <a class="logo" href="#">Papelito</a>
+    <ul><li>Cuadernos</li><li>Stickers</li><li>Kits</li><li>Talleres</li></ul>
+    <a class="btn btn--amarillo" href="#">Tienda</a>
+  </div></nav>
+
+  <header class="heroe">
+    <span class="estrella e1" aria-hidden="true"></span><span class="estrella e2" aria-hidden="true"></span>
+    <div class="wrap">
+      <h1 class="gorda">Papel<br>con chispa</h1>
+      <p>Papelito hace cuadernos, stickers y kits creativos dibujados a mano en Cali. Para tomar apuntes, regalar o simplemente sonreír.</p>
+      <div class="acc"><a class="btn btn--amarillo" href="#">Ver la tienda</a><a class="btn btn--blanco" href="#">Arma tu kit</a></div>
+    </div>
+    <svg class="mascota" viewBox="0 0 440 260" aria-hidden="true">
+      <path d="M60 260 L90 40 Q95 18 118 20 L330 34 Q352 36 350 58 L380 260Z" fill="#fffdf5" stroke="#1e1b3a" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M300 32 L350 58 L304 70Z" fill="#ffe14d" stroke="#1e1b3a" stroke-width="6" stroke-linejoin="round"/>
+      <line x1="110" y1="190" x2="330" y2="200" stroke="#8584bd" stroke-width="5" stroke-linecap="round"/>
+      <line x1="112" y1="220" x2="300" y2="228" stroke="#8584bd" stroke-width="5" stroke-linecap="round"/>
+      <ellipse cx="170" cy="110" rx="26" ry="32" fill="#fff" stroke="#1e1b3a" stroke-width="6"/>
+      <ellipse cx="260" cy="114" rx="26" ry="32" fill="#fff" stroke="#1e1b3a" stroke-width="6"/>
+      <circle cx="178" cy="118" r="11" fill="#1e1b3a"/><circle cx="268" cy="122" r="11" fill="#1e1b3a"/>
+      <path d="M190 160 Q215 182 240 162" fill="none" stroke="#1e1b3a" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="132" cy="150" r="12" fill="#ff9fc0"/><circle cx="300" cy="156" r="12" fill="#ff9fc0"/>
+      <path d="M40 120 Q20 100 34 84 M30 140 Q8 136 10 118" fill="none" stroke="#1e1b3a" stroke-width="5" stroke-linecap="round"/>
+    </svg>
+  </header>
+
+  <div class="cinta">★ Envíos a toda Colombia ★ Hecho a mano ★</div>
+
+  <section class="blanca">
+    <div class="wrap">
+      <h2 class="gorda">Lo más <span>pedido</span></h2>
+      <div class="productos">
+        <article class="prod"><div class="dibujo" aria-hidden="true">📒</div><div><h3>Cuaderno Nube</h3><b>$32.000</b></div><p>96 hojas punteadas y tapa dura ilustrada.</p></article>
+        <article class="prod"><div class="dibujo" aria-hidden="true">🌈</div><div><h3>Stickers x40</h3><b>$18.000</b></div><p>Personajes, frases y comida colombiana.</p></article>
+        <article class="prod"><div class="dibujo" aria-hidden="true">✂️</div><div><h3>Kit creativo</h3><b>$59.000</b></div><p>Cuaderno, stickers, washi tape y marcadores.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <footer><div class="wrap">Papelito · negocio de ejemplo · Cali, Colombia. Precios ilustrativos.</div></footer>
+</body>
+</html>

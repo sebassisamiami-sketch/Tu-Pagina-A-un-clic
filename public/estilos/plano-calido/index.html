@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Plano cálido | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --negro: #0b0b0b; --blanco: #fff; --hueso: #f5f3ef; --suave: #73706a; --linea: #e3dfd8; --cielo: #0096f7; --madera: #a8774d; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--blanco); color: var(--negro); font: 400 16px/1.55 "Inter", system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1400px; margin: 0 auto; padding: 0 32px; }
+    .btn { display: inline-flex; align-items: center; height: 46px; padding: 0 24px; border-radius: 999px; font-weight: 500; font-size: 15px; white-space: nowrap; }
+    .btn--cielo { background: var(--cielo); color: #fff; }
+    .btn--blanco { background: #fff; color: var(--negro); }
+    .btn--borde { box-shadow: inset 0 0 0 1px var(--linea); }
+    nav { background: var(--negro); color: #fff; }
+    nav .wrap { display: flex; align-items: center; height: 60px; gap: 30px; font-size: 14px; }
+    .logo { font-weight: 500; font-size: 18px; letter-spacing: -0.02em; }
+    nav ul { display: flex; gap: 26px; margin: 0 auto; padding: 0; list-style: none; color: #c9c6c0; }
+    nav .btn { height: 36px; font-size: 14px; padding: 0 18px; }
+
+    .heroe { position: relative; height: 86vh; min-height: 600px; max-height: 860px; color: #fff; overflow: hidden; }
+    .heroe img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 40% 50%; }
+    .heroe::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.35), transparent 30%, transparent 60%, rgba(0,0,0,.45)); }
+    .heroe .wrap { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding-block: 40px; }
+    h1 { margin: 0; font-size: clamp(90px, 16vw, 240px); line-height: .85; font-weight: 200; letter-spacing: -0.06em; }
+    .heroe .pie { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; }
+    .heroe .pie p { margin: 0; max-width: 380px; font-size: 18px; font-weight: 300; }
+    .heroe .acc { display: flex; gap: 10px; }
+
+    .specs { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--linea); }
+    .specs div { padding: 34px 24px 30px 0; border-right: 1px solid var(--linea); margin-right: 24px; }
+    .specs div:last-child { border: 0; }
+    .specs b { display: block; font-size: 56px; font-weight: 200; letter-spacing: -0.05em; line-height: 1; }
+    .specs span { color: var(--suave); font-size: 14px; }
+    section { padding-block: 110px; }
+    .dos { display: grid; grid-template-columns: 1fr 1.1fr; gap: 70px; align-items: center; }
+    h2 { margin: 0 0 18px; font-size: clamp(40px, 5vw, 72px); line-height: 1; font-weight: 300; letter-spacing: -0.045em; }
+    .dos p { margin: 0 0 26px; color: var(--suave); font-size: 18px; max-width: 460px; }
+    .plano { position: relative; aspect-ratio: 16 / 10; background: var(--hueso); border-radius: 16px; padding: 40px; }
+    .plano .casa { position: absolute; inset: 40px; border: 4px solid var(--negro); }
+    .plano .casa i { position: absolute; background: var(--negro); }
+    .m1 { left: 42%; top: 0; bottom: 30%; width: 3px; } .m2 { left: 42%; right: 0; top: 52%; height: 3px; } .m3 { left: 0; width: 42%; top: 64%; height: 3px; }
+    .plano .casa span { position: absolute; font-size: 12px; color: var(--suave); letter-spacing: .06em; text-transform: uppercase; }
+    .r1 { left: 16px; top: 16px; } .r2 { left: calc(42% + 16px); top: 16px; } .r3 { left: calc(42% + 16px); top: calc(52% + 16px); } .r4 { left: 16px; top: calc(64% + 16px); }
+    .plano .puerta { position: absolute; left: 20%; bottom: -4px; width: 60px; height: 4px; background: var(--hueso); }
+    .plano .cota { position: absolute; left: 40px; right: 40px; bottom: 12px; display: flex; justify-content: center; font-size: 12px; color: var(--cielo); border-top: 1px solid var(--cielo); padding-top: 4px; }
+    .modelos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .modelo { border: 1px solid var(--linea); border-radius: 16px; overflow: hidden; }
+    .modelo figure { margin: 0; aspect-ratio: 4 / 3; background: var(--hueso); overflow: hidden; }
+    .modelo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .modelo .mx { display: grid; place-items: center; height: 100%; font-size: 90px; font-weight: 200; letter-spacing: -0.06em; color: var(--madera); }
+    .modelo div:last-child { padding: 20px; display: flex; justify-content: space-between; gap: 10px; }
+    .modelo b { font-weight: 500; font-size: 18px; }
+    .modelo span { color: var(--suave); }
+    footer { padding: 30px 0 50px; color: var(--suave); font-size: 14px; border-top: 1px solid var(--linea); }
+
+    @media (max-width: 900px) {
+      nav ul { display: none; }
+      nav .btn { margin-left: auto; }
+      .wrap { padding: 0 18px; }
+      .heroe { height: 640px; }
+      .heroe .acc { flex-wrap: wrap; }
+      .specs { grid-template-columns: 1fr 1fr; } .specs div { margin-right: 14px; } .specs div:nth-child(2) { border: 0; } .specs b { font-size: 42px; }
+      .dos, .modelos { grid-template-columns: 1fr; gap: 30px; }
+      .plano { padding: 20px; } .plano .casa { inset: 20px 20px 40px; }
+      section { padding-block: 70px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Plano cálido</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=plano-calido#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <nav><div class="wrap">
+    <a class="logo" href="#">Casa Módulo</a>
+    <ul><li>Modelos</li><li>Cómo funciona</li><li>Precios</li><li>Preguntas</li></ul>
+    <a class="btn btn--cielo" href="#">Cotizar</a>
+  </div></nav>
+
+  <header class="heroe">
+    <img src="../fotos/casa-ancha.webp" alt="Casa de madera moderna en la montaña" width="800" height="500">
+    <div class="wrap">
+      <h1>M40</h1>
+      <div class="pie">
+        <p>Una casa de 40 m² con dos ambientes, hecha en fábrica y armada en tu lote en tres semanas.</p>
+        <div class="acc"><a class="btn btn--cielo" href="#">Diseña la tuya</a><a class="btn btn--blanco" href="#">Ver por dentro</a></div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap specs">
+    <div><b>40 m²</b><span>Área construida</span></div>
+    <div><b>21 días</b><span>Instalación en tu lote</span></div>
+    <div><b>2</b><span>Ambientes y un baño</span></div>
+    <div><b>$148 M</b><span>Desde, con instalación</span></div>
+  </div>
+
+  <section>
+    <div class="wrap dos">
+      <div><h2>Pensada para vivir bien en poco espacio</h2><p>Techos altos, ventanales de piso a techo y madera certificada por dentro. Escoge acabados y te mostramos el precio al instante.</p><a class="btn btn--cielo" href="#">Escoger acabados</a></div>
+      <div class="plano" aria-hidden="true">
+        <div class="casa"><i class="m1"></i><i class="m2"></i><i class="m3"></i><span class="r1">Sala · comedor</span><span class="r2">Habitación</span><span class="r3">Cocina</span><span class="r4">Baño</span><b class="puerta"></b></div>
+        <div class="cota">8,0 m</div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <h2>Tres tamaños</h2>
+      <div class="modelos">
+        <article class="modelo"><figure><div class="mx">M25</div></figure><div><b>M25 · estudio</b><span>desde $98 M</span></div></article>
+        <article class="modelo"><figure><img src="../fotos/casa-madera.webp" alt="Casa modular de madera" width="400" height="400" loading="lazy"></figure><div><b>M40 · dos ambientes</b><span>desde $148 M</span></div></article>
+        <article class="modelo"><figure><div class="mx">M70</div></figure><div><b>M70 · familiar</b><span>desde $236 M</span></div></article>
+      </div>
+    </div>
+  </section>
+
+  <footer><div class="wrap">Casa Módulo · negocio de ejemplo · Rionegro, Colombia. Precios ilustrativos.</div></footer>
+</body>
+</html>

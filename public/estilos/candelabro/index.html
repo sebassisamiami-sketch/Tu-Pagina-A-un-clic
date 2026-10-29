@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Candelabro | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --pergamino: #d8cbb8; --pergamino2: #e6dccd; --azafran: #d49653; --cacao: #2a1d14; --vino: #3b1f17; --suave: #6b5a4a; --linea: #b9a78f; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--pergamino); color: var(--cacao); font: 400 16px/1.6 "Instrument Sans", system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+    a { color: inherit; text-decoration: none; }
+    .serif { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 300; }
+    .wrap { max-width: 1320px; margin: 0 auto; padding: 0 36px; }
+    .etq { font-size: 12px; letter-spacing: .28em; text-transform: uppercase; color: var(--suave); }
+    .btn { display: inline-flex; align-items: center; height: 50px; padding: 0 30px; border-radius: 999px; font-size: 13px; letter-spacing: .2em; text-transform: uppercase; font-weight: 500; white-space: nowrap; }
+    .btn--azafran { background: var(--azafran); color: var(--cacao); }
+    .btn--borde { border: 1px solid var(--cacao); }
+    nav .wrap { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; height: 92px; border-bottom: 1px solid var(--linea); }
+    nav ul { display: flex; gap: 30px; margin: 0; padding: 0; list-style: none; font-size: 13px; letter-spacing: .18em; text-transform: uppercase; }
+    .logo { text-align: center; line-height: 1; }
+    .logo b { display: block; font-family: "Cormorant Garamond", serif; font-weight: 400; font-size: 32px; letter-spacing: .06em; }
+    .logo small { font-size: 10px; letter-spacing: .4em; text-transform: uppercase; color: var(--suave); }
+    nav .der { justify-self: end; }
+    nav .der .btn { height: 44px; }
+
+    .heroe { text-align: center; padding-block: 70px 60px; }
+    h1 { margin: 18px auto 26px; max-width: 12ch; font-size: clamp(60px, 9vw, 132px); line-height: .92; letter-spacing: -0.02em; }
+    h1 em { color: var(--azafran); }
+    .heroe p { margin: 0 auto 30px; max-width: 520px; color: var(--suave); font-size: 18px; }
+    .heroe .acc { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .foto { margin: 0 36px; height: 620px; border-radius: 300px 300px 0 0; overflow: hidden; position: relative; }
+    .foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; display: block; }
+    .foto span { position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); color: var(--pergamino2); font-size: 12px; letter-spacing: .3em; text-transform: uppercase; white-space: nowrap; }
+
+    .oscuro { background: var(--vino); color: var(--pergamino2); padding-block: 110px; }
+    .oscuro .wrap { display: grid; grid-template-columns: 1fr 1.2fr; gap: 70px; }
+    h2 { margin: 14px 0 22px; font-size: clamp(44px, 6vw, 88px); line-height: .95; letter-spacing: -0.02em; }
+    h2 em { color: var(--azafran); }
+    .oscuro .etq { color: var(--azafran); }
+    .oscuro p { color: #c8b8a2; max-width: 420px; }
+    .oscuro .salon { margin-top: 30px; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 4px; }
+    .carta h3 { font-family: "Cormorant Garamond", serif; font-weight: 400; font-size: 30px; margin: 0 0 18px; color: var(--azafran); font-style: italic; }
+    .plato { display: flex; align-items: baseline; gap: 12px; padding: 14px 0; }
+    .plato b { font-family: "Cormorant Garamond", serif; font-weight: 400; font-size: 26px; white-space: nowrap; }
+    .plato i { flex: 1; border-bottom: 1px dotted #8a6f57; transform: translateY(-6px); }
+    .plato span { font-size: 15px; }
+    .plato + small { display: block; color: #a8957f; font-size: 14px; margin-top: -8px; padding-bottom: 6px; }
+    .grupo + .grupo { margin-top: 40px; }
+
+    .reserva { padding-block: 100px; text-align: center; }
+    .reserva .datos { display: flex; justify-content: center; gap: 60px; margin: 40px 0; flex-wrap: wrap; }
+    .reserva .datos b { display: block; font-family: "Cormorant Garamond", serif; font-weight: 300; font-size: 40px; }
+    footer { padding: 30px 0 50px; border-top: 1px solid var(--linea); color: var(--suave); font-size: 13px; letter-spacing: .06em; }
+
+    @media (max-width: 900px) {
+      nav .wrap { grid-template-columns: 1fr auto; }
+      nav ul { display: none; }
+      .logo { text-align: left; }
+      .wrap { padding: 0 18px; }
+      nav .der .btn { padding: 0 18px; letter-spacing: .12em; }
+      .foto { margin: 0 12px; height: 420px; border-radius: 200px 200px 0 0; }
+      .oscuro .wrap { grid-template-columns: 1fr; gap: 40px; }
+      .oscuro, .reserva { padding-block: 70px; }
+      .plato b { font-size: 22px; white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Candelabro</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=candelabro#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <nav><div class="wrap">
+    <ul><li>Carta</li><li>Salones</li><li>Eventos</li></ul>
+    <a class="logo" href="#"><b>Casa Azafrán</b><small>Cartagena · 1998</small></a>
+    <div class="der"><a class="btn btn--azafran" href="#">Reservar</a></div>
+  </div></nav>
+
+  <header class="heroe wrap">
+    <span class="etq">Cocina del Caribe y el Mediterráneo</span>
+    <h1 class="serif">Una mesa <em>bajo los faroles</em></h1>
+    <p>Desde hace 25 años servimos cenas lentas en una casona del centro histórico, con patio, velas y la carta que cambia con la pesca del día.</p>
+    <div class="acc"><a class="btn btn--azafran" href="#">Reservar mesa</a><a class="btn btn--borde" href="#">Ver la carta</a></div>
+  </header>
+  <div class="foto"><img src="../fotos/terraza-ancha.webp" alt="Terraza del restaurante iluminada con faroles" width="800" height="500"><span>El patio · desde las 6 p. m.</span></div>
+
+  <section class="oscuro">
+    <div class="wrap">
+      <div>
+        <span class="etq">La carta</span>
+        <h2 class="serif">Sabores que <em>se toman su tiempo</em></h2>
+        <p>Cocinamos con leña, especias de la casa y productos de pescadores y huertas de Bolívar.</p>
+        <img class="salon" src="../fotos/salon-nocturno.webp" alt="Salón del restaurante de noche" width="400" height="400" loading="lazy">
+      </div>
+      <div class="carta">
+        <div class="grupo">
+          <h3>Para empezar</h3>
+          <div class="plato"><b>Carimañolas de cangrejo</b><i></i><span>$32.000</span></div><small>Ají de suero y limón mandarino</small>
+          <div class="plato"><b>Ceviche de pesca del día</b><i></i><span>$38.000</span></div><small>Leche de coco, mango biche</small>
+        </div>
+        <div class="grupo">
+          <h3>Del fogón</h3>
+          <div class="plato"><b>Pargo al azafrán</b><i></i><span>$74.000</span></div><small>Arroz de coco y plátano maduro</small>
+          <div class="plato"><b>Cordero a la leña</b><i></i><span>$82.000</span></div><small>Puré de ñame y hierbas</small>
+          <div class="plato"><b>Arroz negro de mariscos</b><i></i><span>$69.000</span></div><small>Alioli de ajo asado</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reserva wrap">
+    <span class="etq">Reservas</span>
+    <h2 class="serif">Te guardamos <em>la mejor mesa</em></h2>
+    <div class="datos"><div><b>Mar a dom</b><span class="etq">Abierto</span></div><div><b>6 p. m.</b><span class="etq">Desde</span></div><div><b>120</b><span class="etq">Puestos</span></div></div>
+    <a class="btn btn--azafran" href="#">Reservar por WhatsApp</a>
+  </section>
+
+  <footer><div class="wrap">Casa Azafrán · negocio de ejemplo · Cartagena, Colombia. Precios ilustrativos.</div></footer>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Brasserie limón | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --crema: #f6f1e6; --limon: #f7ea48; --oliva: #1f1f14; --oliva2: #3a3a26; --rosa: #f3d9d3; --suave: #6b6a55; --linea: #ddd6c3; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--crema); color: var(--oliva); font: 400 16px/1.55 "Instrument Sans", system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+    a { color: inherit; text-decoration: none; }
+    .ancho { font-family: "Archivo Black", sans-serif; font-weight: 400; text-transform: uppercase; letter-spacing: .14em; }
+    .mini { font-size: 12px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; }
+    .wrap { max-width: 1360px; margin: 0 auto; padding: 0 32px; }
+    .btn { display: inline-flex; align-items: center; height: 50px; padding: 0 28px; border-radius: 999px; font-size: 13px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; white-space: nowrap; }
+    .btn--oliva { background: var(--oliva); color: var(--limon); }
+    .btn--borde { border: 1.5px solid var(--oliva); }
+    nav .wrap { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; height: 76px; }
+    nav ul { display: flex; gap: 28px; margin: 0; padding: 0; list-style: none; }
+    .logo { font-size: 22px; letter-spacing: .3em; }
+    nav .der { justify-self: end; display: flex; gap: 22px; align-items: center; }
+    nav .btn { height: 42px; padding: 0 20px; }
+
+    .heroe { background: var(--limon); margin: 0 16px; border-radius: 28px; padding: 60px 40px 0; overflow: hidden; text-align: center; }
+    .heroe .mini { display: block; margin-bottom: 18px; }
+    h1 { margin: 0; font-size: clamp(48px, 10.4vw, 156px); line-height: .9; letter-spacing: .08em; }
+    .heroe p { margin: 24px auto 28px; max-width: 520px; font-size: 18px; }
+    .heroe .acc { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .bowls { display: grid; grid-template-columns: 1fr 1.2fr 1fr; gap: 18px; align-items: end; margin-top: 50px; }
+    .bowls img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 22px 22px 0 0; display: block; }
+    .bowls img:nth-child(2) { aspect-ratio: 1 / 1.08; }
+
+    section { padding-block: 100px; }
+    .intro { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start; }
+    h2 { margin: 0; font-size: clamp(30px, 4vw, 56px); line-height: 1; letter-spacing: .06em; }
+    .intro p { margin: 0 0 16px; font-size: 20px; line-height: 1.5; color: var(--oliva2); }
+    .carta { margin-top: 70px; border-top: 2px solid var(--oliva); }
+    .linea { display: grid; grid-template-columns: 60px 1fr auto; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--linea); align-items: baseline; }
+    .linea .mini { color: var(--suave); }
+    .linea h3 { margin: 0 0 4px; font: 400 24px/1.1 "Archivo Black", sans-serif; text-transform: uppercase; letter-spacing: .08em; }
+    .linea p { margin: 0; color: var(--suave); }
+    .linea b { font: 400 22px/1 "Archivo Black", sans-serif; }
+    .oliva { background: var(--oliva); color: var(--crema); margin: 0 16px; border-radius: 28px; padding: 80px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+    .oliva h2 { color: var(--limon); }
+    .oliva p { color: #c8c5ad; margin: 18px 0 26px; }
+    .oliva .btn { background: var(--limon); color: var(--oliva); }
+    .horario { display: grid; gap: 10px; }
+    .horario div { display: flex; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid #3a3a26; }
+    footer { padding: 40px 0 50px; color: var(--suave); font-size: 14px; }
+
+    @media (max-width: 900px) {
+      nav .wrap { grid-template-columns: 1fr auto; }
+      nav ul, nav .der span { display: none; }
+      .logo { font-size: 18px; letter-spacing: .2em; }
+      .wrap { padding: 0 18px; }
+      .heroe { margin: 0 8px; padding: 44px 18px 0; border-radius: 22px; }
+      h1 { letter-spacing: .04em; }
+      .bowls { grid-template-columns: 1fr 1fr; } .bowls img:last-child { display: none; } .bowls img:nth-child(2) { aspect-ratio: 1; }
+      .intro, .oliva { grid-template-columns: 1fr; gap: 26px; }
+      .oliva { margin: 0 8px; padding: 50px 22px; }
+      .linea { grid-template-columns: 1fr auto; } .linea .mini { display: none; }
+      section { padding-block: 64px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Brasserie limón</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=brasserie-limon#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <nav><div class="wrap">
+    <ul class="mini"><li>Carta</li><li>Locales</li><li>Eventos</li></ul>
+    <a class="logo ancho" href="#">Limonero</a>
+    <div class="der mini"><span>Domicilios</span><a class="btn btn--oliva" href="#">Pedir</a></div>
+  </div></nav>
+
+  <header class="heroe">
+    <span class="mini">Poke · Bowls · Limonadas</span>
+    <h1 class="ancho">Fresco<br>y ácido</h1>
+    <p>Limonero es un poke bar en Barranquilla: pescado fresco, arroz de la casa y salsas cítricas que preparamos cada mañana.</p>
+    <div class="acc"><a class="btn btn--oliva" href="#">Pedir a domicilio</a><a class="btn btn--borde" href="#">Ver la carta</a></div>
+    <div class="bowls">
+      <img src="../fotos/poke-pollo.webp" alt="Poke de pollo con maíz y tomates" width="400" height="400">
+      <img src="../fotos/poke-salmon.webp" alt="Poke de salmón con edamame" width="400" height="400">
+      <img src="../fotos/poke-tofu.webp" alt="Poke de tofu con vegetales" width="400" height="400">
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <div class="intro">
+        <h2 class="ancho">Un bowl,<br>mil combinaciones</h2>
+        <div><p>Escoge la base, la proteína, cinco toppings y una salsa. O pide uno de los nuestros, pensados para que cada bocado tenga algo crocante, algo dulce y algo ácido.</p><span class="mini" style="color:var(--suave)">Todos los bowls · desde $26.000</span></div>
+      </div>
+      <div class="carta">
+        <div class="linea"><span class="mini">01</span><div><h3>Clásico salmón</h3><p>Salmón, edamame, pepino, algas y mayonesa de limón.</p></div><b>$34.000</b></div>
+        <div class="linea"><span class="mini">02</span><div><h3>Pollo tropical</h3><p>Pollo a la plancha, mango, maíz dulce y salsa de maracuyá.</p></div><b>$29.000</b></div>
+        <div class="linea"><span class="mini">03</span><div><h3>Tofu verde</h3><p>Tofu crocante, aguacate, repollo morado y salsa de cilantro.</p></div><b>$26.000</b></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="oliva">
+    <div><h2 class="ancho">Te esperamos</h2><p>Calle 79 con carrera 53, Barranquilla. También en tu casa por la app o WhatsApp.</p><a class="btn" href="#">Cómo llegar</a></div>
+    <div class="horario mini"><div><span>Lunes a jueves</span><span>12 – 9 p. m.</span></div><div><span>Viernes y sábado</span><span>12 – 11 p. m.</span></div><div><span>Domingo</span><span>12 – 6 p. m.</span></div></div>
+  </div>
+  <footer><div class="wrap">Limonero · negocio de ejemplo · Barranquilla, Colombia. Precios ilustrativos.</div></footer>
+</body>
+</html>
