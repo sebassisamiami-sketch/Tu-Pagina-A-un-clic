@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Grafiti cúrcuma | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --oro: #faae33; --oxido: #823513; --azafran: #9f531b; --especia: #402011; --clavo: #281006; --cardamomo: #6b2e12; --aji: #d1255c; --crema: #ffe7c2; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--oxido); color: var(--crema); font: 400 16px/1.5 "DM Sans", system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+    a { color: inherit; text-decoration: none; }
+    .grande { font-family: "Archivo Black", sans-serif; font-weight: 400; text-transform: uppercase; line-height: .86; letter-spacing: -0.02em; }
+    .wrap { max-width: 1400px; margin: 0 auto; padding: 0 28px; }
+    .btn { display: inline-flex; align-items: center; height: 48px; padding: 0 26px; border-radius: 999px; font-weight: 700; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+    .btn--oro { background: var(--oro); color: var(--clavo); }
+    .btn--fantasma { background: var(--especia); color: var(--oro); }
+    .punteada { border: 0; border-top: 2px dotted var(--azafran); margin: 0; }
+    .hojas { position: absolute; inset: 0; opacity: .14; pointer-events: none; background:
+      radial-gradient(ellipse 18px 40px at 10% 20%, var(--oro) 98%, transparent), radial-gradient(ellipse 14px 34px at 22% 70%, var(--oro) 98%, transparent), radial-gradient(ellipse 20px 44px at 85% 30%, var(--oro) 98%, transparent), radial-gradient(ellipse 12px 30px at 70% 80%, var(--oro) 98%, transparent), radial-gradient(ellipse 16px 38px at 50% 12%, var(--oro) 98%, transparent); }
+    nav { position: relative; z-index: 2; }
+    nav .wrap { display: flex; align-items: center; height: 70px; gap: 26px; font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .logo { font: 400 22px/1 "Archivo Black"; color: var(--oro); }
+    nav ul { display: flex; gap: 6px; margin: 0 auto; padding: 0; list-style: none; }
+    nav ul li { padding: 8px 14px; border-radius: 999px; } nav ul li:first-child { background: var(--oro); color: var(--clavo); }
+
+    .heroe { position: relative; overflow: hidden; text-align: center; padding-block: 30px 0; }
+    .heroe small { display: block; color: var(--oro); font-weight: 700; letter-spacing: .3em; text-transform: uppercase; font-size: 12px; margin-bottom: 14px; }
+    h1 { position: relative; margin: 0; font-size: clamp(80px, 16vw, 230px); color: var(--oro); }
+    .heroe h2 { position: relative; margin: 14px 0 0; font: 400 clamp(26px, 3.6vw, 52px)/1 "Archivo Black"; text-transform: uppercase; color: var(--crema); }
+    .frasco { position: relative; display: block; width: min(300px, 64vw); height: auto; margin: 30px auto -4px; filter: drop-shadow(0 30px 40px rgba(0,0,0,.45)); }
+    .lado { position: absolute; z-index: 2; bottom: 60px; max-width: 260px; text-align: left; font-size: 14px; }
+    .lado.izq { left: 28px; } .lado.der { right: 28px; text-align: right; }
+    .lado b { display: block; color: var(--oro); font: 400 26px/1 "Archivo Black"; margin-bottom: 8px; }
+
+    .oscuro { background: var(--especia); padding-block: 90px; position: relative; }
+    .cabeza { display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 30px; flex-wrap: wrap; }
+    .cabeza h2 { margin: 0; font-size: clamp(54px, 8vw, 120px); color: var(--oro); }
+    .salsas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 30px; }
+    .salsa { background: var(--clavo); border-radius: 28px; padding: 22px; border: 1px solid var(--cardamomo); }
+    .salsa .nivel { display: inline-flex; gap: 4px; padding: 5px 12px; border-radius: 999px; background: var(--aji); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #fff; }
+    .salsa h3 { margin: 18px 0 6px; font: 400 34px/.95 "Archivo Black"; text-transform: uppercase; color: var(--oro); }
+    .salsa p { margin: 0 0 18px; color: #e8c79c; }
+    .salsa div { display: flex; justify-content: space-between; align-items: center; padding-top: 14px; border-top: 2px dotted var(--cardamomo); }
+    .salsa div b { font-size: 20px; }
+    .cinta { background: var(--oro); color: var(--clavo); padding: 18px 0; white-space: nowrap; overflow: hidden; font: 400 34px/1 "Archivo Black"; text-transform: uppercase; }
+    footer { background: var(--clavo); color: #b98a5c; padding: 30px 0 50px; font-size: 13px; letter-spacing: .06em; }
+
+    @media (max-width: 900px) {
+      nav ul { display: none; }
+      nav .btn { margin-left: auto; }
+      .wrap { padding: 0 18px; }
+      .lado { position: relative; left: auto !important; right: auto !important; bottom: auto; max-width: none; text-align: center !important; margin: 18px auto 0; padding: 0 18px; }
+      .salsas { grid-template-columns: 1fr; }
+      .oscuro { padding-block: 60px; }
+      .cinta { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Grafiti cúrcuma</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=grafiti-curcuma#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <header class="heroe">
+    <div class="hojas" aria-hidden="true"></div>
+    <nav><div class="wrap">
+      <a class="logo" href="#">Brasa Dorada</a>
+      <ul><li>Salsas</li><li>Recetas</li><li>Combos</li><li>Dónde comprar</li></ul>
+      <a class="btn btn--oro" href="#">Tienda</a>
+    </div></nav>
+    <div class="wrap">
+      <small>Salsas asadas al fuego · Hechas en Cali</small>
+      <h1 class="grande">Sabor<br>bravo</h1>
+      <h2>Ají de lulo ahumado</h2>
+    </div>
+    <div class="lado izq"><b>01</b>Lulo, ají dulce y ajo asados en leña. Picante medio, mucho sabor.</div>
+    <div class="lado der"><b>$24.000</b><a class="btn btn--oro" href="#">Agregar al carrito</a></div>
+    <svg class="frasco" viewBox="0 0 220 300" aria-hidden="true">
+      <rect x="60" y="10" width="100" height="40" rx="8" fill="#281006"/>
+      <rect x="54" y="44" width="112" height="14" rx="6" fill="#402011"/>
+      <path d="M40 70 Q40 56 56 56 L164 56 Q180 56 180 70 L186 270 Q186 296 160 296 L60 296 Q34 296 34 270Z" fill="#e8501a"/>
+      <path d="M50 80 L60 280" stroke="#ff8a3d" stroke-width="10" stroke-linecap="round" opacity=".6"/>
+      <rect x="44" y="130" width="132" height="110" rx="12" fill="#faae33"/>
+      <text x="110" y="178" text-anchor="middle" font-family="Archivo Black, sans-serif" font-size="22" fill="#281006">BRASA</text>
+      <text x="110" y="204" text-anchor="middle" font-family="Archivo Black, sans-serif" font-size="15" fill="#823513">DORADA</text>
+      <circle cx="110" cy="224" r="6" fill="#d1255c"/>
+    </svg>
+  </header>
+
+  <div class="cinta" aria-hidden="true">🔥 Picante de verdad ✦ Sin conservantes ✦ Asado al fuego ✦ 🔥 Picante de verdad ✦ Sin conservantes</div>
+
+  <section class="oscuro">
+    <div class="wrap">
+      <div class="cabeza"><h2 class="grande">Escoge<br>tu fuego</h2><a class="btn btn--fantasma" href="#">Ver todas las salsas →</a></div>
+      <hr class="punteada">
+      <div class="salsas">
+        <article class="salsa"><span class="nivel">🌶 Suave</span><h3>Mango<br>tatemado</h3><p>Dulce, ahumada y perfecta para empanadas.</p><div><b>$22.000</b><a class="btn btn--oro" href="#">Comprar</a></div></article>
+        <article class="salsa"><span class="nivel">🌶🌶 Medio</span><h3>Lulo<br>ahumado</h3><p>La favorita: ácida, fresca y con humo de leña.</p><div><b>$24.000</b><a class="btn btn--oro" href="#">Comprar</a></div></article>
+        <article class="salsa"><span class="nivel">🌶🌶🌶 Bravo</span><h3>Chile<br>de fuego</h3><p>Solo para valientes. Ají chombo y ajo negro.</p><div><b>$26.000</b><a class="btn btn--oro" href="#">Comprar</a></div></article>
+      </div>
+    </div>
+  </section>
+
+  <footer><div class="wrap">Brasa Dorada · negocio de ejemplo · Cali, Colombia. Precios ilustrativos.</div></footer>
+</body>
+</html>

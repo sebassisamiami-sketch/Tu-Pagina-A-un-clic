@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Mundo juego | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --azul: #5865f2; --azul-osc: #3442d9; --noche: #0b0d2b; --indigo: #23278c; --verde: #57f287; --fucsia: #eb459e; --cian: #00b0f4; --naranja: #fda220; --blanco: #fff; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--noche); color: var(--blanco); font: 400 17px/1.5 "Figtree", system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+    a { color: inherit; text-decoration: none; }
+    .gorda { font-family: "Archivo Black", sans-serif; font-weight: 400; text-transform: uppercase; line-height: .98; letter-spacing: -0.01em; }
+    .wrap { max-width: 1260px; margin: 0 auto; padding: 0 28px; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; height: 56px; padding: 0 30px; border-radius: 28px; font-weight: 500; font-size: 18px; white-space: nowrap; }
+    .btn--blanco { background: #fff; color: #23272a; }
+    .btn--azul { background: var(--azul); color: #fff; }
+    .estrellas { background-image: radial-gradient(1.5px 1.5px at 10% 20%, #fff 50%, transparent), radial-gradient(1px 1px at 30% 60%, #fff 50%, transparent), radial-gradient(1.5px 1.5px at 70% 15%, #fff 50%, transparent), radial-gradient(1px 1px at 85% 75%, #fff 50%, transparent), radial-gradient(1px 1px at 55% 40%, #fff 50%, transparent), radial-gradient(1.5px 1.5px at 20% 85%, #fff 50%, transparent); }
+    .heroe { background: linear-gradient(180deg, #404eed 0%, var(--indigo) 60%, var(--noche) 100%); position: relative; overflow: hidden; }
+    nav .wrap { display: flex; align-items: center; height: 80px; gap: 30px; }
+    .logo { display: flex; align-items: center; gap: 8px; font: 400 22px/1 "Archivo Black"; }
+    .logo i { width: 30px; height: 22px; border-radius: 10px 10px 14px 14px; background: #fff; position: relative; }
+    .logo i::after { content: ""; position: absolute; left: 8px; top: 8px; width: 4px; height: 5px; border-radius: 2px; background: var(--azul); box-shadow: 10px 0 0 var(--azul); }
+    nav ul { display: flex; gap: 26px; margin: 0 auto; padding: 0; list-style: none; font-weight: 700; font-size: 15px; }
+    nav .btn { height: 40px; font-size: 14px; padding: 0 18px; border-radius: 20px; }
+    .heroe .grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: center; padding-block: 60px 100px; position: relative; z-index: 2; }
+    h1 { margin: 0 0 20px; font-size: clamp(40px, 5.4vw, 68px); }
+    .heroe p { margin: 0 0 30px; max-width: 460px; font-size: 19px; color: #dfe1ff; }
+    .heroe .acc { display: flex; gap: 14px; flex-wrap: wrap; }
+    .app { position: relative; }
+    .pantalla { background: #313338; border-radius: 14px; border: 6px solid #1e1f22; display: grid; grid-template-columns: 56px 150px 1fr; height: 340px; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,.45); }
+    .servers { background: #1e1f22; display: flex; flex-direction: column; align-items: center; gap: 8px; padding-top: 10px; }
+    .servers i { width: 38px; height: 38px; border-radius: 50%; } .servers i:nth-child(1) { background: var(--azul); border-radius: 12px; } .servers i:nth-child(2) { background: var(--verde); } .servers i:nth-child(3) { background: var(--fucsia); } .servers i:nth-child(4) { background: var(--naranja); }
+    .canales { background: #2b2d31; padding: 12px 10px; font-size: 12px; color: #949ba4; }
+    .canales b { display: block; color: #fff; margin-bottom: 12px; font-size: 13px; }
+    .canales span { display: block; padding: 4px 6px; border-radius: 4px; } .canales span.on { background: #404249; color: #fff; }
+    .chat { padding: 14px; display: flex; flex-direction: column; gap: 12px; font-size: 12px; }
+    .msg { display: flex; gap: 10px; } .msg i { flex: none; width: 30px; height: 30px; border-radius: 50%; } .msg b { display: block; font-size: 13px; } .msg span { color: #dbdee1; }
+    .bicho { position: absolute; border-radius: 50%; z-index: 3; display: grid; place-items: center; font-size: 34px; }
+    .b1 { width: 90px; height: 90px; left: -30px; bottom: -20px; background: var(--fucsia); box-shadow: inset -10px -12px 0 rgba(0,0,0,.18); }
+    .b2 { width: 70px; height: 70px; right: -20px; top: -24px; background: var(--verde); box-shadow: inset -8px -10px 0 rgba(0,0,0,.18); }
+
+    section { padding-block: 100px; }
+    .bloque { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .bloque + .bloque { margin-top: 100px; }
+    .bloque.inv > :first-child { order: 2; }
+    h2 { margin: 0 0 16px; font-size: clamp(30px, 3.6vw, 46px); }
+    .bloque p { margin: 0; color: #c9ccf5; font-size: 18px; }
+    .tarjeta { border-radius: 24px; height: 300px; position: relative; overflow: hidden; }
+    .t1 { background: linear-gradient(135deg, var(--azul), var(--fucsia)); }
+    .t1::after { content: "🎧 Sala de voz · 6 en línea"; position: absolute; left: 24px; bottom: 24px; background: rgba(0,0,0,.35); padding: 10px 16px; border-radius: 999px; font-weight: 700; }
+    .t2 { background: linear-gradient(135deg, var(--cian), var(--verde)); }
+    .t2::after { content: "🏆 Torneo del sábado"; position: absolute; left: 24px; bottom: 24px; background: rgba(0,0,0,.35); padding: 10px 16px; border-radius: 999px; font-weight: 700; }
+    .tarjeta i { position: absolute; border-radius: 50%; background: rgba(255,255,255,.25); }
+    .cierre { text-align: center; background: radial-gradient(60% 80% at 50% 100%, var(--indigo), var(--noche)); }
+    .cierre h2 { font-size: clamp(36px, 5vw, 64px); margin-bottom: 30px; }
+    footer { background: #23272a; padding: 40px 0 50px; color: #b5bac1; font-size: 14px; }
+
+    @media (max-width: 900px) {
+      nav ul { display: none; }
+      nav .btn { margin-left: auto; }
+      .wrap { padding: 0 18px; }
+      .heroe .grid, .bloque { grid-template-columns: 1fr; gap: 40px; }
+      .bloque.inv > :first-child { order: 0; }
+      .pantalla { grid-template-columns: 46px 1fr; height: 300px; } .canales { display: none; }
+      .b1 { left: -6px; } .b2 { right: -6px; }
+      section { padding-block: 70px; }
+      .bloque + .bloque { margin-top: 70px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Mundo juego</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=mundo-juego#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <header class="heroe estrellas">
+    <nav><div class="wrap">
+      <a class="logo" href="#"><i></i>Parche</a>
+      <ul><li>Torneos</li><li>Comunidad</li><li>Sedes</li><li>Planes</li></ul>
+      <a class="btn btn--blanco" href="#">Ingresar</a>
+    </div></nav>
+    <div class="wrap grid">
+      <div>
+        <h1 class="gorda">Un parche gamer para jugar en serio</h1>
+        <p>Parche es un club de videojuegos en Bogotá con salas de PC y consola, torneos cada fin de semana y una comunidad que te espera en línea.</p>
+        <div class="acc"><a class="btn btn--blanco" href="#">⬇ Únete a la comunidad</a><a class="btn btn--azul" href="#">Reservar una sala</a></div>
+      </div>
+      <div class="app" aria-hidden="true">
+        <span class="bicho b1">👾</span><span class="bicho b2">🎮</span>
+        <div class="pantalla">
+          <div class="servers"><i></i><i></i><i></i><i></i></div>
+          <div class="canales"><b>Parche Bogotá</b><span># general</span><span class="on"># torneo-sabado</span><span># busco-equipo</span><span>🔊 Sala 1</span><span>🔊 Sala 2</span></div>
+          <div class="chat">
+            <div class="msg"><i style="background:var(--naranja)"></i><div><b>Laura</b><span>¿Quién se apunta al torneo del sábado?</span></div></div>
+            <div class="msg"><i style="background:var(--cian)"></i><div><b>Andrés</b><span>Yo voy, me falta uno para el equipo 🙌</span></div></div>
+            <div class="msg"><i style="background:var(--verde)"></i><div><b>Parche</b><span>Inscripciones abiertas hasta el viernes</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <div class="bloque"><div class="tarjeta t1" aria-hidden="true"><i style="width:160px;height:160px;right:-30px;top:-30px"></i></div><div><h2 class="gorda">Juega con tus amigos cuando quieras</h2><p>Salas privadas con PC gamer, consolas y la mejor conexión de la ciudad. Pide comida sin pararte.</p></div></div>
+      <div class="bloque inv"><div class="tarjeta t2" aria-hidden="true"><i style="width:200px;height:200px;left:-40px;top:-60px"></i></div><div><h2 class="gorda">Torneos cada fin de semana</h2><p>Compite en equipo, sube en el ranking y gana premios. Hay categorías para todos los niveles.</p></div></div>
+    </div>
+  </section>
+
+  <section class="cierre estrellas"><div class="wrap"><h2 class="gorda">¿Listo para entrar al parche?</h2><a class="btn btn--azul" href="#">Reservar mi primera sala</a></div></section>
+  <footer><div class="wrap">Parche · negocio de ejemplo · Bogotá, Colombia</div></footer>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Alto voltaje | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --amarillo: #fff313; --negro: #000; --blanco: #eee; --carbon: #333; --metal: #4b4b4b; --aluminio: #afafaf; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--negro); color: var(--blanco); font: 400 16px/1.55 "Inter", system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1440px; margin: 0 auto; padding: 0 32px; }
+    .fino { font-weight: 300; letter-spacing: -0.04em; line-height: 1; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; height: 46px; padding: 0 22px; border-radius: 8px; font-weight: 500; font-size: 15px; white-space: nowrap; }
+    .btn--amarillo { background: var(--amarillo); color: #000; }
+    .btn--carbon { background: var(--carbon); color: #fff; }
+    nav { position: absolute; top: 0; left: 0; right: 0; z-index: 3; }
+    nav .wrap { display: flex; align-items: center; height: 80px; gap: 10px; }
+    .logo { font-weight: 500; font-size: 22px; margin-right: auto; letter-spacing: -0.03em; }
+    .logo b { color: var(--amarillo); font-weight: 500; }
+    nav .pild { height: 38px; padding: 0 16px; border-radius: 999px; background: var(--carbon); display: inline-flex; align-items: center; font-size: 14px; }
+
+    .heroe { position: relative; min-height: 720px; overflow: hidden; display: flex; align-items: flex-end; background: linear-gradient(180deg, #0b0b0b, #1a1a1a 60%, #0b0b0b); }
+    .gabinete { position: absolute; right: 8%; top: 90px; bottom: 0; width: 42%; background: linear-gradient(90deg, #2a2a2a, #6b6b6b 40%, #3a3a3a 70%, #1a1a1a); border-radius: 6px 6px 0 0; box-shadow: 0 0 120px rgba(0,0,0,.8); }
+    .gabinete::before { content: ""; position: absolute; left: 14%; right: 14%; top: 16%; height: 30%; background: #050505; border: 10px solid #9a9a9a; border-radius: 6px; box-shadow: inset 0 0 40px rgba(255,243,19,.08); }
+    .gabinete::after { content: ""; position: absolute; left: 14%; right: 14%; top: 56%; height: 34%; background: repeating-linear-gradient(0deg, #444 0 3px, #2a2a2a 3px 12px); border-radius: 4px; }
+    .gabinete i { position: absolute; left: 50%; top: 12%; width: 10px; height: 10px; border-radius: 50%; background: var(--amarillo); box-shadow: 0 0 20px var(--amarillo); transform: translateX(-50%); z-index: 2; }
+    .heroe .texto { position: relative; z-index: 2; padding-block: 0 70px; }
+    h1 { margin: 0 0 24px; max-width: 10ch; font-size: clamp(48px, 6vw, 84px); }
+    .heroe p { margin: 0 0 26px; max-width: 380px; color: var(--aluminio); }
+    .heroe .acc { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    .amarilla { background: var(--amarillo); color: #000; padding-block: 120px; }
+    .amarilla h2 { margin: 0; max-width: 18ch; font-size: clamp(44px, 6.4vw, 96px); }
+    .amarilla .datos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 90px; border-top: 1px solid rgba(0,0,0,.3); }
+    .amarilla .datos div { padding-top: 22px; }
+    .amarilla b { display: block; font-weight: 300; font-size: clamp(56px, 6vw, 88px); letter-spacing: -0.05em; line-height: 1; }
+    .clara { background: var(--blanco); color: #000; padding-block: 110px; }
+    .clara .cabeza { display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 40px; flex-wrap: wrap; }
+    .clara h2 { margin: 0; font-size: clamp(36px, 4.4vw, 60px); }
+    .noticias { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .noticia { background: #fff; border-radius: 9px; overflow: hidden; }
+    .noticia .img { height: 200px; background: #111; position: relative; }
+    .noticia:nth-child(1) .img { background: repeating-linear-gradient(90deg, #1b2a3a 0 40px, #24384d 40px 42px), #1b2a3a; }
+    .noticia:nth-child(1) .img::after { content: ""; position: absolute; inset: 30px; background: repeating-linear-gradient(0deg, transparent 0 28px, rgba(255,255,255,.15) 28px 30px), repeating-linear-gradient(90deg, transparent 0 48px, rgba(255,255,255,.15) 48px 50px); transform: perspective(300px) rotateX(30deg); }
+    .noticia:nth-child(2) .img { background: var(--amarillo); }
+    .noticia:nth-child(2) .img::after { content: "⚡"; position: absolute; inset: 0; display: grid; place-items: center; font-size: 80px; }
+    .noticia:nth-child(3) .img { background: linear-gradient(135deg, #333, #000); }
+    .noticia div:last-child { padding: 20px; }
+    .noticia small { color: #777; }
+    .noticia h3 { margin: 8px 0 0; font-weight: 400; font-size: 20px; letter-spacing: -0.02em; line-height: 1.25; }
+    footer { padding: 30px 0 50px; color: var(--aluminio); font-size: 13px; }
+
+    @media (max-width: 900px) {
+      nav .pild { display: none; }
+      .wrap { padding: 0 18px; }
+      .heroe { min-height: 640px; }
+      .gabinete { width: 70%; right: -10%; opacity: .55; }
+      .amarilla, .clara { padding-block: 70px; }
+      .amarilla .datos, .noticias { grid-template-columns: 1fr; }
+      .amarilla .datos { margin-top: 50px; gap: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Alto voltaje</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=alto-voltaje#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <header class="heroe">
+    <nav><div class="wrap">
+      <a class="logo" href="#">Voltio<b>.</b></a>
+      <a class="pild" href="#">Soluciones</a><a class="pild" href="#">Proyectos</a><a class="pild" href="#">Empresa</a>
+      <a class="btn btn--amarillo" href="#">Cotizar</a>
+    </div></nav>
+    <div class="gabinete" aria-hidden="true"><i></i></div>
+    <div class="wrap texto">
+      <h1 class="fino">Energía firme para tu empresa</h1>
+      <p>Voltio instala baterías y sistemas solares para fábricas, bodegas y centros de datos en Colombia. Sin cortes, con menos costo por kilovatio.</p>
+      <div class="acc"><a class="btn btn--amarillo" href="#">Hablar con un ingeniero</a><a class="btn btn--carbon" href="#">Ver proyectos</a></div>
+    </div>
+  </header>
+
+  <section class="amarilla">
+    <div class="wrap">
+      <h2 class="fino">Cuando la red falla, tu operación sigue andando.</h2>
+      <div class="datos">
+        <div><b>0 ms</b>De corte al pasar a batería</div>
+        <div><b>38 %</b>Menos en la factura de energía</div>
+        <div><b>120 MW</b>Instalados en el país</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="clara">
+    <div class="wrap">
+      <div class="cabeza"><h2 class="fino">Novedades</h2><a class="btn btn--carbon" href="#">Ver todas</a></div>
+      <div class="noticias">
+        <article class="noticia"><div class="img"></div><div><small>Proyecto · Octubre</small><h3>Parque solar de 4 MW para una planta en Funza</h3></div></article>
+        <article class="noticia"><div class="img"></div><div><small>Guía · Septiembre</small><h3>Cómo calcular cuánta batería necesita tu bodega</h3></div></article>
+        <article class="noticia"><div class="img"></div><div><small>Empresa · Agosto</small><h3>Abrimos sede en Barranquilla para la costa</h3></div></article>
+      </div>
+    </div>
+  </section>
+
+  <footer><div class="wrap">Voltio · negocio de ejemplo · Bogotá, Colombia. Cifras ilustrativas.</div></footer>
+</body>
+</html>

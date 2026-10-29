@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Prisma | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --obsidiana: #101010; --velo: #2b333b; --hueso: #fffdf9; --niebla: #6f879c; --linea: #403f3f; --rojo: #ff2a2a; --cian: #2a7fff; --lima: #2aff6a; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--obsidiana); color: var(--hueso); font: 400 17px/1.55 "Inter Tight", system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1360px; margin: 0 auto; padding: 0 32px; }
+    nav .wrap { display: flex; align-items: center; height: 84px; gap: 30px; font-size: 15px; }
+    .logo { font-size: 22px; letter-spacing: -0.03em; }
+    nav ul { display: flex; gap: 30px; margin: 0 0 0 auto; padding: 0; list-style: none; }
+    nav ul li:last-child { text-decoration: underline; text-underline-offset: 4px; }
+
+    .heroe { position: relative; min-height: 640px; display: grid; place-items: center; text-align: center; overflow: hidden; background: radial-gradient(60% 60% at 50% 50%, #1b1f24, var(--obsidiana) 70%); }
+    .cubo { position: absolute; left: 50%; top: 50%; width: 230px; height: 230px; transform: translate(-30%, -55%) rotate(18deg); }
+    .cubo i { position: absolute; inset: 0; border-radius: 10px; mix-blend-mode: screen; filter: blur(2px); }
+    .cubo i:nth-child(1) { background: linear-gradient(160deg, transparent 30%, var(--rojo) 50%, transparent 70%); transform: translate(-10px, 0); }
+    .cubo i:nth-child(2) { background: linear-gradient(160deg, transparent 32%, var(--lima) 50%, transparent 68%); }
+    .cubo i:nth-child(3) { background: linear-gradient(160deg, transparent 34%, var(--cian) 50%, transparent 66%); transform: translate(10px, 0); }
+    .cubo i:nth-child(4) { border: 1px solid rgba(255,253,249,.35); background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,0)); mix-blend-mode: normal; filter: none; box-shadow: inset 0 0 40px rgba(255,255,255,.06); }
+    .cubo i:nth-child(5) { inset: 30px -30px -30px 30px; border: 1px solid rgba(255,253,249,.18); mix-blend-mode: normal; filter: none; }
+    h1 { position: relative; margin: 0; font-size: clamp(64px, 10.6vw, 150px); line-height: .95; font-weight: 400; letter-spacing: -0.045em; }
+    h1 span { display: block; padding-left: 1.4em; }
+    .heroe p { position: relative; margin: 34px auto 0; max-width: 420px; font-size: 18px; text-align: left; padding-left: 22%; }
+
+    section { padding-block: 120px; border-top: 1px solid var(--linea); }
+    .intro { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; }
+    .etq { color: var(--niebla); font-size: 15px; }
+    .intro h2 { margin: 0; font-size: clamp(36px, 4.6vw, 64px); line-height: 1.05; font-weight: 300; letter-spacing: -0.035em; }
+    .servicios { margin-top: 90px; border-top: 1px solid var(--linea); }
+    .serv { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; padding: 34px 0; border-bottom: 1px solid var(--linea); align-items: baseline; }
+    .serv b { font-weight: 400; font-size: clamp(30px, 3.4vw, 46px); letter-spacing: -0.035em; }
+    .serv span { color: var(--niebla); }
+    .serv a { justify-self: end; text-decoration: underline; text-underline-offset: 4px; }
+    .clientes { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--linea); border: 1px solid var(--linea); margin-top: 90px; }
+    .clientes span { background: var(--obsidiana); height: 120px; display: grid; place-items: center; font-size: 22px; letter-spacing: -0.03em; color: #cfccc6; }
+    .cierre { text-align: center; }
+    .cierre h2 { margin: 0 0 30px; font-size: clamp(54px, 8vw, 120px); line-height: .95; font-weight: 400; letter-spacing: -0.045em; }
+    .cierre a { font-size: 20px; text-decoration: underline; text-underline-offset: 6px; }
+    footer { padding: 30px 0 50px; border-top: 1px solid var(--linea); color: var(--niebla); font-size: 14px; }
+
+    @media (max-width: 900px) {
+      nav ul li:not(:last-child) { display: none; }
+      .wrap { padding: 0 18px; }
+      .heroe { min-height: 560px; }
+      .cubo { width: 160px; height: 160px; }
+      h1 span { padding-left: .6em; }
+      .heroe p { padding-left: 0; }
+      .intro { grid-template-columns: 1fr; gap: 20px; }
+      .serv { grid-template-columns: 1fr auto; } .serv span { display: none; }
+      .clientes { grid-template-columns: 1fr 1fr; } .clientes span:last-child { display: none; }
+      section { padding-block: 70px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Prisma</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=prisma#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <nav><div class="wrap">
+    <a class="logo" href="#">Prisma+Co</a>
+    <ul><li>Trabajos</li><li>Servicios</li><li>Nosotros</li><li>Hablemos</li></ul>
+  </div></nav>
+
+  <header class="heroe">
+    <div class="cubo" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="wrap">
+      <h1>Somos<span>estrategas</span></h1>
+      <p>Una agencia integral y consultora estratégica que acompaña a líderes visionarios en sus retos más difíciles.</p>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <div class="intro"><span class="etq">Lo que hacemos</span><h2>Convertimos problemas complejos en marcas claras, campañas que se recuerdan y crecimiento que se mide.</h2></div>
+      <div class="servicios">
+        <div class="serv"><b>Estrategia</b><span>Investigación, posicionamiento y negocio</span><a href="#">Ver más</a></div>
+        <div class="serv"><b>Creatividad</b><span>Marca, campañas y contenido</span><a href="#">Ver más</a></div>
+        <div class="serv"><b>Comunicaciones</b><span>Relaciones públicas y mercadeo</span><a href="#">Ver más</a></div>
+      </div>
+      <div class="clientes" aria-label="Clientes de ejemplo"><span>Andina</span><span>Nuba</span><span>Vértice</span><span>Cafeto</span><span>Ola</span></div>
+    </div>
+  </section>
+
+  <section class="cierre">
+    <div class="wrap"><h2>Veamos qué<br>podemos crear</h2><a href="#">hola@prisma.co →</a></div>
+  </section>
+
+  <footer><div class="wrap">Prisma+Co · negocio de ejemplo · Bogotá, Colombia</div></footer>
+</body>
+</html>

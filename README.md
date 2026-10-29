@@ -22,7 +22,7 @@ Al enviar el formulario se abre WhatsApp con el mensaje listo y, al mismo tiempo
 
 ## Galería de estilos y ficha del diseño
 
-`public/estilos/` tiene 52 muestras de diseño con negocios inventados. El botón "Quiero este estilo" lleva al formulario con el estilo ya elegido: la solicitud guarda el campo `estilo` y el mensaje de WhatsApp incluye un enlace a la **ficha del diseño** (`/estilos/prompt/`). La ficha arma un prompt con los datos del cliente y todo el código del estilo, listo para copiar y pegar en un asistente de IA. Los datos viajan en el fragmento del enlace (`#...`), así que no llegan a ningún servidor. En el panel, cada solicitud con estilo tiene el botón "Abrir prompt completo".
+`public/estilos/` tiene 62 muestras de diseño con negocios inventados. El botón "Quiero este estilo" lleva al formulario con el estilo ya elegido: la solicitud guarda el campo `estilo` y el mensaje de WhatsApp incluye un enlace a la **ficha del diseño** (`/estilos/prompt/`). La ficha arma un prompt con los datos del cliente y todo el código del estilo, listo para copiar y pegar en un asistente de IA. Los datos viajan en el fragmento del enlace (`#...`), así que no llegan a ningún servidor. En el panel, cada solicitud con estilo tiene el botón "Abrir prompt completo".
 
 ## Contador de visitas
 

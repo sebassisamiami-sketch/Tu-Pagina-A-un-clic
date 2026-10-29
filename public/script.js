@@ -390,6 +390,10 @@ const Firestore = (function () {
     "showroom-negro": "Showroom negro",
     "aurora": "Aurora",
     "portal-cosmico": "Portal cósmico",
+    "monumento-carmesi": "Monumento carmesí",
+    "coral-nocturno": "Coral nocturno",
+    "prisma": "Prisma",
+    "mundo-juego": "Mundo juego",
     "sala-blanca": "Sala blanca",
     "galeria-calida": "Galería cálida",
     "catalogo-industrial": "Catálogo industrial",
@@ -419,6 +423,10 @@ const Firestore = (function () {
     "brasserie-limon": "Brasserie limón",
     "retiro-soleado": "Retiro soleado",
     "caricatura": "Caricatura",
+    "patio-verde": "Patio verde",
+    "grafiti-curcuma": "Grafiti cúrcuma",
+    "alto-voltaje": "Alto voltaje",
+    "diorama": "Diorama",
     "crema-editorial": "Crema editorial",
     "galeria-nocturna": "Galería nocturna",
     "hora-dorada": "Hora dorada",
@@ -430,6 +438,8 @@ const Firestore = (function () {
     "candelabro": "Candelabro",
     "periodico-crema": "Periódico crema",
     "magenta": "Magenta",
+    "carretera-retro": "Carretera retro",
+    "cartel-gigante": "Cartel gigante",
   };
   const slugEstilo = new URLSearchParams(location.search).get("estilo");
   const estiloElegido = ESTILOS[slugEstilo];

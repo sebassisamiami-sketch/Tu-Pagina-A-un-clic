@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Carretera retro | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cormorant+Garamond:wght@300;400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --crema: #fff8f1; --ceniza: #e2e8f0; --tinta: #000; --azul: #006eff; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--crema); color: var(--tinta); font: 300 16px/1.55 "Inter", system-ui, sans-serif; letter-spacing: -0.02em; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1320px; margin: 0 auto; padding: 0 40px; }
+    .serif { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 300; letter-spacing: -0.02em; }
+    .pesada { font-family: "Archivo Black", sans-serif; font-weight: 400; text-transform: uppercase; color: var(--azul); letter-spacing: -0.03em; line-height: .86; }
+    .pild { display: inline-flex; align-items: center; height: 42px; padding: 0 26px; border-radius: 60px; border: 1.5px solid var(--azul); color: var(--azul); font-weight: 400; font-size: 14px; text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; }
+    nav .wrap { display: flex; justify-content: space-between; align-items: center; height: 70px; font-size: 13px; text-transform: uppercase; letter-spacing: .06em; border-bottom: 1px solid var(--ceniza); }
+
+    .heroe { text-align: center; padding-block: 40px 30px; }
+    h1 { margin: 0; font-size: clamp(56px, 11.5vw, 170px); }
+    .fecha { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 20px; margin: 14px 0 6px; }
+    .fecha span { font-size: clamp(34px, 5vw, 72px); color: var(--azul); }
+    .fecha span:first-child { text-align: left; } .fecha span:last-child { text-align: right; }
+    .fecha b { font: 400 clamp(48px, 7vw, 104px)/.9 "Archivo Black"; color: var(--azul); text-transform: uppercase; }
+    .bajada { color: var(--azul); text-transform: uppercase; font-size: 14px; letter-spacing: .1em; margin: 18px 0 30px; }
+    .cuadro { display: grid; grid-template-columns: 1fr 1.6fr 1fr; gap: 30px; align-items: center; }
+    .lugar { text-align: center; }
+    .lugar small { display: block; color: var(--azul); font-size: 11px; text-transform: uppercase; letter-spacing: .12em; margin-bottom: 4px; }
+    .lugar b { display: block; font: 300 clamp(30px, 3.4vw, 48px)/1 "Cormorant Garamond", serif; color: var(--azul); margin-bottom: 14px; }
+    .carro { width: 100%; height: auto; }
+
+    section { padding-block: 110px; border-top: 1px solid var(--ceniza); }
+    .dos { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+    h2 { margin: 0; font-size: clamp(48px, 7vw, 110px); line-height: .95; }
+    .dos p { margin: 0 0 18px; max-width: 460px; font-size: 18px; }
+    .agenda { margin-top: 60px; border-top: 1px solid var(--tinta); }
+    .linea { display: grid; grid-template-columns: 160px 1fr auto; gap: 30px; padding: 26px 0; border-bottom: 1px solid var(--ceniza); align-items: baseline; }
+    .linea span { color: var(--azul); font-size: 14px; text-transform: uppercase; letter-spacing: .06em; }
+    .linea b { font: 300 32px/1.1 "Cormorant Garamond", serif; }
+    .final { text-align: center; }
+    .final h2 { margin-bottom: 30px; }
+    footer { padding: 30px 0 50px; border-top: 1px solid var(--ceniza); font-size: 13px; color: #555; }
+
+    @media (max-width: 900px) {
+      nav .wrap span:nth-child(2) { display: none; }
+      .wrap { padding: 0 18px; }
+      .fecha { grid-template-columns: 1fr; gap: 6px; } .fecha span { text-align: center !important; }
+      .cuadro { grid-template-columns: 1fr 1fr; } .carro { grid-column: 1 / -1; order: -1; }
+      .dos { grid-template-columns: 1fr; gap: 30px; }
+      .linea { grid-template-columns: 1fr; gap: 4px; }
+      section { padding-block: 70px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Carretera retro</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=carretera-retro#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <nav><div class="wrap"><span>Ruta 90</span><span>Encuentro de verano para emprendedores</span><span>Registro ↗</span></div></nav>
+
+  <header class="wrap heroe">
+    <h1 class="pesada">El paseo de</h1>
+    <div class="fecha"><span class="serif">14·12·26</span><b>verano</b><span class="serif">4–10 p. m.</span></div>
+    <p class="bajada">Una tarde de charlas, música y comida para los equipos de nuestra red</p>
+    <div class="cuadro">
+      <div class="lugar"><small>Lugar</small><b>Hacienda El Mirador</b><a class="pild" href="#">Cómo llegar</a></div>
+      <svg class="carro" viewBox="0 0 520 240" aria-hidden="true" fill="none" stroke="#000" stroke-width="2.4" stroke-linejoin="round">
+        <path d="M40 160 Q40 120 90 112 L170 104 Q210 60 270 56 L340 58 Q380 62 410 104 L470 112 Q500 118 500 150 L500 170 L40 172Z" fill="#cfe2ff"/>
+        <path d="M190 104 Q220 72 268 70 L330 72 Q356 76 378 104Z" fill="#fff8f1"/>
+        <line x1="280" y1="70" x2="282" y2="104"/>
+        <circle cx="130" cy="176" r="32" fill="#fff8f1"/><circle cx="130" cy="176" r="14" fill="#000"/>
+        <circle cx="410" cy="176" r="32" fill="#fff8f1"/><circle cx="410" cy="176" r="14" fill="#000"/>
+        <path d="M60 140 L100 140 M440 136 L488 136"/>
+        <path d="M330 30 Q350 10 360 40 Q372 6 386 34" stroke="#006eff"/>
+        <rect x="300" y="20" width="12" height="60" rx="6" fill="#006eff" stroke="none" transform="rotate(20 306 50)"/>
+        <path d="M20 214 L500 214" stroke="#006eff" stroke-dasharray="14 10"/>
+      </svg>
+      <div class="lugar"><small>Cupos</small><b>Reserva ya</b><a class="pild" href="#">Inscribirme</a></div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap dos">
+      <h2 class="serif">Una tarde para bajar el ritmo</h2>
+      <div><p>Ruta 90 reúne cada diciembre a los fundadores y equipos de las empresas que acompañamos. Sin corbata, sin diapositivas largas.</p><p>Habrá charlas cortas, almuerzo campestre, música en vivo y un recorrido en carros clásicos por la montaña.</p></div>
+    </div>
+    <div class="wrap agenda">
+      <div class="linea"><span>4:00 p. m.</span><b>Llegada y café de bienvenida</b><a class="pild" href="#">Detalles</a></div>
+      <div class="linea"><span>5:00 p. m.</span><b>Charlas: crecer sin perder el rumbo</b><a class="pild" href="#">Detalles</a></div>
+      <div class="linea"><span>7:00 p. m.</span><b>Cena y música en vivo</b><a class="pild" href="#">Detalles</a></div>
+    </div>
+  </section>
+
+  <section class="final"><div class="wrap"><h2 class="pesada">Nos vemos en la ruta</h2><a class="pild" href="#">Confirmar asistencia</a></div></section>
+  <footer><div class="wrap">Ruta 90 · evento de ejemplo · Antioquia, Colombia</div></footer>
+</body>
+</html>

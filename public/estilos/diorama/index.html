@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Muestra: Diorama | Tu Página a un Clic</title>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:opsz,wght@9..40,400;9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../muestra.css">
+  <style>
+    :root { --amarillo: #ffe600; --azul: #007fff; --coral: #ef3b2c; --tinta: #333; --blanco: #fff; --verde: #2fb35a; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--amarillo); color: var(--tinta); font: 400 17px/1.5 "DM Sans", system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+    a { color: inherit; text-decoration: none; }
+    .titulo { font-family: "Archivo Black", sans-serif; font-weight: 400; line-height: .9; letter-spacing: -0.01em; }
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 0 28px; }
+    nav ul { display: flex; justify-content: center; gap: 10px; margin: 0; padding: 26px 16px; list-style: none; flex-wrap: wrap; }
+    nav li a { display: inline-block; padding: 8px 16px; border: 2px solid var(--tinta); border-radius: 999px; font: 700 13px/1 Arial, sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+    nav li:first-child a { background: var(--tinta); color: var(--amarillo); }
+
+    .escena { position: relative; height: 640px; overflow: hidden; }
+    .nube { position: absolute; background: #fff; border-radius: 999px; height: 34px; }
+    .nube::before, .nube::after { content: ""; position: absolute; background: #fff; border-radius: 50%; }
+    .nube::before { width: 50px; height: 50px; left: 18px; top: -24px; } .nube::after { width: 36px; height: 36px; left: 56px; top: -14px; }
+    .n1 { width: 120px; left: 8%; top: 60px; } .n2 { width: 150px; right: 10%; top: 110px; } .n3 { width: 100px; left: 40%; top: 20px; }
+    .globo { position: absolute; left: 50%; bottom: -520px; width: 1100px; height: 1100px; transform: translateX(-50%); border-radius: 50%; background: var(--azul); }
+    .casas { position: absolute; left: 50%; bottom: 0; width: 1300px; height: 640px; transform: translateX(-50%); pointer-events: none; }
+    .texto { position: absolute; left: 0; right: 0; bottom: 60px; padding: 0 20px; text-align: center; color: #fff; z-index: 2; }
+    h1 { margin: 0 0 14px; font-size: clamp(56px, 9vw, 120px); transform: rotate(-4deg); text-shadow: 4px 4px 0 var(--tinta); }
+    .texto p { margin: 0 auto 22px; max-width: 420px; font-weight: 700; }
+    .btn { display: inline-flex; align-items: center; height: 52px; padding: 0 28px; border-radius: 999px; background: var(--amarillo); color: var(--tinta); border: 3px solid var(--tinta); font-weight: 700; box-shadow: 4px 4px 0 var(--tinta); white-space: nowrap; }
+
+    section { background: var(--azul); color: #fff; padding-block: 90px; }
+    h2 { margin: 0 0 40px; font-size: clamp(44px, 7vw, 96px); text-align: center; color: var(--amarillo); text-shadow: 4px 4px 0 var(--tinta); }
+    .proyectos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .proy { background: #fff; color: var(--tinta); border: 3px solid var(--tinta); border-radius: 30px; overflow: hidden; box-shadow: 6px 6px 0 var(--tinta); }
+    .proy .dib { height: 200px; display: grid; place-items: center; font-size: 72px; border-bottom: 3px solid var(--tinta); }
+    .proy:nth-child(1) .dib { background: var(--coral); } .proy:nth-child(2) .dib { background: var(--amarillo); } .proy:nth-child(3) .dib { background: var(--verde); }
+    .proy div:last-child { padding: 20px; }
+    .proy h3 { margin: 0 0 4px; font: 400 24px/1.1 "Archivo Black"; }
+    .proy p { margin: 0; color: #555; }
+    .cierre { text-align: center; padding-block: 90px; }
+    .cierre h2 { color: var(--azul); text-shadow: 4px 4px 0 var(--tinta); }
+    footer { padding: 0 0 40px; text-align: center; font-size: 14px; font-weight: 700; }
+
+    @media (max-width: 900px) {
+      nav li:nth-child(n+4) { display: none; }
+      .escena { height: 560px; }
+      .globo { width: 760px; height: 760px; bottom: -380px; }
+      .casas { width: 900px; height: 450px; }
+      .n2 { right: 2%; } .n3 { display: none; }
+      .proyectos { grid-template-columns: 1fr; }
+      section, .cierre { padding-block: 64px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tpc-barra">
+    <div class="tpc-barra__info"><span class="tpc-barra__tag">Muestra</span><span class="tpc-barra__texto">Estilo <b>Diorama</b> · negocio de ejemplo</span></div>
+    <div class="tpc-barra__acciones"><a href="../">← Todos los estilos</a><a class="tpc-barra__cta" href="/?estilo=diorama#contacto">Quiero este estilo</a></div>
+  </div>
+
+  <nav><ul><li><a href="#">Inicio</a></li><li><a href="#">Proyectos</a></li><li><a href="#">Estudio</a></li><li><a href="#">Talleres</a></li><li><a href="#">Contacto</a></li></ul></nav>
+
+  <header class="escena">
+    <span class="nube n1"></span><span class="nube n2"></span><span class="nube n3"></span>
+    <div class="globo" aria-hidden="true"></div>
+    <svg class="casas" viewBox="0 0 1300 640" aria-hidden="true">
+      <g stroke="#333" stroke-width="4" stroke-linejoin="round">
+        <g transform="rotate(-62 650 670)"><rect x="620" y="-6" width="64" height="130" fill="#f4a261"/><path d="M620 -6 L652 -50 L684 -6Z" fill="#ef3b2c"/><rect x="632" y="12" width="14" height="20" fill="#fff"/><rect x="658" y="12" width="14" height="20" fill="#fff"/><rect x="642" y="88" width="20" height="36" fill="#333"/></g>
+        <g transform="rotate(-48 650 670)"><rect x="620" y="14" width="64" height="110" fill="#e76f51"/><path d="M620 14 L652 -30 L684 14Z" fill="#333"/><rect x="632" y="32" width="14" height="20" fill="#fff"/><rect x="658" y="32" width="14" height="20" fill="#fff"/><rect x="642" y="88" width="20" height="36" fill="#333"/></g>
+        <g transform="rotate(-34 650 670)"><rect x="620" y="-26" width="64" height="150" fill="#fff"/><path d="M620 -26 L652 -70 L684 -26Z" fill="#ef3b2c"/><rect x="632" y="-8" width="14" height="20" fill="#9cd3ff"/><rect x="658" y="-8" width="14" height="20" fill="#9cd3ff"/><rect x="642" y="88" width="20" height="36" fill="#333"/></g>
+        <g transform="rotate(-20 650 670)"><rect x="620" y="24" width="64" height="100" fill="#2a9d8f"/><path d="M620 24 L652 -20 L684 24Z" fill="#ef3b2c"/><rect x="632" y="42" width="14" height="20" fill="#fff"/><rect x="658" y="42" width="14" height="20" fill="#fff"/><rect x="642" y="88" width="20" height="36" fill="#333"/></g>
+        <g transform="rotate(20 650 670)"><rect x="620" y="-16" width="64" height="140" fill="#f4a261"/><path d="M620 -16 L652 -60 L684 -16Z" fill="#333"/><rect x="632" y="2" width="14" height="20" fill="#fff"/><rect x="658" y="2" width="14" height="20" fill="#fff"/><rect x="642" y="88" width="20" height="36" fill="#333"/></g>
+        <g transform="rotate(34 650 670)"><rect x="620" y="4" width="64" height="120" fill="#fff"/><path d="M620 4 L652 -40 L684 4Z" fill="#ef3b2c"/><rect x="632" y="22" width="14" height="20" fill="#9cd3ff"/><rect x="658" y="22" width="14" height="20" fill="#9cd3ff"/><rect x="642" y="88" width="20" height="36" fill="#333"/></g>
+        <g transform="rotate(48 650 670)"><rect x="620" y="14" width="64" height="110" fill="#e76f51"/><path d="M620 14 L652 -30 L684 14Z" fill="#ef3b2c"/><rect x="632" y="32" width="14" height="20" fill="#fff"/><rect x="658" y="32" width="14" height="20" fill="#fff"/><rect x="642" y="88" width="20" height="36" fill="#333"/></g>
+        <g transform="rotate(62 650 670)"><rect x="620" y="-11" width="64" height="135" fill="#2a9d8f"/><path d="M620 -11 L652 -55 L684 -11Z" fill="#333"/><rect x="632" y="7" width="14" height="20" fill="#fff"/><rect x="658" y="7" width="14" height="20" fill="#fff"/><rect x="642" y="88" width="20" height="36" fill="#333"/></g>
+      </g>
+    </svg>
+    <div class="texto">
+      <h1 class="titulo">¡A rodar!</h1>
+      <p>Vuelta es un estudio de animación en Medellín. Hacemos videos animados para marcas, apps y campañas.</p>
+      <a class="btn" href="#">Ver el reel ▶</a>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <h2 class="titulo">Proyectos</h2>
+      <div class="proyectos">
+        <article class="proy"><div class="dib" aria-hidden="true">🚲</div><div><h3>Bici Ciudad</h3><p>Campaña animada para el sistema de bicis públicas.</p></div></article>
+        <article class="proy"><div class="dib" aria-hidden="true">☕</div><div><h3>Café del Valle</h3><p>Explicador de 60 segundos para redes sociales.</p></div></article>
+        <article class="proy"><div class="dib" aria-hidden="true">🌱</div><div><h3>Siembra App</h3><p>Personajes y animaciones para la app.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <div class="cierre wrap"><h2 class="titulo">¿Animamos tu idea?</h2><a class="btn" href="#">Escríbenos</a></div>
+  <footer>Vuelta · negocio de ejemplo · Medellín, Colombia</footer>
+</body>
+</html>
